@@ -12,7 +12,7 @@
 		},
 		error : function() {
 			// view("异常！");  
-			alert("异常！");
+			alert("异常");
 		}
 	});
 </script>
