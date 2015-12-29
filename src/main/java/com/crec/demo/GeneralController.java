@@ -22,7 +22,7 @@ public class GeneralController {
 	@RequestMapping("/json")
 	public void json(@RequestParam String name, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		System.out.println("JSON HERE!");
+		System.out.println("JSON HERE!!!");
 		response.getWriter().print("{'name'," + name + "}");
 	}
 
