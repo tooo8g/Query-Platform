@@ -64,21 +64,8 @@
   <div class="product_infor_show">
     <div class="product_show_infor">
      <div class="product_infor_show1">
-      <p>企业名称：</p><span>新铁德奥道岔有限公司</span>
-      <p></p><span></span>
-      <p>证书编号：</p><span>新铁德奥道岔有限公司</span>
-      <p>颁发单位：</p><span>新铁德奥道岔有限公司</span>
-      <p>产品类别：</p><span>新铁德奥道岔有限公司</span>
-      <p>认证规则名称：</p><span>新铁德奥道岔有限公司</span>
-      <p>认证单位：</p><span>新铁德奥道岔有限公司</span>
-      <p>认证标准和技术要求：</p><span>新铁德奥道岔有限公司</span>
-      <p>注册地址/制造地址：</p><span>新铁德奥道岔有限公司</span>
-      <p>证书变更情况：</p><span>新铁德奥道岔有限公司</span>
-      <p>发证日期：</p><span>新铁德奥道岔有限公司</span>
-      <p>有效期：</p><span>新铁德奥道岔有限公司</span>
-      <p>公告号：</p><span>新铁德奥道岔有限公司</span>
-      <p>证书状态：</p><span>新铁德奥道岔有限公司</span>
-    </div>
+
+     </div>
      <div class="product_infor_show2">
       <table>
         <thead>
