@@ -90,6 +90,7 @@ img{border: none;margin: 0px;padding: 0px;}
 #as_num{
     float: left;
     padding: 0;
+     cursor: auto
 }
 .a_title span{
     color: #9c9c9c;
@@ -110,7 +111,6 @@ img{border: none;margin: 0px;padding: 0px;}
     background-color: #fafafa}
 .as_thead tr,.as_thead td{
     border: 1px solid #dddddd;
-    border-bottom: none;
     color: black}
 .as_tbody{
     width: 943px;
@@ -177,27 +177,53 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 
 .product_infor_show1 span{
-    width: 490px;
+    width: 480px;
     height: 35px;
     line-height: 35px;
     float: left;
     text-align: left;
     margin-left: 10px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
 }
 .as_details{
     cursor: pointer;
 }
 .product_infor_show2{
-    width: 500px;
+    width: 680px;
     float: left;
     height: auto;
     margin-top: 30px;
+    text-align: center;
+    margin-left: 10px;
+    overflow: hidden;
 }
 
 .product_infor_show2 table{
-    width: 500px;
+    width: 680px;
     table-layout: fixed;
+    border-collapse: collapse;
+}
+.pis_thead{
+    width: 680px;
+    font-size: 14px;
     text-align: center;
+}
+.pis_tbody{
+    width: 680px;
+    font-size: 12px;
+    text-align: center;
+    }    
+.pis_thead tr,.pis_tbody tr{
+	 text-align: center;
+	 height:20px;	
+	 line-height:20px; 
+}
+.pis_thead td,.pis_tbody td{
+	overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis
 }
 .pis_button_div{
     width: 700px;
@@ -217,11 +243,11 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
     padding: 0 5px;
 }
-.listperAuth_button a{
-    cursor: pointer;
-}
+
 /*公用*/
 .displayNo{display: none}
 .displayBlock{display: block}
 
+.colorRed{color:red}
+.colorHui{color:black;}
 .clickCursor{cursor: pointer}
