@@ -38,5 +38,4 @@ public class GeneralController {
 		String result = md.queryCertifications(str, start, limit);
 		response.getWriter().print(result);
 	}
-
 }

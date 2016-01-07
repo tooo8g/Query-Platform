@@ -1,0 +1,227 @@
+*{
+    padding:0px;
+    margin:0px;
+    list-style: none;
+    font-size: 12px;
+    font-family: 'Arial','Microsoft Yahei',Tahoma,'Simsun';
+}
+em{
+    font-style: normal;
+}
+strong{
+    font-weight: normal;
+}
+li{list-style: none;white-space: nowrap;}
+a{text-decoration: none;}
+img{border: none;margin: 0px;padding: 0px;}
+
+/*queryCert*/
+.as{
+    width: 1200px;
+    height: auto;
+    overflow: hidden;
+    margin: 40px auto}
+.as_title{
+    width: 1200px;
+    height: 35px;
+    line-height: 35px;}
+.as_title p{
+    float: left;
+    color: black}
+
+.as_left{width: 228px;
+    border: 1px solid #dddddd;
+    float: left}
+.as_left p{
+    text-align: center;
+    line-height: 50px;
+    border-bottom: 1px solid #dddddd;
+    color: black;
+    font-size: 14px;}
+.as_left ul{
+    width: 228px;}
+.as_left ul li{
+    line-height: 30px;
+    padding-left: 30px;
+    position:relative;
+    cursor: pointer}
+
+
+.as_right{
+    width: 953px;
+    height:auto;
+    min-height:670px;
+    margin-left: 15px;
+    float: left;
+    border: 1px solid #dddddd}
+.a_search{
+    padding:15px 0px;
+    text-align: right;
+    padding-right: 30px;
+    border-bottom: 1px solid #dddddd;}
+.serAInput{
+    color: #b5b5b5;
+    margin-left: 600px;
+    height: 26px;}
+.search_a_btn{
+    height: 30px;
+    width: 80px;cursor: pointer}
+.a_search a{
+    width: auto;
+    height: 18px;
+    line-height: 20px;
+    border: 1px solid #dddddd;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+    color: black}
+
+.a_title{
+    width: 953px;
+    height: 35px;
+    line-height:35px;
+    font-size: 14px;
+    border-bottom: 1px solid #dddddd}
+.a_title p{
+    float: left;
+    padding: 0 10px;
+    cursor: pointer
+}
+#as_num{
+    float: left;
+    padding: 0;
+}
+.a_title span{
+    color: #9c9c9c;
+    float: left;
+}
+
+
+.as_table{
+    width: 943px;
+    table-layout:fixed;
+    border-collapse: collapse;
+    margin-left: 5px;
+    margin-top: 5px;}
+.as_thead{
+    width: 943px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fafafa}
+.as_thead tr,.as_thead td{
+    border: 1px solid #dddddd;
+    border-bottom: none;
+    color: black}
+.as_tbody{
+    width: 943px;
+    font-size: 12px;
+    text-align: center;}
+.as_tbody tr,.as_tbody td{
+    border: 1px solid #dddddd;
+    border-top: none;
+    color: black}
+.as_tbody td{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    height: 40px;
+}
+
+.asTable{
+    width: 953px;
+    min-height: 520px;
+    float: left;
+}
+
+.listperAuth_button{
+    height: 20px;
+    float: right;
+    line-height: 20px;
+    margin-right: 20px;
+    text-align: right;
+    font-size: 14px;
+}
+/*productInformation*/
+.productInformation{
+    width:100%;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000
+}
+
+.product_infor_show{
+    width: 700px;
+    height: auto;
+    margin: 40px auto;
+}
+.product_show_infor{
+    width: 700px;
+    height: auto;
+    float: left;
+    background-color: #ffffff;
+}
+.product_infor_show1{
+    width: 700px;
+    height: auto;
+    float: left;
+    margin-top: 15px;
+}
+.product_infor_show1 p{
+    width: 200px;
+    height: 35px;
+    line-height: 35px;
+    float: left;
+    text-align: right;
+}
+
+.product_infor_show1 span{
+    width: 490px;
+    height: 35px;
+    line-height: 35px;
+    float: left;
+    text-align: left;
+    margin-left: 10px;
+}
+.as_details{
+    cursor: pointer;
+}
+.product_infor_show2{
+    width: 500px;
+    float: left;
+    height: auto;
+    margin-top: 30px;
+}
+
+.product_infor_show2 table{
+    width: 500px;
+    table-layout: fixed;
+    text-align: center;
+}
+.pis_button_div{
+    width: 700px;
+    float: left;
+    text-align: center;
+    margin-top: 20px;
+}
+.pis_button{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.listperAuth_button p, .listperAuth_button a{
+    float: left;
+    padding: 0 5px;
+}
+.listperAuth_button a{
+    cursor: pointer;
+}
+/*公用*/
+.displayNo{display: none}
+.displayBlock{display: block}
+
+.clickCursor{cursor: pointer}

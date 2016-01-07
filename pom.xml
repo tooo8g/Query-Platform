@@ -84,6 +84,11 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>data-platform</groupId>
+			<artifactId>platform-mongo-dirver</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>Query-Platform</finalName>
