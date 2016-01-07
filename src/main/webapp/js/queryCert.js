@@ -12,7 +12,7 @@ $(function(){
             type : 'post',
             dataType : 'json',
             success:function(data){
-                var trList
+                var trList=""
                 var data=eval(data)
                 var count=data.count
                 $("#as_num").text(count)
@@ -58,9 +58,9 @@ $(function(){
                      var cert_detail=bzxx[i].cert_detail
                      for(var j=0;j<cert_detail.length;j++){
                                pisBody+="<tr class="+bzxx[i]._id.$oid+" class='displayNo'>"
-                               pisBody+="<td width=226>"+cert_detail[j].product_code+"</td>"
-                               pisBody+="<td width=227>"+cert_detail[j].specification+"</td>"
-                               pisBody+="<td width=227>"+cert_detail[j].specification_status+"</td>"
+                               pisBody+="<td>"+cert_detail[j].product_code+"</td>"
+                               pisBody+="<td>"+cert_detail[j].specification+"</td>"
+                               pisBody+="<td>"+cert_detail[j].specification_status+"</td>"
                                pisBody+="</tr>"
                         }
                      $(".pis_tbody").append(pisBody)
@@ -104,7 +104,7 @@ function search_a_button(){
             type : 'post',
             dataType : 'json',
             success:function(data){
-                var trList
+                var trList=""
                 var data=eval(data)
                 var count=data.count
                 $("#as_num").text(count)
@@ -126,8 +126,8 @@ function search_a_button(){
                 $(".as_tbody").append(trList)
 
                 //显示详情页
-                var pis
-               pis+="<ul>"
+                var pis=""
+                pis+="<ul>"
                 for(var i=0;i<bzxx.length;i++){
                 	 pis+="<li id="+bzxx[i]._id.$oid+" class='displayNo'>"
                 	 pis+="<p>企业名称：</p><span>"+bzxx[i].company_name+"</span>"

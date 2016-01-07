@@ -2,9 +2,9 @@
 <html>
 <head>
     <title>国家铁路局认证目录查询</title>
-    <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../js/queryCert.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/repariParts.css">
+    <script type="text/javascript" src="../../js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="../../js/queryCert.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/repariParts.css">
 
 </head>
 <body>
@@ -69,9 +69,9 @@
       <table>
         <thead class="pis_thead">
         <tr>
-          <td width="226">产品标识代码</td>
-          <td width="227">规格型号</td>
-          <td width="227">规格型号状态</td>
+          <td>产品标识代码</td>
+          <td>规格型号</td>
+          <td>规格型号状态</td>
         </tr>
         </thead>
         <tbody class="pis_tbody">
