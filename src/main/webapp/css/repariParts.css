@@ -11,7 +11,7 @@ em{
 strong{
     font-weight: normal;
 }
-li{list-style: none;white-space: nowrap;}
+li{list-style: none;}
 a{text-decoration: none;}
 img{border: none;margin: 0px;padding: 0px;}
 
@@ -193,10 +193,6 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
     text-align: left;
     margin-left: 10px;
-   word-wrap:break-word;
-   word-break:normal;
-   pre-wrap:word-wrap;
-   
 }
 
 .product_infor_show2{
@@ -235,9 +231,7 @@ img{border: none;margin: 0px;padding: 0px;}
     height:20px;
     float: left;
     overflow: hidden;
-   word-break:break-all;
-   word-wrap:break-word;
-    text-align: center;
+    text-align: left;
 }
 
 .pis_button_div{
