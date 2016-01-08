@@ -199,31 +199,32 @@ img{border: none;margin: 0px;padding: 0px;}
     margin-left: 10px;
     overflow: hidden;
 }
-
-.product_infor_show2 table{
+.pis_title{
     width: 680px;
-    table-layout: fixed;
-    border-collapse: collapse;
+    float: left;
 }
-.pis_thead{
-    width: 680px;
-    font-size: 14px;
+.pis_title p{
+    width: 226px;
+    float: left;
     text-align: center;
 }
-.pis_tbody{
+.pis_content{
     width: 680px;
-    font-size: 12px;
-    text-align: center;
-    }    
-.pis_thead tr,.pis_tbody tr{
-	 text-align: center;
-	 height:20px;	
-	 line-height:20px; 
+    float: left;
+    margin-top: 5px;
 }
-.pis_thead td,.pis_tbody td{
-	overflow:hidden;
-    white-space:nowrap;
-    text-overflow:ellipsis
+.pis_content li{
+    width: 680px;
+    height: 20px;
+    line-height: 20px;
+    float: left;
+}
+.pis_content li p{
+    width: 226px;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 .pis_button_div{
     width: 700px;

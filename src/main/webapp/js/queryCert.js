@@ -54,16 +54,18 @@ $(function(){
                      pis+="<p>证书状态：</p><span>"+bzxx[i].cert_status+"</span>"
                      pis+="</li>"
                     	 
-                     var pisBody=""
+                     var pisContent=""
                      var cert_detail=bzxx[i].cert_detail
+                     pisContent+="<ul>"
                      for(var j=0;j<cert_detail.length;j++){
-                               pisBody+="<tr class="+bzxx[i]._id.$oid+" class='displayNo'>"
-                               pisBody+="<td>"+cert_detail[j].product_code+"</td>"
-                               pisBody+="<td>"+cert_detail[j].specification+"</td>"
-                               pisBody+="<td>"+cert_detail[j].specification_status+"</td>"
-                               pisBody+="</tr>"
+                         pisContent+="<li class="+bzxx[i]._id.$oid+" class='displayNo'>"
+                         pisContent+="<p title="+cert_detail[j].product_code+">"+cert_detail[j].product_code+"</p>"
+                         pisContent+="<p title="+cert_detail[j].specification+">"+cert_detail[j].specification+"</p>"
+                         pisContent+="<p title="+cert_detail[j].specification_status+">"+cert_detail[j].specification_status+"</p>"
+                         pisContent+="</li>"
                         }
-                     $(".pis_tbody").append(pisBody)
+                     pisContent+="</ul>"
+                     $(".pis_content").append(pisContent)
                     		 
                 }
                 pis+="</ul>"
@@ -145,17 +147,19 @@ function search_a_button(){
                      pis+="<p>公告号：</p><span>"+bzxx[i].notification_number+"</span>"
                      pis+="<p>证书状态：</p><span>"+bzxx[i].cert_status+"</span>"
                      pis+="</li>"
-                    	 
-                     var pisBody=""
-                     var cert_detail=bzxx[i].cert_detail
-                     for(var j=0;j<cert_detail.length;j++){
-                               pisBody+="<tr class="+bzxx[i]._id.$oid+" class='displayNo'>"
-                               pisBody+="<td>"+cert_detail[j].product_code+"</td>"
-                               pisBody+="<td>"+cert_detail[j].specification+"</td>"
-                               pisBody+="<td>"+cert_detail[j].specification_status+"</td>"
-                               pisBody+="</tr>"
-                        }
-                     $(".pis_tbody").append(pisBody)
+
+                    var pisContent=""
+                    var cert_detail=bzxx[i].cert_detail
+                    pisContent+="<ul>"
+                    for(var j=0;j<cert_detail.length;j++){
+                        pisContent+="<li class="+bzxx[i]._id.$oid+" class='displayNo'>"
+                        pisContent+="<p title="+cert_detail[j].product_code+">"+cert_detail[j].product_code+"</p>"
+                        pisContent+="<p title="+cert_detail[j].specification+">"+cert_detail[j].specification+"</p>"
+                        pisContent+="<p title="+cert_detail[j].specification_status+">"+cert_detail[j].specification_status+"</p>"
+                        pisContent+="</li>"
+                    }
+                    pisContent+="</ul>"
+                    $(".pis_content").append(pisContent)
                     		 
                 }
                      pis+="</ul>"
