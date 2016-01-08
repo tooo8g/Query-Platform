@@ -17,8 +17,11 @@ $(function(){
                 var count=data.count
                 $("#as_num").text(count)
                 var bzxx=data.bzxx
+                var bzNum
                 for(var i=0;i<bzxx.length;i++){
+                	bzNum=startValue+i+1
                     trList+="<tr>"
+                    trList+="<td>"+bzNum+"</td>"
                     trList+="<td title="+bzxx[i].cert_status+">"+bzxx[i].cert_status+"</td>"
                     trList+="<td title="+bzxx[i].cert_unit+">"+bzxx[i].cert_unit+"</td>"
                     trList+="<td title="+bzxx[i].company_name+">"+bzxx[i].company_name+"</td>"
@@ -56,16 +59,16 @@ $(function(){
                     	 
                      var pisContent=""
                      var cert_detail=bzxx[i].cert_detail
-                     pisContent+="<ul>"
+                   
                      for(var j=0;j<cert_detail.length;j++){
-                         pisContent+="<li class="+bzxx[i]._id.$oid+" class='displayNo'>"
+                         pisContent+="<li class="+bzxx[i]._id.$oid+">"
                          pisContent+="<p title="+cert_detail[j].product_code+">"+cert_detail[j].product_code+"</p>"
                          pisContent+="<p title="+cert_detail[j].specification+">"+cert_detail[j].specification+"</p>"
                          pisContent+="<p title="+cert_detail[j].specification_status+">"+cert_detail[j].specification_status+"</p>"
                          pisContent+="</li>"
                         }
-                     pisContent+="</ul>"
-                     $(".pis_content").append(pisContent)
+                  
+                     $(".pis_content_ul").append(pisContent)
                     		 
                 }
                 pis+="</ul>"
@@ -111,8 +114,11 @@ function search_a_button(){
                 var count=data.count
                 $("#as_num").text(count)
                 var bzxx=data.bzxx
+                var bzNum
                 for(var i=0;i<bzxx.length;i++){
+                	bzNum=startValue+i+1
                     trList+="<tr>"
+                    trList+="<td>"+bzNum+"</td>"
                     trList+="<td title="+bzxx[i].cert_status+">"+bzxx[i].cert_status+"</td>"
                     trList+="<td title="+bzxx[i].cert_unit+">"+bzxx[i].cert_unit+"</td>"
                     trList+="<td title="+bzxx[i].company_name+">"+bzxx[i].company_name+"</td>"
@@ -194,9 +200,9 @@ function as_details(str){
      $("#asdt_"+str).removeClass("colorHui").addClass("colorRed")
      $(".product_infor_show1 ul li").removeClass("displayBlock").addClass("displayNo")
      $("#"+str).removeClass("displayNo").addClass("displayBlock")
-     $(".pis_tbody tr").removeClass("displayBlock").addClass("displayNo")
+     $(".pis_content_ul li").removeClass("displayBlock").addClass("displayNo")
      $("."+str).removeClass("displayNo").addClass("displayBlock")
-     var docuHeight=$(document).height()  //页面可视区域
+     var docuHeight=$(document.body).height()  //页面可视区域
      var prShHeight=$(".product_show_infor").height()
      if(prShHeight<docuHeight){
            $(".productInformation").height(docuHeight)
@@ -226,8 +232,11 @@ function goPage(str,start,limit,isGo){
             var count=dataJson.count
             $("#as_num").text(count)
             var bzxx=dataJson.bzxx
+            var bzNum=""
             for(var i=0;i<bzxx.length;i++){
+            	bzNum=Number(start)+i+1
                 trList+="<tr>"
+                trList+="<td>"+bzNum+"</td>"
                 trList+="<td title="+bzxx[i].cert_status+">"+bzxx[i].cert_status+"</td>"
                 trList+="<td title="+bzxx[i].cert_unit+">"+bzxx[i].cert_unit+"</td>"
                 trList+="<td title="+bzxx[i].company_name+">"+bzxx[i].company_name+"</td>"
@@ -302,7 +311,7 @@ function goPage(str,start,limit,isGo){
             var preStartRow //上一页开始显示的编号
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
-                preStartRow=(pageNo-1)*limitValue
+                preStartRow=(pageNo-2)*limitValue
                 asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+preStartRow+"','"+limitValue+"','pre')>上一页</a>"
             }else{
                 asButton+="<a>上一页</a>"

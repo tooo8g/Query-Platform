@@ -116,6 +116,9 @@ img{border: none;margin: 0px;padding: 0px;}
     width: 943px;
     font-size: 12px;
     text-align: center;}
+.as_tbody a{
+	cursor: pointer
+}
 .as_tbody tr,.as_tbody td{
     border: 1px solid #dddddd;
     border-top: none;
@@ -158,18 +161,20 @@ img{border: none;margin: 0px;padding: 0px;}
 .product_infor_show{
     width: 1200px;
     height: auto;
-    margin: 40px auto;
+    margin: 20px auto;
 }
 .product_show_infor{
     width: 1200px;
     height: auto;
     float: left;
     background-color: #ffffff;
+    margin-bottom:20px;
 }
 .product_infor_show1{
     width: 600px;
     height: auto;
     float: left;
+    margin-top:10px;
 }
 .product_infor_show1 p{
     width: 150px;
@@ -224,6 +229,7 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .pis_content li p{
     width: 190px;
+    height:20px;
     float: left;
     overflow: hidden;
     text-overflow: ellipsis;
