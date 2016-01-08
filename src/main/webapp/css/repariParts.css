@@ -213,7 +213,8 @@ img{border: none;margin: 0px;padding: 0px;}
     width: 570px;
     float: left;
     margin-top: 5px;
-    overflow: scroll;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 .pis_content li{
     width: 570px;
