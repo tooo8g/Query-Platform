@@ -161,7 +161,7 @@ img{border: none;margin: 0px;padding: 0px;}
 .product_infor_show{
     width: 1200px;
     height: auto;
-    margin: 20px auto;
+    margin: 0px auto;
 }
 .product_show_infor{
     width: 1200px;
@@ -169,31 +169,34 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
     background-color: #ffffff;
     margin-bottom:20px;
+    margin-top:100px;
 }
 .product_infor_show1{
     width: 600px;
     height: auto;
     float: left;
-    margin-top:10px;
+    margin-top:30px;
 }
 .product_infor_show1 p{
     width: 150px;
-    height: 35px;
-    line-height: 35px;
+    height: 20px;
+    line-height: 20px;
     float: left;
     text-align: right;
 }
 
+
 .product_infor_show1 span{
+	display:block;
     width: 440px;
-    height: 35px;
-    line-height: 35px;
+    line-height: 20px;
     float: left;
     text-align: left;
     margin-left: 10px;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    overflow: hidden;
+   word-wrap:break-word;
+   word-break:normal;
+   pre-wrap:word-wrap;
+   
 }
 
 .product_infor_show2{
@@ -232,7 +235,8 @@ img{border: none;margin: 0px;padding: 0px;}
     height:20px;
     float: left;
     overflow: hidden;
-    text-overflow: ellipsis;
+   word-break:break-all;
+   word-wrap:break-word;
     text-align: center;
 }
 
@@ -241,6 +245,7 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
     text-align: center;
     margin-top: 20px;
+    margin-bottom:20px;
 }
 .pis_button{
     width: 80px;

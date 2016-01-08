@@ -48,8 +48,8 @@ $(function(){
                      pis+="<p>认证规则名称：</p><span>"+bzxx[i].cert_name+"</span>"
                      pis+="<p>认证单元：</p><span>"+bzxx[i].cert_unit+"</span>"
                      pis+="<p>认证标准和技术要求：</p><span>"+bzxx[i].cert_standards+"</span>"
-                     pis+="<p>注册地址：</p><span title="+bzxx[i].reg_addr+">"+bzxx[i].reg_addr+"</span>"
-                     pis+="<p>制造地址：</p><span title="+bzxx[i].product_addr+">"+bzxx[i].product_addr+"</span>"
+                     pis+="<p>注册地址：</p><span>"+bzxx[i].reg_addr+"</span>"
+                     pis+="<p>制造地址：</p><span>"+bzxx[i].product_addr+"</span>"
                      pis+="<p>证书变更情况：</p><span>"+bzxx[i].cert_condition+"</span>"
                      pis+="<p>发证日期：</p><span>"+timeStamp2String(bzxx[i].publish_date.$date)+"</span>"
                      pis+="<p>有效期：</p><span>"+timeStamp2String(bzxx[i].valid_date.$date)+"</span>"
@@ -62,9 +62,9 @@ $(function(){
                    
                      for(var j=0;j<cert_detail.length;j++){
                          pisContent+="<li class="+bzxx[i]._id.$oid+">"
-                         pisContent+="<p title="+cert_detail[j].product_code+">"+cert_detail[j].product_code+"</p>"
-                         pisContent+="<p title="+cert_detail[j].specification+">"+cert_detail[j].specification+"</p>"
-                         pisContent+="<p title="+cert_detail[j].specification_status+">"+cert_detail[j].specification_status+"</p>"
+                         pisContent+="<p>"+cert_detail[j].product_code+"</p>"
+                         pisContent+="<p>"+cert_detail[j].specification+"</p>"
+                         pisContent+="<p>"+cert_detail[j].specification_status+"</p>"
                          pisContent+="</li>"
                         }
                   
@@ -145,8 +145,8 @@ function search_a_button(){
                      pis+="<p>认证规则名称：</p><span>"+bzxx[i].cert_name+"</span>"
                      pis+="<p>认证单元：</p><span>"+bzxx[i].cert_unit+"</span>"
                      pis+="<p>认证标准和技术要求：</p><span>"+bzxx[i].cert_standards+"</span>"
-                     pis+="<p>注册地址：</p><span title="+bzxx[i].reg_addr+">"+bzxx[i].reg_addr+"</span>"
-                     pis+="<p>制造地址：</p><span title="+bzxx[i].product_addr+">"+bzxx[i].product_addr+"</span>"
+                     pis+="<p>注册地址：</p><span>"+bzxx[i].reg_addr+"</span>"
+                     pis+="<p>制造地址：</p><span>"+bzxx[i].product_addr+"</span>"
                      pis+="<p>证书变更情况：</p><span>"+bzxx[i].cert_condition+"</span>"
                      pis+="<p>发证日期：</p><span>"+timeStamp2String(bzxx[i].publish_date.$date)+"</span>"
                      pis+="<p>有效期：</p><span>"+timeStamp2String(bzxx[i].valid_date.$date)+"</span>"
@@ -159,9 +159,9 @@ function search_a_button(){
                     pisContent+="<ul>"
                     for(var j=0;j<cert_detail.length;j++){
                         pisContent+="<li class="+bzxx[i]._id.$oid+" class='displayNo'>"
-                        pisContent+="<p title="+cert_detail[j].product_code+">"+cert_detail[j].product_code+"</p>"
-                        pisContent+="<p title="+cert_detail[j].specification+">"+cert_detail[j].specification+"</p>"
-                        pisContent+="<p title="+cert_detail[j].specification_status+">"+cert_detail[j].specification_status+"</p>"
+                        pisContent+="<p>"+cert_detail[j].product_code+"</p>"
+                        pisContent+="<p>"+cert_detail[j].specification+"</p>"
+                        pisContent+="<p>"+cert_detail[j].specification_status+"</p>"
                         pisContent+="</li>"
                     }
                     pisContent+="</ul>"
@@ -202,12 +202,12 @@ function as_details(str){
      $("#"+str).removeClass("displayNo").addClass("displayBlock")
      $(".pis_content_ul li").removeClass("displayBlock").addClass("displayNo")
      $("."+str).removeClass("displayNo").addClass("displayBlock")
-     var docuHeight=$(document.body).height()  //页面可视区域
+     var docuHeight=$(document).height()  //页面可视区域
      var prShHeight=$(".product_show_infor").height()
      if(prShHeight<docuHeight){
            $(".productInformation").height(docuHeight)
      }
-    var pisConHeight=docuHeight-100
+    var pisConHeight=docuHeight-320
     $(".pis_content").height(pisConHeight)
 }
 
