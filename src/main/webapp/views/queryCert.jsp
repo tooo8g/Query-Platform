@@ -38,16 +38,16 @@
       <table class="as_table">
         <thead class="as_thead">
         <tr>
-          <td></td>
-          <td>证书状态</td>
-          <td>认证单元</td>
-          <td>企业名称</td>
-          <td>采信目录产品范围</td>
-          <td>证书编号</td>
-          <td>颁发单位</td>
-          <td>认证标准和技术要求</td>
-          <td>颁发日期</td>
-          <td>有效日期</td>
+          <td ></td>
+          <td width="85">证书状态</td>
+          <td width="85">认证单元</td>
+          <td width="85">企业名称</td>
+          <td width="120">采信目录产品范围</td>
+          <td width="85">证书编号</td>
+          <td width="85">颁发单位</td>
+          <td width="120">认证标准和技术要求</td>
+          <td width="85">颁发日期</td>
+          <td width="85">有效日期</td>
           <td>操作</td>
         </tr>
         </thead>

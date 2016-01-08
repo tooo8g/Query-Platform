@@ -111,7 +111,9 @@ img{border: none;margin: 0px;padding: 0px;}
     background-color: #fafafa}
 .as_thead tr,.as_thead td{
     border: 1px solid #dddddd;
-    color: black}
+    color: black;
+    height:40px;
+    }
 .as_tbody{
     width: 943px;
     font-size: 12px;
@@ -189,6 +191,8 @@ img{border: none;margin: 0px;padding: 0px;}
 .product_infor_show1 span{
 	display:block;
     width: 440px;
+    height:auto;
+    min-height:20px;
     line-height: 20px;
     float: left;
     text-align: left;
@@ -211,7 +215,7 @@ img{border: none;margin: 0px;padding: 0px;}
 .pis_title p{
     width: 190px;
     float: left;
-    text-align: center;
+    text-align: left;
 }
 .pis_content{
     width: 570px;
