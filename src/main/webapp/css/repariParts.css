@@ -141,6 +141,10 @@ img{border: none;margin: 0px;padding: 0px;}
     text-align: right;
     font-size: 14px;
 }
+.listperAuth_button p, .listperAuth_button a{
+    float: left;
+    padding: 0 5px;
+}
 /*productInformation*/
 .productInformation{
     width:100%;
@@ -152,24 +156,23 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 
 .product_infor_show{
-    width: 700px;
+    width: 1200px;
     height: auto;
     margin: 40px auto;
 }
 .product_show_infor{
-    width: 700px;
+    width: 1200px;
     height: auto;
     float: left;
     background-color: #ffffff;
 }
 .product_infor_show1{
-    width: 700px;
+    width: 600px;
     height: auto;
     float: left;
-    margin-top: 15px;
 }
 .product_infor_show1 p{
-    width: 200px;
+    width: 150px;
     height: 35px;
     line-height: 35px;
     float: left;
@@ -177,7 +180,7 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 
 .product_infor_show1 span{
-    width: 480px;
+    width: 440px;
     height: 35px;
     line-height: 35px;
     float: left;
@@ -187,47 +190,47 @@ img{border: none;margin: 0px;padding: 0px;}
     white-space:nowrap;
     overflow: hidden;
 }
-.as_details{
-    cursor: pointer;
-}
+
 .product_infor_show2{
-    width: 680px;
+    width: 570px;
     float: left;
     height: auto;
     margin-top: 30px;
     text-align: center;
-    margin-left: 10px;
+    margin-left: 20px;
     overflow: hidden;
 }
 .pis_title{
-    width: 680px;
+    width: 570px;
     float: left;
 }
 .pis_title p{
-    width: 226px;
+    width: 190px;
     float: left;
     text-align: center;
 }
 .pis_content{
-    width: 680px;
+    width: 570px;
     float: left;
     margin-top: 5px;
+    overflow: scroll;
 }
 .pis_content li{
-    width: 680px;
+    width: 570px;
     height: 20px;
     line-height: 20px;
     float: left;
 }
 .pis_content li p{
-    width: 226px;
+    width: 190px;
     float: left;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
 }
+
 .pis_button_div{
-    width: 700px;
+    width: 1200px;
     float: left;
     text-align: center;
     margin-top: 20px;
@@ -237,13 +240,8 @@ img{border: none;margin: 0px;padding: 0px;}
     height: 30px;
     line-height: 30px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
-.listperAuth_button p, .listperAuth_button a{
-    float: left;
-    padding: 0 5px;
-}
 
 /*公用*/
 .displayNo{display: none}

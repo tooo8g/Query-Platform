@@ -201,6 +201,8 @@ function as_details(str){
      if(prShHeight<docuHeight){
            $(".productInformation").height(docuHeight)
      }
+    var pisConHeight=docuHeight-100
+    $(".pis_content").height(pisConHeight)
 }
 
 //关闭证书详情页
@@ -219,7 +221,7 @@ function goPage(str,start,limit,isGo){
         type : 'post',
         dataType : 'json',
         success:function(data){
-            var trList
+            var trList=""
             var dataJson=eval(data)
             var count=dataJson.count
             $("#as_num").text(count)
@@ -241,7 +243,7 @@ function goPage(str,start,limit,isGo){
             $(".as_tbody").append(trList)
             
             //显示详情页
-            var pis
+            var pis=""
                  pis+="<ul>"
             for(var i=0;i<bzxx.length;i++){
             	 pis+="<li id="+bzxx[i]._id.$oid+" class='displayNo'>"
