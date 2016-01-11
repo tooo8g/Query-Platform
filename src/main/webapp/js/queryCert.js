@@ -124,17 +124,13 @@ function search_a_button(){
 function as_details(str){
      $(".productInformation").removeClass("displayNo").addClass("displayBlock")
      $("#asdt_"+str).removeClass("colorHui").addClass("colorRed")
-     $(".product_infor_show1 ul li").removeClass("displayBlock").addClass("displayNo")
-     $("#"+str).removeClass("displayNo").addClass("displayBlock")
-     $(".pis_content_ul li").removeClass("displayBlock").addClass("displayNo")
-     $("."+str).removeClass("displayNo").addClass("displayBlock")
 
     //显示详情页
     var pis=""
     pis+="<ul>"
     for(var i=0;i<bzxx.length;i++){
         if(bzxx[i]._id.$oid==str){
-            pis+="<li id="+bzxx[i]._id.$oid+" class='displayNo'>"
+            pis+="<li>"
             pis+="<p>企业名称：</p><span>"+bzxx[i].company_name+"</span>"
             pis+="<p>证书编号：</p><span>"+bzxx[i].cert_num+"</span>"
             pis+="<p>颁发单位：</p><span>"+bzxx[i].issue_organization+"</span>"
@@ -155,7 +151,7 @@ function as_details(str){
             var cert_detail=bzxx[i].cert_detail
 
             for(var j=0;j<cert_detail.length;j++){
-                pisContent+="<li class="+bzxx[i]._id.$oid+">"
+                pisContent+="<li>"
                 pisContent+="<p>"+cert_detail[j].product_code+"</p>"
                 pisContent+="<p>"+cert_detail[j].specification+"</p>"
                 pisContent+="<p>"+cert_detail[j].specification_status+"</p>"
