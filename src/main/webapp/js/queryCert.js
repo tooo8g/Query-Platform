@@ -1,6 +1,7 @@
 /**
  * Created by zb on 2016/1/6.
  */
+var demoJson
 $(function(){
     //页面刚打开，触发的方法
     var str="" //搜索框里的值
@@ -13,10 +14,10 @@ $(function(){
             dataType : 'json',
             success:function(data){
                 var trList=""
-                var data=eval(data)
-                var count=data.count
+                demoJson=eval(data)
+                var count=demoJson.count
                 $("#as_num").text(count)
-                var bzxx=data.bzxx
+                var bzxx=demoJson.bzxx
                 var bzNum
                 for(var i=0;i<bzxx.length;i++){
                 	bzNum=startValue+i+1
@@ -36,44 +37,7 @@ $(function(){
                 }
                 $(".as_tbody").append(trList)
                 
-                //显示详情页
-                var pis=""
-                pis+="<ul>"
-                for(var i=0;i<bzxx.length;i++){
-                	 pis+="<li id="+bzxx[i]._id.$oid+" class='displayNo'>"
-                	 pis+="<p>企业名称：</p><span>"+bzxx[i].company_name+"</span>"
-                     pis+="<p>证书编号：</p><span>"+bzxx[i].cert_num+"</span>"
-                     pis+="<p>颁发单位：</p><span>"+bzxx[i].issue_organization+"</span>"
-                     pis+="<p>产品类别：</p><span>"+bzxx[i].product_kind+"</span>"
-                     pis+="<p>认证规则名称：</p><span>"+bzxx[i].cert_name+"</span>"
-                     pis+="<p>认证单元：</p><span>"+bzxx[i].cert_unit+"</span>"
-                     pis+="<p>认证标准和技术要求：</p><span>"+bzxx[i].cert_standards+"</span>"
-                     pis+="<p>注册地址：</p><span>"+bzxx[i].reg_addr+"</span>"
-                     pis+="<p>制造地址：</p><span>"+bzxx[i].product_addr+"</span>"
-                     pis+="<p>证书变更情况：</p><span>"+bzxx[i].cert_condition+"</span>"
-                     pis+="<p>发证日期：</p><span>"+timeStamp2String(bzxx[i].publish_date.$date)+"</span>"
-                     pis+="<p>有效期：</p><span>"+timeStamp2String(bzxx[i].valid_date.$date)+"</span>"
-                     pis+="<p>公告号：</p><span>"+bzxx[i].notification_number+"</span>"
-                     pis+="<p>证书状态：</p><span>"+bzxx[i].cert_status+"</span>"
-                     pis+="</li>"
-                    	 
-                     var pisContent=""
-                     var cert_detail=bzxx[i].cert_detail
-                   
-                     for(var j=0;j<cert_detail.length;j++){
-                         pisContent+="<li class="+bzxx[i]._id.$oid+">"
-                         pisContent+="<p>"+cert_detail[j].product_code+"</p>"
-                         pisContent+="<p>"+cert_detail[j].specification+"</p>"
-                         pisContent+="<p>"+cert_detail[j].specification_status+"</p>"
-                         pisContent+="</li>"
-                        }
-                  
-                     $(".pis_content_ul").append(pisContent)
-                    		 
-                }
-                pis+="</ul>"
-                $(".product_infor_show1").append(pis)
-                
+
                 //分页
                 var asButton=""
                 var countPages=Math.ceil(count/limitValue)
@@ -110,10 +74,10 @@ function search_a_button(){
             dataType : 'json',
             success:function(data){
                 var trList=""
-                var data=eval(data)
-                var count=data.count
+                demoJson=eval(data)
+                var count=demoJson.count
                 $("#as_num").text(count)
-                var bzxx=data.bzxx
+                var bzxx=demoJson.bzxx
                 var bzNum
                 for(var i=0;i<bzxx.length;i++){
                 	bzNum=startValue+i+1
@@ -133,44 +97,6 @@ function search_a_button(){
                 }
                 $(".as_tbody").append(trList)
 
-                //显示详情页
-                var pis=""
-                pis+="<ul>"
-                for(var i=0;i<bzxx.length;i++){
-                	 pis+="<li id="+bzxx[i]._id.$oid+" class='displayNo'>"
-                	 pis+="<p>企业名称：</p><span>"+bzxx[i].company_name+"</span>"
-                     pis+="<p>证书编号：</p><span>"+bzxx[i].cert_num+"</span>"
-                     pis+="<p>颁发单位：</p><span>"+bzxx[i].issue_organization+"</span>"
-                     pis+="<p>产品类别：</p><span>"+bzxx[i].product_kind+"</span>"
-                     pis+="<p>认证规则名称：</p><span>"+bzxx[i].cert_name+"</span>"
-                     pis+="<p>认证单元：</p><span>"+bzxx[i].cert_unit+"</span>"
-                     pis+="<p>认证标准和技术要求：</p><span>"+bzxx[i].cert_standards+"</span>"
-                     pis+="<p>注册地址：</p><span>"+bzxx[i].reg_addr+"</span>"
-                     pis+="<p>制造地址：</p><span>"+bzxx[i].product_addr+"</span>"
-                     pis+="<p>证书变更情况：</p><span>"+bzxx[i].cert_condition+"</span>"
-                     pis+="<p>发证日期：</p><span>"+timeStamp2String(bzxx[i].publish_date.$date)+"</span>"
-                     pis+="<p>有效期：</p><span>"+timeStamp2String(bzxx[i].valid_date.$date)+"</span>"
-                     pis+="<p>公告号：</p><span>"+bzxx[i].notification_number+"</span>"
-                     pis+="<p>证书状态：</p><span>"+bzxx[i].cert_status+"</span>"
-                     pis+="</li>"
-
-                    var pisContent=""
-                    var cert_detail=bzxx[i].cert_detail
-                    pisContent+="<ul>"
-                    for(var j=0;j<cert_detail.length;j++){
-                        pisContent+="<li class="+bzxx[i]._id.$oid+" class='displayNo'>"
-                        pisContent+="<p>"+cert_detail[j].product_code+"</p>"
-                        pisContent+="<p>"+cert_detail[j].specification+"</p>"
-                        pisContent+="<p>"+cert_detail[j].specification_status+"</p>"
-                        pisContent+="</li>"
-                    }
-                    pisContent+="</ul>"
-                    $(".pis_content").append(pisContent)
-                    		 
-                }
-                     pis+="</ul>"
-                $(".product_infor_show1").append(pis)
-                
                 //分页
                 var asButton=""
                 var countPages=Math.ceil(count/limitValue)
@@ -202,6 +128,45 @@ function as_details(str){
      $("#"+str).removeClass("displayNo").addClass("displayBlock")
      $(".pis_content_ul li").removeClass("displayBlock").addClass("displayNo")
      $("."+str).removeClass("displayNo").addClass("displayBlock")
+
+    //显示详情页
+    var pis=""
+    pis+="<ul>"
+    for(var i=0;i<bzxx.length;i++){
+        if(bzxx[i]._id.$oid==str){
+            pis+="<li id="+bzxx[i]._id.$oid+" class='displayNo'>"
+            pis+="<p>企业名称：</p><span>"+bzxx[i].company_name+"</span>"
+            pis+="<p>证书编号：</p><span>"+bzxx[i].cert_num+"</span>"
+            pis+="<p>颁发单位：</p><span>"+bzxx[i].issue_organization+"</span>"
+            pis+="<p>产品类别：</p><span>"+bzxx[i].product_kind+"</span>"
+            pis+="<p>认证规则名称：</p><span>"+bzxx[i].cert_name+"</span>"
+            pis+="<p>认证单元：</p><span>"+bzxx[i].cert_unit+"</span>"
+            pis+="<p>认证标准和技术要求：</p><span>"+bzxx[i].cert_standards+"</span>"
+            pis+="<p>注册地址：</p><span>"+bzxx[i].reg_addr+"</span>"
+            pis+="<p>制造地址：</p><span>"+bzxx[i].product_addr+"</span>"
+            pis+="<p>证书变更情况：</p><span>"+bzxx[i].cert_condition+"</span>"
+            pis+="<p>发证日期：</p><span>"+timeStamp2String(bzxx[i].publish_date.$date)+"</span>"
+            pis+="<p>有效期：</p><span>"+timeStamp2String(bzxx[i].valid_date.$date)+"</span>"
+            pis+="<p>公告号：</p><span>"+bzxx[i].notification_number+"</span>"
+            pis+="<p>证书状态：</p><span>"+bzxx[i].cert_status+"</span>"
+            pis+="</li>"
+
+            var pisContent=""
+            var cert_detail=bzxx[i].cert_detail
+
+            for(var j=0;j<cert_detail.length;j++){
+                pisContent+="<li class="+bzxx[i]._id.$oid+">"
+                pisContent+="<p>"+cert_detail[j].product_code+"</p>"
+                pisContent+="<p>"+cert_detail[j].specification+"</p>"
+                pisContent+="<p>"+cert_detail[j].specification_status+"</p>"
+                pisContent+="</li>"
+            }
+            $(".pis_content_ul").append(pisContent)
+        }
+    }
+    pis+="</ul>"
+    $(".product_infor_show1").append(pis)
+
      var docuHeight=$(document).height()  //页面可视区域
      var prShHeight=$(".product_show_infor").height()
      if(prShHeight<docuHeight){
@@ -228,10 +193,10 @@ function goPage(str,start,limit,isGo){
         dataType : 'json',
         success:function(data){
             var trList=""
-            var dataJson=eval(data)
-            var count=dataJson.count
+            demoJson=eval(data)
+            var count=demoJson.count
             $("#as_num").text(count)
-            var bzxx=dataJson.bzxx
+            var bzxx=demoJson.bzxx
             var bzNum=""
             for(var i=0;i<bzxx.length;i++){
             	bzNum=Number(start)+i+1
