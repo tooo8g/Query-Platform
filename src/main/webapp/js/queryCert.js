@@ -124,7 +124,12 @@ function search_a_button(){
 function as_details(str){
      $(".productInformation").removeClass("displayNo").addClass("displayBlock")
      $("#asdt_"+str).removeClass("colorHui").addClass("colorRed")
+     $(".product_infor_show1 ul li").removeClass("displayBlock").addClass("displayNo")
+     $("#"+str).removeClass("displayNo").addClass("displayBlock")
+     $(".pis_content_ul li").removeClass("displayBlock").addClass("displayNo")
+     $("."+str).removeClass("displayNo").addClass("displayBlock")
 
+    var bzxx=demoJson.bzxx
     //显示详情页
     var pis=""
     pis+="<ul>"
@@ -211,6 +216,7 @@ function goPage(str,start,limit,isGo){
                 trList+="</tr>"
             }
             $(".as_tbody").append(trList)
+
             
             var asButton=""
             var pageNo  //当前页码
