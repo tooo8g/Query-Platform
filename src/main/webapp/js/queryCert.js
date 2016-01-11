@@ -212,42 +212,6 @@ function goPage(str,start,limit,isGo){
             }
             $(".as_tbody").append(trList)
             
-            //显示详情页
-            var pis=""
-                 pis+="<ul>"
-            for(var i=0;i<bzxx.length;i++){
-            	 pis+="<li id="+bzxx[i]._id.$oid+" class='displayNo'>"
-            	 pis+="<p>企业名称：</p><span>"+bzxx[i].company_name+"</span>"
-                 pis+="<p>证书编号：</p><span>"+bzxx[i].cert_num+"</span>"
-                 pis+="<p>颁发单位：</p><span>"+bzxx[i].issue_organization+"</span>"
-                 pis+="<p>产品类别：</p><span>"+bzxx[i].product_kind+"</span>"
-                 pis+="<p>认证规则名称：</p><span>"+bzxx[i].cert_name+"</span>"
-                 pis+="<p>认证单元：</p><span>"+bzxx[i].cert_unit+"</span>"
-                 pis+="<p>认证标准和技术要求：</p><span>"+bzxx[i].cert_standards+"</span>"
-                 pis+="<p>注册地址：</p><span>"+bzxx[i].reg_addr+"</span>"
-                 pis+="<p>制造地址：</p><span>"+bzxx[i].product_addr+"</span>"
-                 pis+="<p>证书变更情况：</p><span>"+bzxx[i].cert_condition+"</span>"
-                 pis+="<p>发证日期：</p><span>"+timeStamp2String(bzxx[i].publish_date.$date)+"</span>"
-                 pis+="<p>有效期：</p><span>"+timeStamp2String(bzxx[i].valid_date.$date)+"</span>"
-                 pis+="<p>公告号：</p><span>"+bzxx[i].notification_number+"</span>"
-                 pis+="<p>证书状态：</p><span>"+bzxx[i].cert_status+"</span>"
-                 pis+="</li>"
-                	 
-                 var pisBody=""
-                 var cert_detail=bzxx[i].cert_detail
-                 for(var j=0;j<cert_detail.length;j++){
-                           pisBody+="<tr class="+bzxx[i]._id.$oid+" class='displayNo'>"
-                           pisBody+="<td>"+cert_detail[j].product_code+"</td>"
-                           pisBody+="<td>"+cert_detail[j].specification+"</td>"
-                           pisBody+="<td>"+cert_detail[j].specification_status+"</td>"
-                           pisBody+="</tr>"
-                    }
-                 $(".pis_tbody").append(pisBody)
-                		 
-            }
-                 pis+="</ul>"
-            $(".product_infor_show1").append(pis)
-            
             var asButton=""
             var pageNo  //当前页码
             var noPage
