@@ -15,37 +15,82 @@ li{list-style: none;}
 a{text-decoration: none;}
 img{border: none;margin: 0px;padding: 0px;}
 
-/*queryCert*/
+/*authenSearch*/
 .as{
     width: 1200px;
     height: auto;
     overflow: hidden;
-    margin: 40px auto}
+    margin: 40px auto
+}
 .as_title{
     width: 1200px;
     height: 35px;
-    line-height: 35px;}
+    line-height: 35px;
+}
 .as_title p{
     float: left;
-    color: black}
+    color: black;
+}
 
-.as_left{width: 228px;
+.as_left{
+    width: 228px;
     border: 1px solid #dddddd;
-    float: left}
+    float: left;
+}
 .as_left p{
     text-align: center;
     line-height: 50px;
     border-bottom: 1px solid #dddddd;
     color: black;
-    font-size: 14px;}
-.as_left ul{
-    width: 228px;}
-.as_left ul li{
+    font-size: 14px;
+}
+.item{
+    width: 188px;
     line-height: 30px;
-    padding-left: 30px;
-    position:relative;
-    cursor: pointer}
-
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+}
+.itemShow{
+    width: 953px;
+    height: 670px;
+    overflow: auto;
+    position: absolute;
+    border: 1px solid #dddddd;
+    position: absolute;
+    left: 320px;
+    top: 125px;
+    background-color: #ffffff;
+}
+#itemShow_title{
+    width: 953px;
+    height: 30px;
+    border-bottom:none;
+}
+#itemShow_title img{
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+    margin-top: 2px;
+    float: right;
+    cursor: pointer;
+}
+.showItem{
+    width: 228px;
+    float: left;
+}
+.showItem a{
+    display: block;
+    width: 188px;
+    line-height: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+}
 
 .as_right{
     width: 953px;
@@ -53,19 +98,24 @@ img{border: none;margin: 0px;padding: 0px;}
     min-height:670px;
     margin-left: 15px;
     float: left;
-    border: 1px solid #dddddd}
+    border: 1px solid #dddddd;
+}
 .a_search{
     padding:15px 0px;
     text-align: right;
     padding-right: 30px;
-    border-bottom: 1px solid #dddddd;}
+    border-bottom: 1px solid #dddddd;
+}
 .serAInput{
     color: #b5b5b5;
     margin-left: 600px;
-    height: 26px;}
+    height: 26px;
+}
 .search_a_btn{
     height: 30px;
-    width: 80px;cursor: pointer}
+    width: 80px;
+    cursor: pointer
+}
 .a_search a{
     width: auto;
     height: 18px;
@@ -74,52 +124,40 @@ img{border: none;margin: 0px;padding: 0px;}
     padding: 5px 10px;
     cursor: pointer;
     margin-left: 5px;
-    color: black}
+    color: black;
+}
 
 .a_title{
     width: 953px;
     height: 35px;
     line-height:35px;
     font-size: 14px;
-    border-bottom: 1px solid #dddddd}
+    border-bottom: 1px solid #dddddd;
+}
 .a_title p{
     float: left;
     padding: 0 10px;
-    cursor: pointer
+    cursor: pointer;
 }
 #as_num{
     float: left;
     padding: 0;
-     cursor: auto
 }
 .a_title span{
     color: #9c9c9c;
     float: left;
 }
-
-
-.as_table{
-    width: 943px;
-    table-layout:fixed;
-    border-collapse: collapse;
-    margin-left: 5px;
-    margin-top: 5px;}
-.as_thead{
-    width: 943px;
-    font-size: 14px;
-    text-align: center;
-    background-color: #fafafa}
-.as_thead tr,.as_thead td{
-    border: 1px solid #dddddd;
-    color: black;
-    height:40px;
-    }
+.asTable{
+    width: 953px;
+    min-height: 520px;
+    float: left;
+}
 .as_tbody{
     width: 943px;
     font-size: 12px;
     text-align: center;}
 .as_tbody a{
-	cursor: pointer
+    cursor: pointer
 }
 .as_tbody tr,.as_tbody td{
     border: 1px solid #dddddd;
@@ -131,11 +169,20 @@ img{border: none;margin: 0px;padding: 0px;}
     white-space:nowrap;
     height: 40px;
 }
-
-.asTable{
-    width: 953px;
-    min-height: 520px;
-    float: left;
+.as_table{width: 943px;
+    table-layout:fixed;
+    border-collapse: collapse;
+    margin-left: 5px;
+    margin-top: 5px;}
+.as_thead{width: 943px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fafafa;
+}
+.as_thead tr,.as_thead td{
+    border: 1px solid #dddddd;
+    color: black;
+    height:40px;
 }
 
 .listperAuth_button{
@@ -150,6 +197,7 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
     padding: 0 5px;
 }
+
 /*productInformation*/
 .productInformation{
     width:100%;
@@ -189,10 +237,8 @@ img{border: none;margin: 0px;padding: 0px;}
 
 
 .product_infor_show1 span{
-	display:block;
+    display:block;
     width: 440px;
-    height:auto;
-    min-height:20px;
     line-height: 20px;
     float: left;
     text-align: left;
@@ -215,7 +261,7 @@ img{border: none;margin: 0px;padding: 0px;}
 .pis_title p{
     width: 190px;
     float: left;
-    text-align: left;
+    text-align: center;
 }
 .pis_content{
     width: 570px;
@@ -226,15 +272,15 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .pis_content li{
     width: 570px;
-    height: 20px;
     line-height: 20px;
     float: left;
 }
 .pis_content li p{
-    width: 190px;
-    height:20px;
+    width: 180px;
+    line-height: 20px;
     float: left;
-    overflow: hidden;
+    padding-left: 5px;
+    padding-right: 5px;
     text-align: left;
 }
 
@@ -251,7 +297,6 @@ img{border: none;margin: 0px;padding: 0px;}
     line-height: 30px;
     text-align: center;
 }
-
 
 /*公用*/
 .displayNo{display: none}

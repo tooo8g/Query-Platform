@@ -1,7 +1,9 @@
 /**
  * Created by zb on 2016/1/6.
  */
-var demoJson
+var demoJson=""
+//列表JSON
+var list_json="";
 $(function(){
     //页面刚打开，触发的方法
     var str="" //搜索框里的值
@@ -59,6 +61,47 @@ $(function(){
             }
         }
     )
+    
+    function itemShowList(append_dom,data){
+        if (data) {
+            append_dom.html("");
+            for (var i = 0; i < data.length; i++) {
+                append_dom.append("<a href='javascript:;' num='" + i + "'>" + data[i].name + "</a>");
+            };
+            append_dom.on("click","a",function() {
+                list_n = $(this).attr("num");
+                var itemShowList_data=data[list_n].childs;
+                class_num = parseInt(append_dom.attr("class_num")) + 1 ;
+
+                for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
+                    if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().attr("class_num") ){
+                        $(".itemShow .showItem").eq(i).remove();
+                    }
+                };
+                if(itemShowList_data){
+                    $(".itemShow").append("<div class='itemShowList"+class_num+" showItem'></div>");
+                    $(".itemShowList"+class_num).attr("class_num",class_num);
+                    itemShowList($(".itemShowList"+class_num),itemShowList_data);
+                }
+            });
+        }
+    }
+    $(".itemShowList").on("click","a",function() {
+        var list_num = $(this).attr("num");
+        var itemShowList_data=list_json.childs[list_num[0]].childs;
+        var num=1;
+
+        for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
+            if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().attr("class_num") ){
+                $(".itemShow .showItem").eq(i).remove();
+            }
+        };
+        if(itemShowList_data){
+            $(".itemShow").append("<div class='itemShowList"+num+" showItem'></div>");
+            $(".itemShowList"+num).attr("class_num",1);
+            itemShowList($(".itemShowList"+num),itemShowList_data);
+        };
+    });
 })
 //搜索表单提交
 function search_a_button(){
@@ -266,4 +309,39 @@ function timeStamp2String(time){
 	var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
 	var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
 	return year + "-" + month + "-" + date;
-	}
+}
+
+
+//查找目录列表
+function searchCatalogList(str){
+    $.ajax({
+        url:"../json/demo_UTF8.json",
+        data:"",
+        type:"GET",
+        success:function(str){
+            $(".itemShow").removeClass("displayNo").addClass("displayBlock")
+            list_json=str;
+            console.log(str);
+            for(var i = 0 ; i < str.childs.length ; i++){
+                $(".itemShowList").append("<a href='javascript:;' num='"+i+"'>"+str.childs[i].name+"</a>")
+            }
+        },
+        error:function(){
+            alert("链接错误！");
+        }
+    });
+
+}
+
+//关闭页面
+function closeItemShow(){
+    $(".itemShow").removeClass("displayBlock").addClass("displayNo");
+    for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
+        if($(".itemShow .showItem").eq(i).attr("class_num") == 0 ){
+            $(".itemShow .showItem").eq(i).html("");
+        }
+        else{
+            $(".itemShow .showItem").eq(i).remove();
+        }
+    }
+}

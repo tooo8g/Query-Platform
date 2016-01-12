@@ -17,12 +17,15 @@
   </div>
   <div class="as_left">
     <p>目录</p>
-    <ul>
-      <li class="colorHui">铁路总公司认证采信目录</li>
-      <li class="colorRed">国家铁路局认证目录</li>
-      <li class="colorHui">动车组维修用新品零部件目录</li>
-      <li class="colorHui">铁路车辆零部件技术审查</li>
-    </ul>
+    <div class="item colorRed" title="铁路总公司认证采信目录房顶上法第三方第三方多少斯蒂芬" onclick="searchCatalogList('铁路总公司认证采信目录')">铁路总公司认证采信目录房顶上法第三方第三方多少斯蒂芬</div>
+    <div class="item colorHui" title="国家铁路局认证目录">国家铁路局认证目录</div>
+    <div class="item colorHui">动车组维修用新品零部件目录</div>
+    <div class="item colorHui">铁路车辆零部件技术审查</div>
+    <div class="itemShow displayNo">
+      <p id="itemShow_title"><img src="../images/closehuifu.png" onclick="closeItemShow()"></p>
+      <div class="itemShowList showItem" class_num="0"></div>
+    </div>
+
   </div>
   <div class="as_right">
     <div action="queryCert" class="a_search">
