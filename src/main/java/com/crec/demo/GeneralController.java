@@ -36,6 +36,16 @@ public class GeneralController {
 		System.out.println(str);
 		MongoDirver md = new MongoDirver();
 		String result = md.queryCertifications(str, start, limit);
+		md.close();
+		response.getWriter().print(result);
+	}
+
+	@RequestMapping("/queryCertMenu_tz")
+	public void QueryCertificationByLeaf(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryCertification_menu_tz();
+		md.close();
 		response.getWriter().print(result);
 	}
 }
