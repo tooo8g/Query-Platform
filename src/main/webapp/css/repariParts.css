@@ -57,7 +57,7 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .itemShow{
     width: 953px;
-    height: 670px;
+    height: auto;
     overflow: auto;
     position: absolute;
     border: 1px solid #dddddd;

@@ -62,11 +62,16 @@ $(function(){
         }
     )
 
+    var thisText //当前点击对象的text值
     function itemShowList(append_dom,data){
         if (data) {
             append_dom.html("");
             for (var i = 0; i < data.length; i++) {
-                append_dom.append("<a href='javascript:;' num='" + i + "'>" + data[i].name + "</a>");
+                if(data[i].name_title){
+                    append_dom.append("<a href='javaScript:;'  num='" + i + "'>" + data[i].name_title + "</a>");
+                }else{
+                    append_dom.append("<a  num='" + i + "' class='itemName''>" + data[i].name + "</a>");
+                }
             };
             append_dom.on("click","a",function() {
                 list_n = $(this).attr("num");
@@ -82,13 +87,21 @@ $(function(){
                     $(".itemShow").append("<div class='itemShowList"+class_num+" showItem'></div>");
                     $(".itemShowList"+class_num).attr("class_num",class_num);
                     itemShowList($(".itemShowList"+class_num),itemShowList_data);
-                }
+                }else{
+                    if($(this).hasClass('itemName')){
+                        thisText=$(this).text()
+                        itemShowButton(thisText)
+                    }
+                };
             });
+            var docuHeight=$(document).height()  //页面可视区域
+            var sihHeight=docuHeight-250
+            $(".showItem").height(sihHeight)
         }
     }
     $(".itemShowList").on("click","a",function() {
         var list_num = $(this).attr("num");
-        var itemShowList_data=list_json.childs[list_num[0]].childs;
+        var itemShowList_data=list_json.childs[list_num].childs;
         var num=1;
 
         for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
@@ -100,11 +113,12 @@ $(function(){
             $(".itemShow").append("<div class='itemShowList"+num+" showItem'></div>");
             $(".itemShowList"+num).attr("class_num",1);
             itemShowList($(".itemShowList"+num),itemShowList_data);
-        };
+        }
     });
 })
 //搜索表单提交
 function search_a_button(){
+    closeItemShow()
 	$(".as_tbody").html("")
 	$(".listperAuth_button").html("")
     var str=$(".serAInput").val() //搜索框里的值
@@ -311,7 +325,6 @@ function timeStamp2String(time){
 	return year + "-" + month + "-" + date;
 }
 
-
 //查找目录列表
 function searchCatalogList(str){
     $.ajax({
@@ -323,7 +336,11 @@ function searchCatalogList(str){
             list_json=str;
             console.log(str);
             for(var i = 0 ; i < str.childs.length ; i++){
-                $(".itemShowList").append("<a href='javascript:;' num='"+i+"'>"+str.childs[i].name+"</a>")
+                if(str.childs[i].name_title){
+                    $(".itemShowList").append("<a href='javaScript:;'  num='"+i+"'>"+str.childs[i].name_title+"</a>")
+                }else{
+                    $(".itemShowList").append("<a  num='"+i+"'>"+str.childs[i].name+"</a>")
+                }
             }
         },
         error:function(){
@@ -333,10 +350,42 @@ function searchCatalogList(str){
 
 }
 
+//点击目录提交
+function itemShowButton(str){
+    closeItemShow()
+    var startValue=0 //初始值
+    var limitValue=10 //一次取出多少条数据
+    $.ajax({
+            url: '/queryCert',
+            data:{str:str,start:startValue,limit:limitValue},
+            type : 'get',
+            dataType : 'json',
+            success:function(bzxx){
+                var trList
+                var item=eval(bzxx)
+                for(var i=0;i<item.length;i++){
+                    trList+="<tr>"
+                    trList+="<td>"+item[i].cert_status+"</td>"
+                    trList+="<td>"+item[i].cert_unit+"</td>"
+                    trList+="<td>"+item[i].company_name+"</td>"
+                    trList+="<td>"+item[i].product_range+"</td>"
+                    trList+="<td>"+item[i].cert_num+"</td>"
+                    trList+="<td>"+item[i].issue_organization+"</td>"
+                    trList+="<td>"+item[i].cert_standards+"</td>"
+                    trList+="<td>"+item[i].publish_date+"</td>"
+                    trList+="<td>"+item[i].valid_date+"</td>"
+                    trList+="</tr>"
+                }
+                $(".as_tbody").append(trList)
+            }
+        }
+    )
+}
+
 //关闭页面
 function closeItemShow(){
     $(".itemShow").removeClass("displayBlock").addClass("displayNo");
-    for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
+    for(var i = $(".itemShow .showItem").length;i >=0 ;i-- ){
         if($(".itemShow .showItem").eq(i).attr("class_num") == 0 ){
             $(".itemShow .showItem").eq(i).html("");
         }
