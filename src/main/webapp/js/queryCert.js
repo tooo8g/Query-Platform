@@ -316,6 +316,7 @@ function goPage(str,start,limit,isGo){
     })
 }
 
+//时间格式化
 function timeStamp2String(time){
 	var datetime = new Date();
 	datetime.setTime(time);
