@@ -162,28 +162,31 @@ function itemShowButton(str){
     $.ajax({
             url: '../queryCert',
             data:{str:str,start:startValue,limit:limitValue},
-            contentType:"application/x-www-form-urlencoded:charset=UTF-8",
-            type : 'get',
+            type : 'post',
             dataType : 'json',
             success:function(bzxx){
                 $(".as_tbody").html("")
                 $(".listperAuth_button").html("")
                 var trList
-                var item=eval(bzxx)
-                var count=item.count
+                demoJson=eval(bzxx)
+                var count=demoJson.count
                 $("#as_num").text(count)
-                for(var i=0;i<item.length;i++){
-                    trList+="<tr>"
-                    trList+="<td>"+item[i].cert_status+"</td>"
-                    trList+="<td>"+item[i].cert_unit+"</td>"
-                    trList+="<td>"+item[i].company_name+"</td>"
-                    trList+="<td>"+item[i].product_range+"</td>"
-                    trList+="<td>"+item[i].cert_num+"</td>"
-                    trList+="<td>"+item[i].issue_organization+"</td>"
-                    trList+="<td>"+item[i].cert_standards+"</td>"
-                    trList+="<td>"+item[i].publish_date+"</td>"
-                    trList+="<td>"+item[i].valid_date+"</td>"
-                    trList+="</tr>"
+                var bzxx=demoJson.bzxx
+                for(var i=0;i<bzxx.length;i++){
+                	bzNum=startValue+i+1
+            	     trList+="<tr>"
+                     trList+="<td>"+bzNum+"</td>"
+                     trList+="<td title="+bzxx[i].cert_status+">"+bzxx[i].cert_status+"</td>"
+                     trList+="<td title="+bzxx[i].cert_unit+">"+bzxx[i].cert_unit+"</td>"
+                     trList+="<td title="+bzxx[i].company_name+">"+bzxx[i].company_name+"</td>"
+                     trList+="<td title="+bzxx[i].product_range+">"+bzxx[i].product_range+"</td>"
+                     trList+="<td title="+bzxx[i].cert_num+">"+bzxx[i].cert_num+"</td>"
+                     trList+="<td title="+bzxx[i].issue_organization+">"+bzxx[i].issue_organization+"</td>"
+                     trList+="<td title="+bzxx[i].cert_standards+">"+bzxx[i].cert_standards+"</td>"
+                     trList+="<td title="+timeStamp2String(bzxx[i].publish_date.$date)+">"+timeStamp2String(bzxx[i].publish_date.$date)+"</td>"
+                     trList+="<td title="+timeStamp2String(bzxx[i].valid_date.$date)+">"+timeStamp2String(bzxx[i].valid_date.$date)+"</td>"
+                     trList+="<td><a id=asdt_"+bzxx[i]._id.$oid+" class='as_details colorHui' onclick=as_details('"+bzxx[i]._id.$oid+"')>详情</a></td>"
+                     trList+="</tr>"
                 }
                 $(".as_tbody").append(trList)
                 //分页
@@ -359,22 +362,27 @@ function timeStamp2String(time){
 }
 
 //查找目录列表
-function searchCatalogList(str){
+function searchCatalogList(){
     $.ajax({
-        url:"../json/demo_UTF8.json",
+        url:"../queryCertMenu_tz",
         data:"",
-        type:"GET",
-        success:function(str){
+        type:"get",
+        dataType : 'json',
+        success:function(data){
             $(".itemShow").removeClass("displayNo").addClass("displayBlock")
-            list_json=str;
-            console.log(str);
-            for(var i = 0 ; i < str.childs.length ; i++){
-                if(str.childs[i].name_title){
-                    $(".itemShowList").append("<a href='javaScript:;'  num='"+i+"'>"+str.childs[i].name_title+"</a>")
+            list_json=data;
+            for(var i = 0 ; i < list_json.childs.length ; i++){
+                if(list_json.childs[i].name_title){
+                    $(".itemShowList").append("<a href='javaScript:;'  num='"+i+"'>"+list_json.childs[i].name_title+"</a>")
                 }else{
-                    $(".itemShowList").append("<a  num='"+i+"'>"+str.childs[i].name+"</a>")
+                    $(".itemShowList").append("<a  num='"+i+"'>"+list_json.childs[i].name+"</a>")
                 }
             }
+          //获取页面可视区域，然后确定showItem的高度
+            var docuHeight=$(document).height()  //页面可视区域
+            var sihHeight=docuHeight-250
+            $(".showItem").height(sihHeight)   
+
         },
         error:function(){
             alert("链接错误！");
@@ -410,7 +418,7 @@ function itemShowList(append_dom,data){
                 itemShowList($(".itemShowList"+class_num),itemShowList_data);
             }else{
                 if($(this).hasClass('itemName')){
-                    thisText=$(this).text()
+                    thisText=$(this).html()
                     itemShowButton(thisText)
                 }
             };
