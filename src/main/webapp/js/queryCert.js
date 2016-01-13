@@ -1,11 +1,17 @@
 /**
  * Created by zb on 2016/1/6.
  */
+//保存提交表单后返回的json数据
 var demoJson=""
 //列表JSON
 var list_json="";
 $(function(){
-    //页面刚打开，触发的方法
+    /*页面刚打开，触发的方法
+     页面刚打开时，设定搜索框(str)的值为空，初始值(startValue)为0，每次取出的条数(limitValue)为0
+     访问后台，返回Json数据
+     解析json，获取总条数(count)和 其他数据(bzxx)
+     将bzxx解析后，动态添加到as_tbody里面
+     */
     var str="" //搜索框里的值
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -17,12 +23,13 @@ $(function(){
             success:function(data){
                 var trList=""
                 demoJson=eval(data)
-                var count=demoJson.count
+                var count //总条数
+                count=demoJson.count
                 $("#as_num").text(count)
                 var bzxx=demoJson.bzxx
                 var bzNum
                 for(var i=0;i<bzxx.length;i++){
-                	bzNum=startValue+i+1
+                    bzNum=startValue+i+1
                     trList+="<tr>"
                     trList+="<td>"+bzNum+"</td>"
                     trList+="<td title="+bzxx[i].cert_status+">"+bzxx[i].cert_status+"</td>"
@@ -38,7 +45,7 @@ $(function(){
                     trList+="</tr>"
                 }
                 $(".as_tbody").append(trList)
-                
+
 
                 //分页
                 var asButton=""
@@ -62,43 +69,12 @@ $(function(){
         }
     )
 
-    var thisText //当前点击对象的text值
-    function itemShowList(append_dom,data){
-        if (data) {
-            append_dom.html("");
-            for (var i = 0; i < data.length; i++) {
-                if(data[i].name_title){
-                    append_dom.append("<a href='javaScript:;'  num='" + i + "'>" + data[i].name_title + "</a>");
-                }else{
-                    append_dom.append("<a  num='" + i + "' class='itemName''>" + data[i].name + "</a>");
-                }
-            };
-            append_dom.on("click","a",function() {
-                list_n = $(this).attr("num");
-                var itemShowList_data=data[list_n].childs;
-                class_num = parseInt(append_dom.attr("class_num")) + 1 ;
-
-                for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
-                    if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().attr("class_num") ){
-                        $(".itemShow .showItem").eq(i).remove();
-                    }
-                };
-                if(itemShowList_data){
-                    $(".itemShow").append("<div class='itemShowList"+class_num+" showItem'></div>");
-                    $(".itemShowList"+class_num).attr("class_num",class_num);
-                    itemShowList($(".itemShowList"+class_num),itemShowList_data);
-                }else{
-                    if($(this).hasClass('itemName')){
-                        thisText=$(this).text()
-                        itemShowButton(thisText)
-                    }
-                };
-            });
-            var docuHeight=$(document).height()  //页面可视区域
-            var sihHeight=docuHeight-250
-            $(".showItem").height(sihHeight)
-        }
-    }
+    /*
+     给itemShowList里面的a元素添加click事件
+     点击的时候，遍历itemShow下的div,判断class_num值，如果有class_num值大于点击的div，就将其移除
+     判断有没有childs,有的话就创建相应的div,添加class
+     调用itemShowList()方法
+     */
     $(".itemShowList").on("click","a",function() {
         var list_num = $(this).attr("num");
         var itemShowList_data=list_json.childs[list_num].childs;
@@ -116,11 +92,12 @@ $(function(){
         }
     });
 })
+
 //搜索表单提交
 function search_a_button(){
     closeItemShow()
-	$(".as_tbody").html("")
-	$(".listperAuth_button").html("")
+    $(".as_tbody").html("")
+    $(".listperAuth_button").html("")
     var str=$(".serAInput").val() //搜索框里的值
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -137,7 +114,7 @@ function search_a_button(){
                 var bzxx=demoJson.bzxx
                 var bzNum
                 for(var i=0;i<bzxx.length;i++){
-                	bzNum=startValue+i+1
+                    bzNum=startValue+i+1
                     trList+="<tr>"
                     trList+="<td>"+bzNum+"</td>"
                     trList+="<td title="+bzxx[i].cert_status+">"+bzxx[i].cert_status+"</td>"
@@ -177,14 +154,69 @@ function search_a_button(){
     )
 }
 
+//目录提交
+function itemShowButton(str){
+    closeItemShow()
+    var startValue=0 //初始值
+    var limitValue=10 //一次取出多少条数据
+    $.ajax({
+            url: '../queryCert',
+            data:{str:str,start:startValue,limit:limitValue},
+            contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+            type : 'get',
+            dataType : 'json',
+            success:function(bzxx){
+                $(".as_tbody").html("")
+                $(".listperAuth_button").html("")
+                var trList
+                var item=eval(bzxx)
+                var count=item.count
+                $("#as_num").text(count)
+                for(var i=0;i<item.length;i++){
+                    trList+="<tr>"
+                    trList+="<td>"+item[i].cert_status+"</td>"
+                    trList+="<td>"+item[i].cert_unit+"</td>"
+                    trList+="<td>"+item[i].company_name+"</td>"
+                    trList+="<td>"+item[i].product_range+"</td>"
+                    trList+="<td>"+item[i].cert_num+"</td>"
+                    trList+="<td>"+item[i].issue_organization+"</td>"
+                    trList+="<td>"+item[i].cert_standards+"</td>"
+                    trList+="<td>"+item[i].publish_date+"</td>"
+                    trList+="<td>"+item[i].valid_date+"</td>"
+                    trList+="</tr>"
+                }
+                $(".as_tbody").append(trList)
+                //分页
+                var asButton=""
+                var countPages=Math.ceil(count/limitValue)
+                var pageNo=0  //当前页码
+                if(startValue==0){
+                    pageNo=1
+                }
+                $(".pageNo").val(pageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton+="<a>上一页</a>"
+                asButton+="<p>"+pageNo+"/"+countPages+"</p>"
+                if(countPages>1){
+                    nextStartRow=pageNo*limitValue
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                }else{
+                    asButton+="<a>下一页</a>"
+                }
+                $(".listperAuth_button").append(asButton)
+            }
+        }
+    )
+}
+
 //证书详情
 function as_details(str){
-     $(".productInformation").removeClass("displayNo").addClass("displayBlock")
-     $("#asdt_"+str).removeClass("colorHui").addClass("colorRed")
-     $(".product_infor_show1 ul li").removeClass("displayBlock").addClass("displayNo")
-     $("#"+str).removeClass("displayNo").addClass("displayBlock")
-     $(".pis_content_ul li").removeClass("displayBlock").addClass("displayNo")
-     $("."+str).removeClass("displayNo").addClass("displayBlock")
+    $(".productInformation").removeClass("displayNo").addClass("displayBlock")
+    $("#asdt_"+str).removeClass("colorHui").addClass("colorRed")
+    $(".product_infor_show1 ul li").removeClass("displayBlock").addClass("displayNo")
+    $("#"+str).removeClass("displayNo").addClass("displayBlock")
+    $(".pis_content_ul li").removeClass("displayBlock").addClass("displayNo")
+    $("."+str).removeClass("displayNo").addClass("displayBlock")
 
     var bzxx=demoJson.bzxx
     //显示详情页
@@ -225,11 +257,11 @@ function as_details(str){
     pis+="</ul>"
     $(".product_infor_show1").append(pis)
 
-     var docuHeight=$(document).height()  //页面可视区域
-     var prShHeight=$(".product_show_infor").height()
-     if(prShHeight<docuHeight){
-           $(".productInformation").height(docuHeight)
-     }
+    var docuHeight=$(document).height()  //页面可视区域
+    var prShHeight=$(".product_show_infor").height()
+    if(prShHeight<docuHeight){
+        $(".productInformation").height(docuHeight)
+    }
     var pisConHeight=docuHeight-320
     $(".pis_content").height(pisConHeight)
 }
@@ -242,8 +274,8 @@ function pis_close(){
 
 //页码跳转
 function goPage(str,start,limit,isGo){
-	$(".as_tbody").html("")
-	$(".listperAuth_button").html("")
+    $(".as_tbody").html("")
+    $(".listperAuth_button").html("")
     $.ajax({
         url: '../queryCert',
         data:{str:str,start:start,limit:limit},
@@ -257,7 +289,7 @@ function goPage(str,start,limit,isGo){
             var bzxx=demoJson.bzxx
             var bzNum=""
             for(var i=0;i<bzxx.length;i++){
-            	bzNum=Number(start)+i+1
+                bzNum=Number(start)+i+1
                 trList+="<tr>"
                 trList+="<td>"+bzNum+"</td>"
                 trList+="<td title="+bzxx[i].cert_status+">"+bzxx[i].cert_status+"</td>"
@@ -274,7 +306,7 @@ function goPage(str,start,limit,isGo){
             }
             $(".as_tbody").append(trList)
 
-            
+
             var asButton=""
             var pageNo  //当前页码
             var noPage
@@ -287,7 +319,7 @@ function goPage(str,start,limit,isGo){
                 }else{
                     pageNo=noPage
                 }
-            }  
+            }
             if(isGo=="pre"){
                 noPage=Number($(".pageNo").val())-1
                 if(noPage==0){
@@ -318,24 +350,24 @@ function goPage(str,start,limit,isGo){
 
 //时间格式化
 function timeStamp2String(time){
-	var datetime = new Date();
-	datetime.setTime(time);
-	var year = datetime.getFullYear();
-	var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-	var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-	return year + "-" + month + "-" + date;
+    var datetime = new Date();
+    datetime.setTime(time);
+    var year = datetime.getFullYear();
+    var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+    var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+    return year + "-" + month + "-" + date;
 }
 
 //查找目录列表
 function searchCatalogList(str){
     $.ajax({
-        url:"../queryCertMenu_tz",
+        url:"../json/demo_UTF8.json",
         data:"",
         type:"GET",
-        dataType : 'json',
         success:function(str){
             $(".itemShow").removeClass("displayNo").addClass("displayBlock")
             list_json=str;
+            console.log(str);
             for(var i = 0 ; i < str.childs.length ; i++){
                 if(str.childs[i].name_title){
                     $(".itemShowList").append("<a href='javaScript:;'  num='"+i+"'>"+str.childs[i].name_title+"</a>")
@@ -351,58 +383,42 @@ function searchCatalogList(str){
 
 }
 
-//点击目录提交
-function itemShowButton(str){
-    closeItemShow()
-    var startValue=0 //初始值
-    var limitValue=10 //一次取出多少条数据
-    $.ajax({
-            url: '../queryCert',
-            data:{str:str,start:startValue,limit:limitValue},
-            type : 'get',
-            dataType : 'json',
-            success:function(bzxx){
-            	$(".as_tbody").html("")
-            	$(".listperAuth_button").html("")
-                var trList
-                var item=eval(bzxx)
-                var count=item.count
-                $("#as_num").text(count)
-                for(var i=0;i<item.length;i++){
-                    trList+="<tr>"
-                    trList+="<td>"+item[i].cert_status+"</td>"
-                    trList+="<td>"+item[i].cert_unit+"</td>"
-                    trList+="<td>"+item[i].company_name+"</td>"
-                    trList+="<td>"+item[i].product_range+"</td>"
-                    trList+="<td>"+item[i].cert_num+"</td>"
-                    trList+="<td>"+item[i].issue_organization+"</td>"
-                    trList+="<td>"+item[i].cert_standards+"</td>"
-                    trList+="<td>"+item[i].publish_date+"</td>"
-                    trList+="<td>"+item[i].valid_date+"</td>"
-                    trList+="</tr>"
-                }
-                $(".as_tbody").append(trList)
-                //分页
-                var asButton=""
-                var countPages=Math.ceil(count/limitValue)
-                var pageNo=0  //当前页码
-                if(startValue==0){
-                    pageNo=1
-                }
-                $(".pageNo").val(pageNo)
-                var nextStartRow//下一页开始显示的编号
-                asButton+="<a>上一页</a>"
-                asButton+="<p>"+pageNo+"/"+countPages+"</p>"
-                if(countPages>1){
-                    nextStartRow=pageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
-                }else{
-                    asButton+="<a>下一页</a>"
-                }
-                $(".listperAuth_button").append(asButton)
+function itemShowList(append_dom,data){
+    var thisText //当前点击对象的text值
+    if (data) {
+        append_dom.html("");
+        for (var i = 0; i < data.length; i++) {
+            if(data[i].name_title){
+                append_dom.append("<a href='javaScript:;'  num='" + i + "'>" + data[i].name_title + "</a>");
+            }else{
+                append_dom.append("<a  num='" + i + "' class='itemName''>" + data[i].name + "</a>");
             }
-        }
-    )
+        };
+        append_dom.on("click","a",function() {
+            list_n = $(this).attr("num");
+            var itemShowList_data=data[list_n].childs;
+            class_num = parseInt(append_dom.attr("class_num")) + 1 ;
+
+            for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
+                if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().attr("class_num") ){
+                    $(".itemShow .showItem").eq(i).remove();
+                }
+            };
+            if(itemShowList_data){
+                $(".itemShow").append("<div class='itemShowList"+class_num+" showItem'></div>");
+                $(".itemShowList"+class_num).attr("class_num",class_num);
+                itemShowList($(".itemShowList"+class_num),itemShowList_data);
+            }else{
+                if($(this).hasClass('itemName')){
+                    thisText=$(this).text()
+                    itemShowButton(thisText)
+                }
+            };
+        });
+        var docuHeight=$(document).height()  //页面可视区域
+        var sihHeight=docuHeight-250
+        $(".showItem").height(sihHeight)
+    }
 }
 
 //关闭页面
