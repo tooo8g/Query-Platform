@@ -1,11 +1,17 @@
 /**
  * Created by zb on 2016/1/6.
  */
+//保存提交表单后返回的json数据
 var demoJson=""
 //列表JSON
 var list_json="";
 $(function(){
-    //页面刚打开，触发的方法
+    /*页面刚打开，触发的方法
+     页面刚打开时，设定搜索框(str)的值为空，初始值(startValue)为0，每次取出的条数(limitValue)为0
+     访问后台，返回Json数据
+     解析json，获取总条数(count)和 其他数据(bzxx)
+     将bzxx解析后，动态添加到as_tbody里面
+     */
     var str="" //搜索框里的值
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -17,7 +23,8 @@ $(function(){
             success:function(data){
                 var trList=""
                 demoJson=eval(data)
-                var count=demoJson.count
+                var count //总条数
+                    count=demoJson.count
                 $("#as_num").text(count)
                 var bzxx=demoJson.bzxx
                 var bzNum
@@ -62,43 +69,9 @@ $(function(){
         }
     )
 
-    var thisText //当前点击对象的text值
-    function itemShowList(append_dom,data){
-        if (data) {
-            append_dom.html("");
-            for (var i = 0; i < data.length; i++) {
-                if(data[i].name_title){
-                    append_dom.append("<a href='javaScript:;'  num='" + i + "'>" + data[i].name_title + "</a>");
-                }else{
-                    append_dom.append("<a  num='" + i + "' class='itemName''>" + data[i].name + "</a>");
-                }
-            };
-            append_dom.on("click","a",function() {
-                list_n = $(this).attr("num");
-                var itemShowList_data=data[list_n].childs;
-                class_num = parseInt(append_dom.attr("class_num")) + 1 ;
+    /*
 
-                for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
-                    if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().attr("class_num") ){
-                        $(".itemShow .showItem").eq(i).remove();
-                    }
-                };
-                if(itemShowList_data){
-                    $(".itemShow").append("<div class='itemShowList"+class_num+" showItem'></div>");
-                    $(".itemShowList"+class_num).attr("class_num",class_num);
-                    itemShowList($(".itemShowList"+class_num),itemShowList_data);
-                }else{
-                    if($(this).hasClass('itemName')){
-                        thisText=$(this).text()
-                        itemShowButton(thisText)
-                    }
-                };
-            });
-            var docuHeight=$(document).height()  //页面可视区域
-            var sihHeight=docuHeight-250
-            $(".showItem").height(sihHeight)
-        }
-    }
+     */
     $(".itemShowList").on("click","a",function() {
         var list_num = $(this).attr("num");
         var itemShowList_data=list_json.childs[list_num].childs;
@@ -138,6 +111,64 @@ function search_a_button(){
                 var bzNum
                 for(var i=0;i<bzxx.length;i++){
                 	bzNum=startValue+i+1
+                    trList+="<tr>"
+                    trList+="<td>"+bzNum+"</td>"
+                    trList+="<td title="+bzxx[i].cert_status+">"+bzxx[i].cert_status+"</td>"
+                    trList+="<td title="+bzxx[i].cert_unit+">"+bzxx[i].cert_unit+"</td>"
+                    trList+="<td title="+bzxx[i].company_name+">"+bzxx[i].company_name+"</td>"
+                    trList+="<td title="+bzxx[i].product_range+">"+bzxx[i].product_range+"</td>"
+                    trList+="<td title="+bzxx[i].cert_num+">"+bzxx[i].cert_num+"</td>"
+                    trList+="<td title="+bzxx[i].issue_organization+">"+bzxx[i].issue_organization+"</td>"
+                    trList+="<td title="+bzxx[i].cert_standards+">"+bzxx[i].cert_standards+"</td>"
+                    trList+="<td title="+timeStamp2String(bzxx[i].publish_date.$date)+">"+timeStamp2String(bzxx[i].publish_date.$date)+"</td>"
+                    trList+="<td title="+timeStamp2String(bzxx[i].valid_date.$date)+">"+timeStamp2String(bzxx[i].valid_date.$date)+"</td>"
+                    trList+="<td><a id=asdt_"+bzxx[i]._id.$oid+" class='as_details colorHui' onclick=as_details('"+bzxx[i]._id.$oid+"')>详情</a></td>"
+                    trList+="</tr>"
+                }
+                $(".as_tbody").append(trList)
+
+                //分页
+                var asButton=""
+                var countPages=Math.ceil(count/limitValue)
+                var pageNo=0  //当前页码
+                if(startValue==0){
+                    pageNo=1
+                }
+                $(".pageNo").val(pageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton+="<a>上一页</a>"
+                asButton+="<p>"+pageNo+"/"+countPages+"</p>"
+                if(countPages>1){
+                    nextStartRow=pageNo*limitValue
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                }else{
+                    asButton+="<a>下一页</a>"
+                }
+                $(".listperAuth_button").append(asButton)
+            }
+        }
+    )
+}
+
+//目录提交
+function itemShowButton(str){
+    closeItemShow()
+    var startValue=0 //初始值
+    var limitValue=10 //一次取出多少条数据
+    $.ajax({
+            url: '/queryCert',
+            data:{str:str,start:startValue,limit:limitValue},
+            type : 'get',
+            dataType : 'json',
+            success:function(data){
+                var trList=""
+                demoJson=eval(data)
+                var count=demoJson.count
+                $("#as_num").text(count)
+                var bzxx=demoJson.bzxx
+                var bzNum
+                for(var i=0;i<bzxx.length;i++){
+                    bzNum=startValue+i+1
                     trList+="<tr>"
                     trList+="<td>"+bzNum+"</td>"
                     trList+="<td title="+bzxx[i].cert_status+">"+bzxx[i].cert_status+"</td>"
@@ -351,36 +382,42 @@ function searchCatalogList(str){
 
 }
 
-//点击目录提交
-function itemShowButton(str){
-    closeItemShow()
-    var startValue=0 //初始值
-    var limitValue=10 //一次取出多少条数据
-    $.ajax({
-            url: '/queryCert',
-            data:{str:str,start:startValue,limit:limitValue},
-            type : 'get',
-            dataType : 'json',
-            success:function(bzxx){
-                var trList
-                var item=eval(bzxx)
-                for(var i=0;i<item.length;i++){
-                    trList+="<tr>"
-                    trList+="<td>"+item[i].cert_status+"</td>"
-                    trList+="<td>"+item[i].cert_unit+"</td>"
-                    trList+="<td>"+item[i].company_name+"</td>"
-                    trList+="<td>"+item[i].product_range+"</td>"
-                    trList+="<td>"+item[i].cert_num+"</td>"
-                    trList+="<td>"+item[i].issue_organization+"</td>"
-                    trList+="<td>"+item[i].cert_standards+"</td>"
-                    trList+="<td>"+item[i].publish_date+"</td>"
-                    trList+="<td>"+item[i].valid_date+"</td>"
-                    trList+="</tr>"
-                }
-                $(".as_tbody").append(trList)
+function itemShowList(append_dom,data){
+    var thisText //当前点击对象的text值
+    if (data) {
+        append_dom.html("");
+        for (var i = 0; i < data.length; i++) {
+            if(data[i].name_title){
+                append_dom.append("<a href='javaScript:;'  num='" + i + "'>" + data[i].name_title + "</a>");
+            }else{
+                append_dom.append("<a  num='" + i + "' class='itemName''>" + data[i].name + "</a>");
             }
-        }
-    )
+        };
+        append_dom.on("click","a",function() {
+            list_n = $(this).attr("num");
+            var itemShowList_data=data[list_n].childs;
+            class_num = parseInt(append_dom.attr("class_num")) + 1 ;
+
+            for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
+                if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().attr("class_num") ){
+                    $(".itemShow .showItem").eq(i).remove();
+                }
+            };
+            if(itemShowList_data){
+                $(".itemShow").append("<div class='itemShowList"+class_num+" showItem'></div>");
+                $(".itemShowList"+class_num).attr("class_num",class_num);
+                itemShowList($(".itemShowList"+class_num),itemShowList_data);
+            }else{
+                if($(this).hasClass('itemName')){
+                    thisText=$(this).text()
+                    itemShowButton(thisText)
+                }
+            };
+        });
+        var docuHeight=$(document).height()  //页面可视区域
+        var sihHeight=docuHeight-250
+        $(".showItem").height(sihHeight)
+    }
 }
 
 //关闭页面
