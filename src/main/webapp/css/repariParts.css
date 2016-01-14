@@ -241,6 +241,7 @@ img{border: none;margin: 0px;padding: 0px;}
 .product_infor_show1 span{
     display:block;
     width: 440px;
+    height:20px;
     line-height: 20px;
     float: left;
     text-align: left;
@@ -279,6 +280,7 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .pis_content li p{
     width: 180px;
+    height:20px;
     line-height: 20px;
     float: left;
     padding-left: 5px;
