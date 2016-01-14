@@ -16,7 +16,7 @@ $(function(){
     var bzxx //保存json的bzxx里的数据
     var bzNum //条数
     $.ajax({
-        url:"../json/demo_standInfor.json",
+        url:"../queryLatestStandard",
         data:{str:str,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
