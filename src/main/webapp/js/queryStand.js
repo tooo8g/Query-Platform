@@ -80,7 +80,7 @@ function search_si_button(){
     var bzxx //保存json的bzxx里的数据
     var bzNum //标记
     $.ajax({
-            url:"../json/demo_standInfor.json",
+            url:"../queryLatestStandard",
             data:{str:str,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
@@ -138,7 +138,7 @@ function goPage(str,start,limit,isGo){
     var bzxx //保存json的bzxx里的数据
     var bzNum //标记
     $.ajax({
-        url:"../json/demo_standInfor.json",
+        url:"../queryLatestStandard",
         data:{str:str,start:start,limit:limit},
         type : 'post',
         dataType : 'json',
