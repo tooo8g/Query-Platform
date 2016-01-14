@@ -146,7 +146,7 @@ function goPage(str,start,limit,isGo){
             count=data.count
             bzxx=data.bzxx
             for(var i=0;i<bzxx.length;i++){
-                bzNum=startValue+i+1
+                bzNum=Number(start)+i+1
                 tbodyList+="<tr>"
                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+bzxx[i].standard_group+"</td>"
