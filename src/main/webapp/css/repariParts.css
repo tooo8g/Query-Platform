@@ -61,7 +61,6 @@ img{border: none;margin: 0px;padding: 0px;}
     overflow: auto;
     position: absolute;
     border: 1px solid #dddddd;
-    position: absolute;
     left: 244px;
     top: 50px;
     background-color: #ffffff;
@@ -109,7 +108,7 @@ img{border: none;margin: 0px;padding: 0px;}
     border-bottom: 1px solid #dddddd;
 }
 .serAInput{
-    color: #b5b5b5;
+    color: #000000;
     margin-left: 600px;
     height: 26px;
 }
