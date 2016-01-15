@@ -76,7 +76,6 @@ img{border: none;margin: 0px;padding: 0px;}
 .si_thead tr,.si_thead td{
     height: 40px;
     border: 1px solid #dddddd;
-    border-bottom: none;
     color: #000000;
 }
 .si_tbody{
