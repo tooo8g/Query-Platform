@@ -10,14 +10,14 @@
   <input type="hidden" class="pageNo" value="">
   <div class="si">
   <div class="si_title">
-  <p>当前位置：</p>
-  <p>资质信息查询>></p>
-  <p>目录查询</p>
+     <p>当前位置：</p>
+     <p>公告信息查询>></p>
+     <p>最新发布标准信息</p>
   </div>
   <div class="si_main">
   <div class="si_search">
-  <input type="text" value="" class="serInput">
-  <input type="button" name="search_si" value="搜索" class="search_si_btn" onclick="search_si_button()">
+     <input type="text" value="" class="serInput">
+     <input type="button" name="search_si" value="搜索" class="search_si_btn" onclick="search_si_button()">
   </div>
   <div class="si_tableDiv">
   <table class="si_table">
