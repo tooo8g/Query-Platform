@@ -72,7 +72,7 @@ $(function(){
 function search_si_button(){
     $(".si_tbody").html("")
     $(".listperAuth_button").html("")
-    var str=$(".serAInput").val() //搜索框里的值
+    var str=$(".serInput").val() //搜索框里的值
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     var tbodyList="" //保存解析的数据

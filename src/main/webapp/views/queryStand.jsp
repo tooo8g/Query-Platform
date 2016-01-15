@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="../css/queryStand.css">
 </head>
   <body>
+  <input type="hidden" class="pageNo" value="">
   <div class="si">
   <div class="si_title">
   <p>当前位置：</p>
