@@ -30,8 +30,8 @@ $(function(){
         var startValue=0 //初始值
         var limitValue=20 //一次取出多少条数据
         $.ajax({
-            url:"../json/demo_standInfor.json",
-            data:{standard_group:staHtml,standard_id:standard_id,standard_name:standard_name,standard_status:standard_status,special_subject:special_subject,skip:startValue,limit:limitValue},
+            url:"../queryStandard",
+            data:{standard_group:staHtml,standard_id:standard_id,standard_name:standard_name,standard_status:standard_status,special_subject:special_subject,start:startValue,limit:limitValue},
             type:"post",
             dataType : 'json',
             success:function(data){
@@ -103,8 +103,8 @@ function formButton(){
     var special_subject=$(".special_subject option:selected").val() //专业分类
     var standard_status=$(".standard_status option:selected").val() //标准状态
      $("#searchForm").ajaxSubmit({
-         url:"../json/demo_standInfor.json",
-         data:{standard_group:standard_group,standard_id:standard_id,standard_name:standard_name,standard_status:standard_status,special_subject:special_subject,skip:startValue,limit:limitValue},
+         url:"../queryStandard",
+         data:{standard_group:standard_group,standard_status:standard_status,special_subject:special_subject,start:startValue,limit:limitValue},
          type:"post",
          dataType : 'json',
          success:function(data){
@@ -154,8 +154,8 @@ function formButton(){
 //页码跳转
 function goPage(standard_group,standard_id,standard_name,standard_status,special_subject,start,limitValue,isGo){
     $.ajax({
-        url:"../json/demo_standInfor.json",
-        data:{standard_group:standard_group,standard_id:standard_id,standard_name:standard_name,standard_status:standard_status,special_subject:special_subject,skip:start,limit:limitValue},
+        url:"../queryStandard",
+        data:{standard_group:standard_group,standard_id:standard_id,standard_name:standard_name,standard_status:standard_status,special_subject:special_subject,start:start,limit:limitValue},
         type : 'post',
         dataType : 'json',
         success:function(data){

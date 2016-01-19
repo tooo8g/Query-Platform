@@ -5,8 +5,8 @@
     <title>标准类型查询</title>
     <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
     <script type="text/javascript" src="../js/jquery-form.js"></script>
-    <script type="text/javascript" src="../js/standTypeSearch.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/standTypeSearch.css">
+    <script type="text/javascript" src="../js/queryStandard.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/queryStandard.css">
 </head>
 <body>
     <input type="hidden" class="pageNo" value="">
@@ -84,8 +84,8 @@
                     <table class="sts_search_table">
                         <thead class="sts_search_thead">
                         <tr>
-                            <td>标准编号</td>
-                            <td width="300">标准名称</td>
+                            <td width="120">标准编号</td>
+                            <td width="280">标准名称</td>
                             <td>代替标准号</td>
                             <td>标准类别</td>
                             <td>专业分类</td>

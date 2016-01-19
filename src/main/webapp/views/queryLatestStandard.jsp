@@ -3,8 +3,8 @@
 <head>
     <title>最新发布标准信息</title>
   <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-  <script type="text/javascript" src="../js/queryStand.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/queryStand.css">
+  <script type="text/javascript" src="../js/queryLatestStandard.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/queryLatestStandard.css">
 </head>
   <body>
   <input type="hidden" class="pageNo" value="">

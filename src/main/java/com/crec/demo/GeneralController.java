@@ -68,6 +68,7 @@ public class GeneralController {
 			@RequestParam String special_subject, @RequestParam int start,
 			@RequestParam int limit, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
+		System.out.println("Standard HERE!");
 		MongoDirver md = new MongoDirver();
 		String result = md.queryStandards(standard_group, standard_id,
 				standard_name, standard_status, special_subject, start, limit);
