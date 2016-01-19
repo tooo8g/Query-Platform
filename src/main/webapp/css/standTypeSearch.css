@@ -1,0 +1,192 @@
+*{
+    padding:0px;
+    margin:0px;
+    list-style: none;
+    font-size: 12px;
+    font-family: 'Arial','Microsoft Yahei',Tahoma,'Simsun';
+}
+em{
+    font-style: normal;
+}
+strong{
+    font-weight: normal;
+}
+li{list-style: none;}
+a{text-decoration: none;}
+img{border: none;margin: 0px;padding: 0px;}
+
+
+/*standTypeSearch*/
+.sts{
+    width: 1200px;
+    height: auto;
+    overflow: hidden;
+    margin: 40px auto;
+}
+.sts_title{
+    width: 1200px;
+    height: 35px;
+    line-height: 35px;
+}
+.sts_title p{
+    float: left;
+    color: #000000;
+}
+.sts_left{
+    width: 228px;
+    border: 1px solid #dddddd;
+    float: left;
+}
+.sts_left p{
+    text-align: center;
+    line-height: 50px;
+    border-bottom: 1px solid #dddddd;
+    color: #000000;
+    font-size: 14px;
+}
+.sts_left ul{
+    width: 228px;
+}
+.sts_left ul li{
+    line-height: 30px;
+    padding-left: 30px;
+    cursor: pointer;
+}
+.sts_left ul li:hover{
+    color: red;
+}
+#sts_standType{
+    padding-left:50px;
+}
+#sts_standType a{
+    width: 208px;
+    display: block;
+    line-height: 30px;
+    cursor: pointer;
+}
+.sts_left a:hover{
+    color: red;
+}
+.sts_right{
+    margin-left: 15px;
+    float: right;
+    width: 952px;
+    border: 1px solid #dddddd;
+}
+.sts_right_top{
+    overflow: hidden;
+}
+.sts_search_formList{
+    overflow: hidden;
+}
+.sts_search_l,.sts_search_r{
+    width: 400px;
+    float: left;
+    padding: 25px 0px;
+    color:#777777;
+    margin-left: 50px;
+}
+.sts_search_l div,.sts_search_r div{
+    width: 360px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+.sts_right_top span{
+    display:inline-block;
+    width: 80px;
+    padding-left: 20px;
+    line-height: 24px;
+}
+.sts_right_top input{
+    width: 196px;
+    height: 26px;
+}
+.sts_right_top select{
+    width: 200px;
+    height: 30px;}
+.sts_search_sub{
+    text-align: center;
+    padding-bottom: 35px;
+    overflow: hidden;}
+#form_button,#reset_submit{
+    width: 80px;
+    height: 24px;
+}
+#reset_submit{
+    margin-left: 150px;
+}
+
+.sts_table_title{
+    width: 950px;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 10px;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+}
+.sts_table{
+    padding: 5px 5px 10px 5px;
+    min-height: 400px;
+}
+.sts_search_table{
+    width:940px;
+    table-layout:fixed;
+    border-collapse: collapse;
+}
+.sts_search_thead{
+    width:933px;
+    text-align: center;
+    background-color: #fafafa;
+    font-size: 14px;
+}
+.sts_search_thead tr,.sts_search_thead td{
+    border: 1px solid #dddddd;
+    color: #000000;
+}
+.sts_search_tbody tr,.sts_search_tbody td{
+    border: 1px solid #dddddd;
+    border-top:none;
+    color: #000000;
+}
+.sts_search_thead td,.sts_search_tbody td{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    height: 40px;
+}
+.sts_search_tbody{
+    width:933px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.listperAuth_button{
+    height: 20px;
+    float: right;
+    line-height: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    font-size: 14px;
+}
+.listperAuth_button p, .listperAuth_button a{
+    float: left;
+    padding: 0 5px;
+}
+
+
+
+/*颜色 公用部分*/
+.colorRed{color: red}
+.colorHui{color: black}
+
+.displayBlock{
+    display: block;
+}
+.displayNone{
+    display: none;
+}
+
+.clickCursor{
+    cursor: pointer;
+}
