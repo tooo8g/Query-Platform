@@ -254,6 +254,7 @@ img{border: none;margin: 0px;padding: 0px;}
     background-color: #ffffff;
     margin-bottom: 20px;
     margin-top: 100px;
+    overflow: auto;
 }
 .hisPrice_title{
     width: 1200px;
@@ -415,7 +416,7 @@ img{border: none;margin: 0px;padding: 0px;}
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
-    height: 40px;
+    height: 30px;
 }
 
 /*

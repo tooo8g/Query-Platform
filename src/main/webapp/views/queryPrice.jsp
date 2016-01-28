@@ -93,6 +93,7 @@
             <table class="price_select_list">
                 <thead>
                 <tr class="title">
+                    <td width="50"></td>
                     <td>物资名称</td>
                     <td>规格(mm)</td>
                     <td>材质</td>
