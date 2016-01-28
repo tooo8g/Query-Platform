@@ -1,0 +1,429 @@
+*{
+    padding:0px;
+    margin:0px;
+    list-style: none;
+    font-size: 12px;
+    font-family: 'Arial','Microsoft Yahei',Tahoma,'Simsun';
+}
+em{
+    font-style: normal;
+}
+strong{
+    font-weight: normal;
+}
+li{list-style: none;}
+a{text-decoration: none;}
+img{border: none;margin: 0px;padding: 0px;}
+
+
+/* 市场价格查询	TOP */
+.jq_message_content{
+    width:1200px;
+    margin:40px auto;
+    overflow: hidden;
+}
+
+.jq_message_title{
+    width: 1200px;
+    height: 35px;
+    line-height: 35px;
+}
+.jq_message_title p{
+    float: left;
+    color: black;
+}
+
+.jq_message_left{
+    float:left;
+    width:228px;
+    border:1px  solid #dddddd;
+    position: relative;
+}
+.jq_message_right{
+    margin-left:15px;
+    min-height:670px;
+    float:left;
+    width:955px;
+}
+.jq_message_left .list_tittle{
+    height: 50px;
+    line-height: 50px;
+    font-size: 12px;
+    text-align: center;
+    border-bottom: 1px solid #dddddd;
+}
+.jq_message_left .list_content{
+    padding-bottom: 15px;
+}
+.jq_message_left .list_content .select a{
+    color:blue;
+}
+.jq_message_left .list_content li a{
+    display: block;
+    line-height: 30px;
+    font-size: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color:black;
+    cursor: pointer;
+}
+.jq_message_left .list_content li a:hover{
+    color: red;
+}
+.itemShow{
+    width: 953px;
+    height: auto;
+    overflow: auto;
+    border: 1px solid #dddddd;
+    position: absolute;
+    left: 244px;
+    top: 50px;
+    background-color: #ffffff;
+}
+.itemShow a:hover{
+    color: red;
+}
+#itemShow_title{
+    width: 953px;
+    height: 30px;
+    border-bottom:none;
+}
+#itemShow_title img{
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+    margin-top: 2px;
+    float: right;
+    cursor: pointer;
+}
+.showItem{
+    width: 228px;
+    float: left;
+}
+.showItem a{
+    display: block;
+    width: 188px;
+    line-height: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    color:#000000;
+}
+
+.price_select_top{
+    overflow: hidden;
+    border:1px solid #dddddd;
+}
+.price_select_formlist{
+    overflow: hidden;
+}
+.price_select_top .price_select_l{
+    width: 400px;
+    float: left;
+    padding: 25px 0px;
+    color: #777777;
+    margin-left: 50px;
+}
+.price_select_top .price_select_r{
+    width:475px;
+    float: left;
+    padding: 25px 0px;
+}
+.price_select_l div , .price_select_r div{
+    width: 360px;
+    margin-left: 30px;
+    margin-bottom:10px;
+}
+.price_select_top input{
+    width:196px;
+    height: 26px;
+}
+.price_select_top select{
+    width:200px;
+    height: 30px;
+}
+.price_select_top span{
+    display: inline-block;
+    width:80px;
+    padding-left:20px;
+    line-height: 24px;
+}
+.price_select_sub{
+    text-align: center;
+    padding-bottom: 35px;
+    overflow: hidden;
+}
+
+#form_button,#reset_submit{
+    width: 80px;
+    height: 24px;
+}
+
+#reset_submit{
+    margin-left: 150px;
+}
+.price_select_bottom{
+    padding:20px 10px;
+    border: 1px solid #dddddd;
+    border-bottom: none;
+}
+.price_select_list{
+    width:100%;
+    border-collapse:collapse;
+}
+.price_select_list .title td{
+    border:1px #ddd solid;
+    background-color: #fafafa;
+    border-bottom:none;
+}
+.jg_tbody p{
+    height: 14px;
+    line-height: 14px;
+}
+.jg_tbody a{
+    cursor: pointer;
+}
+.jg_tbody a:hover{
+    color: red;
+}
+.price_select_list td{
+    padding:15px 0px;
+    border: 1px #ddd solid;
+    border-top:none;
+    border-bottom:1px #ddd dashed;
+    color:#222;
+    text-align: center;
+}
+.price_select_list tr:nth-last-child(1) td{
+    border-bottom:1px #ddd solid;
+}
+.price_select_list tr.last td{
+    border-bottom:1px #ddd solid;
+}
+.price_select_list .green{
+    color:#0c0;
+}
+.price_select_list .red{
+    color:#ff005d;
+}
+
+.listperAuth{
+    width: 953px;
+    height: 20px;
+    float: left;
+    line-height: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-top: none;
+    padding-bottom: 20px;
+}
+.listperAuth_button{
+    height: 20px;
+    float: right;
+    margin-right: 20px;
+}
+.listperAuth_button p, .listperAuth_button a{
+    float: left;
+    padding: 0 5px;
+}
+
+/*priceInformationo*/
+.priceInformation{
+    width:100%;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000
+}
+.showHisPrice{
+    width: 1200px;
+    height: auto;
+    margin: 0px auto;
+}
+
+.hisPrice{
+    width: 1200px;
+    height: auto;
+    float: left;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    margin-top: 100px;
+}
+.hisPrice_title{
+    width: 1200px;
+    height: 30px;
+    border-bottom:none;
+}
+
+.hisPrice_title img{
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+    margin-top: 2px;
+    float: right;
+    cursor: pointer;
+}
+.hisPrice_left{
+    float: left;
+    width: 228px;
+    margin: 20px 0 20px 100px;
+    border: 1px solid #dddddd;
+}
+.left_title{
+    width: 228px;
+    height: auto;
+    margin-top: 15px;
+    float: left;
+}
+.left_title p{
+    width: 76px;
+    line-height: 20px;
+    float: left;
+    text-align: center;
+}
+.left_slelect{
+    width: 228px;
+    height: auto;
+    margin-top: 15px;
+    float: left;
+}
+.left_slelect_title{
+    width: 188px;
+    margin-left: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+.left_slelect_content{
+    width: 188px;
+    margin-left: 20px;
+}
+.left_slelect_content label{
+    width: 65px;
+    line-height: 24px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.left_slelect_content select{
+    margin-left: 15px;
+    width: 105px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.left_button{
+    width: 188px;
+    margin-left: 20px;
+    float: left;
+    text-align: center;
+}
+.left_button a{
+    display: block;
+    width: 80px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    background-color: #dddddd;
+    cursor: pointer;
+    margin-left: 54px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.left_button a:hover{
+    color: red;
+}
+.hisPrice_right{
+    width: 748px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    border: 1px solid #dddddd;
+}
+.hisPrice_right_top{
+    padding: 20px 30px;
+}
+.hisPrice_right_top div{
+    height: 20px;
+    line-height: 20px;
+}
+.hisPrice_right_top label{
+    float: left;
+}
+.hisPrice_right_top p{
+    float: left;
+    padding: 0 10px;
+}
+
+.hisPrice_right_bottom{
+    border-top: 1px solid #dddddd;
+}
+.hisPrice_rbt{
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.hisPrice_rbt a{
+    width: 80px;
+    float: left;
+    text-align: center;
+    display: block;
+    height: 30px;
+    background-color: #dddddd;
+    cursor: pointer;
+}
+.hisIndex{
+    margin-left: 10px;
+}
+.hisPrice_rbt a:hover{
+    color: red;
+}
+
+.his_table{
+    width: 748px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+.his_thead{
+    width: 748px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fafafa;
+}
+.his_thead tr,.his_thead td{
+    border: 1px solid #dddddd;
+    color: black;
+    height:40px;
+}
+.his_tbody{
+    width: 748px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.his_tbody tr,.his_tbody td{
+    border: 1px solid #dddddd;
+    border-top: none;
+    color: black;
+}
+.his_tbody td{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    height: 40px;
+}
+
+/*
+公共方法
+*/
+.colorRed{color: red}
+.colorGreen{color: #00d590}
+.colorBlack{color: black}
+.clickCursor{cursor: pointer}
+.displayNo{display: none}
+.displayBlock{display: block}
