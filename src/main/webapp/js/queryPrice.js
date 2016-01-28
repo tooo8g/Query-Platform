@@ -613,8 +613,8 @@ function SelectIndex(){
     $(".hisPrice_rbb").removeClass("displayBlock").addClass("displayNo")
     $(".hisPrice_rbs").insertFusionCharts({
         type: "msline",
-        width: "500",
-        height: "300",
+        width: "750",
+        height: "400",
         dataFormat: "json",
         dataSource: jsonDetailsData
     });
