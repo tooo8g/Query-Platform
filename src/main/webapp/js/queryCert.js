@@ -167,7 +167,7 @@ function itemShowButton(str){
             success:function(bzxx){
                 $(".as_tbody").html("")
                 $(".listperAuth_button").html("")
-                var trList
+                var trList=""
                 demoJson=eval(bzxx)
                 var count=demoJson.count
                 $("#as_num").text(count)
