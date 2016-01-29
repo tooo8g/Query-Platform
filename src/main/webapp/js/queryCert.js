@@ -250,8 +250,8 @@ function as_details(str){
             for(var j=0;j<cert_detail.length;j++){
                 pisContent+="<li>"
                 pisContent+="<p>"+cert_detail[j].product_code+"</p>"
-                pisContent+="<p>"+cert_detail[j].specification+"</p>"
-                pisContent+="<p>"+cert_detail[j].specification_status+"</p>"
+                pisContent+="<p id='xinghao'>"+cert_detail[j].specification+"</p>"
+                pisContent+="<p id='zhuangtai'>"+cert_detail[j].specification_status+"</p>"
                 pisContent+="</li>"
             }
             $(".pis_content_ul").append(pisContent)

@@ -28,8 +28,9 @@ $(function(){
     })
     //给目录添加click事件
     $(".itemShowList").on("click","a",function() {
+    	var childNum=$(this).attr("childNum")
         var list_num = $(this).attr("num");
-        var itemShowList_data=list_json.childs[0].childs[list_num].childs
+        var itemShowList_data=list_json.childs[childNum].childs[list_num].childs
         var num=1;
 
         for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
@@ -129,7 +130,7 @@ function showChilds(str){
     muluJson = list_json.childs[str].childs
     $(".itemShowList").html("")
     for (var i = 0; i < muluJson.length; i++) {
-        $(".itemShowList").append("<a num='" + i + "'>" + muluJson[i].name + "</a>")
+        $(".itemShowList").append("<a childNum='"+str+"' num='" + i + "'>" + muluJson[i].name + "</a>")
     }
     //获取页面可视区域，然后确定showItem的高度
     var docuHeight = $(document).height()  //页面可视区域
@@ -532,6 +533,13 @@ function priSel_details(str){
 function closeDetails(){
     $(".priceInformation").removeClass("displayBlock").addClass("displayNo")
     $(".priSeldetails").removeClass("colorRed").addClass("colorBlack")
+    
+    $(".hisPrice_rbs").removeClass("displayBlock").addClass("displayNo")
+    $(".hisPrice_rbb").removeClass("displayNo").addClass("displayBlock")
+    
+    $(".histyData").removeClass("colorBlack").addClass("colorRed")
+    $(".hisIndex").removeClass("colorRed").addClass("colorBlack")
+    
     $(".city1").text("")
     $(".city2").text("")
     $(".his_tbody").html(" ")
@@ -545,9 +553,10 @@ function closeDetails(){
 
     $(".factoryAddress option:first").prop("selected", 'selected');
     $(".region option:first").prop("selected", 'selected');
-    //$(".region_city").html("")
-    //$(".region_city").append("<option value=''></option>")
+
     $(".region_city option:first").prop("selected", 'selected');
+    
+    
 }
 
 

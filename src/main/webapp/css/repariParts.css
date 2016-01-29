@@ -85,10 +85,10 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .showItem a{
     display: block;
-    width: 188px;
+    width: 208px;
     line-height: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     cursor: pointer;
     color:#000000;
 }
@@ -128,7 +128,7 @@ img{border: none;margin: 0px;padding: 0px;}
     color: black;
 }
 
-.a_title{
+.a_title,.a_tishi{
     width: 953px;
     height: 35px;
     line-height:35px;
@@ -139,6 +139,10 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
     padding: 0 10px;
     cursor: pointer;
+}
+.a_tishi span,.a_tishi p{
+	padding:0 10px;
+	float: left
 }
 #as_num{
     float: left;
@@ -261,9 +265,11 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
 }
 .pis_title p{
-    width: 190px;
+    width: 180px;
     float: left;
     text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .pis_content{
     width: 570px;
@@ -284,9 +290,16 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
     padding-left: 5px;
     padding-right: 5px;
-    text-align: left;
+    text-align: center;
 }
-
+#xinghao{
+	width:270px;
+	text-align: center;
+}
+#zhuangtai{
+	 width: 80px;
+	 text-align: center;
+}
 .pis_button_div{
     width: 1200px;
     float: left;

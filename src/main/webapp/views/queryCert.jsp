@@ -37,6 +37,17 @@
       <span>|</span>
       <p class="colorHui">当前证书数量：<p id="as_num"></p>个</p>
     </div>
+    <div class="a_tishi">
+       <span>证书状态：</span>
+       <p>有效</p>
+       <p>过期失效</p>
+       <p>暂停使用</p>
+       <p>撤销</p>
+       <p>注销</p>
+       <p>回复</p>
+       <p>变更</p>
+       <p>部分暂停</p>
+    </div>
     <div class="asTable">
       <table class="as_table">
         <thead class="as_thead">
@@ -72,8 +83,8 @@
      <div class="product_infor_show2">
        <div class="pis_title">
          <p>产品标识代码</p>
-         <p>规格型号</p>
-         <p>规格型号状态</p>
+         <p id="xinghao">规格型号</p>
+         <p id="zhuangtai">规格型号状态</p>
        </div>
        <div class="pis_content">
         <ul class="pis_content_ul">
