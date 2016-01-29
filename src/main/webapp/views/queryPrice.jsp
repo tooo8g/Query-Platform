@@ -177,7 +177,7 @@
                 </div>
                 <div class="hisPrice_right_bottom">
                     <div class="hisPrice_rbt">
-                        <a class="histyData colorRed" onclick="SelectHistyData()">历史数据列表</a>
+                        <a id="histyData" class="histyData colorRed" onclick="SelectHistyData()">历史数据列表</a>
                         <a class="hisIndex colorBlack" onclick="SelectIndex()">指数</a>
                     </div>
                     <div id="hisPrice_rbs" class="hisPrice_rbs displayNo">

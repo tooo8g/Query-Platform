@@ -52,7 +52,7 @@ $(function(){
      * 打开页面。调用方法，获取右边信息列表
      * */
     var startValue=0 //初始值
-    var limitValue=20 //一次取出多少条数据
+    var limitValue=10 //一次取出多少条数据
     var price_Data=""
     var wuziName=""
     var citySelect=""
@@ -69,7 +69,7 @@ $(function(){
             var count=data.count //总条数
             var bzNum
             for(var i=0;i<jgxx.length;i++){
-            	bzNum=startValue+i+1
+            	bzNum=Number(startValue)+i+1
                 trList+="<tr>"
                 trList+="<td>"+bzNum+"</td>"
                 trList+="<td>"+jgxx[i].name+"</td>"
@@ -178,7 +178,7 @@ function itemShowList(append_dom,data){
 function itemShowButton(str){
     closeItemShow()
     var startValue=0 //初始值
-    var limitValue=20 //一次取出多少条数据
+    var limitValue=10 //一次取出多少条数据
     var price_Data=""
     var citySelect=""
     var specification=""
@@ -195,7 +195,7 @@ function itemShowButton(str){
                 var bzNum
                 $(".wuziName").val(str)
                 for(var i=0;i<jgxx.length;i++){
-                	bzNum=startValue+i+1
+                	bzNum=Number(startValue)+i+1
                     trList+="<tr>"
                     trList+="<td>"+bzNum+"</td>"
                     trList+="<td>"+jgxx[i].name+"</td>"
@@ -292,7 +292,7 @@ function goPage(date,name,citySelect,specification,start,limit,isGo){
             var asButton=""
             var pageNo  //当前页码
             var noPage
-            var limitValue=20
+            var limitValue=10
             var countPages=Math.ceil(count/limitValue)
             if(isGo=="next"){
                 noPage=Number($(".pageNo").val())+1
@@ -351,7 +351,7 @@ function closeItemShow(){
  * */
 function formButton(){
     var startValue=0 //初始值
-    var limitValue=20 //一次取出多少条数据
+    var limitValue=10 //一次取出多少条数据
     var price_Data=$(".price_Data").val()
     var wuziName=$(".wuziName").val()
     var citySelect=$(".regionSelect_city option:selected").val()?$(".regionSelect_city option:selected").val():""
@@ -466,7 +466,7 @@ function priSel_details(str){
     hisPrice_standard_p+="<p>"+name+"</p>"
     hisPrice_standard_p+="<p>"+specification+"</p>"
     hisPrice_standard_p+="<p>"+texture+"</p>"
-    hisPrice_standard_p+="<p>"+company+"</p>"
+    hisPrice_standard_p+="<p class='priceComp'>"+company+"</p>"
     hisPrice_standard_p+="<p>"+area+"</p>"
     hisPrice_standard_p+="<p>"+city+"</p>"
     $(".hisPrice_standard").append(hisPrice_standard_p)
@@ -605,10 +605,26 @@ function selectData(){
             hisPrice_contrast_p+="<p>"+name+"</p>"
             hisPrice_contrast_p+="<p>"+specification+"</p>"
             hisPrice_contrast_p+="<p>"+texture+"</p>"
-            hisPrice_contrast_p+="<p>"+company+"</p>"
+            hisPrice_contrast_p+="<p class='priceCom'>"+company+"</p>"
             hisPrice_contrast_p+="<p>"+area+"</p>"
             hisPrice_contrast_p+="<p>"+city+"</p>"
+            $(".hisPrice_contrast").html(" ")
+            $(".hisPrice_contrast").append("<label>对照：</label>")
             $(".hisPrice_contrast").append(hisPrice_contrast_p)
+            //通过判断css来确定现在是在数据列表还是指数
+            if($("#histyData").hasClass("colorRed")){
+            	SelectHistyData()
+            }else{
+            	SelectIndex()
+            }            
+            
+            var priceComp=$(".priceComp").width()
+            var priceCom=$(".priceCom").width()
+            if(priceComp>priceCom){
+            	$(".priceCom").width(priceComp)
+            }else{
+            	$(".priceComp").width(priceCom)
+            }
         },
         erroe:function(){
             alert("链接失败")

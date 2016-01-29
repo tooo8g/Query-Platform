@@ -28,7 +28,7 @@ $(function(){
         var standard_status="" //标准状态
         var special_subject="" //专业分类
         var startValue=0 //初始值
-        var limitValue=20 //一次取出多少条数据
+        var limitValue=10 //一次取出多少条数据
         $.ajax({
             url:"../queryStandard",
             data:{standard_group:staHtml,standard_id:standard_id,standard_name:standard_name,standard_status:standard_status,special_subject:special_subject,start:startValue,limit:limitValue},
@@ -38,8 +38,11 @@ $(function(){
                var tbodyList //保存解析的json数据
                var count=data.count
                var bzxx=data.bzxx
+               var bzNum
                for(var i=0;i<bzxx.length;i++){
-                   tbodyList+="<tr>"
+            	   bzNum=Number(startValue)+i+1
+            	   tbodyList+="<tr>"
+                   tbodyList+="<td>"+bzNum+"</td>"
                    tbodyList+="<td>"+bzxx[i].standard_id+"</td>"
                    tbodyList+="<td title='"+bzxx[i].standard_name+"'>"+bzxx[i].standard_name+"</td>"
                    tbodyList+="<td>"+bzxx[i].replace_id+"</td>"
@@ -96,7 +99,7 @@ function timeStamp2String(time){
 * */
 function formButton(){
     var startValue=0 //初始值
-    var limitValue=20 //一次取出多少条数据
+    var limitValue=10 //一次取出多少条数据
     var standard_group="" //standard_group 行业分类
     var standard_id=$(".standard_id").val() //标准编号
     var standard_name=$(".standard_name").val() //标准名称
@@ -111,8 +114,11 @@ function formButton(){
              var tbodyList //保存解析的json数据
              var count=data.count
              var bzxx=data.bzxx
+             var bzNum
              for(var i=0;i<bzxx.length;i++){
-                 tbodyList+="<tr>"
+            	 bzNum=Number(startValue)+i+1
+            	 tbodyList+="<tr>"
+                 tbodyList+="<td>"+bzNum+"</td>"
                  tbodyList+="<td>"+bzxx[i].standard_id+"</td>"
                  tbodyList+="<td title='"+bzxx[i].standard_name+"'>"+bzxx[i].standard_name+"</td>"
                  tbodyList+="<td>"+bzxx[i].replace_id+"</td>"
@@ -162,8 +168,11 @@ function goPage(standard_group,standard_id,standard_name,standard_status,special
             var tbodyList //保存解析的json数据
             var count=data.count
             var bzxx=data.bzxx
+            var bzNum
             for(var i=0;i<bzxx.length;i++){
-                tbodyList+="<tr>"
+            	 bzNum=Number(start)+i+1
+            	 tbodyList+="<tr>"
+                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+bzxx[i].standard_id+"</td>"
                 tbodyList+="<td title='"+bzxx[i].standard_name+"'>"+bzxx[i].standard_name+"</td>"
                 tbodyList+="<td>"+bzxx[i].replace_id+"</td>"
@@ -200,7 +209,7 @@ function goPage(standard_group,standard_id,standard_name,standard_status,special
             var preStartRow //上一页开始显示的编号
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
-                preStartRow=(pageNo-1)*limitValue
+                preStartRow=(pageNo-2)*limitValue
                 asButton+="<a class=clickCursor onclick=goPage('"+standard_group+"','"+standard_id+"','"+standard_name+"','"+standard_status+"','"+special_subject+"','"+preStartRow+"','"+limitValue+"','pre')>上一页</a>"
             }else{
                 asButton+="<a>上一页</a>"
