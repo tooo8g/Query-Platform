@@ -2,21 +2,6 @@
  * Created by zb on 2016/1/15.
  */
 $(function(){
-    /*
-    * 给sts_left ul li添加一个click事件
-    * */
-    $(".sts_left ul li").on("click",function(){
-        var leftUiClassName //sts_left ul li的class值
-        leftUiClassName=$(this).attr("id")
-        if($("#sts_"+leftUiClassName).hasClass("displayNone")){
-            $("#"+leftUiClassName).removeClass("colorHui").addClass("colorRed")
-            $("#sts_"+leftUiClassName).removeClass("displayNone").addClass("displayBlock")
-        }else{
-            $("#"+leftUiClassName).removeClass("colorRed").addClass("colorHui")
-            $("#sts_"+leftUiClassName).removeClass("displayBlock").addClass("displayNone")
-            $("#sts_"+leftUiClassName+" a").removeClass("colorRed").addClass("colorHui")
-        }
-    })
 
     $("#sts_standType a").on("click",function(){
         $(this).siblings().removeClass("colorRed").addClass("colorHui")
@@ -64,13 +49,13 @@ $(function(){
                 }
                 $(".pageNo").val(PageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a>上一页</a>"
+                asButton+="<a><img src='../images/sts_4.png'></a>"
                 asButton+="<p>"+PageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=PageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+staHtml+"','"+standard_id+"','"+standard_name+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+staHtml+"','"+standard_id+"','"+standard_name+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a>下一页</a>"
+                    asButton+="<a><img src='../images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").html(" ")
                 $(".listperAuth_button").append(asButton)
@@ -81,6 +66,18 @@ $(function(){
         })
     })
 
+
+    /*fileStatus_a里面的a的方法*/
+    $(".fileStatus_a a").on("click",function(){
+        $(".fileStatus_a a").removeClass("colorWhite").addClass("colorBule")
+        $(this).removeClass("colorBule").addClass("colorWhite")
+    })
+
+    /*proClss_a里面的a的方法*/
+    $(".proClss_a a").on("click",function(){
+        $(".proClss_a a").removeClass("colorWhite").addClass("colorBule")
+        $(this).removeClass("colorBule").addClass("colorWhite")
+    })
 })
 
 
@@ -140,13 +137,13 @@ function formButton(){
              }
              $(".pageNo").val(PageNo)
              var nextStartRow//下一页开始显示的编号
-             asButton+="<a>上一页</a>"
+             asButton+="<a><img src='../images/sts_4.png'></a>"
              asButton+="<p>"+PageNo+"/"+countPages+"</p>"
              if(countPages>1){
                  nextStartRow=PageNo*limitValue
-                 asButton+="<a class=clickCursor onclick=goPage('"+standard_group+"','"+standard_id+"','"+standard_name+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                 asButton+="<a class=clickCursor onclick=goPage('"+standard_group+"','"+standard_id+"','"+standard_name+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
              }else{
-                 asButton+="<a>下一页</a>"
+                 asButton+="<a><img src='../images/sts_5.png'></a>"
              }
              $(".listperAuth_button").html(" ")
              $(".listperAuth_button").append(asButton)
@@ -210,16 +207,16 @@ function goPage(standard_group,standard_id,standard_name,standard_status,special
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+standard_group+"','"+standard_id+"','"+standard_name+"','"+standard_status+"','"+special_subject+"','"+preStartRow+"','"+limitValue+"','pre')>上一页</a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+standard_group+"','"+standard_id+"','"+standard_name+"','"+standard_status+"','"+special_subject+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
             }else{
-                asButton+="<a>上一页</a>"
+                asButton+="<a><img src='../images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+standard_group+"','"+standard_id+"','"+standard_name+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+standard_group+"','"+standard_id+"','"+standard_name+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
             }else{
-                asButton+="<a>下一页</a>"
+                asButton+="<a><img src='../images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)

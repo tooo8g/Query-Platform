@@ -21,7 +21,7 @@ img{border: none;margin: 0px;padding: 0px;}
     width: 1200px;
     height: auto;
     overflow: hidden;
-    margin: 40px auto;
+    margin: 0 auto 50px;
 }
 .sts_title{
     width: 1200px;
@@ -30,99 +30,132 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .sts_title p{
     float: left;
-    color: #000000;
+    color: #222222;
 }
 .sts_left{
     width: 228px;
     border: 1px solid #dddddd;
     float: left;
+    margin-top: 20px;
 }
 .sts_left p{
     text-align: center;
     line-height: 50px;
     border-bottom: 1px solid #dddddd;
-    color: #000000;
-    font-size: 14px;
+    color: #222222;
+    font-size: 18px;
+    background-color: #f0f0f0;
+}
+.stsLeft_ul{
+    width: 228px;
+    background-color: #fafafa;
+    float: left;
 }
 .sts_left ul{
-    width: 228px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
 }
 .sts_left ul li{
     line-height: 30px;
     padding-left: 30px;
     cursor: pointer;
-}
-.sts_left ul li:hover{
-    color: red;
+    font-size: 16px;
 }
 #sts_standType{
-    padding-left:50px;
+    padding-left:30px;
 }
 #sts_standType a{
-    width: 208px;
+    width: 190px;
     display: block;
     line-height: 30px;
     cursor: pointer;
+    font-size: 14px;
 }
 .sts_left a:hover{
-    color: red;
+    color: #f44848;
 }
 .sts_right{
     margin-left: 15px;
     float: right;
     width: 952px;
-    border: 1px solid #dddddd;
+    margin-top: 20px;
 }
 .sts_right_top{
     overflow: hidden;
 }
-.sts_search_formList{
-    overflow: hidden;
-}
-.sts_search_l,.sts_search_r{
-    width: 400px;
+.sts_search_number{
+    width: 950px;
     float: left;
-    padding: 25px 0px;
-    color:#777777;
-    margin-left: 50px;
 }
-.sts_search_l div,.sts_search_r div{
-    width: 360px;
-    margin-left: 30px;
-    margin-bottom: 10px;
-}
-.sts_right_top span{
-    display:inline-block;
-    width: 80px;
-    padding-left: 20px;
-    line-height: 24px;
+.sts_right_top label{
+    color: #777777;
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 5px;
 }
 .sts_right_top input{
-    width: 196px;
-    height: 26px;
-}
-.sts_right_top select{
+    height: 25px;
+    line-height: 25px;
+    float: left;
+    margin-left: 10px;
+    color: #dddddd;
+    border: 1px solid #dddddd;
+    padding-left: 5px;
     width: 200px;
-    height: 30px;}
-.sts_search_sub{
-    text-align: center;
-    padding-bottom: 35px;
-    overflow: hidden;}
-#form_button,#reset_submit{
-    width: 80px;
-    height: 24px;
 }
-#reset_submit{
-    margin-left: 150px;
+.buttonForm{
+    width: auto;
+    float: left;
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    background-color:#f44848;
+    color: white;
+    margin-left: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.fileStatus{
+    width: 950px;
+    margin-top:10px;
+    float: left;
+}
+.fileStatus_a{
+    float: left;
+    margin-left: 10px;
+}
+.fileStatus_a a,.proClss_a a{
+    display: block;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    cursor: pointer;
 }
 
-.sts_table_title{
+.proClss{
     width: 950px;
+    margin-top:10px;
+    float: left;
+}
+.proClss_a{
+    float: left;
+    margin-left: 10px;
+}
+.sts_table_title{
+    width: 942px;
     height: 35px;
     line-height: 35px;
     padding-left: 10px;
     border-top: 1px solid #dddddd;
     border-bottom: 1px solid #dddddd;
+    color: #222222;
 }
 .sts_table{
     padding: 5px 5px 10px 5px;
@@ -132,6 +165,7 @@ img{border: none;margin: 0px;padding: 0px;}
     width:940px;
     table-layout:fixed;
     border-collapse: collapse;
+    border-bottom: 1px solid #dddddd;
 }
 .sts_search_thead{
     width:933px;
@@ -141,18 +175,26 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .sts_search_thead tr,.sts_search_thead td{
     border: 1px solid #dddddd;
-    color: #000000;
+    color: #222222;
+    font-size: 14px;
 }
 .sts_search_tbody tr,.sts_search_tbody td{
-    border: 1px solid #dddddd;
-    border-top:none;
-    color: #000000;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-top: 1px dotted #dddddd;
+    color: #222222;
+    font-size: 12px;
+    white-space:nowrap;
+}
+.sts_search_thead td{
+    height: 35px;
 }
 .sts_search_thead td,.sts_search_tbody td{
     overflow:hidden;
     text-overflow:ellipsis;
-    white-space:nowrap;
-    height: 40px;
+}
+.sts_search_tbody td{
+    padding: 10px 5px;
 }
 .sts_search_tbody{
     width:933px;
@@ -172,14 +214,91 @@ img{border: none;margin: 0px;padding: 0px;}
 .listperAuth_button p, .listperAuth_button a{
     float: left;
     padding: 0 5px;
+    font-size: 12px;
+    color: #222222;
 }
 
+/*头部*/
+.head{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #dddddd;
+}
+.head_show{
+    width: 1200px;
+    margin:0 auto;
+}
+.head_left{
+    float: left;
+}
+.head_left p{
+    color: #777777;
+    float: left;
+    padding-right: 20px;
+}
+.head_right{
+    float: right;
+}
+.head_right a{
+    font-size: 14px;
+    color: #777777;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.head_right img{
+    margin-left: 3px;
+}
+/*logo*/
+.logo{
+    width: 100%;
+}
+.logo_img{
+    width: 1200px;
+    margin: 20px auto;
+}
 
+/*底部*/
+.foot{
+    width: 100%;
+    float: left;
+    border-bottom: 0px;
+}
+.foot1,.foot2{
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    color: #777777;
+}
+.foot1 a{
+    color: #777777;
+    cursor: pointer;
+}
+.foot2 p{
+    margin-top: 15px;
+}
+.foot3{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #dddddd;
+    margin-top: 20px;
+}
+.foot3_p{
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.foot3_p p{
+    font-size: 12px;
+    color: #222222;
+}
 
 /*颜色 公用部分*/
-.colorRed{color: red}
-.colorHui{color: black}
-
+.colorRed{color: #f44848}
+.colorHhei{color: #222222}
+.colorHui{color: #777777}
 .displayBlock{
     display: block;
 }
@@ -189,4 +308,13 @@ img{border: none;margin: 0px;padding: 0px;}
 
 .clickCursor{
     cursor: pointer;
+}
+
+.colorBule{
+    color: #77afea;
+    background-color: white;
+}
+.colorWhite{
+    color: white;
+    background-color: #77afea;
 }
