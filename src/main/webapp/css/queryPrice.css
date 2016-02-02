@@ -166,13 +166,15 @@ img{border: none;margin: 0px;padding: 0px;}
     margin-left: 150px;
 }
 .price_select_bottom{
-    padding:20px 10px;
     border: 1px solid #dddddd;
     border-bottom: none;
 }
 .price_select_list{
-    width:100%;
-    border-collapse:collapse;
+   width: 943px;
+table-layout: fixed;
+border-collapse: collapse;
+margin-left: 5px;
+margin-top: 5px;
 }
 .price_select_list .title td{
     border:1px #ddd solid;

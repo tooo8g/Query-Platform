@@ -35,7 +35,7 @@ $(function(){
             type:"post",
             dataType : 'json',
             success:function(data){
-               var tbodyList //保存解析的json数据
+               var tbodyList="" //保存解析的json数据
                var count=data.count
                var bzxx=data.bzxx
                var bzNum

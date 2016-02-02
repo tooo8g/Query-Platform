@@ -17,9 +17,10 @@ img{border: none;margin: 0px;padding: 0px;}
 
 /*authenSearch*/
 .as{
-    width: 1200px;
-    height: auto;
-    margin: 40px auto
+     width:1200px;
+    margin:40px auto;
+    overflow: hidden;
+
 }
 .as_title{
     width: 1200px;
@@ -27,8 +28,8 @@ img{border: none;margin: 0px;padding: 0px;}
     line-height: 35px;
 }
 .as_title p{
-    float: left;
     color: black;
+    float:left;
 }
 
 .as_left{
