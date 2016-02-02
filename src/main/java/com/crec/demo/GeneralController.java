@@ -69,16 +69,15 @@ public class GeneralController {
 	}
 
 	@RequestMapping("/queryStandard")
-	public void QueryStandard(@RequestParam String standard_group,
-			@RequestParam String standard_id,
-			@RequestParam String standard_name,
+	public void QueryStandard(@RequestParam String str,
+			@RequestParam String standard_group,
 			@RequestParam String standard_status,
 			@RequestParam String special_subject, @RequestParam int start,
 			@RequestParam int limit, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
-		String result = md.queryStandards(standard_group, standard_id,
-				standard_name, standard_status, special_subject, start, limit);
+		String result = md.queryStandards(str, standard_group, standard_status,
+				special_subject, start, limit);
 		md.close();
 		response.getWriter().print(result);
 	}

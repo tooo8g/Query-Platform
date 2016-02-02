@@ -36,6 +36,10 @@
         <p>当前位置：</p>
         <p>技术标准查询>></p>
         <p>标准类型查询</p>
+        <div class="sts_title_add">
+        <p>>></p>
+        <a>铁路行业标准</a>
+        </div>
     </div>
     <div class="sts_left">
         <p>标准类型</p>
@@ -44,7 +48,7 @@
                 <li id="sstandCountryType">国家标准</li>
                 <li id="standType">行业标准</li>
                 <div id="sts_standType">
-                    <a class="colorHui">铁路行业标准</a>
+                    <a class="colorRed">铁路行业标准</a>
                     <a class="colorHui">电力行业标准</a>
                     <a class="colorHui">冶金行业标准</a>
                 </div>
@@ -56,9 +60,8 @@
     <div class="sts_right">
         <div class="sts_right_top">
             <form id="searchForm">
-                <div class="sts_search_number">
-                    <label>编号名称</label>
-                    <input type="text" name="search_number" class="search_number"  value="标准编号/标准名称" onfocus="if (value =='标准编号/标准名称'){value =''}" onblur="if (value ==''){value='标准编号/标准名称'}" >
+                <div class="sts_search_number">                  
+                    <input type="text" class="search_number"  value="标准编号/标准名称" onfocus="if (value =='标准编号/标准名称'){value =''}" onblur="if (value ==''){value='标准编号/标准名称'}" >
                     <a class="buttonForm" onclick="formButton()">查询</a>
                 </div>
                 <div class="fileStatus">
@@ -92,6 +95,7 @@
                 <table class="sts_search_table">
                     <thead class="sts_search_thead">
                     <tr>
+                        <td></td>
                         <td width="120">标准编号</td>
                         <td width="250">标准名称</td>
                         <td width="120">代替标准号</td>
