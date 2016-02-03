@@ -78,10 +78,10 @@ img{border: none;margin: 0px;padding: 0px;}
     margin-top: 0px;
 }
 #sts_standType{
-    padding-left:30px;
+    padding-left:48px;
 }
 #sts_standType a{
-    width: 190px;
+    width: 160px;
     display: block;
     line-height: 14px;
     cursor: pointer;
@@ -104,6 +104,9 @@ img{border: none;margin: 0px;padding: 0px;}
     width: 950px;
     float: left;
     margin-top: 10px;
+}
+.search_number:focus{
+    color: #222222;
 }
 .sts_right_top label{
     color: #777777;
@@ -139,6 +142,7 @@ img{border: none;margin: 0px;padding: 0px;}
 .fileStatus{
     width: 950px;
     float: left;
+    margin-top:10px;
 }
 .fileStatus_a{
     float: left;
@@ -157,7 +161,6 @@ img{border: none;margin: 0px;padding: 0px;}
 
 .proClss{
     width: 950px;
-    margin-top:10px;
     float: left;
 }
 .proClss_a{
