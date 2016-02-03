@@ -50,7 +50,7 @@
                 <li id="sstandCountryType">国家标准</li>
                 <li id="standType">行业标准</li>
                 <div id="sts_standType">
-                    <a class="colorHui">铁路行业标准</a>
+                    <a class="colorRed">铁路行业标准</a>
                     <a class="colorHui">电力行业标准</a>
                     <a class="colorHui">冶金行业标准</a>
                 </div>
