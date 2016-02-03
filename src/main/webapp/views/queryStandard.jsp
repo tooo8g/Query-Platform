@@ -54,63 +54,64 @@
         </div>
     </div>
     <div class="sts_right">
-        <div class="sts_right_top">
-            <form id="searchForm">
-                <div class="sts_search_number">
-                    <label>编号名称</label>
-                    <input type="text" name="search_number" class="search_number"  value="标准编号/标准名称" onfocus="if (value =='标准编号/标准名称'){value =''}" onblur="if (value ==''){value='标准编号/标准名称'}" >
-                    <a class="buttonForm" onclick="formButton()">查询</a>
-                </div>
-                <div class="fileStatus">
-                    <label>文件状态</label>
-                    <div class="fileStatus_a">
-                        <a class="colorWhite">不限</a>
-                        <a class="colorBule">有效</a>
-                        <a class="colorBule">作废</a>
-                    </div>
-                </div>
-                <div class="proClss">
-                    <label>专业分类</label>
-                    <div class="proClss_a">
-                        <a class="colorWhite">不限</a>
-                        <a class="colorBule">公务</a>
-                        <a class="colorBule">牵引供电</a>
-                        <a class="colorBule">通信信号</a>
-                        <a class="colorBule">机车车辆</a>
-                        <a class="colorBule">基础与综合</a>
-                        <a class="colorBule">运输</a>
-                        <a class="colorBule">其他</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="sts_right_bottom">
-            <!--<div class="sts_table_title">-->
-            <!--找到100条记录-->
-            <!--</div>-->
-            <div class="sts_table">
-                <table class="sts_search_table">
-                    <thead class="sts_search_thead">
-                    <tr>
-                        <td width="120">标准编号</td>
-                        <td width="250">标准名称</td>
-                        <td width="120">代替标准号</td>
-                        <td>标准类别</td>
-                        <td>专业分类</td>
-                        <td>标准状态</td>
-                        <td>发布日期</td>
-                        <td>实施日期</td>
-                    </tr>
-                    </thead>
-                    <tbody class="sts_search_tbody">
+    <div class="sts_right_top">
+    <form id="searchForm">
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="listperAuth_button">
+    <div class="fileStatus">
+    <label>文件状态</label>
+    <div class="fileStatus_a">
+    <a class="colorWhite">不限</a>
+    <a class="colorBule">有效</a>
+    <a class="colorBule">作废</a>
+    </div>
+    </div>
+    <div class="proClss">
+    <label>专业分类</label>
+    <div class="proClss_a">
+    <a class="colorWhite">不限</a>
+    <a class="colorBule">公务</a>
+    <a class="colorBule">牵引供电</a>
+    <a class="colorBule">通信信号</a>
+    <a class="colorBule">机车车辆</a>
+    <a class="colorBule">基础与综合</a>
+    <a class="colorBule">运输</a>
+    <a class="colorBule">其他</a>
+    </div>
+    </div>
+    <div class="sts_search_number">
+    <label>编号/名称</label>
+    <input type="text" name="search_number" class="search_number"  value="标准编号/标准名称" onfocus="if (value =='标准编号/标准名称'){value =''}" onblur="if (value ==''){value='标准编号/标准名称'}" >
+    <a class="buttonForm" onclick="formButton()">查询</a>
+    </div>
+    </form>
+    </div>
+    <div class="sts_right_bottom">
+    <!--<div class="sts_table_title">-->
+    <!--找到100条记录-->
+    <!--</div>-->
+    <div class="sts_table">
+    <table class="sts_search_table">
+    <thead class="sts_search_thead">
+    <tr>
+    <td width="120">标准编号</td>
+    <td width="250">标准名称</td>
+    <td width="120">代替标准号</td>
+    <td>标准类别</td>
+    <td>专业分类</td>
+    <td>标准状态</td>
+    <td>发布日期</td>
+    <td>实施日期</td>
+    </tr>
+    </thead>
+    <tbody class="sts_search_tbody">
 
-        </div>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    <div class="listperAuth_button">
+
+    </div>
     </div>
 </div>
 <div class="foot">

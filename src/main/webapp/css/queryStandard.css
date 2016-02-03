@@ -25,8 +25,8 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .sts_title{
     width: 1200px;
-    height: 35px;
-    line-height: 35px;
+    height: 12px;
+    line-height: 12px;
 }
 .sts_title p{
     float: left;
@@ -38,29 +38,44 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
     margin-top: 20px;
 }
-.sts_left p{
+.left_title_p{
     text-align: center;
-    line-height: 50px;
+    height: 60px;
     border-bottom: 1px solid #dddddd;
     color: #222222;
-    font-size: 18px;
     background-color: #f0f0f0;
 }
+.title_p{
+    width: 78px;
+    font-size: 18px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #222222;
+    float: left;
+    margin: 15px 75px;
+}
+/*.sts_left p{*/
+/**/
+/*}*/
+
 .stsLeft_ul{
     width: 228px;
     background-color: #fafafa;
     float: left;
 }
 .sts_left ul{
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     float: left;
 }
 .sts_left ul li{
-    line-height: 30px;
+    margin-top: 20px;
+    line-height: 16px;
     padding-left: 30px;
     cursor: pointer;
     font-size: 16px;
+}
+.sts_left ul li:first-child{
+    margin-top: 0px;
 }
 #sts_standType{
     padding-left:30px;
@@ -68,11 +83,12 @@ img{border: none;margin: 0px;padding: 0px;}
 #sts_standType a{
     width: 190px;
     display: block;
-    line-height: 30px;
+    line-height: 14px;
     cursor: pointer;
     font-size: 14px;
+    margin-top: 15px;
 }
-.sts_left a:hover{
+.stsLeft_ul a:hover{
     color: #f44848;
 }
 .sts_right{
@@ -87,6 +103,7 @@ img{border: none;margin: 0px;padding: 0px;}
 .sts_search_number{
     width: 950px;
     float: left;
+    margin-top: 10px;
 }
 .sts_right_top label{
     color: #777777;
@@ -99,7 +116,7 @@ img{border: none;margin: 0px;padding: 0px;}
     height: 25px;
     line-height: 25px;
     float: left;
-    margin-left: 10px;
+    margin-left: 7px;
     color: #dddddd;
     border: 1px solid #dddddd;
     padding-left: 5px;
@@ -113,7 +130,7 @@ img{border: none;margin: 0px;padding: 0px;}
     line-height: 25px;
     background-color:#f44848;
     color: white;
-    margin-left: 20px;
+    margin-left: 10px;
     padding-left: 5px;
     padding-right: 5px;
     font-size: 14px;
@@ -121,7 +138,6 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .fileStatus{
     width: 950px;
-    margin-top:10px;
     float: left;
 }
 .fileStatus_a{
@@ -158,6 +174,7 @@ img{border: none;margin: 0px;padding: 0px;}
     color: #222222;
 }
 .sts_table{
+    margin-top: 15px;
     padding: 5px 5px 10px 5px;
     min-height: 400px;
 }
@@ -184,7 +201,6 @@ img{border: none;margin: 0px;padding: 0px;}
     border-top: 1px dotted #dddddd;
     color: #222222;
     font-size: 12px;
-    white-space:nowrap;
 }
 .sts_search_thead td{
     height: 35px;
@@ -192,6 +208,7 @@ img{border: none;margin: 0px;padding: 0px;}
 .sts_search_thead td,.sts_search_tbody td{
     overflow:hidden;
     text-overflow:ellipsis;
+    white-space: nowrap;
 }
 .sts_search_tbody td{
     padding: 10px 5px;
@@ -266,6 +283,8 @@ img{border: none;margin: 0px;padding: 0px;}
     border-bottom: 0px;
 }
 .foot1,.foot2{
+    height: 12px;
+    line-height: 12px;
     width: 1200px;
     margin: 0 auto;
     text-align: center;
