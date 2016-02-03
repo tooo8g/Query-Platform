@@ -42,7 +42,11 @@
         </div>
     </div>
     <div class="sts_left">
-        <p>标准类型</p>
+        <div class="left_title_p">
+           <div class="title_p">
+                                         标准类型
+           </div>
+        </div>
         <div class="stsLeft_ul">
             <ul>
                 <li id="sstandCountryType">国家标准</li>
@@ -97,6 +101,7 @@
     <table class="sts_search_table">
     <thead class="sts_search_thead">
     <tr>
+    <td></td>
     <td width="120">标准编号</td>
     <td width="250">标准名称</td>
     <td width="120">代替标准号</td>
