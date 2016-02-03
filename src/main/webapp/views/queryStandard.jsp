@@ -99,6 +99,7 @@
                 <table class="sts_search_table">
                     <thead class="sts_search_thead">
                     <tr>
+                        <td></td>
                         <td width="120">标准编号</td>
                         <td width="250">标准名称</td>
                         <td width="120">代替标准号</td>
