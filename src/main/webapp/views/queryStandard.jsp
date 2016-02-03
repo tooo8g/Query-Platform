@@ -36,6 +36,10 @@
         <p>当前位置：</p>
         <p>技术标准查询>></p>
         <p>标准类型查询</p>
+        <div class="sts_title_add">
+        <p>>></p>
+        <a>铁路行业标准</a>
+        </div>
     </div>
     <div class="sts_left">
         <p>标准类型</p>
@@ -44,7 +48,7 @@
                 <li id="sstandCountryType">国家标准</li>
                 <li id="standType">行业标准</li>
                 <div id="sts_standType">
-                    <a class="colorHui">铁路行业标准</a>
+                    <a class="colorRed">铁路行业标准</a>
                     <a class="colorHui">电力行业标准</a>
                     <a class="colorHui">冶金行业标准</a>
                 </div>
