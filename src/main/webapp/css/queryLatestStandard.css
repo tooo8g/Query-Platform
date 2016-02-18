@@ -66,12 +66,12 @@ img{border: none;margin: 0px;padding: 0px;}
 .si_tableDiv{
     width: 1200px;
     float: left;
+    min-height: 400px;
 }
 .si_table{
     width: 1200px;
     table-layout:fixed;
     border-collapse: collapse;
-    min-height: 400px;
 }
 .si_thead{
     width: 1200px;
