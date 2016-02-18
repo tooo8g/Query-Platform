@@ -1,0 +1,40 @@
+/*头部*/
+.head{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #dddddd;
+}
+.head_show{
+    width: 1200px;
+    margin:0 auto;
+}
+.head_left{
+    float: left;
+}
+.head_left p{
+    color: #777777;
+    float: left;
+    padding-right: 20px;
+}
+.head_right{
+    float: right;
+}
+.head_right a{
+    font-size: 14px;
+    color: #777777;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.head_right img{
+    margin-left: 3px;
+}
+/*logo*/
+.logo{
+    width: 100%;
+}
+.logo_img{
+    width: 1200px;
+    margin: 20px auto;
+}

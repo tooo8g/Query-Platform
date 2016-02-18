@@ -249,9 +249,9 @@ function goPage(str,standard_group,standard_status,special_subject,start,limitVa
             var bzxx=data.bzxx
             var bzNum
             for(var i=0;i<bzxx.length;i++){
-            	 bzNum=Number(start)+i+1
-            	 tbodyList+="<tr>"
-                 tbodyList+="<td>"+bzNum+"</td>"
+            	bzNum=Number(start)+i+1
+            	tbodyList+="<tr>"
+                tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+bzxx[i].standard_id+"</td>"
                 tbodyList+="<td title='"+bzxx[i].standard_name+"'>"+bzxx[i].standard_name+"</td>"
                 tbodyList+="<td>"+bzxx[i].replace_id+"</td>"

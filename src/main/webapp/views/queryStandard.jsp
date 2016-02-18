@@ -9,27 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/queryStandard.css">
 </head>
 <body>
-<div class="head">
-    <div class="head_show">
-        <div class="head_left">
-            <p>欢迎来到某某有限公司</p>
-            <p>客服热线-400-698000</p>
-        </div>
-        <div class="head_right">
-            <img src="../images/sts_1.png">
-            <a>登陆</a>|
-            <a>注册</a>|
-            <a>我的关注</a>|
-            <a>供应商服务<img src="../images/sts_2.png"></a>|
-            <a>网站导航<img src="../images/sts_2.png"></a>
-        </div>
-    </div>
-</div>
-<div class="logo">
-    <div class="logo_img">
-        <img src="../images/sts_3.png">
-    </div>
-</div>
+<jsp:include page="head.jsp"/>
 <input type="hidden" class="pageNo" value="">
 <div class="sts">
     <div class="sts_title">
@@ -121,22 +101,6 @@
         </div>
     </div>
 </div>
-<div class="foot">
-    <div class="foot1">
-        <a href="javaScript:;">广告服务</a>|
-        <a href="javaScript:;">联系我们</a>|
-        <a href="javaScript:;">合作伙伴</a>|
-        <a href="javaScript:;">法律声明</a>|
-        <a href="javaScript:;">关于我们</a>
-    </div>
-    <div class="foot2">
-        <p>**有限公司版权所有 京ICP备14004333号</p>
-    </div>
-    <div class="foot3">
-        <div class="foot3_p">
-            <p>请使用IE9以上版本浏览页面</p>
-        </div>
-    </div>
-</div>
+<jsp:include page="foot.jsp"/>
 </body>
 </html>

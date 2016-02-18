@@ -20,78 +20,85 @@ img{border: none;margin: 0px;padding: 0px;}
     width: 1200px;
     height: auto;
     overflow: hidden;
-    margin: 40px auto
+    margin: 0 auto 50px;
 }
 .si_title {
     width: 1200px;
-    height: 35px;
-    line-height: 35px;
+    height: 12px;
+    line-height: 12px;
 }
 .si_title p{
     float: left;
-    color: #222;
+    color: #222222;
 }
 .si_search{
-    padding:15px 0px;
+    padding:20px  0;
     text-align: right;
-    padding-right: 30px;
-    border-bottom: 1px solid #dddddd;
 }
 .si_main{
-    width: 1198px;
+    width: 1200px;
     height:auto;
     min-height:620px;
     float: left;
-    border: 1px solid #dddddd
 }
 .si_main .serInput{
-    color: #000000;
-    margin-left: 600px;
-    height: 26px;
+    border: 1px solid #dddddd;
+    color: #222222;
+    height: 25px;
+    line-height: 25px;
+    width: 200px;
 }
 
 .search_si_btn{
-    height: 30px;
-    width: 80px;
+    width: auto;
+    float: right;
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    background-color:#f44848;
+    color: white;
+    margin-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
     cursor: pointer;
 }
 .si_tableDiv{
-    width: 1188px;
-    min-height: 512px;
+    width: 1200px;
     float: left;
 }
 .si_table{
-    width: 1188px;
+    width: 1200px;
     table-layout:fixed;
     border-collapse: collapse;
-    margin-left: 5px;
-    margin-top: 5px;
+    min-height: 400px;
 }
 .si_thead{
-    width: 1188px;
+    width: 1200px;
     font-size: 14px;
     text-align: center;
     background-color: #fafafa
 }
 .si_thead tr,.si_thead td{
-    height: 40px;
     border: 1px solid #dddddd;
-    color: #000000;
+    color: #222222;
+    font-size: 14px;
+    height: 35px;
 }
 .si_tbody{
-    width: 1188px;
+    width: 1200px;
     font-size: 12px;
     text-align: center;
 }
 .si_tbody tr,.si_tbody td{
     border: 1px solid #dddddd;
     border-top: none;
-    color: #000000;}
+    color: #222222;}
 .si_tbody td{
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
-    height: 40px;
+    padding: 10px 5px;
 }
 
 .listperAuth_button{
@@ -101,6 +108,7 @@ img{border: none;margin: 0px;padding: 0px;}
     margin-right: 20px;
     text-align: right;
     font-size: 14px;
+    margin-top: 10px;
 }
 .listperAuth_button p, .listperAuth_button a{
     float: left;
