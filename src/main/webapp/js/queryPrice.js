@@ -19,18 +19,15 @@ $(function(){
             var dataChilds
             dataChilds=list_json.childs
             for(var i=0;i<dataChilds.length;i++){
-                list_content+="<li>"
-                list_content+="<a onclick=showChilds("+i+")>"+dataChilds[i].name+"</a>"
-                list_content+="</li>"
+                list_content+="<li onclick=showChilds("+i+")>"+dataChilds[i].name+"</li>"
             }
             $(".list_content").append(list_content)
         }
     })
     //给目录添加click事件
     $(".itemShowList").on("click","a",function() {
-    	var childNum=$(this).attr("childNum")
         var list_num = $(this).attr("num");
-        var itemShowList_data=list_json.childs[childNum].childs[list_num].childs
+        var itemShowList_data=list_json.childs[0].childs[list_num].childs
         var num=1;
 
         for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
@@ -40,8 +37,11 @@ $(function(){
         };
         if(itemShowList_data){
             $(".itemShow").append("<div class='itemShowList"+num+" showItem'></div>");
-            $(".itemShowList"+num).attr("class_num",1);
-            itemShowList($(".itemShowList"+num),itemShowList_data);
+            $(".itemShowList"+num).append("<div class='mulluShow"+num+" mulluShowSh'></div>")
+            $(".itemShowList"+num).append("<div id='scrollShow"+num+"' class='scrollShow'><div id='scrollSh"+num+"' class='scrollSh'></div></div>");
+            $(".itemShowList" + num).attr("class_num", 1);
+            itemShowList($(".mulluShow" + num), itemShowList_data);
+            mousewheel_fn("itemShowList" + num,"mulluShow" + num,"scrollShow"+num,"scrollSh"+num)
         }else{
             thisText=$(this).html()
             itemShowButton(thisText)
@@ -104,13 +104,13 @@ $(function(){
             }
             $(".pageNo").val(pageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a>上一页</a>"
+            asButton+="<a><img src='../images/sts_4.png'></a>"
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+wuziName+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+wuziName+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
             }else{
-                asButton+="<a>下一页</a>"
+                asButton+="<a><img src='../images/sts_5.png'></a>"
             }
             $(".listperAuth_button").append(asButton)
         },
@@ -128,14 +128,13 @@ function showChilds(str){
     $(".itemShow").removeClass("displayNo").addClass("displayBlock");
     var muluJson //目录JSON
     muluJson = list_json.childs[str].childs
-    $(".itemShowList").html("")
     for (var i = 0; i < muluJson.length; i++) {
-        $(".itemShowList").append("<a childNum='"+str+"' num='" + i + "'>" + muluJson[i].name + "</a>")
+        $(".mulluShowSh").append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+muluJson[i].name+" </p><img src='../images/as_2.png'></a>")
     }
-    //获取页面可视区域，然后确定showItem的高度
-    var docuHeight = $(document).height()  //页面可视区域
-    var sihHeight = docuHeight - 250
-    $(".showItem").height(sihHeight)
+
+    var sihHeight=$("#itemShow").height()
+    $(".jq_message_content").height(sihHeight+135)
+    mousewheel_fn('itemShowList','mulluShowSh','scrollShow','scrollSh')
 }
 
 //获取二 三级目录
@@ -144,7 +143,7 @@ function itemShowList(append_dom,data){
     if (data) {
         append_dom.html("");
         for (var i = 0; i < data.length; i++) {
-            append_dom.append("<a  num='" + i + "' class='itemName''>" + data[i].name + "</a>");
+            append_dom.append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+data[i].name+" </p><img src='../images/as_2.png'></a>")
         };
         append_dom.on("click","a",function() {
             list_n = $(this).attr("num");
@@ -158,16 +157,16 @@ function itemShowList(append_dom,data){
             };
             if(itemShowList_data){
                 $(".itemShow").append("<div class='itemShowList"+class_num+" showItem'></div>");
-                $(".itemShowList"+class_num).attr("class_num",class_num);
+                $(".itemShowList"+class_num).append("<div class='mulluShow"+class_num+" mulluShowSh'></div>")
+                $(".itemShowList"+class_num).append("<div id='scrollShow"+class_num+"' class='scrollShow'><div id='scrollSh"+class_num+"' class='scrollSh'></div></div>");
+                $(".itemShowList" + class_num).attr("class_num", class_num);
                 itemShowList($(".itemShowList"+class_num),itemShowList_data);
+                mousewheel_fn("itemShowList" + class_num,"mulluShow" + class_num,"scrollShow"+class_num,"scrollSh"+class_num)
             }else{
                 thisText=$(this).html()
                 itemShowButton(thisText)
             };
         });
-        var docuHeight=$(document).height()  //页面可视区域
-        var sihHeight=docuHeight-250
-        $(".showItem").height(sihHeight)
     }
 }
 
@@ -230,13 +229,13 @@ function itemShowButton(str){
                 }
                 $(".pageNo").val(pageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a>上一页</a>"
+                asButton+="<a><img src='../images/sts_4.png'></a>"
                 asButton+="<p>"+pageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=pageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+str+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+str+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a>下一页</a>"
+                    asButton+="<a><img src='../images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").html(" ")
                 $(".listperAuth_button").append(asButton)
@@ -314,16 +313,16 @@ function goPage(date,name,citySelect,specification,start,limit,isGo){
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+date+"','"+name+"','"+citySelect+"','"+specification+"','"+preStartRow+"','"+limitValue+"','pre')>上一页</a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+date+"','"+name+"','"+citySelect+"','"+specification+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
             }else{
-                asButton+="<a>上一页</a>"
+                asButton+="<a><img src='../images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+date+"','"+name+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+date+"','"+name+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
             }else{
-                asButton+="<a>下一页</a>"
+                asButton+="<a><img src='../images/sts_5.png'></a>"
             }
             $(".listperAuth_button").append(asButton)
         }
@@ -403,13 +402,13 @@ function formButton(){
             }
             $(".pageNo").val(pageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a>上一页</a>"
+            asButton+="<a><img src='../images/sts_4.png'></a>"
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+wuziName+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+wuziName+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
             }else{
-                asButton+="<a>下一页</a>"
+                asButton+="<a><img src='../images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
@@ -649,7 +648,7 @@ function SelectIndex(){
     $(".hisPrice_rbs").insertFusionCharts({
         type: "msline",
         width: "750",
-        height: "400",
+        height: "380",
         dataFormat: "json",
         dataSource: jsonDetailsData
     });

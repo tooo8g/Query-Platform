@@ -18,19 +18,20 @@ img{border: none;margin: 0px;padding: 0px;}
 
 /* 市场价格查询	TOP */
 .jq_message_content{
-    width:1200px;
-    margin:40px auto;
+    width: 1200px;
+    height: auto;
     overflow: hidden;
+    margin: 0 auto 80px;
 }
 
 .jq_message_title{
     width: 1200px;
-    height: 35px;
-    line-height: 35px;
+    height: 12px;
+    line-height: 12px;
 }
 .jq_message_title p{
     float: left;
-    color: black;
+    color: #bbbbbb;
 }
 
 .jq_message_left{
@@ -38,53 +39,90 @@ img{border: none;margin: 0px;padding: 0px;}
     width:228px;
     border:1px  solid #dddddd;
     position: relative;
+    margin-top: 20px;
 }
 .jq_message_right{
-    margin-left:15px;
-    min-height:670px;
-    float:left;
-    width:955px;
-}
-.jq_message_left .list_tittle{
-    height: 50px;
-    line-height: 50px;
-    font-size: 12px;
-    text-align: center;
-    border-bottom: 1px solid #dddddd;
-}
-.jq_message_left .list_content{
-    padding-bottom: 15px;
-}
-.jq_message_left .list_content .select a{
-    color:blue;
-}
-.jq_message_left .list_content li a{
-    display: block;
-    line-height: 30px;
-    font-size: 12px;
-    padding-left: 20px;
-    padding-right: 20px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color:black;
-    cursor: pointer;
-}
-.jq_message_left .list_content li a:hover{
-    color: red;
-}
-.itemShow{
     width: 953px;
     height: auto;
-    overflow: auto;
+    margin-left: 15px;
+    float: left;
+    margin-top: 20px;
+}
+.left_title_p{
+    text-align: center;
+    height: 60px;
+    border-bottom: 1px solid #dddddd;
+    color: #222222;
+    background-color: #f0f0f0;
+}
+.title_p{
+    width: 78px;
+    font-size: 18px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #222222;
+    float: left;
+    margin: 15px 75px;
+}
+
+.jq_message_left_ul{
+    width: 228px;
+    background-color: #fafafa;
+    float: left;
+}
+.jq_message_left_ul ul{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: left;
+}
+.jq_message_left_ul ul li{
+    margin-top: 20px;
+    line-height: 16px;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 168px;
+    padding-right: 30px;
+}
+
+.jq_message_left_ul ul li:hover{
+    color: red;
+}
+.jq_message_left_ul ul li:first-child{
+    margin-top: 0px;
+}
+
+.itemShow{
+    width: 942px;
+    height: 602px;
     border: 1px solid #dddddd;
     position: absolute;
-    left: 244px;
-    top: 50px;
+    left: 248px;
+    top: 80px;
     background-color: #ffffff;
+    overflow: hidden;
 }
-.itemShow a:hover{
-    color: red;
+.itemShow a {
+    display: block;
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
+}
+.clas {
+    height: auto;
+    margin-left: 20px;
+    margin-top: 30px;
+    cursor: pointer;
+    color: #000000;
+}
+.itemShow p {
+    width: 135px;
+    height: 12px;
+    text-align: left;
+    float: left;
+    overflow: hidden;
+}
+.itemShow img {
+    margin-right: 15px;
 }
 #itemShow_title{
     width: 953px;
@@ -100,86 +138,173 @@ img{border: none;margin: 0px;padding: 0px;}
     cursor: pointer;
 }
 .showItem{
-    width: 228px;
+    width: 182px;
     float: left;
+    padding-right: 6px;
+    min-height: 602px;
+    position: relative;
 }
-.showItem a{
-    display: block;
-    width: 188px;
-    line-height: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
-    cursor: pointer;
-    color:#000000;
+.mulluShowSh{
+    width: 182px;
+    height: 602px;
+    overflow: hidden;
 }
-
+.scrollShow {
+    width: 6px;
+    height: 602px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: #b3b4b8;
+    border-radius: 3px;
+}
+.itemShowList {
+    background-color: #fafafa;
+}
 .price_select_top{
     overflow: hidden;
-    border:1px solid #dddddd;
 }
 .price_select_formlist{
     overflow: hidden;
 }
-.price_select_top .price_select_l{
-    width: 400px;
+/*.price_select_top .price_select_l{*/
+/*width: 400px;*/
+/*float: left;*/
+/*padding: 25px 0px;*/
+/*color: #777777;*/
+/*margin-left: 50px;*/
+/*}*/
+.priceDate,.specificationModel,.region,.materialName,.city{
+    width: 280px;
     float: left;
-    padding: 25px 0px;
-    color: #777777;
-    margin-left: 50px;
+}
+.specificationModel,.materialName,.city{
+    margin-left: 20px;
+}
+.region,.city{
+    margin-top: 20px;
 }
 .price_select_top .price_select_r{
     width:475px;
     float: left;
     padding: 25px 0px;
 }
-.price_select_l div , .price_select_r div{
-    width: 360px;
-    margin-left: 30px;
-    margin-bottom:10px;
+/*.price_select_l div , .price_select_r div{*/
+/*width: 360px;*/
+/*margin-left: 30px;*/
+/*margin-bottom:10px;*/
+/*}*/
+.price_select_top label{
+    color: #777777;
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 5px;
+    width: 60px;
+    text-align: right;
 }
 .price_select_top input{
-    width:196px;
-    height: 26px;
+    height: 25px;
+    line-height: 25px;
+    float: left;
+    margin-left: 7px;
+    border: 1px solid #dddddd;
+    padding-left: 5px;
+    width: 193px;
+    padding-left: 5px;
 }
 .price_select_top select{
-    width:200px;
-    height: 30px;
+    height: 25px;
+    line-height: 25px;
+    float: left;
+    margin-left: 7px;
+    border: 1px solid #dddddd;
+    padding-left: 5px;
+    width: 200px;
+    padding-left: 5px;
 }
+/*.price_select_top select{*/
+/*width:200px;*/
+/*height: 30px;*/
+/*}*/
 .price_select_top span{
     display: inline-block;
     width:80px;
     padding-left:20px;
     line-height: 24px;
 }
-.price_select_sub{
-    text-align: center;
-    padding-bottom: 35px;
-    overflow: hidden;
-}
+/*.price_select_sub{*/
+/*text-align: center;*/
+/*padding-bottom: 35px;*/
+/*overflow: hidden;*/
+/*}*/
 
 #form_button,#reset_submit{
-    width: 80px;
-    height: 24px;
+    width: auto;
+    float: left;
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
 }
-
-#reset_submit{
-    margin-left: 150px;
+#reset_submit {
+    background-color: #f0f0f0;
+    color: #777777;
+    margin-left: 24px;
+}
+#form_button{
+    background-color: #f44848;
+    color: white;
+    margin-left: 10px;
 }
 .price_select_bottom{
-    border: 1px solid #dddddd;
-    border-bottom: none;
+    width: 953px;
+    min-height: 407px;
+    float: left;
+    margin-top: 20px;
 }
 .price_select_list{
-   width: 943px;
-table-layout: fixed;
-border-collapse: collapse;
-margin-left: 5px;
-margin-top: 5px;
+    width: 943px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-left: 5px;
 }
-.price_select_list .title td{
-    border:1px #ddd solid;
+.price_select_thead{
+    width: 943px;
+    font-size: 14px;
+    text-align: center;
     background-color: #fafafa;
-    border-bottom:none;
+}
+/*.price_select_list .title td{*/
+/*border:1px #ddd solid;*/
+/*background-color: #fafafa;*/
+/*border-bottom:none;*/
+/*}*/
+.price_select_thead tr, .price_select_thead td {
+    border: 1px solid #dddddd;
+    color: black;
+    height: 35px;
+}
+.jg_tbody{
+    width: 943px;
+    font-size: 12px;
+    text-align: center;
+}
+.jg_tbody tr, .jg_tbody td {
+    border: 1px solid #dddddd;
+    border-top: none;
+    color: black;
+}
+.jg_tbody td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 10px 5px;
 }
 .jg_tbody p{
     height: 14px;
@@ -187,24 +312,23 @@ margin-top: 5px;
 }
 .jg_tbody a{
     cursor: pointer;
+    color: #77afea;
 }
-.jg_tbody a:hover{
-    color: red;
-}
-.price_select_list td{
-    padding:15px 0px;
-    border: 1px #ddd solid;
-    border-top:none;
-    border-bottom:1px #ddd dashed;
-    color:#222;
-    text-align: center;
-}
-.price_select_list tr:nth-last-child(1) td{
-    border-bottom:1px #ddd solid;
-}
-.price_select_list tr.last td{
-    border-bottom:1px #ddd solid;
-}
+
+/*.price_select_list td{*/
+/*padding:15px 0px;*/
+/*border: 1px #ddd solid;*/
+/*border-top:none;*/
+/*border-bottom:1px #ddd dashed;*/
+/*color:#222;*/
+/*text-align: center;*/
+/*}*/
+/*.price_select_list tr:nth-last-child(1) td{*/
+/*border-bottom:1px #ddd solid;*/
+/*}*/
+/*.price_select_list tr.last td{*/
+/*border-bottom:1px #ddd solid;*/
+/*}*/
 .price_select_list .green{
     color:#0c0;
 }
@@ -212,32 +336,27 @@ margin-top: 5px;
     color:#ff005d;
 }
 
-.listperAuth{
-    width: 953px;
-    height: 20px;
-    float: left;
-    line-height: 20px;
-    margin-bottom: 20px;
-    text-align: right;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-top: none;
-    padding-bottom: 20px;
-}
 .listperAuth_button{
     height: 20px;
     float: right;
-    margin-right: 20px;
+    line-height: 20px;
+    margin-right: 5px;
+    margin-top: 20px;
+    text-align: right;
+    font-size: 14px;
 }
-.listperAuth_button p, .listperAuth_button a{
+.listperAuth_button p{
     float: left;
-    padding: 0 5px;
+    padding: 0 10px;
+}
+.listperAuth_button a{
+    float: left;
 }
 
 /*priceInformationo*/
 .priceInformation{
     width:100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(200, 200, 200, 0.6);
     position: absolute;
     left: 0;
     top: 0;
@@ -255,74 +374,95 @@ margin-top: 5px;
     float: left;
     background-color: #ffffff;
     margin-bottom: 20px;
-    margin-top: 100px;
-    overflow: auto;
+    margin-top: 130px;
+}
+.hisPrice_infor_title{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    background-color: #eeeeee;
+}
+.hisPrice_infor_title p {
+    float: left;
+    margin-left: 20px;
+    font-size: 14px;
+    color: #c8c8c8;
 }
 .hisPrice_title{
-    width: 1200px;
-    height: 30px;
-    border-bottom:none;
+    float: right;
+    margin-right: 10px;
+    height: 35px;
+    cursor: pointer;
 }
 
 .hisPrice_title img{
-    width: 25px;
-    height: 25px;
-    margin-right: 20px;
-    margin-top: 2px;
-    float: right;
-    cursor: pointer;
+    margin-top: 9px;
 }
 .hisPrice_left{
     float: left;
     width: 228px;
-    margin: 20px 0 20px 100px;
+    margin: 20px 0 20px 20px;
     border: 1px solid #dddddd;
 }
 .left_title{
     width: 228px;
     height: auto;
-    margin-top: 15px;
+    float: left;
+    background-color: #eeeeee;
+}
+.left_title ul{
+    margin-bottom: 20px;
     float: left;
 }
+.left_title li{
+    width: 228px;
+    float: left;
+    margin-top: 20px;
+}
 .left_title p{
-    width: 76px;
+    width: 50px;
     line-height: 20px;
     float: left;
-    text-align: center;
+    text-align: right;
+    color: #777777;
+}
+.left_title span{
+    width: 155px;
+    margin-left: 10px;
+    color: #222222;
+    float: left;
 }
 .left_slelect{
     width: 228px;
     height: auto;
-    margin-top: 15px;
     float: left;
-}
-.left_slelect_title{
-    width: 188px;
-    margin-left: 20px;
-    height: 20px;
-    line-height: 20px;
+    background-color: #fafafa;
 }
 .left_slelect_content{
-    width: 188px;
-    margin-left: 20px;
+    width: 228px;
 }
 .left_slelect_content label{
-    width: 65px;
-    line-height: 24px;
-    display: inline-block;
-    margin-bottom: 10px;
+    width: 45px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    float: left;
+    color: #777777;
+    margin-top: 20px;
 }
+
 .left_slelect_content select{
     margin-left: 15px;
-    width: 105px;
+    width: 155px;
     height: 30px;
-    margin-bottom: 10px;
+    border: 1px solid #dddddd;
+    margin-top: 20px;
 }
 .left_button{
-    width: 188px;
-    margin-left: 20px;
+    width: 228px;
     float: left;
     text-align: center;
+    background-color: #fafafa;
 }
 .left_button a{
     display: block;
@@ -331,69 +471,137 @@ margin-top: 5px;
     height: 30px;
     line-height: 30px;
     font-size: 14px;
-    background-color: #dddddd;
+    background-color: #77afea;
     cursor: pointer;
-    margin-left: 54px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-.left_button a:hover{
-    color: red;
-}
-.hisPrice_right{
-    width: 748px;
-    float: left;
-    margin-left: 20px;
+    margin-left: 74px;
     margin-top: 20px;
-    border: 1px solid #dddddd;
-}
-.hisPrice_right_top{
-    padding: 20px 30px;
-}
-.hisPrice_right_top div{
-    height: 20px;
-    line-height: 20px;
-}
-.hisPrice_right_top label{
-    float: left;
-}
-.hisPrice_right_top p{
-    float: left;
-    padding: 0 10px;
+    margin-bottom: 20px;
+    color: white;
 }
 
-.hisPrice_right_bottom{
-    border-top: 1px solid #dddddd;
+.hisPrice_right{
+    width: 914px;
+    float: left;
+    margin-left: 15px;
+    margin-top: 20px;
 }
-.hisPrice_rbt{
+.hisPrice_right_top{
+    width: 914px;
+    float: left;
+}
+.hisPrice_right_top_left{
+    width: 36px;
+    float: left;
+    margin-top: 33px;
+}
+.hisPrice_right_top_left label{
+    font-size: 12px;
     height: 30px;
     line-height: 30px;
-    border-bottom: 1px solid #dddddd;
+    display: block;
+}
+.hisPrice_right_top_right{
+    width: 876px;
+    float: left;
+}
+.hisPrice_sc_table{
+    width: 871px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-left: 5px;
+}
+.hisPrice_sc_thead{
+    width: 871px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fafafa;
+}
+.hisPrice_sc_thead tr,.hisPrice_sc_thead td{
+    border: 1px solid #dddddd;
+    color: black;
+    height: 30px;
+}
+
+.hisPrice_sc_tbody {
+    width: 871px;
+    font-size: 12px;
+    text-align: center;
+}
+.hisPrice_sc_tbody tr,.hisPrice_sc_tbody td{
+    border: 1px solid #dddddd;
+    border-top: none;
+    color: black;
+}
+.hisPrice_sc_tbody td{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0px 10px;
+    height: 30px;
+}
+.hisPrice_sc_title{
+    width: 871px;
+    border: 1px solid #dddddd;
+}
+.hisPrice_sc_title p{
+    float:left;
+}
+/*.hisPrice_right_top div{*/
+/*height: 20px;*/
+/*line-height: 20px;*/
+/*}*/
+/*.hisPrice_right_top label{*/
+/*float: left;*/
+/*}*/
+/*.hisPrice_right_top p{*/
+/*float: left;*/
+/*padding: 0 10px;*/
+/*}*/
+
+.hisPrice_right_bottom{
+    width: 914px;
+    float: left;
+    margin-top: 30px;
+}
+.hisPrice_rbt{
+    width: 914px;
+    float: left;
 }
 
 .hisPrice_rbt a{
-    width: 80px;
     float: left;
     text-align: center;
-    display: block;
-    height: 30px;
-    background-color: #dddddd;
+    font-size: 14px;
     cursor: pointer;
+    padding-bottom: 3px;
+    /*width: 80px;*/
+    /*float: left;*/
+    /*text-align: center;*/
+    /*display: block;*/
+    /*height: 30px;*/
+    /*background-color: #dddddd;*/
+    /*cursor: pointer;*/
 }
+
 .hisIndex{
     margin-left: 10px;
 }
-.hisPrice_rbt a:hover{
-    color: red;
+.hisPrice_rbb,.hisPrice_rbs{
+    width: 914px;
+    float: left;
+    margin-top: 10px;
 }
+/*.hisPrice_rbt a:hover{*/
+/*color: red;*/
+/*}*/
 
 .his_table{
-    width: 748px;
+    width: 914px;
     table-layout: fixed;
     border-collapse: collapse;
 }
 .his_thead{
-    width: 748px;
+    width: 914px;
     font-size: 14px;
     text-align: center;
     background-color: #fafafa;
@@ -401,10 +609,10 @@ margin-top: 5px;
 .his_thead tr,.his_thead td{
     border: 1px solid #dddddd;
     color: black;
-    height:40px;
+    height:35px;
 }
 .his_tbody{
-    width: 748px;
+    width: 914px;
     font-size: 12px;
     text-align: center;
 }
@@ -420,6 +628,39 @@ margin-top: 5px;
     white-space:nowrap;
     height: 30px;
 }
+.hisPrice_rbb_his{
+    width: 914px;
+    height: 380px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    float: left;
+}
+.jq_button_div_close{
+    width: 1200px;
+    margin-top: 40px;
+    height: 30px;
+    float: left;
+    margin-bottom:40px;
+}
+.jq_button_div{
+    width: 90px;
+    float: left;
+    text-align: center;
+    margin-left: 555px;
+}
+.jq_button_div a{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #f44848;
+    color: white;
+    left: 0px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 
 /*
 公共方法
@@ -430,3 +671,5 @@ margin-top: 5px;
 .clickCursor{cursor: pointer}
 .displayNo{display: none}
 .displayBlock{display: block}
+.colorBlu{color: #77afea;border-bottom: 2px solid #77afea}
+.colorBlac{color: #222222;border-bottom: 2px solid #222222}

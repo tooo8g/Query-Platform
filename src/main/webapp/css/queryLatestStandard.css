@@ -29,7 +29,7 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .si_title p{
     float: left;
-    color: #222222;
+    color: #bbbbbb;
 }
 .si_search{
     padding:20px  0;
@@ -62,16 +62,18 @@ img{border: none;margin: 0px;padding: 0px;}
     padding-right: 5px;
     font-size: 14px;
     cursor: pointer;
+    border-radius: 4px;
 }
 .si_tableDiv{
     width: 1200px;
     float: left;
-    min-height: 400px;
+    min-height: 407px;
 }
 .si_table{
     width: 1200px;
     table-layout:fixed;
     border-collapse: collapse;
+    border-bottom: 1px solid #dddddd;
 }
 .si_thead{
     width: 1200px;
@@ -91,8 +93,9 @@ img{border: none;margin: 0px;padding: 0px;}
     text-align: center;
 }
 .si_tbody tr,.si_tbody td{
-    border: 1px solid #dddddd;
-    border-top: none;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-top: 1px dotted #dddddd;
     color: #222222;}
 .si_tbody td{
     overflow:hidden;
@@ -105,16 +108,17 @@ img{border: none;margin: 0px;padding: 0px;}
     height: 20px;
     float: right;
     line-height: 20px;
-    margin-right: 20px;
     text-align: right;
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
-.listperAuth_button p, .listperAuth_button a{
+.listperAuth_button p{
     float: left;
-    padding: 0 5px;
+    padding: 0 10px;
 }
-
+.listperAuth_button a{
+    float: left;
+}
 .clickCursor {
     cursor: pointer;
 }

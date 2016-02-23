@@ -56,13 +56,13 @@ $(function(){
                 }
                 $(".pageNo").val(PageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a>上一页</a>"
+                asButton+="<a><img src='../images/sts_4.png'></a>"
                 asButton+="<p>"+PageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=PageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a>下一页</a>"
+                    asButton+="<a><img src='../images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").append(asButton)
             }
@@ -140,13 +140,13 @@ function search_a_button(){
                 }
                 $(".pageNo").val(pageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a>上一页</a>"
+                asButton+="<a><img src='../images/sts_4.png'></a>"
                 asButton+="<p>"+pageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=pageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a>下一页</a>"
+                    asButton+="<a><img src='../images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").append(asButton)
             }
@@ -198,13 +198,13 @@ function itemShowButton(str){
                 }
                 $(".pageNo").val(pageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a>上一页</a>"
+                asButton+="<a><img src='../images/sts_4.png'></a>"
                 asButton+="<p>"+pageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=pageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a>下一页</a>"
+                    asButton+="<a><img src='../images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").append(asButton)
             }
@@ -246,15 +246,15 @@ function as_details(str){
 
             var pisContent=""
             var cert_detail=bzxx[i].cert_detail
-
             for(var j=0;j<cert_detail.length;j++){
-                pisContent+="<li>"
-                pisContent+="<p>"+cert_detail[j].product_code+"</p>"
-                pisContent+="<p id='xinghao'>"+cert_detail[j].specification+"</p>"
-                pisContent+="<p id='zhuangtai'>"+cert_detail[j].specification_status+"</p>"
-                pisContent+="</li>"
+                pisContent+="<tr>"
+                pisContent+="<td>"+cert_detail[j].product_code+"</td>"
+                pisContent+="<td id='xinghao'>"+cert_detail[j].specification+"</td>"
+                pisContent+="<td id='zhuangtai'>"+cert_detail[j].specification_status+"</td>"
+                pisContent+="</tr>"
             }
-            $(".pis_content_ul").append(pisContent)
+            $(".show2_tbody").html("")
+            $(".show2_tbody").append(pisContent)
         }
     }
     pis+="</ul>"
@@ -265,8 +265,15 @@ function as_details(str){
     if(prShHeight<docuHeight){
         $(".productInformation").height(docuHeight)
     }
-    var pisConHeight=docuHeight-320
-    $(".pis_content").height(pisConHeight)
+
+    /*给详情页绑定一个click事件，点击productInformation之外的地方，调用pis_close方法*/
+    $(".productInformation").on("click",function(event){
+        event.stopPropagation();
+        var evt = event.srcElement ? event.srcElement : event.target;
+        if(evt.id=='productInformation'){
+            pis_close()
+        }
+    });
 }
 
 //关闭证书详情页
@@ -335,16 +342,16 @@ function goPage(str,start,limit,isGo){
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+preStartRow+"','"+limitValue+"','pre')>上一页</a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
             }else{
-                asButton+="<a>上一页</a>"
+                asButton+="<a><img src='../images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')>下一页</a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
             }else{
-                asButton+="<a>下一页</a>"
+                asButton+="<a><img src='../images/sts_5.png'></a>"
             }
             $(".listperAuth_button").append(asButton)
         }
@@ -368,21 +375,21 @@ function searchCatalogList(){
         data:"",
         type:"get",
         dataType : 'json',
-        success:function(data){
+        success:function(str){
             $(".itemShow").removeClass("displayNo").addClass("displayBlock")
-            list_json=data;
-            for(var i = 0 ; i < list_json.childs.length ; i++){
-                if(list_json.childs[i].name_title){
-                    $(".itemShowList").append("<a href='javaScript:;'  num='"+i+"'>"+list_json.childs[i].name_title+"</a>")
+            list_json=str;
+            for(var i = 0 ; i < str.childs.length ; i++){
+                if(str.childs[i].name_title){
+                    $(".mulluShow").append("<a href='javaScript:;' class='claCapital'  num='"+i+"'>"+str.childs[i].name_title+"</a>")
                 }else{
-                    $(".itemShowList").append("<a  num='"+i+"'>"+list_json.childs[i].name+"</a>")
+                    $(".mulluShow").append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+str.childs[i].name+" </p><img src='../images/as_2.png'></a>")
                 }
             }
-          //获取页面可视区域，然后确定showItem的高度
-            var docuHeight=$(document).height()  //页面可视区域
-            var sihHeight=docuHeight-250
-            $(".showItem").height(sihHeight)   
-
+            mousewheel_fn('itemShowList','mulluShow','scrollShow','scrollSh')
+            //获取页面可视区域，然后确定showItem的高度
+            var sihHeight=$("#itemShow").height()
+            $(".as").height(sihHeight+81)
+            //$(".showItem").height(sihHeight)
         },
         error:function(){
             alert("链接错误！");
@@ -397,35 +404,35 @@ function itemShowList(append_dom,data){
         append_dom.html("");
         for (var i = 0; i < data.length; i++) {
             if(data[i].name_title){
-                append_dom.append("<a href='javaScript:;'  num='" + i + "'>" + data[i].name_title + "</a>");
+                append_dom.append("<a href='javaScript:;' class='claCapital'  num='"+i+"'>"+data[i].name_title+"</a>")
             }else{
-                append_dom.append("<a  num='" + i + "' class='itemName''>" + data[i].name + "</a>");
+                append_dom.append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+data[i].name+" </p><img src='../images/as_2.png'></a>")
             }
         };
         append_dom.on("click","a",function() {
             list_n = $(this).attr("num");
             var itemShowList_data=data[list_n].childs;
-            class_num = parseInt(append_dom.attr("class_num")) + 1 ;
-
+            class_num = parseInt(append_dom.parent().attr("class_num")) + 1 ;
             for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
-                if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().attr("class_num") ){
+                if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().parent().attr("class_num") ){
                     $(".itemShow .showItem").eq(i).remove();
                 }
             };
             if(itemShowList_data){
                 $(".itemShow").append("<div class='itemShowList"+class_num+" showItem'></div>");
-                $(".itemShowList"+class_num).attr("class_num",class_num);
-                itemShowList($(".itemShowList"+class_num),itemShowList_data);
+                $(".itemShowList"+class_num).append("<div class='mulluShow"+class_num+" mulluShowSh'></div>")
+                $(".itemShowList"+class_num).append("<div id='scrollShow"+class_num+"' class='scrollShow'><div id='scrollSh"+class_num+"' class='scrollSh'></div></div>");
+                $(".itemShowList" + class_num).attr("class_num", class_num);
+                itemShowList($(".mulluShow" + class_num), itemShowList_data);
+                mousewheel_fn("itemShowList" + class_num,"mulluShow" + class_num,"scrollShow"+class_num,"scrollSh"+class_num)
             }else{
-                if($(this).hasClass('itemName')){
+                if($(this).hasClass('clas')){
                     thisText=$(this).html()
                     itemShowButton(thisText)
                 }
             };
         });
-        var docuHeight=$(document).height()  //页面可视区域
-        var sihHeight=docuHeight-250
-        $(".showItem").height(sihHeight)
+
     }
 }
 

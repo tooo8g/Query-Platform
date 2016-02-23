@@ -17,19 +17,19 @@ img{border: none;margin: 0px;padding: 0px;}
 
 /*authenSearch*/
 .as{
-     width:1200px;
-    margin:40px auto;
+    width: 1200px;
+    height: auto;
     overflow: hidden;
-
+    margin: 0 auto 80px;
 }
 .as_title{
     width: 1200px;
-    height: 35px;
-    line-height: 35px;
+    height: 12px;
+    line-height: 12px;
 }
 .as_title p{
-    color: black;
-    float:left;
+    float: left;
+    color: #bbbbbb;
 }
 
 .as_left{
@@ -37,16 +37,62 @@ img{border: none;margin: 0px;padding: 0px;}
     border: 1px solid #dddddd;
     float: left;
     position:relative;
+    margin-top: 20px;
 }
-.as_left p{
+/*.as_left p{*/
+/*text-align: center;*/
+/*line-height: 50px;*/
+/*border-bottom: 1px solid #dddddd;*/
+/*color: black;*/
+/*font-size: 14px;*/
+/*}*/
+.mulluShowSh{
+    width: 200px;
+    height: 602px;
+    overflow: hidden;
+}
+.left_title_p{
     text-align: center;
-    line-height: 50px;
+    height: 60px;
     border-bottom: 1px solid #dddddd;
-    color: black;
-    font-size: 14px;
+    color: #222222;
+    background-color: #f0f0f0;
 }
+.title_p{
+    width: 78px;
+    font-size: 18px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #222222;
+    float: left;
+    margin: 15px 75px;
+}
+
+.asLeft_ul{
+    width: 228px;
+    background-color: #fafafa;
+    float: left;
+}
+.as_left ul{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: left;
+}
+.as_left ul li{
+    margin-top: 20px;
+    line-height: 16px;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.as_left ul li:hover{
+    color: red;
+}
+.as_left ul li:first-child{
+    margin-top: 0px;
+}
+
 .item{
-    width: 188px;
+    width: 178px;
     line-height: 30px;
     padding-left: 20px;
     padding-right: 20px;
@@ -57,16 +103,19 @@ img{border: none;margin: 0px;padding: 0px;}
     position: relative;
 }
 .itemShow{
-    width: 953px;
-    height: auto;
-    overflow: auto;
-    position: absolute;
+    width: 942px;
+    height: 602px;
     border: 1px solid #dddddd;
-    left: 244px;
-    top: 50px;
+    position: absolute;
+    left: 248px;
+    top: 26px;
     background-color: #ffffff;
+    overflow: hidden;
 }
-
+#itemShow{
+    padding-left: 0px;
+    cursor: auto;
+}
 #itemShow_title{
     width: 953px;
     height: 30px;
@@ -80,16 +129,62 @@ img{border: none;margin: 0px;padding: 0px;}
     float: right;
     cursor: pointer;
 }
-.showItem{
-    width: 228px;
+#showItem0{
+    width: 112px;
     float: left;
+    min-height: 602px;
+    padding-right: 6px;
 }
-.showItem a{
+#showItem0 p{
+    width: 48px;
+    height: 12px;
+    text-align: left;
+    float: left;
+    overflow: hidden;
+}
+.showItem{
+    width: 200px;
+    float: left;
+    padding-right: 6px;
+    min-height: 602px;
+    position: relative;
+}
+.itemShow a{
     display: block;
-    width: 208px;
-    line-height: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
+}
+.itemShow p{
+    width: 135px;
+    height: 12px;
+    text-align: left;
+    float: left;
+    overflow: hidden;
+}
+.itemShow img{
+    margin-right: 15px;
+}
+
+.itemShowList{
+    background-color: #fafafa;
+}
+.mulluShow{
+    width: 112px;
+    height: 602px;
+    overflow: hidden;
+}
+.claCapital{
+    margin-left: 20px;
+    width: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right:0px;
+}
+.clas{
+    height: auto;
+    margin-left: 40px;
+    margin-top: 30px;
     cursor: pointer;
     color:#000000;
 }
@@ -97,53 +192,56 @@ img{border: none;margin: 0px;padding: 0px;}
 .as_right{
     width: 953px;
     height:auto;
-    min-height:670px;
     margin-left: 15px;
     float: left;
-    border: 1px solid #dddddd;
+    margin-top: 20px;
 }
 .a_search{
-    padding:15px 0px;
+    width: 270px;
+    padding:0px 5px 0px 0px;
     text-align: right;
-    padding-right: 30px;
-    border-bottom: 1px solid #dddddd;
+    float: right;
 }
 .serAInput{
-    color: #000000;
-    margin-left: 600px;
-    height: 26px;
+    border: 1px solid #dddddd;
+    color: #222222;
+    width: 193px;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 7px;
+    padding-left: 5px;
 }
 .search_a_btn{
     height: 30px;
     width: 80px;
-    cursor: pointer
-}
-.a_search a{
-    width: auto;
-    height: 18px;
-    line-height: 20px;
-    border: 1px solid #dddddd;
-    padding: 5px 10px;
     cursor: pointer;
-    margin-left: 5px;
-    color: black;
+}
+.search_a_btn{
+    width: auto;
+    float: right;
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    background-color:#f44848;
+    color: white;
+    margin-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
-.a_title,.a_tishi{
-    width: 953px;
-    height: 35px;
-    line-height:35px;
+.a_title{
+    width: 250px;
+    height: 27px;
+    line-height:27px;
     font-size: 14px;
-    border-bottom: 1px solid #dddddd;
+    float: left;
 }
 .a_title p{
     float: left;
     padding: 0 10px;
-    cursor: pointer;
-}
-.a_tishi span,.a_tishi p{
-	padding:0 10px;
-	float: left
 }
 #as_num{
     float: left;
@@ -155,14 +253,16 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .asTable{
     width: 953px;
-    min-height: 520px;
+    min-height: 407px;
     float: left;
+    margin-top: 20px;
 }
 .as_tbody{
     width: 943px;
     font-size: 12px;
     text-align: center;}
 .as_tbody a{
+    color: #77afea;
     cursor: pointer
 }
 .as_tbody tr,.as_tbody td{
@@ -173,14 +273,16 @@ img{border: none;margin: 0px;padding: 0px;}
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
-    height: 40px;
+    padding: 10px 5px;
 }
-.as_table{width: 943px;
+.as_table{
+    width: 943px;
     table-layout:fixed;
     border-collapse: collapse;
     margin-left: 5px;
-    margin-top: 5px;}
-.as_thead{width: 943px;
+}
+.as_thead{
+    width: 943px;
     font-size: 14px;
     text-align: center;
     background-color: #fafafa;
@@ -188,26 +290,30 @@ img{border: none;margin: 0px;padding: 0px;}
 .as_thead tr,.as_thead td{
     border: 1px solid #dddddd;
     color: black;
-    height:40px;
+    height:35px;
 }
 
 .listperAuth_button{
     height: 20px;
     float: right;
     line-height: 20px;
-    margin-right: 20px;
+    margin-right: 5px;
+    margin-top: 20px;
     text-align: right;
     font-size: 14px;
 }
-.listperAuth_button p, .listperAuth_button a{
+.listperAuth_button p{
     float: left;
-    padding: 0 5px;
+    padding: 0 10px;
+}
+.listperAuth_button a{
+    float: left;
 }
 
 /*productInformation*/
 .productInformation{
     width:100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(200, 200, 200, 0.8);
     position: absolute;
     left: 0;
     top: 0;
@@ -224,96 +330,133 @@ img{border: none;margin: 0px;padding: 0px;}
     height: auto;
     float: left;
     background-color: #ffffff;
-    margin-bottom:20px;
-    margin-top:100px;
+    /*margin-bottom:185px;*/
+    margin-top:130px;
+}
+.product_infor_title{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    background-color: #eeeeee;
+}
+.product_infor_title p{
+    float: left;
+    margin-left: 20px;
+    font-size: 14px;
+    color: #c8c8c8;
+}
+.product_infor_title a{
+    float: right;
+    margin-right: 10px;
+    height: 35px;
+    cursor: pointer;
+}
+.product_infor_title img{
+    margin-top: 9px;
 }
 .product_infor_show1{
-    width: 600px;
+    width: 1200px;
     height: auto;
     float: left;
-    margin-top:30px;
+    margin-top:20px;
 }
 .product_infor_show1 p{
-    width: 150px;
+    width: 140px;
     height: 20px;
     line-height: 20px;
     float: left;
     text-align: right;
+    font-size: 12px;
+    color: #777777;
 }
-
 
 .product_infor_show1 span{
     display:block;
-    width: 440px;
-    height:20px;
+    width: 1010px;
     line-height: 20px;
     float: left;
     text-align: left;
-    margin-left: 10px;
+    margin-left: 5px;
+    color: #222222;
 }
 
 .product_infor_show2{
-    width: 570px;
-    float: left;
-    height: auto;
-    margin-top: 30px;
-    text-align: center;
-    margin-left: 20px;
-    overflow: hidden;
-}
-.pis_title{
-    width: 570px;
-    float: left;
-}
-.pis_title p{
-    width: 180px;
-    float: left;
-    text-align: center;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-.pis_content{
-    width: 570px;
-    float: left;
-    margin-top: 5px;
+    width: 1160px;
+    height: 212px;
     overflow-y:auto;
     overflow-x:hidden;
-}
-.pis_content li{
-    width: 570px;
-    line-height: 20px;
     float: left;
+    margin:35px 20px 0 20px;
 }
-.pis_content li p{
-    width: 180px;
-    height:20px;
-    line-height: 20px;
-    float: left;
-    padding-left: 5px;
-    padding-right: 5px;
-    text-align: center;
+.show2_table{
+    width: 1160px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-bottom: 1px solid #dddddd;
 }
-#xinghao{
-	width:270px;
-	text-align: center;
-}
-#zhuangtai{
-	 width: 80px;
-	 text-align: center;
-}
-.pis_button_div{
+.show2_thead {
     width: 1200px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fafafa;
+}
+.show2_thead tr, .show2_thead td {
+    border: 1px solid #dddddd;
+    color: #222222;
+    font-size: 14px;
+    height: 35px;
+}
+.show2_tbody{
+    width: 1200px;
+    font-size: 12px;
+    text-align: center;
+}
+.show2_tbody tr, .show2_tbody td {
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-top: 1px dotted #dddddd;
+    color: #222222;
+}
+.show2_tbody td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 10px 5px;
+}
+
+
+.pis_button_div{
+    width: 90px;
     float: left;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom:20px;
+    margin-top: 40px;
+    margin-bottom:40px;
+    margin-left: 555px;
 }
-.pis_button{
-    width: 80px;
+.pis_button_div a{
+    display: block;
     height: 30px;
     line-height: 30px;
     text-align: center;
+    background-color: #f44848;
+    color: white;
+    left: 0px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
 }
+
+.scrollShow{
+    width: 6px;
+    height: 602px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: #b3b4b8;
+    border-radius: 3px;
+}
+
+.scrollSh{ width:6px;background:#6b6c6e;position:absolute;z-index:2;border-radius: 3px;}
 
 /*公用*/
 .displayNo{display: none}
@@ -322,3 +465,8 @@ img{border: none;margin: 0px;padding: 0px;}
 .colorRed{color:red}
 .colorHui{color:black;}
 .clickCursor{cursor: pointer}
+
+.iseOne{font-size: 16px;color: #222222}
+.iseTwo{font-size: 14px;color: #222222}
+.iswOne{font-size: 16px;color: #777777}
+.iswTwo{font-size: 14px;color: #777777}

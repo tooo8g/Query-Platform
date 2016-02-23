@@ -30,7 +30,10 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .sts_title p{
     float: left;
-    color: #222222;
+    color: #bbbbbb;
+}
+.sts_title_add a{
+    color: #bbbbbb;
 }
 .sts_left{
     width: 228px;
@@ -123,7 +126,7 @@ img{border: none;margin: 0px;padding: 0px;}
     color: #dddddd;
     border: 1px solid #dddddd;
     padding-left: 5px;
-    width: 200px;
+    width: 193px;
 }
 .buttonForm{
     width: auto;
@@ -138,6 +141,7 @@ img{border: none;margin: 0px;padding: 0px;}
     padding-right: 5px;
     font-size: 14px;
     cursor: pointer;
+    border-radius: 4px;
 }
 .fileStatus{
     width: 950px;
@@ -178,8 +182,8 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .sts_table{
     margin-top: 15px;
-    padding: 5px 5px 10px 5px;
-    min-height: 400px;
+    padding: 5px 5px 0px 5px;
+    min-height: 407px;
 }
 .sts_search_table{
     width:940px;
@@ -226,97 +230,19 @@ img{border: none;margin: 0px;padding: 0px;}
     height: 20px;
     float: right;
     line-height: 20px;
-    margin-right: 20px;
+    margin-right: 6px;
     margin-bottom: 20px;
+    margin-top: 20px;
     text-align: right;
     font-size: 14px;
 }
-.listperAuth_button p, .listperAuth_button a{
+.listperAuth_button p{
     float: left;
-    padding: 0 5px;
-    font-size: 12px;
-    color: #222222;
+    padding: 0 10px;
 }
-
-/*头部*/
-.head{
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    background-color: #dddddd;
-}
-.head_show{
-    width: 1200px;
-    margin:0 auto;
-}
-.head_left{
+.listperAuth_button a{
     float: left;
 }
-.head_left p{
-    color: #777777;
-    float: left;
-    padding-right: 20px;
-}
-.head_right{
-    float: right;
-}
-.head_right a{
-    font-size: 14px;
-    color: #777777;
-    margin-left: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-.head_right img{
-    margin-left: 3px;
-}
-/*logo*/
-.logo{
-    width: 100%;
-}
-.logo_img{
-    width: 1200px;
-    margin: 20px auto;
-}
-
-/*底部*/
-.foot{
-    width: 100%;
-    float: left;
-    border-bottom: 0px;
-}
-.foot1,.foot2{
-    height: 12px;
-    line-height: 12px;
-    width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    color: #777777;
-}
-.foot1 a{
-    color: #777777;
-    cursor: pointer;
-}
-.foot2 p{
-    margin-top: 15px;
-}
-.foot3{
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    background-color: #dddddd;
-    margin-top: 20px;
-}
-.foot3_p{
-    width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-.foot3_p p{
-    font-size: 12px;
-    color: #222222;
-}
-
 /*颜色 公用部分*/
 .colorRed{color: #f44848}
 .colorHhei{color: #222222}
