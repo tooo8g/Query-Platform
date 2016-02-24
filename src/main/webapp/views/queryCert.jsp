@@ -52,6 +52,7 @@
             <table class="as_table">
                 <thead class="as_thead">
                 <tr>
+                    <td></td>
                     <td>证书状态</td>
                     <td>认证单元</td>
                     <td>企业名称</td>

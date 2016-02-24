@@ -81,14 +81,20 @@ $(function(){
         var num=1;
 
         for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
-            if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().attr("class_num") ){
+            if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().parent().attr("class_num") ){
                 $(".itemShow .showItem").eq(i).remove();
             }
         };
         if(itemShowList_data){
-            $(".itemShow").append("<div class='itemShowList"+num+" showItem'></div>");
-            $(".itemShowList"+num).attr("class_num",1);
-            itemShowList($(".itemShowList"+num),itemShowList_data);
+//            $(".itemShow").append("<div class='itemShowList"+num+" showItem'></div>");
+//            $(".itemShowList"+num).attr("class_num",1);
+        	 $(".itemShow").append("<div class='itemShowList"+num+" showItem'></div>");
+             $(".itemShowList"+num).append("<div class='mulluShow"+num+" mulluShowSh'></div>")
+             $(".itemShowList"+num).append("<div id='scrollShow"+num+"' class='scrollShow'><div id='scrollSh"+num+"' class='scrollSh'></div></div>");
+             $(".itemShowList" + num).attr("class_num", 1);
+//            itemShowList($(".itemShowList"+num),itemShowList_data);
+             itemShowList($(".mulluShow" + num), itemShowList_data);
+             mousewheel_fn("itemShowList" + num,"mulluShow" + num,"scrollShow"+num,"scrollSh"+num)
         }
     });
 })
@@ -228,20 +234,20 @@ function as_details(str){
     for(var i=0;i<bzxx.length;i++){
         if(bzxx[i]._id.$oid==str){
             pis+="<li>"
-            pis+="<p>企业名称：</p><span>"+bzxx[i].company_name+"</span>"
-            pis+="<p>证书编号：</p><span>"+bzxx[i].cert_num+"</span>"
-            pis+="<p>颁发单位：</p><span>"+bzxx[i].issue_organization+"</span>"
-            pis+="<p>产品类别：</p><span>"+bzxx[i].product_kind+"</span>"
-            pis+="<p>认证规则名称：</p><span>"+bzxx[i].cert_name+"</span>"
-            pis+="<p>认证单元：</p><span>"+bzxx[i].cert_unit+"</span>"
-            pis+="<p>认证标准和技术要求：</p><span>"+bzxx[i].cert_standards+"</span>"
-            pis+="<p>注册地址：</p><span>"+bzxx[i].reg_addr+"</span>"
-            pis+="<p>制造地址：</p><span>"+bzxx[i].product_addr+"</span>"
-            pis+="<p>证书变更情况：</p><span>"+bzxx[i].cert_condition+"</span>"
-            pis+="<p>发证日期：</p><span>"+timeStamp2String(bzxx[i].publish_date.$date)+"</span>"
-            pis+="<p>有效期：</p><span>"+timeStamp2String(bzxx[i].valid_date.$date)+"</span>"
-            pis+="<p>公告号：</p><span>"+bzxx[i].notification_number+"</span>"
-            pis+="<p>证书状态：</p><span>"+bzxx[i].cert_status+"</span>"
+            pis+="<p>企业名称：</p><div>"+bzxx[i].company_name+"</div>"
+            pis+="<p>证书编号：</p><div>"+bzxx[i].cert_num+"</div>"
+            pis+="<p>颁发单位：</p><div>"+bzxx[i].issue_organization+"</div>"
+            pis+="<p>产品类别：</p><div>"+bzxx[i].product_kind+"</div>"
+            pis+="<p>认证规则名称：</p><div>"+bzxx[i].cert_name+"</div>"
+            pis+="<p>认证单元：</p><div>"+bzxx[i].cert_unit+"</div>"
+            pis+="<p>认证标准和技术要求：</p><div>"+bzxx[i].cert_standards+"</div>"
+            pis+="<p>注册地址：</p><div>"+bzxx[i].reg_addr+"</div>"
+            pis+="<p>制造地址：</p><div>"+bzxx[i].product_addr+"</div>"
+            pis+="<p>证书变更情况：</p><div>"+bzxx[i].cert_condition+"</div>"
+            pis+="<p>发证日期：</p><div>"+timeStamp2String(bzxx[i].publish_date.$date)+"</div>"
+            pis+="<p>有效期：</p><div>"+timeStamp2String(bzxx[i].valid_date.$date)+"</div>"
+            pis+="<p>公告号：</p><div>"+bzxx[i].notification_number+"</div>"
+            pis+="<p>证书状态：</p><div>"+bzxx[i].cert_status+"</div>"
             pis+="</li>"
 
             var pisContent=""
@@ -378,6 +384,7 @@ function searchCatalogList(){
         success:function(str){
             $(".itemShow").removeClass("displayNo").addClass("displayBlock")
             list_json=str;
+            $(".mulluShow").html("")
             for(var i = 0 ; i < str.childs.length ; i++){
                 if(str.childs[i].name_title){
                     $(".mulluShow").append("<a href='javaScript:;' class='claCapital'  num='"+i+"'>"+str.childs[i].name_title+"</a>")
@@ -412,7 +419,7 @@ function itemShowList(append_dom,data){
         append_dom.on("click","a",function() {
             list_n = $(this).attr("num");
             var itemShowList_data=data[list_n].childs;
-            class_num = parseInt(append_dom.parent().attr("class_num")) + 1 ;
+            class_num = parseInt(append_dom.parent().attr("class_num")) + 1 ;           
             for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
                 if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().parent().attr("class_num") ){
                     $(".itemShow .showItem").eq(i).remove();
@@ -442,6 +449,8 @@ function closeItemShow(){
     for(var i = $(".itemShow .showItem").length;i >=0 ;i-- ){
         if($(".itemShow .showItem").eq(i).attr("class_num") == 0 ){
             $(".itemShow .showItem").eq(i).html("");
+            $(".itemShowList").append("<div class='mulluShow'></div><div id='scrollShow' class='scrollShow'><div id='scrollSh' class='scrollSh'></div></div>")
+             $(".jq_message_content").height(526)        
         }
         else{
             $(".itemShow .showItem").eq(i).remove();

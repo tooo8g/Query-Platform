@@ -22,12 +22,14 @@
     </div>
     <div class="jq_message_left">
         <div class="list_tittle">
-            物资类别
+            <div class="title_p">物资类别</div>
         </div>
-        <ul class="list_content">
+        <div class="jq_message_left_ul">
+           <ul class="list_content">
 
-        </ul>
-        <div class="itemShow displayNo">
+           </ul> 
+        </div>
+        <div class="itemShow displayNo" id="itemShow">
             <div class="itemShowList showItem" class_num="0" id="showItem0">
                 <div class="mulluShowSh"></div>
                 <div id="scrollShow" class="scrollShow">
@@ -119,7 +121,7 @@
 
     </div>
 </div>
-<div class="priceInformation displayNo">
+<div class="priceInformation displayNo" id="priceInformation">
     <input class="saveId" type="hidden" value="">
     <div class="showHisPrice">
         <div class="hisPrice">

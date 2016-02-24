@@ -192,6 +192,7 @@ img{border: none;margin: 0px;padding: 0px;}
 .as_right{
     width: 953px;
     height:auto;
+    min-height:569px;
     margin-left: 15px;
     float: left;
     margin-top: 20px;
@@ -370,9 +371,10 @@ img{border: none;margin: 0px;padding: 0px;}
     color: #777777;
 }
 
-.product_infor_show1 span{
+.product_infor_show1 div{
     display:block;
     width: 1010px;
+    height:20px;
     line-height: 20px;
     float: left;
     text-align: left;

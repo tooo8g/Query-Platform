@@ -31,7 +31,7 @@ $(function(){
         var num=1;
 
         for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
-            if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().attr("class_num") ){
+            if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().parent().attr("class_num") ){
                 $(".itemShow .showItem").eq(i).remove();
             }
         };
@@ -118,6 +118,7 @@ $(function(){
             alert("链接失败")
         }
     })
+    
 })
 
 /*
@@ -128,6 +129,7 @@ function showChilds(str){
     $(".itemShow").removeClass("displayNo").addClass("displayBlock");
     var muluJson //目录JSON
     muluJson = list_json.childs[str].childs
+    $(".mulluShowSh").html("")
     for (var i = 0; i < muluJson.length; i++) {
         $(".mulluShowSh").append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+muluJson[i].name+" </p><img src='../images/as_2.png'></a>")
     }
@@ -135,6 +137,16 @@ function showChilds(str){
     var sihHeight=$("#itemShow").height()
     $(".jq_message_content").height(sihHeight+135)
     mousewheel_fn('itemShowList','mulluShowSh','scrollShow','scrollSh')
+    
+    /*给itemShow绑定一个click事件，点击itemShow之外的地方，调用closeItemShow方法*/
+//    $(".itemShow").on("click",function(event){
+//        event.stopPropagation();
+//        var evt = event.srcElement ? event.srcElement : event.target;
+//        alert(evt.id)
+//        if(evt.id!='itemShow'){
+//        	closeItemShow()
+//        }
+//    });
 }
 
 //获取二 三级目录
@@ -151,7 +163,7 @@ function itemShowList(append_dom,data){
             class_num = parseInt(append_dom.attr("class_num")) + 1 ;
 
             for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
-                if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().attr("class_num") ){
+                if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().parent().attr("class_num") ){
                     $(".itemShow .showItem").eq(i).remove();
                 }
             };
@@ -335,6 +347,8 @@ function closeItemShow(){
     for(var i = $(".itemShow .showItem").length;i >=0 ;i-- ){
         if($(".itemShow .showItem").eq(i).attr("class_num") == 0 ){
             $(".itemShow .showItem").eq(i).html("");
+            $(".itemShowList").append("<div class='mulluShowSh'></div><div id='scrollShow' class='scrollShow'><div id='scrollSh' class='scrollSh'></div></div>")
+            $(".jq_message_content").height(569)
         }
         else{
             $(".itemShow .showItem").eq(i).remove();
@@ -462,12 +476,12 @@ function priSel_details(str){
     $(".specification1").text(specification)
     $(".texture").text(texture)
 
-    hisPrice_standard_p+="<p>"+name+"</p>"
-    hisPrice_standard_p+="<p>"+specification+"</p>"
-    hisPrice_standard_p+="<p>"+texture+"</p>"
-    hisPrice_standard_p+="<p class='priceComp'>"+company+"</p>"
-    hisPrice_standard_p+="<p>"+area+"</p>"
-    hisPrice_standard_p+="<p>"+city+"</p>"
+    hisPrice_standard_p+="<td>"+name+"</td>"
+    hisPrice_standard_p+="<td>"+specification+"</td>"
+    hisPrice_standard_p+="<td>"+texture+"</td>"
+    hisPrice_standard_p+="<td class='priceComp'>"+company+"</td>"
+    hisPrice_standard_p+="<td>"+area+"</td>"
+    hisPrice_standard_p+="<td>"+city+"</td>"
     $(".hisPrice_standard").append(hisPrice_standard_p)
     /*
      * 通过名称和规格获取厂家
@@ -521,11 +535,20 @@ function priSel_details(str){
     var hisPhHeight=$(".hisPrice").height()
     //当hisPhHeight<docuHeight时，设定新的hisPrice高度
     var newHisHeight
-    newHisHeight=docuHeight-120
+    newHisHeight=docuHeight-191
     if(hisPhHeight<docuHeight){
         $(".priceInformation").height(docuHeight)
         $(".hisPrice").height(newHisHeight)
     }
+    
+    /*给详情页绑定一个click事件，点击productInformation之外的地方，调用closeDetails方法*/
+    $(".priceInformation").on("click",function(event){
+        event.stopPropagation();
+        var evt = event.srcElement ? event.srcElement : event.target;
+        if(evt.id=='priceInformation'){
+        	closeDetails()
+        }
+    });
 }
 
 /*关闭详情页*/
@@ -601,14 +624,13 @@ function selectData(){
             $(".his_tbody").append(hisTbodyList)
 
             var hisPrice_contrast_p="" //保存对照的数据
-            hisPrice_contrast_p+="<p>"+name+"</p>"
-            hisPrice_contrast_p+="<p>"+specification+"</p>"
-            hisPrice_contrast_p+="<p>"+texture+"</p>"
-            hisPrice_contrast_p+="<p class='priceCom'>"+company+"</p>"
-            hisPrice_contrast_p+="<p>"+area+"</p>"
-            hisPrice_contrast_p+="<p>"+city+"</p>"
+            hisPrice_contrast_p+="<td>"+name+"</td>"
+            hisPrice_contrast_p+="<td>"+specification+"</td>"
+            hisPrice_contrast_p+="<td>"+texture+"</td>"
+            hisPrice_contrast_p+="<td class='priceCom'>"+company+"</td>"
+            hisPrice_contrast_p+="<td>"+area+"</td>"
+            hisPrice_contrast_p+="<td>"+city+"</td>"
             $(".hisPrice_contrast").html(" ")
-            $(".hisPrice_contrast").append("<label>对照：</label>")
             $(".hisPrice_contrast").append(hisPrice_contrast_p)
             //通过判断css来确定现在是在数据列表还是指数
             if($("#histyData").hasClass("colorRed")){
