@@ -325,8 +325,12 @@ public class GeneralController {
 			// g.QueryPriceHistory("56a86fcd4d462a721c8496fd", null, null);
 			// g.QueryPriceHistory("56a86fcd4d462a721c8496fd", "设备BBA", "12345",
 			// "石家庄钢铁厂", "石家庄", null, null);
-			g.QueryPriceMenu(null, null);
-		} catch (IOException e) {
+//			g.QueryPriceMenu(null, null);
+//			MongoDirver md = new MongoDirver();
+//			String result = md.queryCertifications("车钩及缓冲装置总成", 0, 10);
+//			System.out.println(result);
+//			md.close();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

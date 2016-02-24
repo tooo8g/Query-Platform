@@ -389,7 +389,7 @@ function searchCatalogList(){
                 if(str.childs[i].name_title){
                     $(".mulluShow").append("<a href='javaScript:;' class='claCapital'  num='"+i+"'>"+str.childs[i].name_title+"</a>")
                 }else{
-                    $(".mulluShow").append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+str.childs[i].name+" </p><img src='../images/as_2.png'></a>")
+                    $(".mulluShow").append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+str.childs[i].name+"</p><img src='../images/as_2.png'></a>")
                 }
             }
             mousewheel_fn('itemShowList','mulluShow','scrollShow','scrollSh')
@@ -413,7 +413,7 @@ function itemShowList(append_dom,data){
             if(data[i].name_title){
                 append_dom.append("<a href='javaScript:;' class='claCapital'  num='"+i+"'>"+data[i].name_title+"</a>")
             }else{
-                append_dom.append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+data[i].name+" </p><img src='../images/as_2.png'></a>")
+                append_dom.append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+data[i].name+"</p><img src='../images/as_2.png'></a>")
             }
         };
         append_dom.on("click","a",function() {

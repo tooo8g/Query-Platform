@@ -131,7 +131,7 @@ function showChilds(str){
     muluJson = list_json.childs[str].childs
     $(".mulluShowSh").html("")
     for (var i = 0; i < muluJson.length; i++) {
-        $(".mulluShowSh").append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+muluJson[i].name+" </p><img src='../images/as_2.png'></a>")
+        $(".mulluShowSh").append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+muluJson[i].name+"</p><img src='../images/as_2.png'></a>")
     }
 
     var sihHeight=$("#itemShow").height()
@@ -155,7 +155,7 @@ function itemShowList(append_dom,data){
     if (data) {
         append_dom.html("");
         for (var i = 0; i < data.length; i++) {
-            append_dom.append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+data[i].name+" </p><img src='../images/as_2.png'></a>")
+            append_dom.append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+data[i].name+"</p><img src='../images/as_2.png'></a>")
         };
         append_dom.on("click","a",function() {
             list_n = $(this).attr("num");
