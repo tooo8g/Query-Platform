@@ -153,8 +153,8 @@
                             <option value="">厂家</option>
                         </select>
                         <label>地区</label>
-                        <select class="region" onchange="regionClick('region')">
-                            <option selected value="全部">全部</option>
+                        <select id="qp_region"  class="region" onchange="regionClick()">
+                            <option value="">全部</option>
                             <option value="华北区">华北区</option>
                             <option value="东北区">东北区</option>
                             <option value="华东区">华东区</option>

@@ -434,7 +434,7 @@ function itemShowList(append_dom,data){
                 mousewheel_fn("itemShowList" + class_num,"mulluShow" + class_num,"scrollShow"+class_num,"scrollSh"+class_num)
             }else{
                 if($(this).hasClass('clas')){
-                    thisText=$(this).html()
+                	thisText=$(this).find("p").html()
                     itemShowButton(thisText)
                 }
             };

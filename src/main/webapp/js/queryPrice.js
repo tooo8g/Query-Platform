@@ -43,7 +43,7 @@ $(function(){
             itemShowList($(".mulluShow" + num), itemShowList_data);
             mousewheel_fn("itemShowList" + num,"mulluShow" + num,"scrollShow"+num,"scrollSh"+num)
         }else{
-            thisText=$(this).html()
+            thisText=$(this).find("p").html()
             itemShowButton(thisText)
         };
     })
@@ -175,7 +175,7 @@ function itemShowList(append_dom,data){
                 itemShowList($(".itemShowList"+class_num),itemShowList_data);
                 mousewheel_fn("itemShowList" + class_num,"mulluShow" + class_num,"scrollShow"+class_num,"scrollSh"+class_num)
             }else{
-                thisText=$(this).html()
+            	 thisText=$(this).find("p").html()
                 itemShowButton(thisText)
             };
         });
@@ -683,7 +683,8 @@ function SelectIndex(){
 function regionClick(str){
     var cityList="" //存放城市
     var selectedValue //选中的value值
-    selectedValue=$("."+str+" option:selected").val()
+//    selectedValue=$("."+str+" option:selected").val()
+    selectedValue=document.getElementById("qp_region").value
     $("."+str+"_city").html(" ")
     if(selectedValue){
         if(selectedValue=="华北区") {
