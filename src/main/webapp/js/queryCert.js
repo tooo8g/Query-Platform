@@ -76,6 +76,16 @@ $(function(){
      调用itemShowList()方法
      */
     $(".itemShowList").on("click","a",function() {
+        var first_word=""
+        if($(this).hasClass("clas")) {
+            $(".itemShow a").removeClass("colorClick").addClass("colorNoClick")
+            $(".itemShow a img").attr("src", "../images/as_2.png")
+            $(this).removeClass("colorNoClick").addClass("colorClick")
+            $(this).find("img").attr("src", "../images/as_3.png")
+            first_word=$(this).attr("first_word")
+            $(".titleNum_"+first_word).removeClass("colorNoClick").addClass("colorClick")
+        }
+
         var list_num = $(this).attr("num");
         var itemShowList_data=list_json.childs[list_num].childs;
         var num=1;
@@ -86,15 +96,21 @@ $(function(){
             }
         };
         if(itemShowList_data){
-//            $(".itemShow").append("<div class='itemShowList"+num+" showItem'></div>");
-//            $(".itemShowList"+num).attr("class_num",1);
         	 $(".itemShow").append("<div class='itemShowList"+num+" showItem'></div>");
-             $(".itemShowList"+num).append("<div class='mulluShow"+num+" mulluShowSh'></div>")
+             $(".itemShowList"+num).append("<div class='mulluShow"+num+" mulluShowSh' name='mulluShowSh'></div>")
              $(".itemShowList"+num).append("<div id='scrollShow"+num+"' class='scrollShow'><div id='scrollSh"+num+"' class='scrollSh'></div></div>");
              $(".itemShowList" + num).attr("class_num", 1);
 //            itemShowList($(".itemShowList"+num),itemShowList_data);
              itemShowList($(".mulluShow" + num), itemShowList_data);
              mousewheel_fn("itemShowList" + num,"mulluShow" + num,"scrollShow"+num,"scrollSh"+num)
+        }
+    });
+
+    /*给body绑定一个click事件，点击itemShow之外的地方，调用closeItemShow方法 */
+    $("body").click(function(event){
+        var evt = event.srcElement ? event.srcElement : event.target;
+        if(evt.getAttribute("name")!="mulluShowSh"&&evt.id!="itemShow"&&evt.tagName!="LI"&&evt.className!="clas"&&evt.tagName!="A"&&evt.tagName!="P"&&evt.tagName!="IMG"){
+            closeItemShow()
         }
     });
 })
@@ -376,6 +392,7 @@ function timeStamp2String(time){
 
 //查找目录列表
 function searchCatalogList(){
+    var first_word = "";
     $.ajax({
         url:"../queryCertMenu_tz",
         data:"",
@@ -387,16 +404,16 @@ function searchCatalogList(){
             $(".mulluShow").html("")
             for(var i = 0 ; i < str.childs.length ; i++){
                 if(str.childs[i].name_title){
-                    $(".mulluShow").append("<a href='javaScript:;' class='claCapital'  num='"+i+"'>"+str.childs[i].name_title+"</a>")
+                    first_word = str.childs[i].name_title;
+                    $(".mulluShow").append("<a href='javaScript:;' class='claCapital colorNoClick titleNum_mulluShow_"+first_word+"'  num='"+i+"'>"+str.childs[i].name_title+"</a>")
                 }else{
-                    $(".mulluShow").append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+str.childs[i].name+"</p><img src='../images/as_2.png'></a>")
+                    $(".mulluShow").append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"' first_word = 'mulluShow_"+first_word+"'><p>"+str.childs[i].name+"</p><img src='../images/as_2.png'></a>")
                 }
             }
             mousewheel_fn('itemShowList','mulluShow','scrollShow','scrollSh')
             //获取页面可视区域，然后确定showItem的高度
             var sihHeight=$("#itemShow").height()
             $(".as").height(sihHeight+81)
-            //$(".showItem").height(sihHeight)
         },
         error:function(){
             alert("链接错误！");
@@ -406,17 +423,30 @@ function searchCatalogList(){
 }
 
 function itemShowList(append_dom,data){
+    var first_word = "";
+    var append_dom_id=""
     var thisText //当前点击对象的text值
     if (data) {
         append_dom.html("");
         for (var i = 0; i < data.length; i++) {
             if(data[i].name_title){
-                append_dom.append("<a href='javaScript:;' class='claCapital'  num='"+i+"'>"+data[i].name_title+"</a>")
+                first_word = data[i].name_title;
+                append_dom.append("<a href='javaScript:;' class='claCapital colorNoClick titleNum_"+append_dom_id+"_"+first_word+"'  num='"+i+"'>"+data[i].name_title+"</a>");
             }else{
-                append_dom.append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+data[i].name+"</p><img src='../images/as_2.png'></a>")
+                append_dom.append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"' first_word = '"+append_dom_id+"_"+first_word+"'><p>"+data[i].name+"</p><img src='../images/as_2.png'></a>")
             }
         };
         append_dom.on("click","a",function() {
+            var first_word=""
+            if($(this).hasClass("clas")){
+                $(this).parent().find("a").removeClass("colorClick").addClass("colorNoClick")
+                $(this).parent().find("a").find("img").attr("src","../images/as_2.png")
+                $(this).removeClass("colorNoClick").addClass("colorClick")
+                $(this).find("img").attr("src","../images/as_3.png")
+                first_word=$(this).attr("first_word")
+                $(".titleNum_"+first_word).removeClass("colorNoClick").addClass("colorClick")
+            }
+
             list_n = $(this).attr("num");
             var itemShowList_data=data[list_n].childs;
             class_num = parseInt(append_dom.parent().attr("class_num")) + 1 ;           
@@ -427,7 +457,7 @@ function itemShowList(append_dom,data){
             };
             if(itemShowList_data){
                 $(".itemShow").append("<div class='itemShowList"+class_num+" showItem'></div>");
-                $(".itemShowList"+class_num).append("<div class='mulluShow"+class_num+" mulluShowSh'></div>")
+                $(".itemShowList"+class_num).append("<div class='mulluShow"+class_num+" mulluShowSh' name='mulluShowSh'></div>")
                 $(".itemShowList"+class_num).append("<div id='scrollShow"+class_num+"' class='scrollShow'><div id='scrollSh"+class_num+"' class='scrollSh'></div></div>");
                 $(".itemShowList" + class_num).attr("class_num", class_num);
                 itemShowList($(".mulluShow" + class_num), itemShowList_data);
@@ -449,7 +479,7 @@ function closeItemShow(){
     for(var i = $(".itemShow .showItem").length;i >=0 ;i-- ){
         if($(".itemShow .showItem").eq(i).attr("class_num") == 0 ){
             $(".itemShow .showItem").eq(i).html("");
-            $(".itemShowList").append("<div class='mulluShow'></div><div id='scrollShow' class='scrollShow'><div id='scrollSh' class='scrollSh'></div></div>")
+            $(".itemShowList").append("<div class='mulluShow' name='mulluShowSh'></div><div id='scrollShow' class='scrollShow'><div id='scrollSh' class='scrollSh'></div></div>")
              $(".jq_message_content").height(526)        
         }
         else{

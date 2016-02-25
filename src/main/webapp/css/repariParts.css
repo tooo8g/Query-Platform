@@ -14,7 +14,10 @@ strong{
 li{list-style: none;}
 a{text-decoration: none;}
 img{border: none;margin: 0px;padding: 0px;}
-
+body{
+    overflow:scroll;
+    overflow-x:hidden;
+}
 /*authenSearch*/
 .as{
     width: 1200px;
@@ -472,3 +475,7 @@ img{border: none;margin: 0px;padding: 0px;}
 .iseTwo{font-size: 14px;color: #222222}
 .iswOne{font-size: 16px;color: #777777}
 .iswTwo{font-size: 14px;color: #777777}
+
+.colorClick{color:#f44848}
+.colorNoClickLi{color:#222222}
+.colorNoClick{color:#777777}

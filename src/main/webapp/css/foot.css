@@ -1,9 +1,8 @@
 /*底部*/
 .foot{
     width: 100%;
-    float: left;
-    border-bottom: 0px;
-    bottom: 0;
+    bottom: 0px;
+    left: 0px;
 }
 .foot1,.foot2{
     height: 12px;

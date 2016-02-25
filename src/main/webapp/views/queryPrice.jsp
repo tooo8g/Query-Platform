@@ -31,7 +31,7 @@
         </div>
         <div class="itemShow displayNo" id="itemShow">
             <div class="itemShowList showItem" class_num="0" id="showItem0">
-                <div class="mulluShowSh"></div>
+                <div class="mulluShowSh" name="mulluShowSh"></div>
                 <div id="scrollShow" class="scrollShow">
                     <div id="scrollSh" class="scrollSh"></div>
                 </div>
@@ -153,7 +153,7 @@
                             <option value="">厂家</option>
                         </select>
                         <label>地区</label>
-                        <select id="qp_region"  class="region" onchange="regionClick()">
+                        <select id="qp_region"  class="qp_region" onchange="regionClick('qp_region)">
                             <option value="">全部</option>
                             <option value="华北区">华北区</option>
                             <option value="东北区">东北区</option>
@@ -164,7 +164,7 @@
                             <option value="西南区">西南区</option>
                         </select>
                         <label>城市</label>
-                        <select class="region_city">
+                        <select class="qp_region_city">
                             <option value="">城市</option>
                         </select>
                     </div>

@@ -19,13 +19,17 @@ $(function(){
             var dataChilds
             dataChilds=list_json.childs
             for(var i=0;i<dataChilds.length;i++){
-                list_content+="<li onclick=showChilds("+i+")>"+dataChilds[i].name+"</li>"
+                list_content+="<li class='list_content"+i+" colorNoClickLi' onclick=showChilds("+i+")>"+dataChilds[i].name+"</li>"
             }
             $(".list_content").append(list_content)
         }
     })
     //给目录添加click事件
     $(".itemShowList").on("click","a",function() {
+        $(".itemShow a").removeClass("colorClick").addClass("colorNoClick")
+        $(".itemShow a img").attr("src","../images/as_2.png")
+        $(this).removeClass("colorNoClick").addClass("colorClick")
+        $(this).find("img").attr("src","../images/as_3.png")
         var list_num = $(this).attr("num");
         var itemShowList_data=list_json.childs[0].childs[list_num].childs
         var num=1;
@@ -37,7 +41,7 @@ $(function(){
         };
         if(itemShowList_data){
             $(".itemShow").append("<div class='itemShowList"+num+" showItem'></div>");
-            $(".itemShowList"+num).append("<div class='mulluShow"+num+" mulluShowSh'></div>")
+            $(".itemShowList"+num).append("<div class='mulluShow"+num+" mulluShowSh' name='mulluShowSh'></div>")
             $(".itemShowList"+num).append("<div id='scrollShow"+num+"' class='scrollShow'><div id='scrollSh"+num+"' class='scrollSh'></div></div>");
             $(".itemShowList" + num).attr("class_num", 1);
             itemShowList($(".mulluShow" + num), itemShowList_data);
@@ -118,7 +122,15 @@ $(function(){
             alert("链接失败")
         }
     })
-    
+
+
+    /*给body绑定一个click事件，点击itemShow之外的地方，调用closeItemShow方法 */
+    $("body").click(function(event){
+        var evt = event.srcElement ? event.srcElement : event.target;
+        if(evt.getAttribute("name")!="mulluShowSh"&&evt.id!="itemShow"&&evt.tagName!="LI"&&evt.className!="clas"&&evt.tagName!="A"&&evt.tagName!="P"&&evt.tagName!="IMG"){
+            closeItemShow()
+        }
+    });
 })
 
 /*
@@ -126,27 +138,29 @@ $(function(){
  * */
 
 function showChilds(str){
+    $(".list_content li").removeClass("colorClick").addClass("colorNoClickLi")
+    $(".list_content"+str).removeClass("colorNoClickLi").addClass("colorClick")
     $(".itemShow").removeClass("displayNo").addClass("displayBlock");
+    for(var i = $(".itemShow .showItem").length;i >=0 ;i-- ){
+        if($(".itemShow .showItem").eq(i).attr("class_num") == 0 ){
+            $(".itemShow .showItem").eq(i).html("");
+        }
+        else{
+            $(".itemShow .showItem").eq(i).remove();
+        }
+    }
+    $(".itemShowList").append("<div class='mulluShowSh' name='mulluShowSh'></div><div id='scrollShow' class='scrollShow'> <div id='scrollSh' class='scrollSh'></div></div>")
     var muluJson //目录JSON
     muluJson = list_json.childs[str].childs
     $(".mulluShowSh").html("")
     for (var i = 0; i < muluJson.length; i++) {
-        $(".mulluShowSh").append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+muluJson[i].name+"</p><img src='../images/as_2.png'></a>")
+        $(".mulluShowSh").append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"'><p>"+muluJson[i].name+"</p><img src='../images/as_2.png'></a>")
     }
 
     var sihHeight=$("#itemShow").height()
     $(".jq_message_content").height(sihHeight+135)
     mousewheel_fn('itemShowList','mulluShowSh','scrollShow','scrollSh')
-    
-    /*给itemShow绑定一个click事件，点击itemShow之外的地方，调用closeItemShow方法*/
-//    $(".itemShow").on("click",function(event){
-//        event.stopPropagation();
-//        var evt = event.srcElement ? event.srcElement : event.target;
-//        alert(evt.id)
-//        if(evt.id!='itemShow'){
-//        	closeItemShow()
-//        }
-//    });
+
 }
 
 //获取二 三级目录
@@ -155,12 +169,17 @@ function itemShowList(append_dom,data){
     if (data) {
         append_dom.html("");
         for (var i = 0; i < data.length; i++) {
-            append_dom.append("<a href='javaScript:;' class='clas' num='"+i+"'><p>"+data[i].name+"</p><img src='../images/as_2.png'></a>")
+            append_dom.append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"'><p>"+data[i].name+"</p><img src='../images/as_2.png'></a>")
         };
         append_dom.on("click","a",function() {
+            $(this).parent().find("a").removeClass("colorClick").addClass("colorNoClick")
+            $(this).parent().find("a").find("img").attr("src","../images/as_2.png")
+            $(this).removeClass("colorNoClick").addClass("colorClick")
+            $(this).find("img").attr("src","../images/as_3.png")
+
             list_n = $(this).attr("num");
             var itemShowList_data=data[list_n].childs;
-            class_num = parseInt(append_dom.attr("class_num")) + 1 ;
+            class_num = parseInt(append_dom.parent().attr("class_num")) + 1 ;
 
             for(var i = $(".itemShow .showItem").length;i > 0 ;i-- ){
                 if($(".itemShow .showItem").eq(i).attr("class_num") > $(this).parent().parent().attr("class_num") ){
@@ -169,10 +188,10 @@ function itemShowList(append_dom,data){
             };
             if(itemShowList_data){
                 $(".itemShow").append("<div class='itemShowList"+class_num+" showItem'></div>");
-                $(".itemShowList"+class_num).append("<div class='mulluShow"+class_num+" mulluShowSh'></div>")
+                $(".itemShowList"+class_num).append("<div class='mulluShow"+class_num+" mulluShowSh' name='mulluShowSh'></div>")
                 $(".itemShowList"+class_num).append("<div id='scrollShow"+class_num+"' class='scrollShow'><div id='scrollSh"+class_num+"' class='scrollSh'></div></div>");
                 $(".itemShowList" + class_num).attr("class_num", class_num);
-                itemShowList($(".itemShowList"+class_num),itemShowList_data);
+                itemShowList($(".mulluShow"+class_num),itemShowList_data);
                 mousewheel_fn("itemShowList" + class_num,"mulluShow" + class_num,"scrollShow"+class_num,"scrollSh"+class_num)
             }else{
             	 thisText=$(this).find("p").html()
@@ -347,7 +366,7 @@ function closeItemShow(){
     for(var i = $(".itemShow .showItem").length;i >=0 ;i-- ){
         if($(".itemShow .showItem").eq(i).attr("class_num") == 0 ){
             $(".itemShow .showItem").eq(i).html("");
-            $(".itemShowList").append("<div class='mulluShowSh'></div><div id='scrollShow' class='scrollShow'><div id='scrollSh' class='scrollSh'></div></div>")
+            $(".itemShowList").append("<div class='mulluShowSh' name='mulluShowSh'></div><div id='scrollShow' class='scrollShow'><div id='scrollSh' class='scrollSh'></div></div>")
             $(".jq_message_content").height(569)
         }
         else{
@@ -549,6 +568,8 @@ function priSel_details(str){
         	closeDetails()
         }
     });
+
+    $(".qp_region_city").append(allCityList())
 }
 
 /*关闭详情页*/
@@ -988,9 +1009,10 @@ function regionClick(str){
             cityList+="<option value='阿里'>阿里</option>"
             cityList+="<option value='重庆'>重庆</option>"
         }
-
         $("."+str+"_city").append(cityList)
-    }
+    }else{
+            $(".qp_region_city").append(allCityList())
+        }
 }
 
 function allCityList(str){

@@ -14,7 +14,10 @@ strong{
 li{list-style: none;}
 a{text-decoration: none;}
 img{border: none;margin: 0px;padding: 0px;}
-
+body{
+    overflow:scroll;
+    overflow-x:hidden;
+}
 
 .si{
     width: 1200px;

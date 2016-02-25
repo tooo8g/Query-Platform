@@ -14,7 +14,10 @@ strong{
 li{list-style: none;}
 a{text-decoration: none;}
 img{border: none;margin: 0px;padding: 0px;}
-
+body{
+    overflow:scroll;
+    overflow-x:hidden;
+}
 
 /* 市场价格查询	TOP */
 .jq_message_content{
@@ -149,7 +152,6 @@ font-size: 16px;
     margin-left: 20px;
     margin-top: 30px;
     cursor: pointer;
-    color: #000000;
 }
 .itemShow p {
     width: 135px;
@@ -204,13 +206,7 @@ font-size: 16px;
 .price_select_formlist{
     overflow: hidden;
 }
-/*.price_select_top .price_select_l{*/
-/*width: 400px;*/
-/*float: left;*/
-/*padding: 25px 0px;*/
-/*color: #777777;*/
-/*margin-left: 50px;*/
-/*}*/
+
 .priceDate,.specificationModel,.region,.materialName,.city{
     width: 280px;
     float: left;
@@ -226,11 +222,7 @@ font-size: 16px;
     float: left;
     padding: 25px 0px;
 }
-/*.price_select_l div , .price_select_r div{*/
-/*width: 360px;*/
-/*margin-left: 30px;*/
-/*margin-bottom:10px;*/
-/*}*/
+
 .price_select_top label{
     color: #777777;
     float: left;
@@ -260,21 +252,14 @@ font-size: 16px;
     width: 200px;
     padding-left: 5px;
 }
-/*.price_select_top select{*/
-/*width:200px;*/
-/*height: 30px;*/
-/*}*/
+
 .price_select_top span{
     display: inline-block;
     width:80px;
     padding-left:20px;
     line-height: 24px;
 }
-/*.price_select_sub{*/
-/*text-align: center;*/
-/*padding-bottom: 35px;*/
-/*overflow: hidden;*/
-/*}*/
+
 
 #form_button,#reset_submit{
     width: auto;
@@ -317,11 +302,7 @@ font-size: 16px;
     text-align: center;
     background-color: #fafafa;
 }
-/*.price_select_list .title td{*/
-/*border:1px #ddd solid;*/
-/*background-color: #fafafa;*/
-/*border-bottom:none;*/
-/*}*/
+
 .price_select_thead tr, .price_select_thead td {
     border: 1px solid #dddddd;
     color: black;
@@ -352,20 +333,6 @@ font-size: 16px;
     color: #77afea;
 }
 
-/*.price_select_list td{*/
-/*padding:15px 0px;*/
-/*border: 1px #ddd solid;*/
-/*border-top:none;*/
-/*border-bottom:1px #ddd dashed;*/
-/*color:#222;*/
-/*text-align: center;*/
-/*}*/
-/*.price_select_list tr:nth-last-child(1) td{*/
-/*border-bottom:1px #ddd solid;*/
-/*}*/
-/*.price_select_list tr.last td{*/
-/*border-bottom:1px #ddd solid;*/
-/*}*/
 .price_select_list .green{
     color:#0c0;
 }
@@ -583,17 +550,7 @@ font-size: 16px;
 .hisPrice_sc_title p{
     float:left;
 }
-/*.hisPrice_right_top div{*/
-/*height: 20px;*/
-/*line-height: 20px;*/
-/*}*/
-/*.hisPrice_right_top label{*/
-/*float: left;*/
-/*}*/
-/*.hisPrice_right_top p{*/
-/*float: left;*/
-/*padding: 0 10px;*/
-/*}*/
+
 
 .hisPrice_right_bottom{
     width: 914px;
@@ -611,13 +568,7 @@ font-size: 16px;
     font-size: 14px;
     cursor: pointer;
     padding-bottom: 3px;
-    /*width: 80px;*/
-    /*float: left;*/
-    /*text-align: center;*/
-    /*display: block;*/
-    /*height: 30px;*/
-    /*background-color: #dddddd;*/
-    /*cursor: pointer;*/
+
 }
 
 .hisIndex{
@@ -628,9 +579,7 @@ font-size: 16px;
     float: left;
     margin-top: 10px;
 }
-/*.hisPrice_rbt a:hover{*/
-/*color: red;*/
-/*}*/
+
 
 .his_table{
     width: 914px;
@@ -710,3 +659,7 @@ font-size: 16px;
 .displayBlock{display: block}
 .colorBlu{color: #77afea;border-bottom: 2px solid #77afea}
 .colorBlac{color: #222222;border-bottom: 2px solid #222222}
+
+.colorClick{color:#f44848}
+.colorNoClickLi{color:#222222}
+.colorNoClick{color:#777777}

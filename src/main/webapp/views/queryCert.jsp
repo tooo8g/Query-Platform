@@ -23,13 +23,13 @@
         </div>
         <div class="asLeft_ul">
             <ul>
-                <li class="item colorRed"  onclick="searchCatalogList('铁路总公司认证采信目录')">铁路总公司认证采信目录</li>
-                <li class="item colorHui" >国家铁路局认证目录</li>
-                <li class="item colorHui" title="动车组维修用新品零部件目录">动车组维修用新品零部件目录</li>
-                <li class="item colorHui">铁路车辆零部件技术审查</li>
+                <li class="item colorClick"  onclick="searchCatalogList('铁路总公司认证采信目录')">铁路总公司认证采信目录</li>
+                <li class="item colorNoClickLi" >国家铁路局认证目录</li>
+                <li class="item colorNoClickLi" title="动车组维修用新品零部件目录">动车组维修用新品零部件目录</li>
+                <li class="item colorNoClickLi">铁路车辆零部件技术审查</li>
                 <li class="itemShow displayNo" id="itemShow">
                     <div class="itemShowList showItem" class_num="0" id="showItem0">
-                        <div class="mulluShow"></div>
+                        <div class="mulluShow" name="mulluShowSh" id="mulluShow"></div>
                         <div id="scrollShow" class="scrollShow">
                             <div id="scrollSh" class="scrollSh"></div>
                         </div>
