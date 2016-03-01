@@ -48,6 +48,19 @@ public class GeneralController {
 		response.getWriter().print(result);
 	}
 
+	@RequestMapping("/queryPurchase_bidding")
+	public void QueryPurchaseBidding(@RequestParam String str,
+			@RequestParam int start, @RequestParam int limit,
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		System.out.println(str);
+		MongoDirver md = new MongoDirver();
+		String result = md.queryPurchaseBidding(str, start, limit);
+		md.close();
+		System.out.println(result);
+		response.getWriter().print(result);
+	}
+	
 	@RequestMapping("/queryCertMenu_tz")
 	public void QueryCertificationByLeaf(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {

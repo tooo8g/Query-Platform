@@ -12,7 +12,7 @@ $(function(){
     var bzxx //保存json的bzxx里的数据
     var bzNum //条数
     $.ajax({
-        url:"../json/demo_purchase.json",
+        url:"../queryPurchase_bidding",
         data:{str:str,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -23,15 +23,15 @@ $(function(){
                 bzNum=Number(startValue+i)+1
                 tbodyList+="<tr>"
                 tbodyList+="<td>"+bzNum+"</td>"
-                tbodyList+="<td>"+bzxx[i].purchase_num+"</td>"
-                tbodyList+="<td title='"+bzxx[i].purchase_name+"'>"+bzxx[i].purchase_name+"</td>"
-                tbodyList+="<td title='"+bzxx[i].organization_unit+"'>"+bzxx[i].organization_unit+"</td>"
-                tbodyList+="<td>"+bzxx[i].notice_type+"</td>"
-                tbodyList+="<td title='"+bzxx[i].organization_product+"'>"+bzxx[i].organization_product+"</td>"
-                tbodyList+="<td title='"+bzxx[i].organization_area+"'>"+bzxx[i].organization_area+"</td>"
-                tbodyList+="<td>"+timeStamp2String(bzxx[i].getTime.$date)+"</td>"
+                tbodyList+="<td>"+bzxx[i].purchaseOrderNo+"</td>"
+                tbodyList+="<td title='"+bzxx[i].purchaserName+"'>"+bzxx[i].purchaserName+"</td>"
+                tbodyList+="<td title='"+bzxx[i].purchaserCompany+"'>"+bzxx[i].purchaserCompany+"</td>"
+                tbodyList+="<td>"+bzxx[i].announcementType+"</td>"
+                tbodyList+="<td title='"+bzxx[i].purchaserVariety+"'>"+bzxx[i].purchaserVariety+"</td>"
+                tbodyList+="<td title='"+bzxx[i].purchaserArea+"'>"+bzxx[i].purchaserArea+"</td>"
+                tbodyList+="<td>"+timeStamp2String(bzxx[i].purchaserFileGetTime.$date)+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].publishTime.$date)+"</td>"
-                tbodyList+="<td title='"+bzxx[i].source+"'><a>"+bzxx[i].source+"</a></td>"
+                tbodyList+="<td title='"+bzxx[i].dataSource+"'><a>"+bzxx[i].dataSource+"</a></td>"
                 tbodyList+="</tr>"
             }
             $(".purchase_tbody").append(tbodyList)
@@ -71,7 +71,7 @@ function goPage(str,start,limit,isGo){
     var bzxx //保存json的bzxx里的数据
     var bzNum //标记
     $.ajax({
-        url:"../json/demo_purchase.json",
+        url:"../queryPurchase_bidding",
         data:{str:str,start:start,limit:limit},
         type : 'post',
         dataType : 'json',
@@ -82,15 +82,15 @@ function goPage(str,start,limit,isGo){
                 bzNum=Number(start)+i+1
                 tbodyList+="<tr>"
                 tbodyList+="<td>"+bzNum+"</td>"
-                tbodyList+="<td>"+bzxx[i].purchase_num+"</td>"
-                tbodyList+="<td title='"+bzxx[i].purchase_name+"'>"+bzxx[i].purchase_name+"</td>"
-                tbodyList+="<td title='"+bzxx[i].organization_unit+"'>"+bzxx[i].organization_unit+"</td>"
-                tbodyList+="<td>"+bzxx[i].notice_type+"</td>"
-                tbodyList+="<td title='"+bzxx[i].organization_product+"'>"+bzxx[i].organization_product+"</td>"
-                tbodyList+="<td title='"+bzxx[i].organization_area+"'>"+bzxx[i].organization_area+"</td>"
-                tbodyList+="<td>"+timeStamp2String(bzxx[i].getTime.$date)+"</td>"
+                tbodyList+="<td>"+bzxx[i].purchaseOrderNo+"</td>"
+                tbodyList+="<td title='"+bzxx[i].purchaserName+"'>"+bzxx[i].purchaserName+"</td>"
+                tbodyList+="<td title='"+bzxx[i].purchaserCompany+"'>"+bzxx[i].purchaserCompany+"</td>"
+                tbodyList+="<td>"+bzxx[i].announcementType+"</td>"
+                tbodyList+="<td title='"+bzxx[i].purchaserVariety+"'>"+bzxx[i].purchaserVariety+"</td>"
+                tbodyList+="<td title='"+bzxx[i].purchaserArea+"'>"+bzxx[i].purchaserArea+"</td>"
+                tbodyList+="<td>"+timeStamp2String(bzxx[i].purchaserFileGetTime.$date)+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].publishTime.$date)+"</td>"
-                tbodyList+="<td title='"+bzxx[i].source+"'><a>"+bzxx[i].source+"</a></td>"
+                tbodyList+="<td title='"+bzxx[i].dataSource+"'><a>"+bzxx[i].dataSource+"</a></td>"
                 tbodyList+="</tr>"
             }
             $(".purchase_tbody").append(tbodyList)
@@ -160,7 +160,7 @@ function search_purchase_button(){
     var bzxx //保存json的bzxx里的数据
     var bzNum //标记
     $.ajax({
-            url:"../",
+            url:"../queryPurchase_bidding",
             data:{str:str,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
@@ -171,15 +171,15 @@ function search_purchase_button(){
                     bzNum=startValue+i+1
                     tbodyList+="<tr>"
                     tbodyList+="<td>"+bzNum+"</td>"
-                    tbodyList+="<td>"+bzxx[i].purchase_num+"</td>"
-                    tbodyList+="<td title='"+bzxx[i].purchase_name+"'>"+bzxx[i].purchase_name+"</td>"
-                    tbodyList+="<td title='"+bzxx[i].organization_unit+"'>"+bzxx[i].organization_unit+"</td>"
-                    tbodyList+="<td>"+bzxx[i].notice_type+"</td>"
-                    tbodyList+="<td title='"+bzxx[i].organization_product+"'>"+bzxx[i].organization_product+"</td>"
-                    tbodyList+="<td title='"+bzxx[i].organization_area+"'>"+bzxx[i].organization_area+"</td>"
-                    tbodyList+="<td>"+timeStamp2String(bzxx[i].getTime.$date)+"</td>"
+                    tbodyList+="<td>"+bzxx[i].purchaseOrderNo+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].purchaserName+"'>"+bzxx[i].purchaserName+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].purchaserCompany+"'>"+bzxx[i].purchaserCompany+"</td>"
+                    tbodyList+="<td>"+bzxx[i].announcementType+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].purchaserVariety+"'>"+bzxx[i].purchaserVariety+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].purchaserArea+"'>"+bzxx[i].purchaserArea+"</td>"
+                    tbodyList+="<td>"+timeStamp2String(bzxx[i].purchaserFileGetTime.$date)+"</td>"
                     tbodyList+="<td>"+timeStamp2String(bzxx[i].publishTime.$date)+"</td>"
-                    tbodyList+="<td title='"+bzxx[i].source+"'><a>"+bzxx[i].source+"</a></td>"
+                    tbodyList+="<td title='"+bzxx[i].dataSource+"'><a>"+bzxx[i].dataSource+"</a></td>"
                     tbodyList+="</tr>"
                 }
                 $(".purchase_tbody").append(tbodyList)
