@@ -453,7 +453,7 @@ function formButton(){
 }
 /*清除方法*/
 function resetSubmit(){
-    $(".citySelect").html(" ")
+    $("#priceForm")[0].reset()
 }
 
 //时间格式化
