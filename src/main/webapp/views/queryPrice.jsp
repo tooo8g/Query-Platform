@@ -40,7 +40,7 @@
     </div>
     <div class="jq_message_right">
         <div class="price_select_top">
-            <form>
+            <form id="priceForm">
                 <div class="price_select_formlist">
                     <div class="priceDate">
                         <label>
