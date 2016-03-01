@@ -1,0 +1,130 @@
+*{
+    padding:0px;
+    margin:0px;
+    list-style: none;
+    font-size: 12px;
+    font-family: 'Arial','Microsoft Yahei',Tahoma,'Simsun';
+}
+em{
+    font-style: normal;
+}
+strong{
+    font-weight: normal;
+}
+li{list-style: none;}
+a{text-decoration: none;}
+img{border: none;margin: 0px;padding: 0px;}
+
+.purchase{
+    width: 1200px;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto 50px;
+}
+
+.purchase_title{
+    width: 1200px;
+    height: 12px;
+    line-height: 12px;
+}
+
+.purchase_title p{
+    float: left;
+    color: #bbbbbb;
+}
+
+.purchase_search{
+    padding:20px  0;
+    text-align: right;
+}
+.purchase_main{
+    width: 1200px;
+    height:auto;
+    min-height:620px;
+    float: left;
+}
+.purchase_main .serInput{
+    border: 1px solid #dddddd;
+    color: #222222;
+    height: 25px;
+    line-height: 25px;
+    width: 200px;
+}
+
+.search_purchase_btn{
+    width: auto;
+    float: right;
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    background-color:#f44848;
+    color: white;
+    margin-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.purchase_tableDiv{
+    width: 1200px;
+    float: left;
+    min-height: 407px;
+}
+.purchase_table{
+    width: 1200px;
+    table-layout:fixed;
+    border-collapse: collapse;
+    border-bottom: 1px solid #dddddd;
+}
+.purchase_thead{
+    width: 1200px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fafafa
+}
+.purchase_thead tr,.purchase_thead td{
+    border: 1px solid #dddddd;
+    color: #222222;
+    font-size: 14px;
+    height: 35px;
+}
+.purchase_tbody{
+    width: 1200px;
+    font-size: 12px;
+    text-align: center;
+}
+.purchase_tbody a {
+    color: #77afea;
+    cursor: pointer;
+}
+.purchase_tbody tr,.purchase_tbody td{
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-top: 1px dotted #dddddd;
+    color: #222222;}
+.purchase_tbody td{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    padding: 10px 5px;
+}
+
+.listperAuth_button{
+    height: 20px;
+    float: right;
+    line-height: 20px;
+    text-align: right;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.listperAuth_button p{
+    float: left;
+    padding: 0 10px;
+}
+.listperAuth_button a{
+    float: left;
+}
+.clickCursor {
+    cursor: pointer;
+}
