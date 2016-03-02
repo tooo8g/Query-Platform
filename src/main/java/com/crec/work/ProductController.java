@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.crec.bean.Code;
 import com.crec.util.CodeUtil;
+import com.platform.io.bean.Code;
 import com.platform.mongo.s1.MongoDirver;
 
 /**
@@ -47,19 +47,21 @@ public class ProductController {
 
 	/**
 	 * 创建序列号
+	 * 
 	 * @author zhangyb
 	 * @param code
 	 * @param num
 	 * @return
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	public void createCode(Code code, int num,HttpServletResponse response) throws IOException {
+	public void createCode(Code code, int num, HttpServletResponse response)
+			throws IOException {
 		List<Code> list = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
-		//存库
-		 String result = null;
-		for(Code c:list){
-			 result = md.addCode(c);
+		// 存库
+		String result = null;
+		for (Code c : list) {
+			result = md.addCode(c);
 		}
 		md.close();
 		response.getWriter().print(result);

@@ -3,7 +3,8 @@ package com.crec.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.crec.bean.Code;
+import com.platform.io.bean.Code;
+
 
 public class CodeUtil {
 
