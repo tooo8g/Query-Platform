@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.crec.bean.Code;
 import com.crec.util.CodeUtil;
+import com.platform.io.bean.Code;
 import com.platform.mongo.s1.MongoDirver;
 
 /**
@@ -53,6 +53,7 @@ public class ProductController {
 	 * @return
 	 * @throws IOException 
 	 */
+	@RequestMapping("/createCode")
 	public void createCode(Code code, int num,HttpServletResponse response) throws IOException {
 		List<Code> list = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
