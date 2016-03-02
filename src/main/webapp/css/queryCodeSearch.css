@@ -200,7 +200,10 @@ body{
     white-space: nowrap;
     padding: 10px 5px;
 }
-
+.cq_tbody td a{
+    color:#77afea;
+    cursor: pointer;
+}
 .listperAuth_button{
     height: 20px;
     float: right;
