@@ -54,8 +54,8 @@ public class ProductController {
 	 * @return
 	 * @throws IOException
 	 */
-	public void createCode(Code code, int num, HttpServletResponse response)
-			throws IOException {
+	@RequestMapping("/createCode")
+	public void createCode(Code code, int num,HttpServletResponse response) throws IOException {
 		List<Code> list = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
 		// 存库
