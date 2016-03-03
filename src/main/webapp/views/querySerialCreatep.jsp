@@ -35,9 +35,9 @@
       </div>
     </div>
     <div class="qscp_body_createCode">
-      <div class="body_createCode_business">
+      <div class="body_createCode_purchasing_company">
         <label>采购单位</label>
-        <input type="text" class="createCode_business" value="">
+        <input type="text" class="createCode_purchasing_company" value="">
       </div>
       <div class="body_createCode_orderno">
         <label>订单号/合同号</label>
