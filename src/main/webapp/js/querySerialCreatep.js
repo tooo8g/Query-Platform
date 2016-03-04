@@ -10,8 +10,17 @@ $(function(){
     /*通过id获取产品详情信息*/
     var branchId=$(".branchId").val() //关联ID
     var jsonData="" //返回的JSON
-     $.getJSON("../json/demo_querySerialCreatep.json",{branchId:branchId},function(data){
-            jsonData=data.productInfos[0]
+//    	$.ajax({
+//    		url:"../queryCode",
+//    		type:"post",
+//    		data:{branchId:branchId},
+//    		dataType:"json",
+//    		success:function(data){
+//    	    
+//    }
+//    	})
+     $.post("../queryCode",{branchId:branchId},function(data){
+            jsonData=data
              product_name = jsonData.product_name
              product_identify = jsonData.product_identify
              material_code = jsonData.material_code
@@ -22,7 +31,7 @@ $(function(){
              $(".body_material_code").val(material_code)
              $(".createCode_purchasing_company").val(purchasing_company)
 
-        }
+        },"json"
     )
 
 
@@ -40,7 +49,7 @@ function creatCode(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../json/demo_querySerialCreatepList.json",
+        url:"../createCode",
         data:{product_name:product_name,product_identify:product_identify,material_code:material_code,purchasing_company:purchasing_company,contract_id:contract_id,program_time:program_time,num:creatNum,branchId:branchId,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",

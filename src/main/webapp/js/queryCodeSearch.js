@@ -7,7 +7,6 @@ $(function(){
         $(".nav a").removeClass("colorClick").addClass("colorNoClick")
         $(this).removeClass("colorNoClick").addClass("colorClick")
     })
-
     /*页面打开，直接调用一个方法*/
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -38,7 +37,7 @@ $(function(){
                 tbodyList+="<td>"+productInfos[i].measurement+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
                 tbodyList+="<td>"+productInfos[i].business+"</td>"
-                tbodyList+="<td><a href='ss?id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
+                tbodyList+="<td><a href='querySerialCreatep.jsp?branchId="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
                 tbodyList+="</tr>"
             }
             $(".cq_tbody").html(" ")
@@ -87,7 +86,7 @@ function  formButton(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../produc",
+        url:"../product",
         data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",

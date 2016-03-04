@@ -10,10 +10,11 @@
     <link rel="stylesheet" type="text/css" href="../css/foot.css">
 </head>
 <body>
+ <% String branchId=request.getParameter("branchId");%>
 <jsp:include page="head_code.jsp"/>
 <div class="qscp">
   <input type="hidden" class="pageNo" value="">
-  <input type="hidden" class="branchId" value="${id}">
+  <input type="hidden" class="branchId" value="<%=branchId%>">
   <div class="qscp_title">
     <p>当前位置：</p>
     <p>资质信息查询</p>

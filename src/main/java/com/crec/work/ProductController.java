@@ -1,13 +1,17 @@
 package com.crec.work;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.crec.util.CodeUtil;
 import com.platform.io.bean.Code;
@@ -38,6 +42,7 @@ public class ProductController {
 			@RequestParam(required = false) String product_name,
 			@RequestParam(required = false) String specification,
 			HttpServletResponse response) throws IOException {
+		System.out.println("222222222222222222222");
 		MongoDirver md = new MongoDirver();
 		String result = md.queryProductInfo(company_name, product_identify,
 				product_name, specification);
@@ -55,14 +60,63 @@ public class ProductController {
 	 * @throws IOException
 	 */
 	@RequestMapping("/createCode")
-	public void createCode(Code code, int num,HttpServletResponse response) throws IOException {
-		List<Code> list = CodeUtil.codec(code, num);
+	public void createCode(@RequestParam(required = false) String product_name,
+			@RequestParam(required = false) String product_identify,
+			@RequestParam(required = false) String material_code,
+			@RequestParam(required = false) String purchasing_company,
+			@RequestParam(required = false) String contract_id,
+			@RequestParam(required = false) String program_time,
+			@RequestParam(required = false) String branchId,
+			@RequestParam(required = false) int num,
+			@RequestParam(required = false) int start,
+			@RequestParam(required = false) int limit,
+			HttpServletResponse response) throws IOException {
+		Code code = new Code();
+		ObjectId groupId = new ObjectId();
+		code.setProduct_name(product_name);// 产品名称
+		code.setProduct_identify(product_identify);// 产品标示代码
+		code.setMaterial_code(material_code);// 物资编码
+		code.setPurchasing_company(purchasing_company);// 采购单位
+		code.setContract_id(contract_id);// 订单合同编号
+		code.setProgram_time(program_time);// 编制时间
+		code.setBranchId(branchId);// 关联Id
+		code.setGroupId(groupId.toString());// 组Id
+		List<Code> codes = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
-		// 存库
-		String result = null;
-		for (Code c : list) {
-			result = md.addCode(c);
+		for (Code c : codes) {
+			md.addCode(c);
 		}
+		String result = md.queryCodes(groupId, start, limit);
+		md.close();
+		response.getWriter().print(result);
+	}
+
+	/**
+	 * 根据组id(groupId)清空数据
+	 * 
+	 * @author zhangyb
+	 * @param groupId
+	 */
+	@RequestMapping("/empty")
+	public void deleteByGroupId(String groupId) {
+		MongoDirver md = new MongoDirver();
+		md.deleteByGroupId(groupId);
+		md.close();
+	}
+
+	/**
+	 * 查询code
+	 * 
+	 * @author zhangyb
+	 * @param branchId
+	 * @throws IOException
+	 */
+	@RequestMapping("/queryCode")
+	public void querySingleCode(
+			@RequestParam(required = false) String branchId,
+			HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.querySingleCode(branchId);
 		md.close();
 		response.getWriter().print(result);
 	}

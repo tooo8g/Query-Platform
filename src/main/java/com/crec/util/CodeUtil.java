@@ -23,6 +23,9 @@ public class CodeUtil {
 			c.setCode(i + "");
 			c.setInner_id(i + "");
 			codes.add(c);
+			System.out.println(c.getCode() + "******" + c.getProduct_identify()
+					+ "******" + c.getInner_id());
+
 		}
 
 		return codes;
