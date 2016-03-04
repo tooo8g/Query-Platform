@@ -27,12 +27,12 @@
             </div>
             <div class="nav">
                 <ul>
-                    <li><a href="#" class="colorClick">产品标识代码查询</a></li>
-                    <li><a href="#" class="colorNoClick">合同/订单查询</a></li>
-                    <li><a href="#" class="colorNoClick">序列号查询</a></li>
-                    <li><a href="#" class="colorNoClick">运单查询</a></li>
-                    <li><a href="#" class="colorNoClick">物流查询</a></li>
-                    <li><a href="#" class="colorNoClick">整车运行</a></li>
+                    <li><a href="#" class="product_identify colorClick">产品标识代码查询</a></li>
+                    <li><a href="#" class="contract colorNoClick">合同/订单查询</a></li>
+                    <li><a href="#" class="serialNumber colorNoClick">序列号查询</a></li>
+                    <li><a href="#" class="waybill colorNoClick">运单查询</a></li>
+                    <li><a href="#" class="logistics colorNoClick">物流查询</a></li>
+                    <li><a href="#" class="transportVehicle colorNoClick">整车运输</a></li>
                 </ul>
             </div>
         </div>
