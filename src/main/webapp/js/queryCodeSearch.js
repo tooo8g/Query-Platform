@@ -36,7 +36,7 @@ $(function(){
                 tbodyList+="<td>"+productInfos[i].specification+"</td>"
                 tbodyList+="<td>"+productInfos[i].measurement+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
-                tbodyList+="<td>"+productInfos[i].business+"</td>"
+                tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
                 tbodyList+="<td><a href='querySerialCreatep.jsp?branchId="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
                 tbodyList+="</tr>"
             }
@@ -103,8 +103,8 @@ function  formButton(){
                 tbodyList+="<td>"+productInfos[i].specification+"</td>"
                 tbodyList+="<td>"+productInfos[i].measurement+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
-                tbodyList+="<td>"+productInfos[i].business+"</td>"
-                tbodyList+="<td><a href='ss?id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
+                tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
+                tbodyList+="<td><a href='querySerialCreatep.jsp?branchId="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
                 tbodyList+="</tr>"
             }
             $(".cq_tbody").html(" ")

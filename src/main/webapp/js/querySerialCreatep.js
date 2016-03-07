@@ -56,7 +56,7 @@ function creatCode(){
         success:function(data){
             $(".qscp_body_codeList_button").removeClass("displayNo").addClass("displayBlock")
             count=data.count
-            productInfos=data.productInfos
+            productInfos=data.codes
             groupId=productInfos[0].groupId
             for(var i=0;i<productInfos.length;i++){
                 bzNum=Number(startValue)+i+1
@@ -182,7 +182,7 @@ function generateCode(){
 /*清空序列号*/
 function codeEmpty(){
     $.ajax({
-        url:"",
+        url:"../empty",
         data:{groupId:groupId},
         type:"post",
         success:function(data){
