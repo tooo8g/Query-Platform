@@ -81,8 +81,8 @@
 
       </div>
       <div class="qscp_body_delete">
-        <a class="body_generateCode" onclick="generateCode()">生成序列号</a>
-        <a class="body_empty" onclick="codeEmpty()">清空</a>
+        <a href="javascript:;" class="body_generateCode" onclick="generateCode()">生成序列号</a>
+        <a href="javascript:;" class="body_empty" onclick="codeEmpty()">清空</a>
       </div>
     </div>
 
