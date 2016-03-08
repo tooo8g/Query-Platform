@@ -11,6 +11,106 @@ $(function(){
     var count //保存总条数
     var bzxx //保存json的bzxx里的数据
     var bzNum //条数
+    
+    
+/*    var product =[
+                   {"pid":"123123", "pname":[{"a":"3","b":"4"},{"a":"1","b":"2"}]},
+    		       { "pid":"123123", "pname":[{"a":"3","b":"4"},{"a":"1","b":"2"}]}
+    		               ];*/
+    var orderOrContracts = 
+    {
+    	    "contract_id":"DDHTH123", 
+    	  	"company_name":"中国中铁",
+    	  	"purchasing_company":"鲁班电子商务",
+    	  	"user_id":"niyn",
+    	  	"purchasing":[
+    	  		{
+    	  			"material_code":"wzbm_code1",
+    	  			"material_name":"物资编码1",
+    	  			"specification":"ghxh798",
+    	  			"measurement":"立方",
+    	  			"num":5,
+    	  			"price":1.5,
+    	  			"total_price":7.5,
+    	  			"company":"中铁局"
+    	  		}
+    	  	],
+    	  	"supply":[
+    	  		{
+    	  			"material_code":"wzbm_code2",
+    	  			"material_name":"物资编码2",
+    	  			"specification":"ghxh799",
+    	  			"measurement":"平方",
+    	  			"num":123,
+    	  			"supply_time":"2015-09-22T10:50:00.000Z",
+    	  			"address":"北京西站",
+    	  			"person":"niyn"
+    	  		}
+    	  	]
+    	  	}
+                         ;
+    //发送给服务器的JSON
+    $.ajax({
+    	type : "POST",
+    	url : "../updateOrderOrContract",
+    	contentType:"application/json",  //发送至服务器的类型
+        dataType : "json",     //预期服务器返回类型
+    	data:JSON.stringify(orderOrContracts),
+    	success: function(data){
+    	}
+    	
+    })
+    //发送给服务器的JSON
+    $.ajax({
+    	type : "POST",
+    	url : "../queryPurchasingByCode",
+    	data:{materialCode:"wzbm_code1"},
+    	success: function(data){
+    	}
+    	
+    })
+    //发送给服务器的JSON
+    $.ajax({
+    	type : "POST",
+    	url : "../querySupplyDetailByCode",
+    	data:{materialCode:"wzbm_code2"},
+    	success: function(data){
+    	}
+    	
+    })
+    //发送给服务器的JSON
+    $.ajax({
+      type : "POST",
+      url : "../queryOrderOrContract",
+      data:{contract_id:"",purchasing_company:"",company_name:"",start:"0",limit:"2"},
+      success: function(data){
+        alert(data);
+      }
+
+    })
+    //发送给服务器的JSON
+    $.ajax({
+    	type : "POST",
+    	url : "../queryOrderOrContractDetail",
+    	data:{contract_id:"DDHTH123"},
+    	success: function(data){
+    	}
+    	
+    })
+    
+    //发送给服务器的JSON
+    $.ajax({
+      type : "POST",
+//      url : "../addOrderOrContract",
+      data:JSON.stringify(orderOrContracts),
+      contentType:"application/json",  //发送至服务器的类型
+      dataType : "json",     //预期服务器返回类型
+      success: function(data){
+      }
+
+    })
+    
+    
     $.ajax({
         url:"../queryPurchase_bidding",
         data:{str:str,start:startValue,limit:limitValue},

@@ -2,8 +2,66 @@
  * Created by zb on 2016/3/3.
  */
 $(function(){
+    /*修改头部的css*/
     $(".nav li a").removeClass("colorClick").addClass("colorNoClick")
     $(".contract").removeClass("colorNoClick").addClass("colorClick")
+    var startValue=0 //初始值
+    var limitValue=10 //一次取出多少条数据
+    var contract_id="" //订单合同号
+    var purchasing_company="" //采购单位
+    var company_name="" //供应商
+    var count="" //总数
+    var bzxx="" //保存data信息
+    var tbodyList=""
+    var bzNum
+    /*打开页面，直接调用下面的方法*/
+    $.ajax({
+        url:"../json/demo_contract_01.json",
+        type:"post",
+        data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
+        dataType:"json",
+        success:function(data){
+            count=data.count
+            bzxx=data.bzxx
+            for(var i=0;i<bzxx.length;i++){
+                bzNum=Number(startValue)+i+1
+                tbodyList+="<tr>"
+                tbodyList+="<td>"+bzNum+"</td>"
+                tbodyList+="<td>"+bzxx[i].contract_id+"</td>"
+                tbodyList+="<td>"+bzxx[i].company_name+"</td>"
+                tbodyList+="<td>"+bzxx[i].purchasing_company+"</td>"
+                tbodyList+="<td><a href='#?contract_id="+bzxx[i].contract_id+"'>查看</a></td>"
+                tbodyList+="<td>"+bzxx[i].user_id+"</td>"
+                tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
+                tbodyList+="<td><a href='#?contract_id="+bzxx[i].contract_id+"' id='contract_update'>修改</a><a href='#?contract_id="+bzxx[i].contract_id+"' id='contract_history'>历史记录</a></td>"
+                tbodyList+="</tr>"
+            }
+            $(".conser_bottom_tbody").html(" ")
+            $(".conser_bottom_tbody").append(tbodyList)
+
+            var asButton=""
+            var countPages=Math.ceil(count/limitValue)
+            var PageNo  //当前页码
+            if(startValue==0){
+                PageNo=1
+            }
+            $(".pageNo").val(PageNo)
+            var nextStartRow//下一页开始显示的编号
+            asButton+="<a><img src='../images/sts_4.png'></a>"
+            asButton+="<p>"+PageNo+"/"+countPages+"</p>"
+            if(countPages>1){
+                nextStartRow=PageNo*limitValue
+                asButton+="<a class=clickCursor onclick=goPage('"+contract_id+"','"+purchasing_company+"','"+company_name+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+            }else{
+                asButton+="<a><img src='../images/sts_5.png'></a>"
+            }
+            $(".listperAuth_button").html(" ")
+            $(".listperAuth_button").append(asButton)
+        },
+        error:function(){
+            alert("链接失败")
+        }
+    })
 })
 
 /*清除*/
