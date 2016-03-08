@@ -97,9 +97,7 @@ function qcti_od_sp_preservation(){
         contentType:"application/json",
         dataType:"json",
         success:function(data){
-            if(data=="true"){
-                alert("保存成功")
-            }
+
         }
     })
 }
