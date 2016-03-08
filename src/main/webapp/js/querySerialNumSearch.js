@@ -15,7 +15,7 @@ $(function(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../json/demo_querySeriNumSearch.json",
+        url:"../queryAllCode",
         data:{contract_id:contract_id,state:state,program_time:program_time,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -83,7 +83,7 @@ function  formButton(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"",
+        url:"../queryAllCode",
         data:{contract_id:contract_id,state:state,program_time:program_time,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -137,7 +137,7 @@ function  formButton(){
 //页码跳转
 function goPage(company_name,product_identify,product_name,specification,startValue,limitValue,isGo){
     $.ajax({
-        url:"../queryStandard",
+        url:"../queryAllCode",
         data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',

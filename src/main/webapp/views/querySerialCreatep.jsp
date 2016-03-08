@@ -44,7 +44,7 @@
         <label>订单号/合同号</label>
         <input type="text" class="createCode_orderno" value="">
         <a href="#" class="contract_id_earch" target="_blank">订单号/合同号查询</a>
-        <a href="#" class="serialNumberSearch" target="_blank">以编制序列号查询</a>
+        <a href="querySerialNumSearch.jsp" class="serialNumberSearch" target="_blank">以编制序列号查询</a>
       </div>
       <div class="body_createCode_date">
         <label>编制日期</label>
