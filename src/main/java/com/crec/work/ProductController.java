@@ -41,11 +41,13 @@ public class ProductController {
 			@RequestParam(required = false) String product_identify,
 			@RequestParam(required = false) String product_name,
 			@RequestParam(required = false) String specification,
+			@RequestParam(required = false) int start,
+			@RequestParam(required = false) int limit,
 			HttpServletResponse response) throws IOException {
 		System.out.println("222222222222222222222");
 		MongoDirver md = new MongoDirver();
 		String result = md.queryProductInfo(company_name, product_identify,
-				product_name, specification);
+				product_name, specification,start,limit);
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -71,6 +73,8 @@ public class ProductController {
 			@RequestParam(required = false) int start,
 			@RequestParam(required = false) int limit,
 			HttpServletResponse response) throws IOException {
+		System.out.println(product_name + "******" + product_identify
+				+ "******" + purchasing_company);
 		Code code = new Code();
 		ObjectId groupId = new ObjectId();
 		code.setProduct_name(product_name);// 产品名称
@@ -81,12 +85,15 @@ public class ProductController {
 		code.setProgram_time(program_time);// 编制时间
 		code.setBranchId(branchId);// 关联Id
 		code.setGroupId(groupId.toString());// 组Id
+		System.out.println(product_name + "%%%%%%" + product_identify
+				+ "%%%%%%%%" + material_code);
 		List<Code> codes = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
 		for (Code c : codes) {
 			md.addCode(c);
 		}
 		String result = md.queryCodes(groupId, start, limit);
+		System.out.println();
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -96,12 +103,16 @@ public class ProductController {
 	 * 
 	 * @author zhangyb
 	 * @param groupId
+	 * @throws IOException 
 	 */
 	@RequestMapping("/empty")
-	public void deleteByGroupId(String groupId) {
+	public void deleteByGroupId(@RequestParam(required=false)String groupId,
+			HttpServletResponse response) throws IOException {
+		System.out.println(groupId+"^^^^^^^^^^^^^^^^^^^^");
 		MongoDirver md = new MongoDirver();
 		md.deleteByGroupId(groupId);
 		md.close();
+		response.getWriter().print(true);
 	}
 
 	/**

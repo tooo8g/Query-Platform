@@ -18,14 +18,14 @@ public class CodeUtil {
 	 */
 	public static List<Code> codec(Code code, int num) {
 		List<Code> codes = new ArrayList<Code>();
+		codes.add(code);
 		for (int i = 0; i < num; i++) {
-			Code c = (Code) code.clone();
-			c.setCode(i + "");
-			c.setInner_id(i + "");
-			codes.add(c);
-			System.out.println(c.getCode() + "******" + c.getProduct_identify()
-					+ "******" + c.getInner_id());
-
+			System.out.println(code.getCode() + "####" + code.getProduct_identify()
+					+ "####" + code.getInner_id());
+//			Code c = (Code) code.clone();
+//			c.setCode(i + "");
+//			c.setInner_id(i + "");
+//			codes.add(c);
 		}
 
 		return codes;
