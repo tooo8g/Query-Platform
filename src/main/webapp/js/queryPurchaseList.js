@@ -44,7 +44,8 @@ $(function(){
     	  			"num":123,
     	  			"supply_time":"2015-09-22T10:50:00.000Z",
     	  			"address":"北京西站",
-    	  			"person":"niyn"
+    	  			"person":"niyn",
+    	  			"product_identify":"CPBSDM999"
     	  		}
     	  	]
     	  	}
@@ -112,7 +113,7 @@ $(function(){
     //发送给服务器的JSON
     $.ajax({
       type : "POST",
-      url : "../queryOrderOrContract",
+//      url : "../queryOrderOrContract",
       data:{contract_id:"",purchasing_company:"",company_name:"",start:"0",limit:"2"},
       success: function(data){
         alert(data);
@@ -122,7 +123,7 @@ $(function(){
     //发送给服务器的JSON
     $.ajax({
     	type : "POST",
-//    	url : "../queryOrderOrContractDetail",
+    	url : "../queryOrderOrContractDetail",
     	data:{contract_id:"DDHTH123"},
     	success: function(data){
     	}
@@ -132,7 +133,7 @@ $(function(){
     //发送给服务器的JSON
     $.ajax({
       type : "POST",
-      url : "../addOrderOrContract",
+//      url : "../addOrderOrContract",
       data:JSON.stringify(orderOrContracts),
       contentType:"application/json",  //发送至服务器的类型
       dataType : "json",     //预期服务器返回类型

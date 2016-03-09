@@ -396,6 +396,7 @@ public class GeneralController {
 	public void queryOrderOrContractDetail(@RequestParam String contract_id, HttpServletRequest request,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		String result = md.queryOrderOrContractDetail(contract_id);
+		System.out.println(result);
 		md.close();
 		response.getWriter().print(result);
 	}
