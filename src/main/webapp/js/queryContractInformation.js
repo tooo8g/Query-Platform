@@ -3,9 +3,11 @@
  */
 $(function(){
     /*打开页面。获取contract_id;//订单、合同号，把这个传到后台，把返回的东西显示到页面*/
-    var contract_id=$(".contract_id").val() //订单/合同号
+//    var contract_id=$(".contract_id").val() //订单/合同号
+    var contract_id='DDHTH124'; //订单/合同号
+    
     $.ajax({
-        url:"../json/demo_contractInformation.json",
+        url:"../queryOrderOrContractDetail",
         type:"post",
         data:{contract_id:contract_id},
         dataType:"json",
@@ -13,8 +15,8 @@ $(function(){
             var contractJson=data //保存json
             var purchasing=contractJson.purchasing //订单明细表
             var supply=contractJson.supply //供货计划
-            var company_name=contractJson.company_name //企业名称
-            var purchasing_company=contractJson.purchasing_company //采购单位
+            var company_name=contractJson.bzxx[0].company_name //企业名称
+            var purchasing_company=contractJson.bzxx[0].purchasing_company //采购单位
             //给企业名称  订单号/合同号 采购单位 赋值
             $(".content_company_name").val(company_name)
             $(".content_contract_id").val(contract_id)

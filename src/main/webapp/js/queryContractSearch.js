@@ -16,7 +16,7 @@ $(function(){
     var bzNum
     /*打开页面，直接调用下面的方法*/
     $.ajax({
-        url:"../json/demo_contract_01.json",
+        url:"../queryOrderOrContract",
         type:"post",
         data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         dataType:"json",
@@ -30,10 +30,9 @@ $(function(){
                 tbodyList+="<td>"+bzxx[i].contract_id+"</td>"
                 tbodyList+="<td>"+bzxx[i].company_name+"</td>"
                 tbodyList+="<td>"+bzxx[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='#?contract_id="+bzxx[i].contract_id+"'>查看</a></td>"
+                tbodyList+="<td><a href='../views/queryContractInformation.jsp?contract_id="+bzxx[i].contract_id+"'>查看</a></td>"
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
-                tbodyList+="<td><a href='#?contract_id="+bzxx[i].contract_id+"' id='contract_update'>修改</a><a href='#?contract_id="+bzxx[i].contract_id+"' id='contract_history'>历史记录</a></td>"
                 tbodyList+="</tr>"
             }
             $(".conser_bottom_tbody").html(" ")
@@ -72,15 +71,15 @@ function resetSubmit(){
 function formButton(){
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
-    var contract_id="" //订单合同号
-    var purchasing_company="" //采购单位
-    var company_name="" //供应商
+    var contract_id=$(".top_contract").val();//订单合同号
+    var purchasing_company=$(".top_purchasing_company").val();//采购单位
+    var company_name=$(".top_company_name").val();//供应商
     var count="" //总数
     var bzxx="" //保存data信息
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../json/demo_contract_01.json",
+        url:"../queryOrderOrContract",
         type:"post",
         data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         dataType:"json",
@@ -97,7 +96,6 @@ function formButton(){
                 tbodyList+="<td><a href='#?contract_id="+bzxx[i].contract_id+"'>查看</a></td>"
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
-                tbodyList+="<td><a href='#?contract_id="+bzxx[i].contract_id+"' id='contract_update'>修改</a><a href='#?contract_id="+bzxx[i].contract_id+"' id='contract_history'>历史记录</a></td>"
                 tbodyList+="</tr>"
             }
             $(".conser_bottom_tbody").html(" ")
@@ -133,7 +131,6 @@ function goPage(contract_id,purchasing_company,company_name,startValue,limitValu
     $.ajax({
         url:"../queryStandard",
         data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
-        type : 'post',
         dataType : 'json',
         success:function(data){
             var count="" //总数
@@ -152,7 +149,6 @@ function goPage(contract_id,purchasing_company,company_name,startValue,limitValu
                 tbodyList+="<td><a href='#?contract_id="+bzxx[i].contract_id+"'>查看</a></td>"
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
-                tbodyList+="<td><a href='#?contract_id="+bzxx[i].contract_id+"' id='contract_update'>修改</a><a href='#?contract_id="+bzxx[i].contract_id+"' id='contract_history'>历史记录</a></td>"
                 tbodyList+="</tr>"
             }
             $(".conser_bottom_tbody").html(" ")
