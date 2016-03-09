@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.platform.io.bean.OrderOrContract;
-import com.platform.io.bean.Product2;
 import com.platform.mongo.s1.MongoDirver;
 import com.platform.mongo.util.TimeUtil;
 
@@ -338,7 +337,7 @@ public class GeneralController {
 		response.getWriter().print(json.toJson());
 	}
 
-	@RequestMapping(value="/addOrderOrContract",method=RequestMethod.POST)
+	@RequestMapping(value="/addOrderOrContract")
 	@ResponseBody
 	public void addOrderOrContract(@RequestBody OrderOrContract orderOrContracts, HttpServletResponse response) throws Exception {
 	    System.out.println(orderOrContracts);

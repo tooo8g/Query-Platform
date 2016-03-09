@@ -91,9 +91,9 @@ function qcti_od_sp_preservation(){
     var orderOrContracts="" //保存的JSON
     orderOrContracts=JSON.stringify(orderOrCont)
     $.ajax({
-        url:"",
+        url:"../addOrderOrContract",
         type:"post",
-        data:{orderOrContracts:orderOrContracts},
+        data:orderOrContracts,
         contentType:"application/json",
         dataType:"json",
         success:function(data){
