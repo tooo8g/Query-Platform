@@ -1,6 +1,7 @@
 package com.crec.work;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,16 +45,15 @@ public class ProductController {
 			@RequestParam(required = false) int start,
 			@RequestParam(required = false) int limit,
 			HttpServletResponse response) throws IOException {
-		System.out.println("222222222222222222222");
 		MongoDirver md = new MongoDirver();
 		String result = md.queryProductInfo(company_name, product_identify,
-				product_name, specification,start,limit);
+				product_name, specification, start, limit);
 		md.close();
 		response.getWriter().print(result);
 	}
 
 	/**
-	 * 创建序列号
+	 * 创建序列号并且默认查询出第一页
 	 * 
 	 * @author zhangyb
 	 * @param code
@@ -66,15 +66,15 @@ public class ProductController {
 			@RequestParam(required = false) String product_identify,
 			@RequestParam(required = false) String material_code,
 			@RequestParam(required = false) String purchasing_company,
+			@RequestParam(required = false) String company_name,
 			@RequestParam(required = false) String contract_id,
 			@RequestParam(required = false) String program_time,
 			@RequestParam(required = false) String branchId,
+			@RequestParam(required = false) String specification,
 			@RequestParam(required = false) int num,
 			@RequestParam(required = false) int start,
 			@RequestParam(required = false) int limit,
 			HttpServletResponse response) throws IOException {
-		System.out.println(product_name + "******" + product_identify
-				+ "******" + purchasing_company);
 		Code code = new Code();
 		ObjectId groupId = new ObjectId();
 		code.setProduct_name(product_name);// 产品名称
@@ -83,19 +83,40 @@ public class ProductController {
 		code.setPurchasing_company(purchasing_company);// 采购单位
 		code.setContract_id(contract_id);// 订单合同编号
 		code.setProgram_time(program_time);// 编制时间
+		code.setCompany_name(company_name);
+		code.setSpecification(specification);
 		code.setBranchId(branchId);// 关联Id
 		code.setGroupId(groupId.toString());// 组Id
-		System.out.println(product_name + "%%%%%%" + product_identify
-				+ "%%%%%%%%" + material_code);
+		code.setAdd_time(new Date());
 		List<Code> codes = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
 		for (Code c : codes) {
 			md.addCode(c);
 		}
 		String result = md.queryCodes(groupId, start, limit);
-		System.out.println();
 		md.close();
 		response.getWriter().print(result);
+	}
+
+	/**
+	 * 生成序列号页面的的分页查询
+	 * 
+	 * @author zhangyb
+	 * @param groupId
+	 * @param start
+	 * @param limit
+	 * @param response
+	 * @throws IOException
+	 */
+	@RequestMapping("/queryCodes")
+	public void queryCodes(String groupId, int start, int limit,
+			HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		ObjectId gId = new ObjectId(groupId);
+		String result = md.queryCodes(gId, start, limit);
+		md.close();
+		response.getWriter().print(result);
+
 	}
 
 	/**
@@ -103,12 +124,11 @@ public class ProductController {
 	 * 
 	 * @author zhangyb
 	 * @param groupId
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	@RequestMapping("/empty")
-	public void deleteByGroupId(@RequestParam(required=false)String groupId,
+	public void deleteByGroupId(@RequestParam(required = false) String groupId,
 			HttpServletResponse response) throws IOException {
-		System.out.println(groupId+"^^^^^^^^^^^^^^^^^^^^");
 		MongoDirver md = new MongoDirver();
 		md.deleteByGroupId(groupId);
 		md.close();
@@ -130,5 +150,42 @@ public class ProductController {
 		String result = md.querySingleCode(branchId);
 		md.close();
 		response.getWriter().print(result);
+	}
+
+	/**
+	 * 序列号信息查询
+	 * 
+	 * @author zhangyb
+	 * @param contract_id
+	 *            订单号/合同号
+	 * @param state
+	 *            状态
+	 * @param program_time
+	 *            编制日期
+	 * @param purchasing_company
+	 *            采购单位
+	 * @param company_name
+	 *            企业名称
+	 * @param start
+	 * @param limit
+	 * @param response
+	 * @throws IOException
+	 */
+	@RequestMapping("/queryAllCode")
+	public void queryAllCode(
+			@RequestParam(required = false) String contract_id,
+			@RequestParam(required = false) String state,
+			@RequestParam(required = false) String program_time,
+			@RequestParam(required = false) String purchasing_company,
+			@RequestParam(required = false) String company_name,
+			@RequestParam(required = false) int start,
+			@RequestParam(required = false) int limit,
+			HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryAllCode(contract_id, state, program_time,
+				purchasing_company, company_name, start, limit);
+		md.close();
+		response.getWriter().print(result);
+
 	}
 }
