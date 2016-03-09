@@ -16,8 +16,8 @@
   <input type="hidden" class="pageNo" value="">
   <input type="hidden" class="branchId" value="<%=branchId%>">
   <div class="qscp_title">
-    <p>当前位置：</p>
-    <p>序列号编制</p>
+     <p>当前位置：</p>
+     <p>序列号编制</p>
   </div>
   <div class="qscp_body">
     <div class="qscp_body_information">

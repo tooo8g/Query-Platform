@@ -79,7 +79,6 @@
                 <td>交货时间</td>
                 <td>交货地点</td>
                 <td>收货人</td>
-                <td>已编制序列号数量</td>
                 <td width="100">操作</td>
               </tr>
               </thead>

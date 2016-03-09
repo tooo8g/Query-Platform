@@ -191,6 +191,7 @@
               <td>交货时间</td>
               <td>交货地点</td>
               <td>收货人</td>
+              <td>产品标识代码</td>
               <td width="73">操作</td>
             </tr>
             </thead>
@@ -204,6 +205,7 @@
               <td><input  name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
+              <td><input type="text"></td>
               <td><a href="javascript:;" class="qcti_supplyPlan_delete" onclick="qcti_supplyPlan_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -215,16 +217,6 @@
               <td><input name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><a href="javascript:;" class="qcti_supplyPlan_delete" onclick="qcti_supplyPlan_delete(this)">删除</a></td>
-            </tr>
-            <tr>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
               <td><input type="text"></td>
               <td><a href="javascript:;" class="qcti_supplyPlan_delete" onclick="qcti_supplyPlan_delete(this)">删除</a></td>
             </tr>
@@ -234,6 +226,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
+              <td><input  name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
@@ -245,6 +238,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
+              <td><input  name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
@@ -256,6 +250,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
+              <td><input  name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
@@ -267,6 +262,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
+              <td><input  name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
@@ -278,6 +274,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
+              <td><input  name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
@@ -289,6 +286,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
+              <td><input  name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
@@ -300,6 +298,19 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
+              <td><input  name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><a href="javascript:;" class="qcti_supplyPlan_delete" onclick="qcti_supplyPlan_delete(this)">删除</a></td>
+            </tr>
+            <tr>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input  name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>

@@ -40,18 +40,21 @@ $(function(){
 
             //给供货计划赋值
             var supplyPlanTbodyList="" //qcti_supplyPlan_tbody里面的值
-            for(var i=0;i<supply.length;i++){
-                supplyPlanTbodyList+="<tr>"
-                supplyPlanTbodyList+="<td>"+supply[i].material_code+"</td>"
-                supplyPlanTbodyList+="<td>"+supply[i].material_name+"</td>"
-                supplyPlanTbodyList+="<td>"+supply[i].specification+"</td>"
-                supplyPlanTbodyList+="<td>"+supply[i].measurement+"</td>"
-                supplyPlanTbodyList+="<td>"+supply[i].num+"</td>"
-                supplyPlanTbodyList+="<td>"+supply[i].supply_time+"</td>"
-                supplyPlanTbodyList+="<td>"+supply[i].address+"</td>"
-                supplyPlanTbodyList+="<td>"+supply[i].person+"</td>"
-                supplyPlanTbodyList+="<td>"+supply[i].code_num+'(<a href="#">查看详情</a>)'+"</td>"
-                supplyPlanTbodyList+="<td><a href='#?_id="+supply[i]._id+"'>编制序列号</a></td>"
+            for(var i=0;i<supply.length;i++) {
+                supplyPlanTbodyList += "<tr>"
+                supplyPlanTbodyList += "<td>" + supply[i].material_code + "</td>"
+                supplyPlanTbodyList += "<td>" + supply[i].material_name + "</td>"
+                supplyPlanTbodyList += "<td>" + supply[i].specification + "</td>"
+                supplyPlanTbodyList += "<td>" + supply[i].measurement + "</td>"
+                supplyPlanTbodyList += "<td>" + supply[i].num + "</td>"
+                supplyPlanTbodyList += "<td>" + supply[i].supply_time + "</td>"
+                supplyPlanTbodyList += "<td>" + supply[i].address + "</td>"
+                supplyPlanTbodyList += "<td>" + supply[i].person + "</td>"
+                if(supply[i].code_num==0){
+                    supplyPlanTbodyList+="<td><a href='#?contract_id="+supply[i].contract_id+"'>编制序列号</a></td>"
+                }else{
+                    supplyPlanTbodyList+="<td><a href='#?_id="+supply[i]._id+"'>查看详情</a></td>"
+                }
                 supplyPlanTbodyList+="</tr>"
             }
             $(".qcti_supplyPlan_tbody").html("")
