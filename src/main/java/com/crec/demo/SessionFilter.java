@@ -18,7 +18,7 @@ public class SessionFilter extends OncePerRequestFilter implements Filter {
     protected void doFilterInternal(HttpServletRequest request,HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         // 不过滤的uri
-        String[] notFilter = new String[] { "/action.do", "/tologin.do" };
+        String[] notFilter = new String[] { "/queryOrderOrContract", "/tologin.do" };
         // 请求的uri
         String uri = request.getRequestURI();
         // uri中包含background时才进行过滤

@@ -11,6 +11,7 @@ import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.bson.Document;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.platform.io.bean.OrderOrContract;
-import com.platform.io.bean.Product2;
 import com.platform.mongo.s1.MongoDirver;
 import com.platform.mongo.util.TimeUtil;
 
@@ -338,12 +338,13 @@ public class GeneralController {
 		response.getWriter().print(json.toJson());
 	}
 
-	@RequestMapping(value="/addOrderOrContract",method=RequestMethod.POST)
+	@RequestMapping(value="/addOrderOrContract")
 	@ResponseBody
-	public void addOrderOrContract(@RequestBody OrderOrContract orderOrContracts, HttpServletResponse response) throws Exception {
+	public void addOrderOrContract(@RequestBody OrderOrContract orderOrContracts,HttpSession session,HttpServletResponse response) throws Exception {
 	    System.out.println(orderOrContracts);
+	    String user_id = (String) session.getAttribute("user_name");
 	    MongoDirver md = new MongoDirver();
-	    md.addOrderOrContract(orderOrContracts);
+	    md.addOrderOrContract(orderOrContracts,user_id);
 	}
 	
 	
@@ -402,7 +403,7 @@ public class GeneralController {
 	 * 更新订单/合同
 	 * @author niyn
 	 */
-	@RequestMapping(value = "/updateOrderOrContract",method=RequestMethod.POST)
+	@RequestMapping(value = "/updateOrderOrContract")
 	@ResponseBody
 	public void updateOrderOrContract(@RequestBody OrderOrContract orderOrContracts){
 		System.out.println(orderOrContracts);

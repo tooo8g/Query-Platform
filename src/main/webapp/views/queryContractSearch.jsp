@@ -42,7 +42,6 @@
         <td>订单/合同详细信息</td>
         <td>编制人员</td>
         <td>编制时间</td>
-        <td>操作</td>
       </tr>
       </thead>
       <tbody class="conser_bottom_tbody">
