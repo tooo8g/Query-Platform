@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Query-Platform:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Query-Platform.war">
+      <element id="artifact" artifact-name="Query-Platform:war exploded" />
+    </root>
+  </artifact>
+</component>

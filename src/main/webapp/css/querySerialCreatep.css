@@ -122,7 +122,7 @@ body{
     margin-left: 20px;
     border: 1px solid #bbbbbb;
 }
-.createCode_data{
+.createCode_date{
     background: url("../images/codeQuery_1.png") no-repeat 188px;
 }
 .createCode_creatCode{
@@ -167,6 +167,7 @@ body{
     border: 1px solid #dddddd;
     color: black;
     height: 35px;
+    font-size: 14px;
 }
 
 .body_codeList_tbody{
