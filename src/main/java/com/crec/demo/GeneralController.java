@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -14,9 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.bson.Document;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.platform.io.bean.OrderOrContract;
+import com.platform.io.bean.Product2;
 import com.platform.mongo.s1.MongoDirver;
 import com.platform.mongo.util.TimeUtil;
 
@@ -47,7 +53,7 @@ public class GeneralController {
 		md.close();
 		response.getWriter().print(result);
 	}
-
+	
 	@RequestMapping("/queryPurchase_bidding")
 	public void QueryPurchaseBidding(@RequestParam String str,
 			@RequestParam int start, @RequestParam int limit,
@@ -332,6 +338,78 @@ public class GeneralController {
 		response.getWriter().print(json.toJson());
 	}
 
+	@RequestMapping(value="/addOrderOrContract",method=RequestMethod.POST)
+	@ResponseBody
+	public void addOrderOrContract(@RequestBody OrderOrContract orderOrContracts, HttpServletResponse response) throws Exception {
+	    System.out.println(orderOrContracts);
+	    MongoDirver md = new MongoDirver();
+	    md.addOrderOrContract(orderOrContracts);
+	}
+	
+	
+	@RequestMapping("/queryOrderOrContract")
+	public void queryOrderOrContract(@RequestParam String contract_id,@RequestParam String purchasing_company,@RequestParam String company_name,
+			@RequestParam int start,
+			@RequestParam int limit, HttpServletRequest request,HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryOrderOrContract(contract_id,purchasing_company,company_name, start,	limit);
+		md.close();
+		response.getWriter().print(result);
+	}
+	/**
+	 * 根据物资编号查询订货明细
+	 * @author niyn
+	 * @param str
+	 * @param start
+	 * @param limit
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	@RequestMapping("/queryPurchasingByCode")
+	public void queryPurchasingByCode(@RequestParam String materialCode,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryPurchasingByCode(materialCode);
+		md.close();
+		response.getWriter().print(result);
+	}
+	/**
+	 * 根据物资编号查询供货计划
+	 * @author niyn
+	 * @param str
+	 * @param start
+	 * @param limit
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	@RequestMapping("/querySupplyDetailByCode")
+	public void querySupplyDetailByCode(@RequestParam String materialCode,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.querySupplyDetailByCode(materialCode);
+		md.close();
+		response.getWriter().print(result);
+	}
+	
+	@RequestMapping("/queryOrderOrContractDetail")
+	public void queryOrderOrContractDetail(@RequestParam String contract_id, HttpServletRequest request,HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryOrderOrContractDetail(contract_id);
+		md.close();
+		response.getWriter().print(result);
+	}
+	/**
+	 * 更新订单/合同
+	 * @author niyn
+	 */
+	@RequestMapping(value = "/updateOrderOrContract",method=RequestMethod.POST)
+	@ResponseBody
+	public void updateOrderOrContract(@RequestBody OrderOrContract orderOrContracts){
+		System.out.println(orderOrContracts);
+		MongoDirver md = new MongoDirver();
+		md.updateOrderOrContract(orderOrContracts);
+	}
+	
 	public static void main(String[] args) {
 		GeneralController g = new GeneralController();
 		try {
