@@ -5,14 +5,14 @@ var product_name="" //产品名称
 var product_identify="" //产品标识代码
 var material_code="" //物资编码
 var purchasing_company="" //采购单位
-var groupId=""
+var group_id=""
 var specification=""  //规格型号
 var company_name="" //企业名称	
 $(function(){
     /*通过id获取产品详情信息*/
-    var branchId=$(".branchId").val() //关联ID
+    var branch_id=$(".branch_id").val() //关联ID
     var jsonData="" //返回的JSON
-     $.post("../queryCode",{branchId:branchId},function(data){
+     $.post("../queryCode",{branch_id:branch_id},function(data){
             jsonData=data
              product_name = jsonData.product_name
              product_identify = jsonData.product_identify
@@ -36,27 +36,27 @@ function creatCode(){
     var contract_id=$(".createCode_orderno").val() //订单号/合同号
     var program_time=$(".createCode_date").val() //编制日期
     var creatNum=$(".createCode_creatNum").val() //生成数量
-    var branchId=$(".branchId").val() //关联ID
+    var branch_id=$(".branch_id").val() //关联ID
     var count="" //总数
     var productInfos="" //保存data信息
     var tbodyList=""
     var bzNum
     $.ajax({
         url:"../createCode",
-        data:{product_name:product_name,product_identify:product_identify,material_code:material_code,purchasing_company:purchasing_company,contract_id:contract_id,program_time:program_time,num:creatNum,branchId:branchId,specification:specification,company_name:company_name,start:startValue,limit:limitValue},
+        data:{product_name:product_name,product_identify:product_identify,material_code:material_code,purchasing_company:purchasing_company,contract_id:contract_id,program_time:program_time,num:creatNum,branch_id:branch_id,specification:specification,company_name:company_name,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
         success:function(data){
             $(".qscp_body_codeList_button").removeClass("displayNo").addClass("displayBlock")
             count=data.count
             productInfos=data.codes
-            groupId=productInfos[0].groupId
+            group_id=productInfos[0].group_id.$oid
             for(var i=0;i<productInfos.length;i++){
                 bzNum=Number(startValue)+i+1
                 tbodyList+="<tr>"
                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+productInfos[i].code+"</td>"
-                tbodyList+="<td>"+productInfos[i].program_time+"</td>"
+                tbodyList+="<td>"+timeStamp2String(productInfos[i].program_time.$date)+"</td>"
                 tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
                 tbodyList+="<td>"+productInfos[i].contract_id+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
@@ -80,7 +80,7 @@ function creatCode(){
             asButton+="<p>"+PageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branchId+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branch_id+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
             }else{
                 asButton+="<a><img src='../images/sts_5.png'></a>"
             }
@@ -94,11 +94,11 @@ function creatCode(){
 }
 
 //页码跳转
-function goPage(product_name,product_identify,material_code,purchasing_company,contract_id,program_time,creatNum,branchId,specification,
+function goPage(product_name,product_identify,material_code,purchasing_company,contract_id,program_time,creatNum,branch_id,specification,
 startValue,limitValue,isGo){
     $.ajax({
         url:"../queryCodes",
-        data:{product_name:product_name,product_identify:product_identify,material_code:material_code,purchasing_company:purchasing_company,contract_id:contract_id,program_time:program_time,num:creatNum,branchId:branchId,start:startValue,limit:limitValue},
+        data:{product_name:product_name,product_identify:product_identify,material_code:material_code,purchasing_company:purchasing_company,contract_id:contract_id,program_time:program_time,num:creatNum,branch_id:branch_id,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
         success:function(data){
@@ -113,7 +113,7 @@ startValue,limitValue,isGo){
                 tbodyList+="<tr>"
                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+productInfos[i].code+"</td>"
-                tbodyList+="<td>"+productInfos[i].program_time+"</td>"
+                tbodyList+="<td>"+timeStamp2String(productInfos[i].program_time.$date)+"</td>"
                 tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
                 tbodyList+="<td>"+productInfos[i].contract_id+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
@@ -150,14 +150,14 @@ startValue,limitValue,isGo){
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branchId+"','"+specification+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branch_id+"','"+specification+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
             }else{
                 asButton+="<a><img src='../images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branchId+"','"+preStartRow+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branch_id+"','"+preStartRow+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
             }else{
                 asButton+="<a><img src='../images/sts_5.png'></a>"
             }
@@ -168,15 +168,15 @@ startValue,limitValue,isGo){
 }
 /*生成序列号*/
 function generateCode(){
-    var branchId=$(".branchId").val() //关联ID
-    groupId//组ID
+    var branch_id=$(".branch_id").val() //关联ID
+    group_id//组ID
     //现在已经获取到了关联ID和组ID
 }
 /*清空序列号*/
 function codeEmpty(){
     $.ajax({
         url:"../empty",
-        data:{groupId:groupId},
+        data:{group_id:group_id},
         type:"post",
         success:function(data){
             if(data=="true"){
@@ -190,3 +190,12 @@ function codeEmpty(){
     })
 }
 
+//时间格式化
+function timeStamp2String(time){
+    var datetime = new Date();
+    datetime.setTime(time);
+    var year = datetime.getFullYear();
+    var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+    var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+    return year + "-" + month + "-" + date;
+}

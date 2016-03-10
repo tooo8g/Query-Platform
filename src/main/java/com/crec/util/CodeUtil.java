@@ -19,6 +19,7 @@ public class CodeUtil {
 	public static List<Code> codec(Code code, int num) {
 		List<Code> codes = new ArrayList<Code>();
 		codes.add(code);
+		codes.add(code);
 		for (int i = 0; i < num; i++) {
 			System.out.println(code.getCode() + "####" + code.getProduct_identify()
 					+ "####" + code.getInner_id());

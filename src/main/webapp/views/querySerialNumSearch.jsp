@@ -12,6 +12,7 @@
 <body>
 <jsp:include page="head_code.jsp"/>
 <div class="qsns">
+  <input type="hidden" class="pageNo" value="">
   <div class="qsns_top">
     <form id="qsnsForm">
       <div class="qsns_top_contract_id">
