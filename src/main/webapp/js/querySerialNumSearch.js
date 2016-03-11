@@ -35,7 +35,7 @@ $(function(){
                 tbodyList+="<td>"+codes[i].product_identify+"</td>"
                 tbodyList+="<td>"+codes[i].product_name+"</td>"
                 tbodyList+="<td>"+codes[i].specification+"</td>"
-                tbodyList+="<td>"+codes[i].state+"</td>"
+                tbodyList+="<td>"+(codes[i].state==0?"未打印":"已打印")+"</td>"
                 tbodyList+="</tr>"
             }
             $(".qsns_bottom_tbody").html(" ")

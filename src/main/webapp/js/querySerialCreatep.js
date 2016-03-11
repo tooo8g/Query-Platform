@@ -10,7 +10,8 @@ var specification=""  //规格型号
 var company_name="" //企业名称	
 $(function(){
     /*通过id获取产品详情信息*/
-    var branchId=$(".branchId").val() //关联ID
+//    var branchId=$(".branchId").val() //关联ID
+    var branchId = 'DDHTH123';
     var jsonData="" //返回的JSON
      $.post("../queryCode",{branchId:branchId},function(data){
             jsonData=data

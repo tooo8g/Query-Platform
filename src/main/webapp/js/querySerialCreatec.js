@@ -15,7 +15,7 @@ $(function(){
     * contract_id;//订单、合同号
     * specification //规格型号
     * */
-    var _id=$("._id").val() //id
+    var contractId=$(".contract_id").val() //id
     var isonSupply="" //保存supply的data
     var jsonBzxx="" //保存bzxx的data
     var material_code="" //物资编号
@@ -24,7 +24,7 @@ $(function(){
     var purchasing_company="" //采购单位
     var company_name=""  //企业名称
     var contract_id="" //订单号/合同号
-    $.post("../json/demo_querySerialCreatec.json",{_id:_id},function(data){
+    $.post("../queryOrderOrContractDetail",{contract_id:contractId},function(data){
         isonSupply=data.supply[0]
         jsonBzxx=data.bzxx[0]
         material_code=isonSupply.material_name
@@ -40,6 +40,8 @@ $(function(){
         contract_id=jsonBzxx.contract_id
         $(".createCode_orderno").val(contract_id)
         specification=isonSupply.specification
+        num = isonSupply.num
+        $(".createCode_creatNum").val(num);
     },"json")
 })
 
@@ -63,7 +65,7 @@ function creatCode(){
     program_time=$(".createCode_date").val()
     var branchId="" //关联Id
     branchId=$("._id").val()
-
+    alert(branchId)
     var num="" //数量
     num=$(".createCode_creatNum").val()
 
@@ -73,8 +75,8 @@ function creatCode(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../json/demo_querySerialCreatecList.json",
-        data:{material_code:material_code,material_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branchId:branchId,start:startValue,limit:limitValue},
+        url:"../createCode",
+        data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branchId:branchId,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
         success:function(data){
@@ -91,7 +93,7 @@ function creatCode(){
                 tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
                 tbodyList+="<td>"+codes[i].contract_id+"</td>"
                 tbodyList+="<td>"+codes[i].material_code+"</td>"
-                tbodyList+="<td>"+codes[i].material_name+"</td>"
+                tbodyList+="<td>"+codes[i].product_name+"</td>"
                 tbodyList+="<td>"+codes[i].specification+"</td>"
                 tbodyList+="<td>"+codes[i].product_identify+"</td>"
                 tbodyList+="</tr>"
@@ -111,7 +113,7 @@ function creatCode(){
             asButton+="<p>"+PageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+material_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
             }else{
                 asButton+="<a><img src='../images/sts_5.png'></a>"
             }
@@ -128,7 +130,7 @@ function creatCode(){
 function goPage(material_code,material_name,product_identify,purchasing_company,company_name,contract_id,num,program_time,specification,branchId,startValue,limitValue,isGo){
     $.ajax({
         url:"../json/demo_querySerialCreatecList.json",
-        data:{material_code:material_code,material_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branchId:branchId,start:startValue,limit:limitValue},
+        data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branchId:branchId,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
         success:function(data){
@@ -147,7 +149,7 @@ function goPage(material_code,material_name,product_identify,purchasing_company,
                 tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
                 tbodyList+="<td>"+codes[i].contract_id+"</td>"
                 tbodyList+="<td>"+codes[i].material_code+"</td>"
-                tbodyList+="<td>"+codes[i].material_name+"</td>"
+                tbodyList+="<td>"+codes[i].product_name+"</td>"
                 tbodyList+="<td>"+codes[i].specification+"</td>"
                 tbodyList+="<td>"+codes[i].product_identify+"</td>"
                 tbodyList+="</tr>"
@@ -180,14 +182,14 @@ function goPage(material_code,material_name,product_identify,purchasing_company,
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+material_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
             }else{
                 asButton+="<a><img src='../images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+material_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
             }else{
                 asButton+="<a><img src='../images/sts_5.png'></a>"
             }

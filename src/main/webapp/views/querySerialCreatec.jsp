@@ -13,8 +13,10 @@
 <jsp:include page="head_code.jsp"/>
 <div class="qscc">
   <% String _id=request.getParameter("_id");%>
+  <% String contract_id=request.getParameter("contract_id");%>
   <input type="hidden" class="pageNo" value="">
   <input type="hidden" class="_id" value="<%=_id%>">
+  <input type="hidden" class="contract_id" value="<%=contract_id%>">
   <div class="qscc_title">
     <p>当前位置：</p>
     <p>资质信息查询</p>

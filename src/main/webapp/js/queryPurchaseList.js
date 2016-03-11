@@ -80,6 +80,27 @@ $(function(){
     	    ]
     	}
     ;*/
+    
+    //发送给服务器的JSON
+    $.ajax({
+    	type : "POST",
+//    	url : "../queryAllCode",
+    	data:{contract_id:"",state:"",program_time:"",purchasing_company:"",company_name:"",start:"0",limit:"2"},
+    	success: function(data){
+    		alert(data);
+    	}
+    	
+    })
+    //发送给服务器的JSON
+    $.ajax({
+      type : "POST",
+//      url : "../createCode",
+      data:{material_code:"wzbm333",product_name:"物资药品",product_identify:"CPBSDM123",purchasing_company:"中铁",company_name:"北京",contract_id:"1234567890",num:"5",program_time:"2015-09-22",branchId:"",specification:"中型",start:"0",limit:"2"},
+      success: function(data){
+        alert(data);
+      }
+
+    })
     //发送给服务器的JSON
     $.ajax({
     	type : "POST",
@@ -112,7 +133,7 @@ $(function(){
     //发送给服务器的JSON
     $.ajax({
       type : "POST",
-      url : "../queryOrderOrContract",
+//      url : "../queryOrderOrContract",
       data:{contract_id:"",purchasing_company:"",company_name:"",start:"0",limit:"2"},
       success: function(data){
         alert(data);

@@ -3,8 +3,8 @@
  */
 $(function(){
     /*打开页面。获取contract_id;//订单、合同号，把这个传到后台，把返回的东西显示到页面*/
-//    var contract_id=$(".contract_id").val() //订单/合同号
-    var contract_id='DDHTH124'; //订单/合同号
+    var contract_id=$(".contract_id").val() //订单/合同号
+//    var contract_id='DDHTH123'; //订单/合同号
     
     $.ajax({
         url:"../queryOrderOrContractDetail",
@@ -51,9 +51,9 @@ $(function(){
                 supplyPlanTbodyList += "<td>" + supply[i].address + "</td>"
                 supplyPlanTbodyList += "<td>" + supply[i].person + "</td>"
                 if(supply[i].code_num==0){
-                    supplyPlanTbodyList+="<td><a href='#?contract_id="+supply[i].contract_id+"'>编制序列号</a></td>"
+                    supplyPlanTbodyList+="<td><a href='../views/querySerialCreatec.jsp?contract_id="+contract_id+"&_id="+supply[i]._id.$oid+"'>编制序列号</a></td>"
                 }else{
-                    supplyPlanTbodyList+="<td><a href='#?_id="+supply[i]._id+"'>查看详情</a></td>"
+                    supplyPlanTbodyList+="<td><a href='../views/querySerialNumSearch.jsp?_id="+supply[i]._id.$oid+"'>查看详情</a></td>"
                 }
                 supplyPlanTbodyList+="</tr>"
             }

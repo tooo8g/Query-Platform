@@ -87,6 +87,7 @@ public class ProductController {
 		code.setSpecification(specification);
 		code.setBranchId(branchId);// 关联Id
 		code.setGroupId(groupId.toString());// 组Id
+		code.setState("0");//序列号状态   0-未打印 1-已打印（默认是未打印）
 		code.setAdd_time(new Date());
 		List<Code> codes = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
