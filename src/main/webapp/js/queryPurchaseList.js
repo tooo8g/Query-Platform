@@ -17,7 +17,7 @@ $(function(){
                    {"pid":"123123", "pname":[{"a":"3","b":"4"},{"a":"1","b":"2"}]},
     		       { "pid":"123123", "pname":[{"a":"3","b":"4"},{"a":"1","b":"2"}]}
     		               ];*/
-    var orderOrContracts = 
+  /*  var orderOrContracts = 
     {
     	    "contract_id":"DDHTH123", 
     	  	"company_name":"中国中铁",
@@ -49,118 +49,165 @@ $(function(){
     	  	]
     	  	}
                          ;
- /*   var orderOrContracts = 
+    
+   */ 
+
+    
+  /*  var waybillInfo = 
     {
-    	    "company_name": "中国中铁",
-    	    "contract_id": "DDHTH123",
-    	    "purchasing_company": "鲁班电子商务",
-    	    "purchasing": [
+    		"logistics_id": "YDH1212",
+    	    "logistics_company": "顺丰",
+    	    "car_license": "CH123456789",
+    	    "good_num": "HH9876543231",
+    	    "send_duty": "niyn",
+    	    "send_phone_num": "13816890022",
+    	    "send_addr": "北京",
+    	    "send_company": "中国中铁",
+    	    "receive_duty": "test",
+    	    "receive_phone_num": "13768992341",
+    	    "receive_addr": "意大利",
+    	    "receive_company": "弗洛伦撒",
+    	    "goods": [
     	        {
-    	            "material_code": "wzbm_code1",
-    	            "material_name": "物资编码1",
-    	            "specification": "ghxh798",
-    	            "measurement": "立方",
-    	            "num": "1",
-    	            "price": "1",
-    	            "total_price": "1",
-    	            "company": "中铁局"
+    	            "code": "XLH123",
+    	            "materials_name": "文化",
+    	            "specifications_model": "重型",
+    	            "measurement": "方",
+    	            "product_code": "CPBSDM1212",
+    	            "materials_code": "WZBM12134",
+    	            "remarks": "好",
+    	            "contract_id": "DDHT123"
     	        }
     	    ],
-    	    "supply": [
+    	    "logistics": [
     	        {
-    	            "material_code": "wzbm_code2",
-    	            "material_name": "物资编码2",
-    	            "specification": "ghxh799",
-    	            "measurement": "平方",
-    	            "num": "1",
-    	            "supply_time": "2015-09-22",
-    	            "address": "北京西站",
-    	            "person": "niyn"
+    	        	"send_location":"中国",//始发地
+    				"receive_location":"美国",//目的地
+    				"op_situation":"良好",//处理情况
+    				"point_situation":"俄罗斯",//站点情况
+    				"op_person":"niyn"//操作人
     	        }
     	    ]
     	}
-    ;*/
+    ;
+    */
     
-    //发送给服务器的JSON
-    $.ajax({
-    	type : "POST",
-//    	url : "../queryAllCode",
-    	data:{contract_id:"",state:"",program_time:"",purchasing_company:"",company_name:"",start:"0",limit:"2"},
-    	success: function(data){
-    		alert(data);
-    	}
-    	
-    })
-    //发送给服务器的JSON
-    $.ajax({
-      type : "POST",
-//      url : "../createCode",
-      data:{material_code:"wzbm333",product_name:"物资药品",product_identify:"CPBSDM123",purchasing_company:"中铁",company_name:"北京",contract_id:"1234567890",num:"5",program_time:"2015-09-22",branchId:"",specification:"中型",start:"0",limit:"2"},
-      success: function(data){
-        alert(data);
-      }
-
-    })
-    //发送给服务器的JSON
-    $.ajax({
-    	type : "POST",
-//    	url : "../updateOrderOrContract",
-    	contentType:"application/json",  //发送至服务器的类型
-        dataType : "json",     //预期服务器返回类型
-    	data:JSON.stringify(orderOrContracts),
-    	success: function(data){
-    	}
-    	
-    })
-    //发送给服务器的JSON
-    $.ajax({
-    	type : "POST",
-//    	url : "../queryPurchasingByCode",
-    	data:{materialCode:"wzbm_code1"},
-    	success: function(data){
-    	}
-    	
-    })
-    //发送给服务器的JSON
-    $.ajax({
-    	type : "POST",
-//    	url : "../querySupplyDetailByCode",
-    	data:{materialCode:"wzbm_code2"},
-    	success: function(data){
-    	}
-    	
-    })
-    //发送给服务器的JSON
-    $.ajax({
-      type : "POST",
-//      url : "../queryOrderOrContract",
-      data:{contract_id:"",purchasing_company:"",company_name:"",start:"0",limit:"2"},
-      success: function(data){
-        alert(data);
-      }
-
-    })
-    //发送给服务器的JSON
-    $.ajax({
-    	type : "POST",
-//    	url : "../queryOrderOrContractDetail",
-    	data:{contract_id:"DDHTH123"},
-    	success: function(data){
-    	}
-    	
-    })
-    
-    //发送给服务器的JSON
-    $.ajax({
-      type : "POST",
-      url : "../addOrderOrContract",
-      data:JSON.stringify(orderOrContracts),
-      contentType:"application/json",  //发送至服务器的类型
-      dataType : "json",     //预期服务器返回类型
-      success: function(data){
-      }
-
-    })
+//    //发送给服务器的JSON
+//    $.ajax({
+//    	type : "POST",
+//    	url : "../queryGoodsInfo",
+//    	data:{_id:"56e625c8b07ff11e98277eb2"},
+//    	success: function(data){
+//    	}
+//    })
+//    //发送给服务器的JSON
+//    $.ajax({
+//    	type : "POST",
+//    	url : "../queryLogisticsInfo",
+//    	data:{_id:"56e27a6dc5c50d1d24d7124d"},
+//    	success: function(data){
+//    	}
+//    })
+//    //发送给服务器的JSON
+//    $.ajax({
+//    	type : "POST",
+//    	url : "../queryWaybillInfo",
+//    	data:{logistics_id:"", logistics_company:"", car_license:"", contract_id:"", logistics_stats:"", good_num:"",start:"0",limit:"2"},
+//    	success: function(data){
+//    	}
+//    })
+//    //发送给服务器的JSON
+//    $.ajax({
+//    	type : "POST",
+////    	url : "../addWaybillInfo",
+//    	contentType:"application/json",  //发送至服务器的类型
+//        dataType : "json",     //预期服务器返回类型
+//    	data:JSON.stringify(waybillInfo),
+//    	success: function(data){
+//    	}
+//    	
+//    })
+//    
+//    //发送给服务器的JSON
+//    $.ajax({
+//    	type : "POST",
+////    	url : "../queryAllCode",
+//    	data:{contract_id:"",state:"",program_time:"",purchasing_company:"",company_name:"",start:"0",limit:"2"},
+//    	success: function(data){
+//    		
+//    	}
+//    	
+//    })
+//    //发送给服务器的JSON
+//    $.ajax({
+//      type : "POST",
+////      url : "../createCode",
+//      data:{material_code:"wzbm333",product_name:"物资药品",product_identify:"CPBSDM123",purchasing_company:"中铁",company_name:"北京",contract_id:"1234567890",num:"5",program_time:"2015-09-22",branchId:"",specification:"中型",start:"0",limit:"2"},
+//      success: function(data){
+//        
+//      }
+//
+//    })
+//    //发送给服务器的JSON
+//    $.ajax({
+//    	type : "POST",
+////    	url : "../updateOrderOrContract",
+//    	contentType:"application/json",  //发送至服务器的类型
+//        dataType : "json",     //预期服务器返回类型
+////    	data:JSON.stringify(orderOrContracts),
+//    	success: function(data){
+//    	}
+//    	
+//    })
+//    //发送给服务器的JSON
+//    $.ajax({
+//    	type : "POST",
+////    	url : "../queryPurchasingByCode",
+//    	data:{materialCode:"wzbm_code1"},
+//    	success: function(data){
+//    	}
+//    	
+//    })
+//    //发送给服务器的JSON
+//    $.ajax({
+//    	type : "POST",
+////    	url : "../querySupplyDetailByCode",
+//    	data:{materialCode:"wzbm_code2"},
+//    	success: function(data){
+//    	}
+//    	
+//    })
+//    //发送给服务器的JSON
+//    $.ajax({
+//      type : "POST",
+////      url : "../queryOrderOrContract",
+//      data:{contract_id:"",purchasing_company:"",company_name:"",start:"0",limit:"2"},
+//      success: function(data){
+//        
+//      }
+//
+//    })
+//    //发送给服务器的JSON
+//    $.ajax({
+//    	type : "POST",
+////    	url : "../queryOrderOrContractDetail",
+//    	data:{contract_id:"DDHTH123"},
+//    	success: function(data){
+//    	}
+//    	
+//    })
+//    
+//    //发送给服务器的JSON
+//    $.ajax({
+//      type : "POST",
+////      url : "../addOrderOrContract",
+////      data:JSON.stringify(orderOrContracts),
+//      contentType:"application/json",  //发送至服务器的类型
+//      dataType : "json",     //预期服务器返回类型
+//      success: function(data){
+//      }
+//
+//    })
     
     
     $.ajax({

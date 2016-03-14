@@ -37,6 +37,7 @@ function qwob_submit(){
     var receive_company=$(".content_receive_company").val() //采购单位
 
     /*货物信息*/
+    var contract_id = ""; //订单合同号
     var flag=true //用来判断每行tr是否有空白input
     var inputValue="" //保存input值
     var trInputVal="" //用来保存每组tr的input
@@ -53,7 +54,7 @@ function qwob_submit(){
             }
         })
         if(flag){
-            trInputVal={"code":""+$(this).find("input").eq(0).val()+"","materials_name":""+$(this).find("input").eq(1).val()+"","specifications_model":""+$(this).find("input").eq(2).val()+"","measurement":""+$(this).find("input").eq(3).val()+"","materials_name":""+$(this).find("input").eq(4).val()+"","materials_code":""+$(this).find("input").eq(5).val()+"","remarks":""+$(this).find("input").eq(6).val()+""}
+            trInputVal={"code":""+$(this).find("input").eq(0).val()+"","materials_name":""+$(this).find("input").eq(1).val()+"","specifications_model":""+$(this).find("input").eq(2).val()+"","measurement":""+$(this).find("input").eq(3).val()+"","product_code":""+$(this).find("input").eq(4).val()+"","materials_code":""+$(this).find("input").eq(5).val()+"","remarks":""+$(this).find("input").eq(6).val()+"",contract_id:contract_id}
             tableVal.push(trInputVal)
         }else{
             return false
@@ -65,9 +66,10 @@ function qwob_submit(){
     qwbo={"logistics_id":""+logistics_id+"","logistics_company":""+logistics_company+"","car_license":""+car_license+"","good_num":""+good_num+"","send_duty":""+send_duty+"","send_phone_num":""+send_phone_num+"","send_addr":""+send_addr+"","send_company":""+send_company+"","receive_duty":""+receive_duty+"","receive_phone_num":""+receive_phone_num+"","receive_addr":""+receive_addr+"","receive_company":""+receive_company+"","goods":tableVal}
 
     $.ajax({
-        url:"",
+        url:"../addWaybillInfo",
         type:"post",
-        data:qwbo,
+//        data:qwbo,
+        data:JSON.stringify(qwbo),
         contentType:"application/json",
         dataType:"json",
         success:function(data){
