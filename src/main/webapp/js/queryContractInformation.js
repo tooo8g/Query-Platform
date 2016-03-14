@@ -2,6 +2,10 @@
  * Created by zb on 2016/3/4.
  */
 $(function(){
+    /*调整头部*/
+    $(".nav ul li a").removeClass("colorClick").addClass("colorNoClick")
+    $(".contract").removeClass("colorNoClick").addClass("colorClick")
+
     /*打开页面。获取contract_id;//订单、合同号，把这个传到后台，把返回的东西显示到页面*/
     var contract_id=$(".contract_id").val() //订单/合同号
 //    var contract_id='DDHTH123'; //订单/合同号

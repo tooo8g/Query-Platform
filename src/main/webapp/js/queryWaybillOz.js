@@ -1,6 +1,12 @@
 /**
  * Created by zb on 2016/3/10.
  */
+$(function(){
+    /*调整头部*/
+    $(".nav ul li a").removeClass("colorClick").addClass("colorNoClick")
+    $(".waybill").removeClass("colorNoClick").addClass("colorClick")
+})
+
 /*点击以后,goods_information_show_tbody里面的tr增加*/
 function goods_in_add(){
     $(".goods_information_show_tbody").append("<tr><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'><td><a class='goods_information_delete' onclick='goods_information_delete(this)'>删除</a></td></tr>")
