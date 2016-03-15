@@ -178,15 +178,15 @@ $(function(){
 //    	
 //    })
 //    //发送给服务器的JSON
-//    $.ajax({
-//      type : "POST",
-////      url : "../queryOrderOrContract",
-//      data:{contract_id:"",purchasing_company:"",company_name:"",start:"0",limit:"2"},
-//      success: function(data){
-//        
-//      }
-//
-//    })
+    $.ajax({
+      type : "POST",
+      url : "../queryOrderOrContract",
+      data:{contract_id:"",purchasing_company:"",company_name:"",start:"0",limit:"2"},
+      success: function(data){
+        
+      }
+
+    })
 //    //发送给服务器的JSON
 //    $.ajax({
 //    	type : "POST",

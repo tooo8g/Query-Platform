@@ -439,9 +439,11 @@ public class GeneralController {
 	
 	@RequestMapping("/queryGoodsInfo")
 	public void queryGoodsInfo(
-			@RequestParam String _id,HttpServletRequest request,HttpServletResponse response) throws IOException {
+			@RequestParam String _id,
+			@RequestParam int start,
+			@RequestParam int limit,HttpServletRequest request,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
-		String result = md.queryGoodsInfo(_id);
+		String result = md.queryGoodsInfo(_id,start,limit);
 		System.out.println(result);
 		md.close();
 		response.getWriter().print(result);

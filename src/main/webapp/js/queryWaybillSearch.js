@@ -30,7 +30,7 @@ $(function () {
     var good_num="" //货号
 
     $.ajax({
-        url:"../json/queryWaybillSearch.json",
+        url:"../queryWaybillInfo",
         data:{logistics_id:logistics_id,logistics_company:logistics_company,contract_id:contract_id,logistics_stats:logistics_stats,car_license:car_license,good_num:good_num,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -43,14 +43,16 @@ $(function () {
                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+codes[i].logistics_id+"</td>"
                 tbodyList+="<td>"+codes[i].logistics_company+"</td>"
-                tbodyList+="<td>"+codes[i].contract_id+"</td>"
+//                tbodyList+="<td>"+codes[i].contract_id+"</td>"
+                tbodyList+="<td></td>"
                 tbodyList+="<td>"+codes[i].car_license+"</td>"
                 tbodyList+="<td>"+codes[i].good_num+"</td>"
                 tbodyList+="<td>"+codes[i].send_addr+"</td>"
                 tbodyList+="<td>"+codes[i].send_duty+"</td>"
                 tbodyList+="<td>"+codes[i].send_time+"</td>"
                 tbodyList+="<td>"+codes[i].receive_addr+"</td>"
-                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
+//                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
+                tbodyList+="<td></td>"
                 tbodyList+="<td><a onclick=showSendInfor('"+codes[i]._id.$oid+"')>发货清单</a></td>"
                 tbodyList+="<td id='stateCss'>"+codes[i].logistics_stats+"</td>"
                 tbodyList+="</tr>"
@@ -116,7 +118,7 @@ function formButton(){
     var good_num=$(".top_good_num").val() //货号
 
     $.ajax({
-        url:"../json/queryWaybillSearch.json",
+        url:"../queryWaybillInfo",
         data:{logistics_id:logistics_id,logistics_company:logistics_company,contract_id:contract_id,logistics_stats:logistics_stats,car_license:car_license,good_num:good_num,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -129,14 +131,16 @@ function formButton(){
                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+codes[i].logistics_id+"</td>"
                 tbodyList+="<td>"+codes[i].logistics_company+"</td>"
-                tbodyList+="<td>"+codes[i].contract_id+"</td>"
+//                tbodyList+="<td>"+codes[i].contract_id+"</td>"
+                tbodyList+="<td></td>"
                 tbodyList+="<td>"+codes[i].car_license+"</td>"
                 tbodyList+="<td>"+codes[i].good_num+"</td>"
                 tbodyList+="<td>"+codes[i].send_addr+"</td>"
                 tbodyList+="<td>"+codes[i].send_duty+"</td>"
                 tbodyList+="<td>"+codes[i].send_time+"</td>"
                 tbodyList+="<td>"+codes[i].receive_addr+"</td>"
-                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
+//                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
+                tbodyList+="<td></td>"
                 tbodyList+="<td><a onclick=showSendInfor('"+codes[i]._id.$oid+"')>发货清单</a></td>"
                 tbodyList+="<td id='stateCss'>"+codes[i].logistics_stats+"</td>"
                 tbodyList+="</tr>"
@@ -172,7 +176,7 @@ function formButton(){
 //页码跳转
 function goPage(logistics_id,logistics_company,contract_id,logistics_stats,car_license,good_num,startValue,limitValue,isGo){
     $.ajax({
-        url:"../json/queryWaybillSearch.json",
+        url:"../queryWaybillInfo",
         data:{logistics_id:logistics_id,logistics_company:logistics_company,contract_id:contract_id,logistics_stats:logistics_stats,car_license:car_license,good_num:good_num,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
@@ -189,14 +193,16 @@ function goPage(logistics_id,logistics_company,contract_id,logistics_stats,car_l
                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+codes[i].logistics_id+"</td>"
                 tbodyList+="<td>"+codes[i].logistics_company+"</td>"
-                tbodyList+="<td>"+codes[i].contract_id+"</td>"
+//                tbodyList+="<td>"+codes[i].contract_id+"</td>"
+                tbodyList+="<td></td>"
                 tbodyList+="<td>"+codes[i].car_license+"</td>"
                 tbodyList+="<td>"+codes[i].good_num+"</td>"
                 tbodyList+="<td>"+codes[i].send_addr+"</td>"
                 tbodyList+="<td>"+codes[i].send_duty+"</td>"
                 tbodyList+="<td>"+codes[i].send_time+"</td>"
                 tbodyList+="<td>"+codes[i].receive_addr+"</td>"
-                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
+//                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
+                tbodyList+="<td></td>"
                 tbodyList+="<td><a onclick=showSendInfor('"+codes[i]._id.$oid+"')>发货清单</a></td>"
                 tbodyList+="<td id='stateCss'>"+codes[i].logistics_stats+"</td>"
                 tbodyList+="</tr>"
@@ -264,8 +270,8 @@ function showSendInfor(str){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../json/queryWaybillSearch_showSend.json",
-        data:{id:str},
+        url:"../queryGoodsInfo",
+        data:{_id:str,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
         success:function(data){
@@ -328,7 +334,7 @@ function showSendInfor(str){
 /*send页面的gopage*/
 function goPageSend(str,startValue,limitValue,isGo){
     $.ajax({
-        url:"../json/queryWaybillSearch_showSend.json",
+        url:"../queryWaybillInfo",
         data:{id:str,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
