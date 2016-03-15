@@ -65,7 +65,6 @@ function creatCode(){
     program_time=$(".createCode_date").val()
     var branchId="" //关联Id
     branchId=$("._id").val()
-    alert(branchId)
     var num="" //数量
     num=$(".createCode_creatNum").val()
 
@@ -76,7 +75,7 @@ function creatCode(){
     var bzNum
     $.ajax({
         url:"../createCode",
-        data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branchId:branchId,start:startValue,limit:limitValue},
+        data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branch_id:branchId,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
         success:function(data){
@@ -130,7 +129,7 @@ function creatCode(){
 function goPage(material_code,material_name,product_identify,purchasing_company,company_name,contract_id,num,program_time,specification,branchId,startValue,limitValue,isGo){
     $.ajax({
         url:"../json/demo_querySerialCreatecList.json",
-        data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branchId:branchId,start:startValue,limit:limitValue},
+        data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branch_id:branchId,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
         success:function(data){
@@ -209,8 +208,8 @@ function generateCode(){
 /*清空序列号*/
 function codeEmpty(){
     $.ajax({
-        url:"",
-        data:{groupId:groupId},
+        url:"../empty",
+        data:{group_id:groupId},
         type:"post",
         success:function(data){
             if(data=="true"){
