@@ -31,7 +31,8 @@ $(function(){
                 tbodyList+="<tr>"
                 tbodyList+="<td><a class='noclickCodes' href='javascript:;' onclick='clickCodes(this)'></a><p>"+bzNum+"</p></td>"
                 tbodyList+="<td>"+codes[i].code+"</td>"
-                tbodyList+="<td>"+codes[i].program_time+"</td>"
+//                tbodyList+="<td>"+codes[i].program_time+"</td>"
+                tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
                 tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
                 tbodyList+="<td>"+codes[i].contract_id+"</td>"
                 tbodyList+="<td>"+codes[i].company_name+"</td>"
@@ -99,7 +100,7 @@ function  formButton(){
                 tbodyList+="<tr>"
                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+codes[i].code+"</td>"
-                tbodyList+="<td>"+codes[i].program_time+"</td>"
+                tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
                 tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
                 tbodyList+="<td>"+codes[i].contract_id+"</td>"
                 tbodyList+="<td>"+codes[i].company_name+"</td>"
@@ -139,10 +140,10 @@ function  formButton(){
 }
 
 //页码跳转
-function goPage(company_name,product_identify,product_name,specification,startValue,limitValue,isGo){
-    $.ajax({
+function goPage(contract_id,state,program_time,purchasing_company,company_name,startValue,limitValue,isGo){
+	$.ajax({
         url:"../queryAllCode",
-        data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
+        data:{contract_id:contract_id,state:state,program_time:program_time,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
         success:function(data){
@@ -155,7 +156,7 @@ function goPage(company_name,product_identify,product_name,specification,startVa
                 tbodyList+="<tr>"
                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+codes[i].code+"</td>"
-                tbodyList+="<td>"+codes[i].program_time+"</td>"
+                tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
                 tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
                 tbodyList+="<td>"+codes[i].contract_id+"</td>"
                 tbodyList+="<td>"+codes[i].company_name+"</td>"
@@ -224,4 +225,13 @@ function clickCodes(str){
     }else{
         $(str).removeClass("clickCodes").addClass("noclickCodes")
     }
+}
+//时间格式化
+function timeStamp2String(time){
+    var datetime = new Date();
+    datetime.setTime(time);
+    var year = datetime.getFullYear();
+    var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+    var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+    return year + "-" + month + "-" + date;
 }

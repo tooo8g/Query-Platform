@@ -10,6 +10,7 @@
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
+  <input type="hidden" class="pageNo" value="">
 <div class="cq">
     <div class="cq_top">
         <form id="cqForm">
