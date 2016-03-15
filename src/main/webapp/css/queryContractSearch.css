@@ -96,12 +96,25 @@ body{
     color: white;
     margin-left: 10px;
 }
-
+.contractCreat{
+    color: #ffffff;
+    background-color:#77afea;
+    width: auto;
+    float: left;
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 156px;
+}
 .conser_bottom{
     width: 1200px;
     min-height: 407px;
     float: left;
-    margin-top: 20px;
 }
 
 .conser_bottom_table{

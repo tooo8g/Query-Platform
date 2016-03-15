@@ -1,4 +1,4 @@
-/*Í·²¿*/
+/*Í·ï¿½ï¿½*/
 .head{
     width: 100%;
     height: auto;
@@ -75,8 +75,9 @@
 }
 .nav ul li a{
     font-size: 14px;
+    font-weight: bold;
 }
-/*¹«¹²Àà*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .colorClick{
     color: #f44848;
     border-bottom: 1px solid #f44848;
