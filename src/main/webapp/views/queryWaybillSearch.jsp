@@ -82,6 +82,42 @@
     </div>
   </div>
 </div>
+<div class="sendList displayNo" id="sendList">
+  <div class="showSendList">
+    <input type="hidden" class="pageNoSend" value="">
+    <div class="show_sendList">
+      <div class="show_sendList_title">
+        <p>运单查询-发货清单</p>
+        <a class="sendListe_title" onclick="closeDetails()"><img src="../images/qws_1.png" ></a>
+      </div>
+      <div class="show_sendList_content">
+        <table class="show_sendList_table">
+          <thead class="show_sendList_thead">
+          <tr>
+            <td width="73"></td>
+            <td>序列号</td>
+            <td>产品名称</td>
+            <td>规格型号</td>
+            <td>计量单位</td>
+            <td>产品标识代码</td>
+            <td>物资编码</td>
+            <td>备注</td>
+          </tr>
+          </thead>
+          <tbody class="show_sendList_tbody"></tbody>
+        </table>
+      </div>
+      <div class="listperAuth_send_button">
+
+      </div>
+      <div class="jq_button_div_close">
+        <div class="jq_button_div">
+          <a type="button" class="jq_button" onclick="closeDetails()">关闭</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <jsp:include page="foot.jsp"/>
 </body>
 </html>
