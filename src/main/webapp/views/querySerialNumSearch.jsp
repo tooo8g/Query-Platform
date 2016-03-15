@@ -4,6 +4,7 @@
   <title>序列号查询</title>
   <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="../js/querySerialNumSearch.js"></script>
+  <script type="text/javascript" src="../js/transTime.js"></script>
   <script type="text/javascript" src="../js/WdatePicker.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/querySerialNumSearch.css">
   <link rel="stylesheet" type="text/css" href="../css/head_code.css">

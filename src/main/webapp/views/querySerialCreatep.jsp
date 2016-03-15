@@ -4,6 +4,7 @@
     <title>序列号编制--从产品标识</title>
     <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
     <script type="text/javascript" src="../js/querySerialCreatep.js"></script>
+    <script type="text/javascript" src="../js/transTime.js"></script>
     <script type="text/javascript" src="../js/WdatePicker.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/querySerialCreatep.css">
     <link rel="stylesheet" type="text/css" href="../css/head_code.css">
