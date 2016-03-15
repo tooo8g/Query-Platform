@@ -37,7 +37,7 @@ $(function(){
                 tbodyList+="<td>"+productInfos[i].measurement+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
                 tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='querySerialCreatep.jsp?branchId="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
+                tbodyList+="<td><a href='querySerialCreatep.jsp?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
                 tbodyList+="</tr>"
             }
             $(".cq_tbody").html(" ")
@@ -104,7 +104,7 @@ function  formButton(){
                 tbodyList+="<td>"+productInfos[i].measurement+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
                 tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='querySerialCreatep.jsp?branchId="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
+                tbodyList+="<td><a href='querySerialCreatep.jsp?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
                 tbodyList+="</tr>"
             }
             $(".cq_tbody").html(" ")
@@ -139,16 +139,16 @@ function  formButton(){
 //页码跳转
 function goPage(company_name,product_identify,product_name,specification,startValue,limitValue,isGo){
     $.ajax({
-        url:"../queryStandard",
+        url:"../product",
         data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
         success:function(data){
             var tbodyList="" //保存解析的json数据
             var count=data.count
-            var bzxx=data.bzxx
+            var productInfos=data.productInfos
             var bzNum
-            for(var i=0;i<bzxx.length;i++){
+            for(var i=0;i<productInfos.length;i++){
                 bzNum=Number(startValue)+i+1
                 tbodyList+="<tr>"
                 tbodyList+="<td>"+bzNum+"</td>"
@@ -158,8 +158,8 @@ function goPage(company_name,product_identify,product_name,specification,startVa
                 tbodyList+="<td>"+productInfos[i].specification+"</td>"
                 tbodyList+="<td>"+productInfos[i].measurement+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
-                tbodyList+="<td>"+productInfos[i].business+"</td>"
-                tbodyList+="<td><a href='ss?id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
+                tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
+                tbodyList+="<td><a href='querySerialCreatep.jsp?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
                 tbodyList+="</tr>"
             }
             $(".cq_tbody").html(" ")

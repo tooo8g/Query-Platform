@@ -18,16 +18,22 @@ public class CodeUtil {
 	 */
 	public static List<Code> codec(Code code, int num) {
 		List<Code> codes = new ArrayList<Code>();
-		codes.add(code);
 		for (int i = 0; i < num; i++) {
-			System.out.println(code.getCode() + "####" + code.getProduct_identify()
-					+ "####" + code.getInner_id());
-//			Code c = (Code) code.clone();
-//			c.setCode(i + "");
-//			c.setInner_id(i + "");
-//			codes.add(c);
+			Code c = (Code) code.clone();
+			c.setCode("ABC123567"+i);
+			c.setInner_id(i);
+			codes.add(c);
 		}
 
 		return codes;
+	}
+
+	public static void main(String[] args) {
+		Code c = new Code();
+		c.setContract_id("abc123");
+		List<Code> cs = CodeUtil.codec(c, 5);
+		for (Code cc : cs) {
+			System.out.println(cc.getCode());
+		}
 	}
 }

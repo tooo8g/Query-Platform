@@ -232,3 +232,6 @@ body{
 .listperAuth_button a{
     float: left;
 }
+.clickCursor{
+	cursor: pointer
+}

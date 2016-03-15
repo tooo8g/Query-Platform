@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.crec.util.CodeUtil;
 import com.platform.io.bean.Code;
 import com.platform.mongo.s1.MongoDirver;
+import com.platform.mongo.util.TimeUtil;
 
 /**
  * 
@@ -45,9 +46,11 @@ public class ProductController {
 			@RequestParam(required = false) int start,
 			@RequestParam(required = false) int limit,
 			HttpServletResponse response) throws IOException {
+		System.out.println("^^^^^"+company_name+"^^^^^^"+start);
 		MongoDirver md = new MongoDirver();
 		String result = md.queryProductInfo(company_name, product_identify,
 				product_name, specification, start, limit);
+		System.out.println("%%%%%%%"+result);
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -69,31 +72,33 @@ public class ProductController {
 			@RequestParam(required = false) String company_name,
 			@RequestParam(required = false) String contract_id,
 			@RequestParam(required = false) String program_time,
-			@RequestParam(required = false) String branchId,
+			@RequestParam(required = false) String branch_id,
 			@RequestParam(required = false) String specification,
 			@RequestParam(required = false) int num,
 			@RequestParam(required = false) int start,
 			@RequestParam(required = false) int limit,
 			HttpServletResponse response) throws IOException {
 		Code code = new Code();
-		ObjectId groupId = new ObjectId();
+		ObjectId group_id = new ObjectId();
 		code.setProduct_name(product_name);// 产品名称
 		code.setProduct_identify(product_identify);// 产品标示代码
 		code.setMaterial_code(material_code);// 物资编码
 		code.setPurchasing_company(purchasing_company);// 采购单位
 		code.setContract_id(contract_id);// 订单合同编号
-		code.setProgram_time(program_time);// 编制时间
-		code.setCompany_name(company_name);
-		code.setSpecification(specification);
-		code.setBranchId(branchId);// 关联Id
-		code.setGroupId(groupId.toString());// 组Id
+		code.setProgram_time(TimeUtil.parserTime(program_time));// 编制时间
+		code.setCompany_name(company_name);// 企业名称
+		code.setSpecification(specification);// 规格型号
+		// 把页面传过来的String类型的branch_id转换成ObjectId类型
+		ObjectId branchId = new ObjectId(branch_id);
+		code.setBranch_id(branchId);// 关联Id
+		code.setGroup_id(group_id);// 组Id
 		code.setAdd_time(new Date());
 		List<Code> codes = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
 		for (Code c : codes) {
 			md.addCode(c);
 		}
-		String result = md.queryCodes(groupId, start, limit);
+		String result = md.queryCodes(group_id, branchId, start, limit);
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -109,11 +114,12 @@ public class ProductController {
 	 * @throws IOException
 	 */
 	@RequestMapping("/queryCodes")
-	public void queryCodes(String groupId, int start, int limit,
-			HttpServletResponse response) throws IOException {
+	public void queryCodes(String group_id, String branch_id, int start,
+			int limit, HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
-		ObjectId gId = new ObjectId(groupId);
-		String result = md.queryCodes(gId, start, limit);
+		ObjectId gId = new ObjectId(group_id);
+		ObjectId bId = new ObjectId(branch_id);
+		String result = md.queryCodes(gId, bId, start, limit);
 		md.close();
 		response.getWriter().print(result);
 
@@ -127,10 +133,11 @@ public class ProductController {
 	 * @throws IOException
 	 */
 	@RequestMapping("/empty")
-	public void deleteByGroupId(@RequestParam(required = false) String groupId,
+	public void deleteByGroupId(
+			@RequestParam(required = false) String group_id,
 			HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
-		md.deleteByGroupId(groupId);
+		md.deleteByGroupId(group_id);
 		md.close();
 		response.getWriter().print(true);
 	}
@@ -144,10 +151,10 @@ public class ProductController {
 	 */
 	@RequestMapping("/queryCode")
 	public void querySingleCode(
-			@RequestParam(required = false) String branchId,
+			@RequestParam(required = false) String branch_id,
 			HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
-		String result = md.querySingleCode(branchId);
+		String result = md.querySingleCode(branch_id);
 		md.close();
 		response.getWriter().print(result);
 	}

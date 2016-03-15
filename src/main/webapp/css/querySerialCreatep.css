@@ -240,10 +240,13 @@ body{
 .body_empty{
     margin-left: 20px;
 }
-/*/!*公共类*!/*/
+/*/!*鍏叡绫�!/*/
 .displayBlock{
     display: block;
 }
 .displayNo{
     display: none;
+}
+.clickCursor{
+	cursor: pointer
 }
