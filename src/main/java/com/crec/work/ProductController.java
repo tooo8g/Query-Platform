@@ -98,7 +98,8 @@ public class ProductController {
 		for (Code c : codes) {
 			md.addCode(c);
 		}
-		String result = md.queryCodes(group_id, branchId, start, limit);
+		String result = null;
+//				md.queryCodes(group_id, branchId, start, limit);
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -119,7 +120,8 @@ public class ProductController {
 		MongoDirver md = new MongoDirver();
 		ObjectId gId = new ObjectId(group_id);
 		ObjectId bId = new ObjectId(branch_id);
-		String result = md.queryCodes(gId, bId, start, limit);
+		String result = null;
+//				md.queryCodes(gId, bId, start, limit);
 		md.close();
 		response.getWriter().print(result);
 
