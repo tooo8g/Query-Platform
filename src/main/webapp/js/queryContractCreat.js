@@ -23,7 +23,7 @@ function qcti_orderDetails_delete(str){
 
 /*新增供货计划，点击以后，供货计划列表增加*/
 function qcti_supplyPlan_add(){
-    $(".qcti_supplyPlan_tbody").append("<tr><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><a class='qcti_supplyPlan_delete' onclick='qcti_supplyPlan_delete(this)'>删除</a></td></tr>")
+    $(".qcti_supplyPlan_tbody").append("<tr><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><a class='qcti_supplyPlan_delete' onclick='qcti_supplyPlan_delete(this)'>删除</a></td></tr>")
 }
 /*删除供货计划里面的列表*/
 function qcti_supplyPlan_delete(str){
