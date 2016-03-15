@@ -1,6 +1,11 @@
 /**
  * Created by zb on 2016/3/7.
  */
+$(function(){
+    /*调整头部*/
+    $(".nav ul li a").removeClass("colorClick").addClass("colorNoClick")
+    $(".contract").removeClass("colorNoClick").addClass("colorClick")
+})
 /*新增订货明细，点击以后，订货明细列表增加*/
 function qcti_od_add(){
   $(".qcti_orderDetails_tbody").append("<tr><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><a class='qcti_orderDetails_delete' onclick='qcti_orderDetails_delete(this)'>删除</a></td></tr>")

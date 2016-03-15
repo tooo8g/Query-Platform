@@ -2,6 +2,10 @@
  * Created by zb on 2016/3/4.
  */
 $(function(){
+	 /*调整头部*/
+    $(".nav ul li a").removeClass("colorClick").addClass("colorNoClick")
+    $(".serialNumber").removeClass("colorNoClick").addClass("colorClick")
+	
     /*页面进来直接调用方法*/
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -36,7 +40,7 @@ $(function(){
                 tbodyList+="<td>"+codes[i].product_identify+"</td>"
                 tbodyList+="<td>"+codes[i].product_name+"</td>"
                 tbodyList+="<td>"+codes[i].specification+"</td>"
-                tbodyList+="<td>"+codes[i].state+"</td>"
+                tbodyList+="<td>"+(codes[i].state==0?"未打印":"已打印")+"</td>"
                 tbodyList+="</tr>"
             }
             $(".qsns_bottom_tbody").html(" ")

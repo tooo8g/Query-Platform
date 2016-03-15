@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.platform.io.bean.OrderOrContract;
+import com.platform.io.bean.WaybillInfo;
 import com.platform.mongo.s1.MongoDirver;
 import com.platform.mongo.util.TimeUtil;
 
@@ -409,6 +410,53 @@ public class GeneralController {
 		System.out.println(orderOrContracts);
 		MongoDirver md = new MongoDirver();
 		md.updateOrderOrContract(orderOrContracts);
+	}
+	
+	@RequestMapping(value="/addWaybillInfo")
+	@ResponseBody
+	public void addWaybillInfo(@RequestBody WaybillInfo waybillInfo,HttpServletResponse response) throws Exception {
+	    System.out.println(waybillInfo);
+	    MongoDirver md = new MongoDirver();
+	    md.addWaybillInfo(waybillInfo);
+	}
+	
+	@RequestMapping("/queryWaybillInfo")
+	public void queryWaybillInfo(
+			@RequestParam String logistics_id,
+			@RequestParam String logistics_company,
+			@RequestParam String car_license,
+			@RequestParam String contract_id,
+			@RequestParam String logistics_stats,
+			@RequestParam String good_num,
+			@RequestParam int start,
+			@RequestParam int limit, HttpServletRequest request,HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryWaybillInfo(logistics_id,logistics_company,car_license, contract_id,logistics_stats,good_num,start,	limit);
+		System.out.println(result);
+		md.close();
+		response.getWriter().print(result);
+	}
+	
+	@RequestMapping("/queryGoodsInfo")
+	public void queryGoodsInfo(
+			@RequestParam String _id,
+			@RequestParam int start,
+			@RequestParam int limit,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryGoodsInfo(_id,start,limit);
+		System.out.println(result);
+		md.close();
+		response.getWriter().print(result);
+	}
+	
+	@RequestMapping("/queryLogisticsInfo")
+	public void queryLogisticsInfo(
+			@RequestParam String _id,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryLogisticsInfo(_id);
+		System.out.println(result);
+		md.close();
+		response.getWriter().print(result);
 	}
 	
 	public static void main(String[] args) {
