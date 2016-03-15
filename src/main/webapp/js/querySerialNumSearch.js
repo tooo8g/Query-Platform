@@ -2,6 +2,10 @@
  * Created by zb on 2016/3/4.
  */
 $(function(){
+	 /*调整头部*/
+    $(".nav ul li a").removeClass("colorClick").addClass("colorNoClick")
+    $(".serialNumber").removeClass("colorNoClick").addClass("colorClick")
+	
     /*页面进来直接调用方法*/
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
