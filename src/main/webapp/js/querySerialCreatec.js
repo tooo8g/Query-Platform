@@ -82,13 +82,13 @@ function creatCode(){
             $(".qscc_body_codeList_button").removeClass("displayNo").addClass("displayBlock")
             count=data.count
             codes=data.codes
-            groupId=codes[0].groupId
+            groupId=codes[0].group_id.$oid
             for(var i=0;i<codes.length;i++){
                 bzNum=Number(startValue)+i+1
                 tbodyList+="<tr>"
                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+codes[i].code+"</td>"
-                tbodyList+="<td>"+timeStamp2String(code[i].program_time.$date)+"</td>"
+                tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
                 tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
                 tbodyList+="<td>"+codes[i].contract_id+"</td>"
                 tbodyList+="<td>"+codes[i].material_code+"</td>"
@@ -144,7 +144,7 @@ function goPage(material_code,material_name,product_identify,purchasing_company,
                 tbodyList+="<tr>"
                 tbodyList+="<td>"+bzNum+"</td>"
                 tbodyList+="<td>"+codes[i].code+"</td>"
-                tbodyList+="<td>"+timeStamp2String(code[i].program_time.$date)+"</td>"
+                tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
                 tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
                 tbodyList+="<td>"+codes[i].contract_id+"</td>"
                 tbodyList+="<td>"+codes[i].material_code+"</td>"
