@@ -247,3 +247,6 @@ body{
 .displayNo{
     display: none;
 }
+.clickCursor{
+    cursor: pointer;
+}
