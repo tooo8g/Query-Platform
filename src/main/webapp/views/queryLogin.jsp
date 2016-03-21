@@ -20,7 +20,6 @@
         <div class="qLogin_content_login">
           <div class="login_top">
             <span>用户登录</span>
-            <img src="../images/login_02.png">
           </div>
           <div class="login_content">
             <div class="username">
@@ -41,6 +40,9 @@
               </div>
               <div class="password_input">
                 <input type="password" name="password" class="password_input_value" value="">
+              </div>
+              <div class="password_img1">
+                <img src="../images/login_04.png" onclick="deletePassword()">
               </div>
             </div>
             <div class="inplist">
