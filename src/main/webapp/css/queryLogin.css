@@ -60,13 +60,6 @@ img{border: none;margin: 0px;padding: 0px;}
     margin-left: 20px;
     float: left;
 }
-.login_top img{
-    float: right;
-    margin-right: 20px;
-    margin-top: 17px;
-    display: block;
-    cursor: pointer;
-}
 .login_content{
     width: 310px;
     float: left;
@@ -98,37 +91,25 @@ img{border: none;margin: 0px;padding: 0px;}
     margin-top: 3px;
     float: left;
 }
-.username_input{
+.username_input,.password_input{
     float: left;
     width: 250px;
     height: 28px;
 }
-.username_input_value{
+.username_input_value,.password_input_value{
     float: left;
     width: 245px;
     height: 28px;
     border: none;
     padding-left: 5px;
 }
-.password_input{
-    float: left;
-    width: 278px;
-    height: 28px;
-}
-.password_input_value{
-    float: left;
-    width: 273px;
-    height: 28px;
-    border: none;
-    padding-left: 5px;
-}
-.username_img1{
+.username_img1,.password_img1{
     width: 28px;
     height: 27px;
     float: left;
     background-color: #FFFFFF;
 }
-.username_img1 img{
+.username_img1 img,.password_img1 img{
     float: left;
     margin-top: 6px;
     margin-left: 6px;
@@ -140,23 +121,23 @@ img{border: none;margin: 0px;padding: 0px;}
     margin-top: 10px;
 }
 /*.saveUser{*/
-    /*float: left;*/
-    /*width: 12px;*/
-    /*height: 12px;*/
-    /*/!*background-image: url("../images/login_06.png");*!/*/
-    /*cursor: pointer;*/
-    /*margin-right: 5px;*/
-    /*display: block;*/
+/*float: left;*/
+/*width: 12px;*/
+/*height: 12px;*/
+/*/!*background-image: url("../images/login_06.png");*!/*/
+/*cursor: pointer;*/
+/*margin-right: 5px;*/
+/*display: block;*/
 /*}*/
 .saveUsername{
     float: left;
     margin-right: 5px;
 }
 /*.saveUsername{*/
-    /*opacity:0;*/
-    /*float: left;*/
-    /*width: 0px;*/
-    /*height: 0px;*/
+/*opacity:0;*/
+/*float: left;*/
+/*width: 0px;*/
+/*height: 0px;*/
 /*}*/
 #saveUsernameLabel{
     float: left;
