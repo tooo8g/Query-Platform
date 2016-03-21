@@ -203,7 +203,6 @@ body{
     height: 20px;
     float: right;
     line-height: 20px;
-    margin-right: 6px;
     margin-bottom: 20px;
     margin-top: 20px;
     text-align: right;
@@ -246,4 +245,7 @@ body{
 }
 .displayNo{
     display: none;
+}
+.clickCursor{
+    cursor: pointer;
 }

@@ -42,25 +42,26 @@ $(function(){
             }
             $(".cq_tbody").html(" ")
             $(".cq_tbody").append(tbodyList)
-
-            var asButton=""
-            var countPages=Math.ceil(count/limitValue)
-            var PageNo  //当前页码
-            if(startValue==0){
-                PageNo=1
+            if(count>0) {
+                var asButton = ""
+                var countPages = Math.ceil(count / limitValue)
+                var PageNo  //当前页码
+                if (startValue == 0) {
+                    PageNo = 1
+                }
+                $(".pageNo").val(PageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton += "<a><img src='../images/sts_4.png'></a>"
+                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
+                if (countPages > 1) {
+                    nextStartRow = PageNo * limitValue
+                    asButton += "<a class=clickCursor onclick=goPage('" + company_name + "','" + product_identify + "','" + product_name + "','" + specification + "','" + nextStartRow + "','" + limitValue + "','next')><img src='../images/sts_5.png'></a>"
+                } else {
+                    asButton += "<a><img src='../images/sts_5.png'></a>"
+                }
+                $(".listperAuth_button").html(" ")
+                $(".listperAuth_button").append(asButton)
             }
-            $(".pageNo").val(PageNo)
-            var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='../images/sts_4.png'></a>"
-            asButton+="<p>"+PageNo+"/"+countPages+"</p>"
-            if(countPages>1){
-                nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+company_name+"','"+product_identify+"','"+product_name+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
-            }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
-            }
-            $(".listperAuth_button").html(" ")
-            $(".listperAuth_button").append(asButton)
         },
         error:function(){
             alert("链接失败")
