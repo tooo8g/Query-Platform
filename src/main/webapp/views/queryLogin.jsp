@@ -12,6 +12,7 @@
 </head>
 <body>
 <jsp:include page="resource.jsp"/>
+
 <div class="qLogin">
   <div class="qLogin_log">
     <img src="images/head_3.png">
