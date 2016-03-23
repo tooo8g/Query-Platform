@@ -27,18 +27,18 @@ function deletePassword(){
 }
 /*表单提交*/
 function loginSubmit(){
-    if ($("#saveUsername").attr("checked")) {
-        var str_username = $(".username_input_value").val();
-        var str_password = $(".password_input_value").val();
-        $.cookie("rmbUser", "true", { expires: 7 }); //存储一个带7天期限的cookie
-        $.cookie("username", str_username, { expires: 7 });
-        $.cookie("password", str_password, { expires: 7 });
-    }
-    else {
-        $.cookie("rmbUser", "false", { expire: -1 });
-        $.cookie("username", "", { expires: -1 });
-        $.cookie("password", "", { expires: -1 });
-    }
+//    if ($("#saveUsername").attr("checked")) {
+//        var str_username = $(".username_input_value").val();
+//        var str_password = $(".password_input_value").val();
+//        $.cookie("rmbUser", "true", { expires: 7 }); //存储一个带7天期限的cookie
+//        $.cookie("username", str_username, { expires: 7 });
+//        $.cookie("password", str_password, { expires: 7 });
+//    }
+//    else {
+//        $.cookie("rmbUser", "false", { expire: -1 });
+//        $.cookie("username", "", { expires: -1 });
+//        $.cookie("password", "", { expires: -1 });
+//    }
 
     $("#qLogin_content_login").submit()
 }

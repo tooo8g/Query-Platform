@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
+<jsp:include page="resource.jsp"/>
 <head>
     <%--<base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/">--%>
     <title>产品标识代码查询</title>
@@ -12,7 +13,7 @@
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
-<jsp:include page="resource.jsp"/>
+
   <input type="hidden" class="pageNo" value="">
 <div class="cq">
     <div class="cq_top">

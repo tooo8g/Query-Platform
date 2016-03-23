@@ -2,6 +2,7 @@
  * Created by zb on 2016/2/29.
  */
 $(function(){
+	alert(ctx)
     /*给nav a 绑定一个click事件*/
     $(".nav a").on("click",function(){
         $(".nav a").removeClass("colorClick").addClass("colorNoClick")
@@ -87,7 +88,7 @@ function  formButton(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../product",
+        url:ctx+"/product",
         data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -140,7 +141,7 @@ function  formButton(){
 //页码跳转
 function goPage(company_name,product_identify,product_name,specification,startValue,limitValue,isGo){
     $.ajax({
-        url:"../product",
+    	url:ctx+"/product",
         data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',

@@ -11,13 +11,14 @@
   <link rel="stylesheet" type="text/css" href="css/queryLogin.css">
 </head>
 <body>
+<jsp:include page="resource.jsp"/>
 <div class="qLogin">
   <div class="qLogin_log">
     <img src="images/head_3.png">
   </div>
   <div class="qLogin_content">
     <div class="content_login">
-      <form id="qLogin_content_login" action="${pageContext.request.contextPath}/goLogin" name="qLogin_content_login" method="get">
+      <form id="qLogin_content_login" action="${ctx}/goLogin" name="qLogin_content_login" method="post">
         <div class="qLogin_content_login">
           <div class="login_top">
             <span>用户登录</span>
