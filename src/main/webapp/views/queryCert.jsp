@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <jsp:include page="resource.jsp"/>
     <title>国家铁路局认证目录查询</title>
-    <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../js/queryCert.js"></script>
-    <script type="text/javascript" src="../js/scrollJs.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/repariParts.css">
+    <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="${ctx}/js/queryCert.js"></script>
+    <script type="text/javascript" src="${ctx}/js/scrollJs.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/repariParts.css">
 
 </head>
 <body>
@@ -45,7 +46,7 @@
             <span>|</span>
             <p class="colorHui">当前证书数量：<p id="as_num"></p>个</p>
         </div>
-        <div action="queryCert" class="a_search">
+        <div action="${ctx}/queryCert" class="a_search">
             <input type="text" name="search_a_text" value="" class="serAInput">
             <a type="button" name="search_a"  class="search_a_btn" onclick="search_a_button()">搜索</a>
         </div>
@@ -81,7 +82,7 @@
         <div class="product_show_infor">
             <div class="product_infor_title">
                 <p>产品详情</p>
-                <a onclick="pis_close()"><img src="../images/as_1.png"></a>
+                <a onclick="pis_close()"><img src="${ctx}/images/as_1.png"></a>
             </div>
             <div class="product_infor_show1">
             </div>

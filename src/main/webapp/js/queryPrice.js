@@ -10,7 +10,7 @@ $(function(){
      * 进去页面，自动调此方法，获取左边的目录
      * */
     $.ajax({
-        url:"../queryPriceMenu",
+        url:ctx+"/queryPriceMenu",
         type:"post",
         dataType:"json",
         success:function(data){
@@ -27,9 +27,9 @@ $(function(){
     //给目录添加click事件
     $(".itemShowList").on("click","a",function() {
         $(".itemShow a").removeClass("colorClick").addClass("colorNoClick")
-        $(".itemShow a img").attr("src","../images/as_2.png")
+        $(".itemShow a img").attr("src",""+ctx+"/images/as_2.png")
         $(this).removeClass("colorNoClick").addClass("colorClick")
-        $(this).find("img").attr("src","../images/as_3.png")
+        $(this).find("img").attr("src",""+ctx+"/images/as_3.png")
         var list_num = $(this).attr("num");
         var itemShowList_data=list_json.childs[0].childs[list_num].childs
         var num=1;
@@ -62,7 +62,7 @@ $(function(){
     var citySelect=""
     var specification=""
     $.ajax({
-        url:"../queryPrice",
+        url:ctx+"/queryPrice",
         data:{date:price_Data,name:wuziName,city:citySelect,specification:specification,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -108,13 +108,13 @@ $(function(){
             }
             $(".pageNo").val(pageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='../images/sts_4.png'></a>"
+            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+wuziName+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+wuziName+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").append(asButton)
         },
@@ -154,7 +154,7 @@ function showChilds(str){
     muluJson = list_json.childs[str].childs
     $(".mulluShowSh").html("")
     for (var i = 0; i < muluJson.length; i++) {
-        $(".mulluShowSh").append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"'><p>"+muluJson[i].name+"</p><img src='../images/as_2.png'></a>")
+        $(".mulluShowSh").append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"'><p>"+muluJson[i].name+"</p><img src='"+ctx+"/images/as_2.png'></a>")
     }
 
     var sihHeight=$("#itemShow").height()
@@ -169,13 +169,13 @@ function itemShowList(append_dom,data){
     if (data) {
         append_dom.html("");
         for (var i = 0; i < data.length; i++) {
-            append_dom.append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"'><p>"+data[i].name+"</p><img src='../images/as_2.png'></a>")
+            append_dom.append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"'><p>"+data[i].name+"</p><img src='"+ctx+"/images/as_2.png'></a>")
         };
         append_dom.on("click","a",function() {
             $(this).parent().find("a").removeClass("colorClick").addClass("colorNoClick")
-            $(this).parent().find("a").find("img").attr("src","../images/as_2.png")
+            $(this).parent().find("a").find("img").attr("src",""+ctx+"/images/as_2.png")
             $(this).removeClass("colorNoClick").addClass("colorClick")
-            $(this).find("img").attr("src","../images/as_3.png")
+            $(this).find("img").attr("src",""+ctx+"/images/as_3.png")
 
             list_n = $(this).attr("num");
             var itemShowList_data=data[list_n].childs;
@@ -213,7 +213,7 @@ function itemShowButton(str){
     var citySelect=""
     var specification=""
     $.ajax({
-            url: '../queryPrice',
+            url: ctx+'/queryPrice',
             data:{date:price_Data,name:str,city:citySelect,specification:specification,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
@@ -260,13 +260,13 @@ function itemShowButton(str){
                 }
                 $(".pageNo").val(pageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
                 asButton+="<p>"+pageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=pageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+str+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+str+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a><img src='../images/sts_5.png'></a>"
+                    asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").html(" ")
                 $(".listperAuth_button").append(asButton)
@@ -282,7 +282,7 @@ function itemShowButton(str){
 function goPage(date,name,citySelect,specification,start,limit,isGo){
     $(".listperAuth_button").html("")
     $.ajax({
-        url: '../queryPrice',
+        url: ctx+'/queryPrice',
         data:{date:date,name:name,city:citySelect,specification:specification,start:start,limit:limit},
         type : 'post',
         dataType : 'json',
@@ -344,16 +344,16 @@ function goPage(date,name,citySelect,specification,start,limit,isGo){
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+date+"','"+name+"','"+citySelect+"','"+specification+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+date+"','"+name+"','"+citySelect+"','"+specification+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+date+"','"+name+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+date+"','"+name+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").append(asButton)
         }
@@ -390,7 +390,7 @@ function formButton(){
     var specification=$(".specification").val()
     var bzNum=""
     $.ajax({
-        url:"../queryPrice",
+        url:ctx+"/queryPrice",
         data:{date:price_Data,name:wuziName,city:citySelect,specification:specification,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -435,13 +435,13 @@ function formButton(){
             }
             $(".pageNo").val(pageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='../images/sts_4.png'></a>"
+            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+wuziName+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+price_Data+"','"+wuziName+"','"+citySelect+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
@@ -508,7 +508,7 @@ function priSel_details(str){
      * specification 规格
      * */
     $.ajax({
-        url:"../queryCompanyForPrice",
+        url:ctx+"/queryCompanyForPrice",
         type:"post",
         data:{name:name,specification:specification},
         dataType:"json",
@@ -527,7 +527,7 @@ function priSel_details(str){
      * id
      * */
     $.ajax({
-        url:"../queryPriceHistory1",
+        url:ctx+"/queryPriceHistory1",
         type:"post",
         data:{id:str},
         dataType:"json",
@@ -620,7 +620,7 @@ function selectData(){
     var area=$(".region option:selected").val() //地区
     var city=$(".region_city option:selected").val() //城市
     $.ajax({
-        url:"../queryPriceHistory2",
+        url:ctx+"/queryPriceHistory2",
         type:"post",
         data:{id:id,name:name,specification:specification,company:company,city:city},
         dataType:"json",

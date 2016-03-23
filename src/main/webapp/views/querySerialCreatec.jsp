@@ -2,14 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <jsp:include page="resource.jsp"/>
     <title>序列号编制--从订单</title>
-    <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../js/querySerialCreatec.js"></script>
-    <script type="text/javascript" src="../js/transTime.js"></script>
-    <script type="text/javascript" src="../js/WdatePicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/querySerialCreatec.css">
-    <link rel="stylesheet" type="text/css" href="../css/head_code.css">
-    <link rel="stylesheet" type="text/css" href="../css/foot.css">
+    <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="${ctx}/js/querySerialCreatec.js"></script>
+    <script type="text/javascript" src="${ctx}/js/transTime.js"></script>
+    <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/querySerialCreatec.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/head_code.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/foot.css">
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>

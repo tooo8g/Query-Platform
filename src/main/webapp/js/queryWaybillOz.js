@@ -72,9 +72,8 @@ function qwob_submit(){
     qwbo={"logistics_id":""+logistics_id+"","logistics_company":""+logistics_company+"","car_license":""+car_license+"","good_num":""+good_num+"","send_duty":""+send_duty+"","send_phone_num":""+send_phone_num+"","send_addr":""+send_addr+"","send_company":""+send_company+"","receive_duty":""+receive_duty+"","receive_phone_num":""+receive_phone_num+"","receive_addr":""+receive_addr+"","receive_company":""+receive_company+"","goods":tableVal}
 
     $.ajax({
-        url:"../addWaybillInfo",
+        url:ctx+"/addWaybillInfo",
         type:"post",
-//        data:qwbo,
         data:JSON.stringify(qwbo),
         contentType:"application/json",
         dataType:"json",

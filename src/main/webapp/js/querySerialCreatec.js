@@ -24,7 +24,7 @@ $(function(){
     var purchasing_company="" //采购单位
     var company_name=""  //企业名称
     var contract_id="" //订单号/合同号
-    $.post("../queryOrderOrContractDetail",{contract_id:contractId},function(data){
+    $.post(""+ctx+"/queryOrderOrContractDetail",{contract_id:contractId},function(data){
         isonSupply=data.supply[0]
         jsonBzxx=data.bzxx[0]
         material_code=isonSupply.material_name
@@ -74,7 +74,7 @@ function creatCode(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../createCode",
+        url:ctx+"/createCode",
         data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branch_id:branchId,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -108,13 +108,13 @@ function creatCode(){
             }
             $(".pageNo").val(PageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='../images/sts_4.png'></a>"
+            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             asButton+="<p>"+PageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
@@ -128,7 +128,7 @@ function creatCode(){
 //页码跳转
 function goPage(material_code,material_name,product_identify,purchasing_company,company_name,contract_id,num,program_time,specification,branchId,startValue,limitValue,isGo){
     $.ajax({
-        url:"../json/demo_querySerialCreatecList.json",
+        url:ctx+"/createCode",
         data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branch_id:branchId,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
@@ -181,16 +181,16 @@ function goPage(material_code,material_name,product_identify,purchasing_company,
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
@@ -208,7 +208,7 @@ function generateCode(){
 /*清空序列号*/
 function codeEmpty(){
     $.ajax({
-        url:"../empty",
+        url:ctx+"/empty",
         data:{group_id:groupId},
         type:"post",
         success:function(data){

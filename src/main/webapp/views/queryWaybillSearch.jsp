@@ -2,13 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <jsp:include page="resource.jsp"/>
   <meta charset="UTF-8">
   <title>运单查询</title>
-  <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-  <script type="text/javascript" src="../js/queryWaybillSearch.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/queryWaybillSearch.css">
-  <link rel="stylesheet" type="text/css" href="../css/head_code.css">
-  <link rel="stylesheet" type="text/css" href="../css/foot.css">
+  <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="${ctx}/js/queryWaybillSearch.js"></script>
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/queryWaybillSearch.css">
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/head_code.css">
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/foot.css">
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
@@ -90,7 +91,7 @@
     <div class="show_sendList">
       <div class="show_sendList_title">
         <p>运单查询-发货清单</p>
-        <a class="sendListe_title" onclick="closeDetails()"><img src="../images/qws_1.png" ></a>
+        <a class="sendListe_title" onclick="closeDetails()"><img src="${ctx}/images/qws_1.png" ></a>
       </div>
       <div class="show_sendList_content">
         <table class="show_sendList_table">

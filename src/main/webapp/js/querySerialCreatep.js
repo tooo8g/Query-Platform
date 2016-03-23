@@ -12,7 +12,7 @@ $(function(){
     /*通过id获取产品详情信息*/
     var branch_id=$(".branch_id").val() //关联ID
     var jsonData="" //返回的JSON
-     $.post("../queryCode",{branch_id:branch_id},function(data){
+     $.post(ctx+"/queryCode",{branch_id:branch_id},function(data){
             jsonData=data
              product_name = jsonData.product_name
              product_identify = jsonData.product_identify
@@ -42,7 +42,7 @@ function creatCode(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../createCode",
+        url:ctx+"/createCode",
         data:{product_name:product_name,product_identify:product_identify,material_code:material_code,purchasing_company:purchasing_company,contract_id:contract_id,program_time:program_time,num:creatNum,branch_id:branch_id,specification:specification,company_name:company_name,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -76,13 +76,13 @@ function creatCode(){
             }
             $(".pageNo").val(PageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='../images/sts_4.png'></a>"
+            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             asButton+="<p>"+PageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branch_id+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branch_id+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
@@ -97,7 +97,7 @@ function creatCode(){
 function goPage(product_name,product_identify,material_code,purchasing_company,contract_id,program_time,creatNum,branch_id,specification,
 startValue,limitValue,isGo){
     $.ajax({
-        url:"../queryCodes",
+        url:ctx+"/queryCodes",
         data:{branch_id:branch_id,group_id:group_id,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
@@ -150,16 +150,16 @@ startValue,limitValue,isGo){
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branch_id+"','"+specification+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branch_id+"','"+specification+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branch_id+"','"+preStartRow+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+product_name+"','"+product_identify+"','"+material_code+"','"+purchasing_company+"','"+contract_id+"','"+program_time+"','"+creatNum+"','"+branch_id+"','"+preStartRow+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
@@ -175,7 +175,7 @@ function generateCode(){
 /*清空序列号*/
 function codeEmpty(){
     $.ajax({
-        url:"../empty",
+        url:ctx+"/empty",
         data:{group_id:group_id},
         type:"post",
         success:function(data){

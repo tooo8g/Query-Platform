@@ -16,7 +16,7 @@ $(function(){
     var bzxx //保存json的bzxx里的数据
     var bzNum //条数
     $.ajax({
-        url:"../queryLatestStandard",
+        url:ctx+"/queryLatestStandard",
         data:{str:str,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -48,13 +48,13 @@ $(function(){
             }
             $(".pageNo").val(PageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='../images/sts_4.png'></a>"
+            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             asButton+="<p>"+PageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").append(asButton)
         },
@@ -80,7 +80,7 @@ function search_si_button(){
     var bzxx //保存json的bzxx里的数据
     var bzNum //标记
     $.ajax({
-            url:"../queryLatestStandard",
+            url:ctx+"/queryLatestStandard",
             data:{str:str,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
@@ -112,13 +112,13 @@ function search_si_button(){
                 }
                 $(".pageNo").val(pageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
                 asButton+="<p>"+pageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=pageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a><img src='../images/sts_5.png'></a>"
+                    asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").append(asButton)
             }
@@ -138,7 +138,7 @@ function goPage(str,start,limit,isGo){
     var bzxx //保存json的bzxx里的数据
     var bzNum //标记
     $.ajax({
-        url:"../queryLatestStandard",
+        url:ctx+"/queryLatestStandard",
         data:{str:str,start:start,limit:limit},
         type : 'post',
         dataType : 'json',
@@ -186,16 +186,16 @@ function goPage(str,start,limit,isGo){
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").append(asButton)
         }

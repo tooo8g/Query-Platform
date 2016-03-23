@@ -11,7 +11,7 @@ $(function(){
 //    var contract_id='DDHTH123'; //订单/合同号
     
     $.ajax({
-        url:"../queryOrderOrContractDetail",
+        url:ctx+"/queryOrderOrContractDetail",
         type:"post",
         data:{contract_id:contract_id},
         dataType:"json",
@@ -55,9 +55,9 @@ $(function(){
                 supplyPlanTbodyList += "<td>" + supply[i].address + "</td>"
                 supplyPlanTbodyList += "<td>" + supply[i].person + "</td>"
                 if(supply[i].code_num==0){
-                    supplyPlanTbodyList+="<td><a href='../views/querySerialCreatec.jsp?contract_id="+contract_id+"&_id="+supply[i]._id.$oid+"'>编制序列号</a></td>"
+                    supplyPlanTbodyList+="<td><a href='"+ctx+"/views/querySerialCreatec.jsp?contract_id="+contract_id+"&_id="+supply[i]._id.$oid+"'>编制序列号</a></td>"
                 }else{
-                    supplyPlanTbodyList+="<td><a href='../views/querySerialNumSearch.jsp?_id="+supply[i]._id.$oid+"'>查看详情</a></td>"
+                    supplyPlanTbodyList+="<td><a href='"+ctx+"/views/querySerialNumSearch.jsp?_id="+supply[i]._id.$oid+"'>查看详情</a></td>"
                 }
                 supplyPlanTbodyList+="</tr>"
             }

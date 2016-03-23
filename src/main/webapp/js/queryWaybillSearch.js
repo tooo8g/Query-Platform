@@ -30,7 +30,7 @@ $(function () {
     var good_num="" //货号
 
     $.ajax({
-        url:"../queryWaybillInfo",
+        url:ctx+"/queryWaybillInfo",
         data:{logistics_id:logistics_id,logistics_company:logistics_company,contract_id:contract_id,logistics_stats:logistics_stats,car_license:car_license,good_num:good_num,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -68,13 +68,13 @@ $(function () {
                 }
                 $(".pageNo").val(PageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton += "<a><img src='../images/sts_4.png'></a>"
+                asButton += "<a><img src='"+ctx+"/images/sts_4.png'></a>"
                 asButton += "<p>" + PageNo + "/" + countPages + "</p>"
                 if (countPages > 1) {
                     nextStartRow = PageNo * limitValue
-                    asButton += "<a class=clickCursor onclick=goPage('" + logistics_id + "','" + logistics_company + "','" + contract_id + "','" + logistics_stats + "','" + car_license + "','" + good_num + "','" + nextStartRow + "','" + limitValue + "','next')><img src='../images/sts_5.png'></a>"
+                    asButton += "<a class=clickCursor onclick=goPage('" + logistics_id + "','" + logistics_company + "','" + contract_id + "','" + logistics_stats + "','" + car_license + "','" + good_num + "','" + nextStartRow + "','" + limitValue + "','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 } else {
-                    asButton += "<a><img src='../images/sts_5.png'></a>"
+                    asButton += "<a><img src='"+ctx+"/images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").html(" ")
                 $(".listperAuth_button").append(asButton)
@@ -119,7 +119,7 @@ function formButton(){
     var good_num=$(".top_good_num").val() //货号
 
     $.ajax({
-        url:"../queryWaybillInfo",
+        url:ctx+"/queryWaybillInfo",
         data:{logistics_id:logistics_id,logistics_company:logistics_company,contract_id:contract_id,logistics_stats:logistics_stats,car_license:car_license,good_num:good_num,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -157,13 +157,13 @@ function formButton(){
             }
             $(".pageNo").val(PageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='../images/sts_4.png'></a>"
+            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             asButton+="<p>"+PageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+logistics_id+"','"+logistics_company+"','"+contract_id+"','"+logistics_stats+"','"+car_license+"','"+good_num+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+logistics_id+"','"+logistics_company+"','"+contract_id+"','"+logistics_stats+"','"+car_license+"','"+good_num+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
@@ -177,7 +177,7 @@ function formButton(){
 //页码跳转
 function goPage(logistics_id,logistics_company,contract_id,logistics_stats,car_license,good_num,startValue,limitValue,isGo){
     $.ajax({
-        url:"../queryWaybillInfo",
+        url:ctx+"/queryWaybillInfo",
         data:{logistics_id:logistics_id,logistics_company:logistics_company,contract_id:contract_id,logistics_stats:logistics_stats,car_license:car_license,good_num:good_num,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
@@ -235,16 +235,16 @@ function goPage(logistics_id,logistics_company,contract_id,logistics_stats,car_l
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+logistics_id+"','"+logistics_company+"','"+contract_id+"','"+logistics_stats+"','"+car_license+"','"+good_num+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+logistics_id+"','"+logistics_company+"','"+contract_id+"','"+logistics_stats+"','"+car_license+"','"+good_num+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+logistics_id+"','"+logistics_company+"','"+contract_id+"','"+logistics_stats+"','"+car_license+"','"+good_num+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+logistics_id+"','"+logistics_company+"','"+contract_id+"','"+logistics_stats+"','"+car_license+"','"+good_num+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
@@ -271,7 +271,7 @@ function showSendInfor(str){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../queryGoodsInfo",
+        url:ctx+"/queryGoodsInfo",
         data:{_id:str,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
@@ -304,13 +304,13 @@ function showSendInfor(str){
             }
             $(".pageNoSend").val(PageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='../images/sts_4.png'></a>"
+            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             asButton+="<p>"+PageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPageSend('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPageSend('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_send_button").html(" ")
             $(".listperAuth_send_button").append(asButton)
@@ -335,7 +335,7 @@ function showSendInfor(str){
 /*send页面的gopage*/
 function goPageSend(str,startValue,limitValue,isGo){
     $.ajax({
-        url:"../queryWaybillInfo",
+        url:ctx+"/queryWaybillInfo",
         data:{id:str,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
@@ -388,16 +388,16 @@ function goPageSend(str,startValue,limitValue,isGo){
         var nextStartRow//下一页开始显示的编号
         if (pageNo > 1) {
             preStartRow = (pageNo - 2) * limitValue
-            asButton += "<a class=clickCursor onclick=goPageSend('" + str + "','" + preStartRow + "','" + limitValue + "','pre')><img src='../images/sts_4.png'></a>"
+            asButton += "<a class=clickCursor onclick=goPageSend('" + str + "','" + preStartRow + "','" + limitValue + "','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
         } else {
-            asButton += "<a><img src='../images/sts_4.png'></a>"
+            asButton += "<a><img src='"+ctx+"/images/sts_4.png'></a>"
         }
         asButton += "<p>" + pageNo + "/" + countPages + "</p>"
         if (countPages > pageNo) {
             nextStartRow = pageNo * limitValue
-            asButton += "<a class=clickCursor onclick=goPageSend('" + str + "','" + nextStartRow + "','" + limitValue + "','next')><img src='../images/sts_5.png'></a>"
+            asButton += "<a class=clickCursor onclick=goPageSend('" + str + "','" + nextStartRow + "','" + limitValue + "','next')><img src='"+ctx+"/images/sts_5.png'></a>"
         } else {
-            asButton += "<a><img src='../images/sts_5.png'></a>"
+            asButton += "<a><img src='"+ctx+"/images/sts_5.png'></a>"
         }
         $(".listperAuth_send_button").html(" ")
         $(".listperAuth_send_button").append(asButton)

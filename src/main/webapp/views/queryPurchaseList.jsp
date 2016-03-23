@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <jsp:include page="resource.jsp"/>
     <title>招标采购列表页面</title>
-    <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../js/queryPurchaseList.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/queryPrchaseList.css">
+    <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="${ctx}/js/queryPurchaseList.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/queryPrchaseList.css">
 </head>
 <body>
 <jsp:include page="head.jsp"/>

@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>最新发布标准信息</title>
-  <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-  <script type="text/javascript" src="../js/queryLatestStandard.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/queryLatestStandard.css">
+  <jsp:include page="resource.jsp"/>
+  \<title>最新发布标准信息</title>
+  <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="${ctx}/js/queryLatestStandard.js"></script>
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/queryLatestStandard.css">
 </head>
   <body>
   <jsp:include page="head.jsp"/>

@@ -2,12 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <jsp:include page="resource.jsp"/>
   <title>订单号--信息</title>
-  <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-  <script type="text/javascript" src="../js/queryContractInformation.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/queryContractInformation.css">
-  <link rel="stylesheet" type="text/css" href="../css/head_code.css">
-  <link rel="stylesheet" type="text/css" href="../css/foot.css">
+  <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="${ctx}/js/queryContractInformation.js"></script>
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/queryContractInformation.css">
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/head_code.css">
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/foot.css">
 </head>
 <body>
 <% String contract_id=request.getParameter("contract_id");%>

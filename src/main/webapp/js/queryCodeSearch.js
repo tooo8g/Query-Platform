@@ -2,7 +2,6 @@
  * Created by zb on 2016/2/29.
  */
 $(function(){
-	alert(ctx)
     /*给nav a 绑定一个click事件*/
     $(".nav a").on("click",function(){
         $(".nav a").removeClass("colorClick").addClass("colorNoClick")
@@ -43,7 +42,7 @@ $(function(){
             }
             $(".cq_tbody").html(" ")
             $(".cq_tbody").append(tbodyList)
-//            if(count>0) {
+            if(count>0) {
                 var asButton = ""
                 var countPages = Math.ceil(count / limitValue)
                 var PageNo  //当前页码
@@ -56,13 +55,13 @@ $(function(){
                 asButton += "<p>" + PageNo + "/" + countPages + "</p>"
                 if (countPages > 1) {
                     nextStartRow = PageNo * limitValue
-                    asButton += "<a class=clickCursor onclick=goPage('" + company_name + "','" + product_identify + "','" + product_name + "','" + specification + "','" + nextStartRow + "','" + limitValue + "','next')><img src='../images/sts_5.png'></a>"
+                    asButton += "<a class=clickCursor onclick=goPage('" + company_name + "','" + product_identify + "','" + product_name + "','" + specification + "','" + nextStartRow + "','" + limitValue + "','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 } else {
-                    asButton += "<a><img src='../images/sts_5.png'></a>"
+                    asButton += "<a><img src='"+ctx+"/images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").html(" ")
                 $(".listperAuth_button").append(asButton)
-//            }
+            }
         },
         error:function(){
             alert("链接失败")
@@ -124,9 +123,9 @@ function  formButton(){
             asButton+="<p>"+PageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+company_name+"','"+product_identify+"','"+product_name+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+company_name+"','"+product_identify+"','"+product_name+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
@@ -191,16 +190,16 @@ function goPage(company_name,product_identify,product_name,specification,startVa
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+company_name+"','"+product_identify+"','"+product_name+"','"+specification+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+company_name+"','"+product_identify+"','"+product_name+"','"+specification+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+company_name+"','"+product_identify+"','"+product_name+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+company_name+"','"+product_identify+"','"+product_name+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)

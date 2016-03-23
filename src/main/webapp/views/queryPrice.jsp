@@ -2,15 +2,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <jsp:include page="resource.jsp"/>
     <title>市场价格查询</title>
-    <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../js/queryPrice.js"></script>
-    <script type="text/javascript" src="../js/scrollJs.js"></script>
-    <script type="text/javascript" src="../js/WdatePicker.js"></script>
-    <script type="text/javascript" src="../js/chart/fusioncharts.js"></script>
-    <script type="text/javascript" src="../js/chart/fusioncharts.charts.js"></script>
-    <script type="text/javascript" src="../js/chart/fusioncharts-jquery-plugin.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/queryPrice.css">
+    <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="${ctx}/js/queryPrice.js"></script>
+    <script type="text/javascript" src="${ctx}/js/scrollJs.js"></script>
+    <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
+    <script type="text/javascript" src="${ctx}/js/chart/fusioncharts.js"></script>
+    <script type="text/javascript" src="${ctx}/js/chart/fusioncharts.charts.js"></script>
+    <script type="text/javascript" src="${ctx}/js/chart/fusioncharts-jquery-plugin.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/queryPrice.css">
 </head>
 <body>
 <jsp:include page="head.jsp"/>
@@ -128,7 +129,7 @@
         <div class="hisPrice">
             <div class="hisPrice_infor_title">
                 <p>历史价</p>
-                <a class="hisPrice_title" onclick="closeDetails()"><img src="../images/as_1.png" ></a>
+                <a class="hisPrice_title" onclick="closeDetails()"><img src="${ctx}/images/as_1.png" ></a>
             </div>
             <div class="hisPrice_left">
                 <div class="left_title">

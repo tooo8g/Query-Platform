@@ -16,7 +16,7 @@ $(function(){
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     $.ajax({
-            url: '../queryCert',
+            url: ctx+'/queryCert',
             data:{str:str,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
@@ -56,13 +56,13 @@ $(function(){
                 }
                 $(".pageNo").val(PageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
                 asButton+="<p>"+PageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=PageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a><img src='../images/sts_5.png'></a>"
+                    asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").append(asButton)
             }
@@ -79,9 +79,9 @@ $(function(){
         var first_word=""
         if($(this).hasClass("clas")) {
             $(".itemShow a").removeClass("colorClick").addClass("colorNoClick")
-            $(".itemShow a img").attr("src", "../images/as_2.png")
+            $(".itemShow a img").attr("src", ""+ctx+"/images/as_2.png")
             $(this).removeClass("colorNoClick").addClass("colorClick")
-            $(this).find("img").attr("src", "../images/as_3.png")
+            $(this).find("img").attr("src", ""+ctx+"/images/as_3.png")
             first_word=$(this).attr("first_word")
             $(".titleNum_"+first_word).removeClass("colorNoClick").addClass("colorClick")
         }
@@ -124,7 +124,7 @@ function search_a_button(){
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     $.ajax({
-            url: '../queryCert',
+            url: ctx+'/queryCert',
             data:{str:str,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
@@ -162,13 +162,13 @@ function search_a_button(){
                 }
                 $(".pageNo").val(pageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src=ctx+'/images/sts_4.png'></a>"
                 asButton+="<p>"+pageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=pageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a><img src='../images/sts_5.png'></a>"
+                    asButton+="<a><img src=ctx+'/images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").append(asButton)
             }
@@ -182,7 +182,7 @@ function itemShowButton(str){
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     $.ajax({
-            url: '../queryCert',
+            url: ctx+'/queryCert',
             data:{str:str,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
@@ -220,13 +220,13 @@ function itemShowButton(str){
                 }
                 $(".pageNo").val(pageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src=ctx+'/images/sts_4.png'></a>"
                 asButton+="<p>"+pageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=pageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a><img src='../images/sts_5.png'></a>"
+                    asButton+="<a><img src=ctx+'/images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").append(asButton)
             }
@@ -309,7 +309,7 @@ function goPage(str,start,limit,isGo){
     $(".as_tbody").html("")
     $(".listperAuth_button").html("")
     $.ajax({
-        url: '../queryCert',
+        url: ctx+'/queryCert',
         data:{str:str,start:start,limit:limit},
         type : 'post',
         dataType : 'json',
@@ -364,16 +364,16 @@ function goPage(str,start,limit,isGo){
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").append(asButton)
         }
@@ -394,7 +394,7 @@ function timeStamp2String(time){
 function searchCatalogList(){
     var first_word = "";
     $.ajax({
-        url:"../queryCertMenu_tz",
+        url:ctx+"/queryCertMenu_tz",
         data:"",
         type:"get",
         dataType : 'json',
@@ -407,7 +407,7 @@ function searchCatalogList(){
                     first_word = str.childs[i].name_title;
                     $(".mulluShow").append("<a href='javaScript:;' class='claCapital colorNoClick titleNum_mulluShow_"+first_word+"'  num='"+i+"'>"+str.childs[i].name_title+"</a>")
                 }else{
-                    $(".mulluShow").append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"' first_word = 'mulluShow_"+first_word+"'><p>"+str.childs[i].name+"</p><img src='../images/as_2.png'></a>")
+                    $(".mulluShow").append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"' first_word = 'mulluShow_"+first_word+"'><p>"+str.childs[i].name+"</p><img src='"+ctx+"/images/as_2.png'></a>")
                 }
             }
             mousewheel_fn('itemShowList','mulluShow','scrollShow','scrollSh')
@@ -433,16 +433,16 @@ function itemShowList(append_dom,data){
                 first_word = data[i].name_title;
                 append_dom.append("<a href='javaScript:;' class='claCapital colorNoClick titleNum_"+append_dom_id+"_"+first_word+"'  num='"+i+"'>"+data[i].name_title+"</a>");
             }else{
-                append_dom.append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"' first_word = '"+append_dom_id+"_"+first_word+"'><p>"+data[i].name+"</p><img src='../images/as_2.png'></a>")
+                append_dom.append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"' first_word = '"+append_dom_id+"_"+first_word+"'><p>"+data[i].name+"</p><img src='"+ctx+"/images/as_2.png'></a>")
             }
         };
         append_dom.on("click","a",function() {
             var first_word=""
             if($(this).hasClass("clas")){
                 $(this).parent().find("a").removeClass("colorClick").addClass("colorNoClick")
-                $(this).parent().find("a").find("img").attr("src","../images/as_2.png")
+                $(this).parent().find("a").find("img").attr("src",""+ctx+"/images/as_2.png")
                 $(this).removeClass("colorNoClick").addClass("colorClick")
-                $(this).find("img").attr("src","../images/as_3.png")
+                $(this).find("img").attr("src",""+ctx+"/images/as_3.png")
                 first_word=$(this).attr("first_word")
                 $(".titleNum_"+first_word).removeClass("colorNoClick").addClass("colorClick")
             }

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" type="text/css" href="../css/foot.css">
+<jsp:include page="resource.jsp"/>
+<link rel="stylesheet" type="text/css" href="${ctx}/css/foot.css">
 <div class="foot">
     <div class="foot1">
         <a href="javaScript:;">广告服务</a>|

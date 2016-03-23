@@ -1,9 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-<jsp:include page="resource.jsp"/>
 <head>
-    <%--<base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/">--%>
+    <jsp:include page="resource.jsp"/>
     <title>产品标识代码查询</title>
     <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
     <script type="text/javascript" src="${ctx}/js/queryCodeSearch.js"></script>

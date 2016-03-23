@@ -9,7 +9,7 @@ $(function(){
      var startValue=0 //初始值
      var limitValue=10 //一次取出多少条数据
      $.ajax({
-         url:"../queryStandard",
+         url:ctx+"/queryStandard",
          data:{str:str,standard_group:staHtml,standard_status:standard_status,special_subject:special_subject,start:startValue,limit:limitValue},
          type:"post",
          dataType : 'json',
@@ -47,13 +47,13 @@ $(function(){
              }
              $(".pageNo").val(PageNo)
              var nextStartRow//下一页开始显示的编号
-             asButton+="<a><img src='../images/sts_4.png'></a>"
+             asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
              asButton+="<p>"+PageNo+"/"+countPages+"</p>"
              if(countPages>1){
                  nextStartRow=PageNo*limitValue
-                 asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+staHtml+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                 asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+staHtml+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
              }else{
-                 asButton+="<a><img src='../images/sts_5.png'></a>"
+                 asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
              }
              $(".listperAuth_button").html(" ")
              $(".listperAuth_button").append(asButton)
@@ -73,7 +73,7 @@ $(function(){
         var startValue=0 //初始值
         var limitValue=10 //一次取出多少条数据
         $.ajax({
-            url:"../queryStandard",
+            url:ctx+"/queryStandard",
             data:{str:str,standard_group:staHtml,standard_status:standard_status,special_subject:special_subject,start:startValue,limit:limitValue},
             type:"post",
             dataType : 'json',
@@ -111,13 +111,13 @@ $(function(){
                 }
                 $(".pageNo").val(PageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
                 asButton+="<p>"+PageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=PageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+staHtml+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+staHtml+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 }else{
-                    asButton+="<a><img src='../images/sts_5.png'></a>"
+                    asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").html(" ")
                 $(".listperAuth_button").append(asButton)
@@ -185,7 +185,7 @@ function formButton(){
     	}
     })
      $("#searchForm").ajaxSubmit({
-         url:"../queryStandard",
+         url:ctx+"/queryStandard",
          data:{str:str,standard_group:standard_group,standard_status:standard_status,special_subject:special_subject,start:startValue,limit:limitValue},
          type:"post",
          dataType : 'json',
@@ -219,13 +219,13 @@ function formButton(){
              }
              $(".pageNo").val(PageNo)
              var nextStartRow//下一页开始显示的编号
-             asButton+="<a><img src='../images/sts_4.png'></a>"
+             asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
              asButton+="<p>"+PageNo+"/"+countPages+"</p>"
              if(countPages>1){
                  nextStartRow=PageNo*limitValue
-                 asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+standard_group+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                 asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+standard_group+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
              }else{
-                 asButton+="<a><img src='../images/sts_5.png'></a>"
+                 asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
              }
              $(".listperAuth_button").html(" ")
              $(".listperAuth_button").append(asButton)
@@ -239,7 +239,7 @@ function formButton(){
 //页码跳转
 function goPage(str,standard_group,standard_status,special_subject,start,limitValue,isGo){
     $.ajax({
-        url:"../queryStandard",
+        url:ctx+"/queryStandard",
         data:{str:str,standard_group:standard_group,standard_status:standard_status,special_subject:special_subject,start:start,limit:limitValue},
         type : 'post',
         dataType : 'json',
@@ -289,16 +289,16 @@ function goPage(str,standard_group,standard_status,special_subject,start,limitVa
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+standard_group+"','"+standard_status+"','"+special_subject+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+standard_group+"','"+standard_status+"','"+special_subject+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+standard_group+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+standard_group+"','"+standard_status+"','"+special_subject+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)

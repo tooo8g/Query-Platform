@@ -2,20 +2,18 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-<base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/">
+  <jsp:include page="resource.jsp"/>
   <meta charset="UTF-8">
   <title>登录页</title>
-  <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
-  <script type="text/javascript" src="js/queryLogin.js"></script>
-  <script type="text/javascript" src="js/jquery.cookie.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/queryLogin.css">
+  <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="${ctx}/js/queryLogin.js"></script>
+  <script type="text/javascript" src="${ctx}/js/jquery.cookie.js"></script>
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/queryLogin.css">
 </head>
 <body>
-<jsp:include page="resource.jsp"/>
-
 <div class="qLogin">
   <div class="qLogin_log">
-    <img src="images/head_3.png">
+    <img src="${ctx}/images/head_3.png">
   </div>
   <div class="qLogin_content">
     <div class="content_login">
@@ -27,25 +25,25 @@
           <div class="login_content">
             <div class="username">
               <div class="username_img">
-                <img src="images/login_03.png">
+                <img src="${ctx}/images/login_03.png">
               </div>
               <div class="username_input">
                 <input type="text" name="username" class="username_input_value" value="">
               </div>
 
               <div class="username_img1">
-                <img src="images/login_04.png" onclick="deleteUsername()">
+                <img src="${ctx}/images/login_04.png" onclick="deleteUsername()">
               </div>
             </div>
             <div class="password">
               <div class="password_img">
-                <img src="images/login_05.png">
+                <img src="${ctx}/images/login_05.png">
               </div>
               <div class="password_input">
                 <input type="password" name="password" class="password_input_value" value="">
               </div>
               <div class="password_img1">
-                <img src="images/login_04.png" onclick="deletePassword()">
+                <img src="${ctx}/images/login_04.png" onclick="deletePassword()">
               </div>
             </div>
             <div class="inplist">

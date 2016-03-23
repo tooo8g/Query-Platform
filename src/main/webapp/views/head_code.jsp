@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" type="text/css" href="../css/head_code.css">
+<jsp:include page="resource.jsp"/>
+<link rel="stylesheet" type="text/css" href="${ctx}/css/head_code.css">
 <div class="head">
     <div class="head_title">
         <div class="head_show">
@@ -8,12 +9,12 @@
                 <p>客服热线-400-698000</p>
             </div>
             <div class="head_right">
-                <img src="../images/head_1.png">
+                <img src="${ctx}/images/head_1.png">
                 <a>登陆</a>|
                 <a>注册</a>|
                 <a>我的关注</a>|
-                <a>供应商服务<img src="../images/head_2.png"></a>|
-                <a>网站导航<img src="../images/head_2.png"></a>
+                <a>供应商服务<img src="${ctx}/images/head_2.png"></a>|
+                <a>网站导航<img src="${ctx}/images/head_2.png"></a>
             </div>
         </div>
     </div>
@@ -22,7 +23,7 @@
         <div class="head_nav">
             <div class="logo">
                 <div class="logo_img">
-                    <img src="../images/head_3.png">
+                    <img src="${ctx}/images/head_3.png">
                 </div>
             </div>
             <div class="nav">

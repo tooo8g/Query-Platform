@@ -16,7 +16,7 @@ $(function(){
     var bzNum
     /*打开页面，直接调用下面的方法*/
     $.ajax({
-        url:"../queryOrderOrContract",
+        url:ctx+"/queryOrderOrContract",
         type:"post",
         data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         dataType:"json",
@@ -30,7 +30,7 @@ $(function(){
                 tbodyList+="<td>"+bzxx[i].contract_id+"</td>"
                 tbodyList+="<td>"+bzxx[i].company_name+"</td>"
                 tbodyList+="<td>"+bzxx[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='../views/queryContractInformation.jsp?contract_id="+bzxx[i].contract_id+"'>查看</a></td>"
+                tbodyList+="<td><a href='"+ctx+"/views/queryContractInformation.jsp?contract_id="+bzxx[i].contract_id+"'>查看</a></td>"
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
                 tbodyList+="</tr>"
@@ -46,13 +46,13 @@ $(function(){
                 }
                 $(".pageNo").val(PageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton += "<a><img src='../images/sts_4.png'></a>"
+                asButton += "<a><img src='"+ctx+"/images/sts_4.png'></a>"
                 asButton += "<p>" + PageNo + "/" + countPages + "</p>"
                 if (countPages > 1) {
                     nextStartRow = PageNo * limitValue
-                    asButton += "<a class=clickCursor onclick=goPage('" + contract_id + "','" + purchasing_company + "','" + company_name + "','" + nextStartRow + "','" + limitValue + "','next')><img src='../images/sts_5.png'></a>"
+                    asButton += "<a class=clickCursor onclick=goPage('" + contract_id + "','" + purchasing_company + "','" + company_name + "','" + nextStartRow + "','" + limitValue + "','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 } else {
-                    asButton += "<a><img src='../images/sts_5.png'></a>"
+                    asButton += "<a><img src='"+ctx+"/images/sts_5.png'></a>"
                 }
                 $(".listperAuth_button").html(" ")
                 $(".listperAuth_button").append(asButton)
@@ -80,7 +80,7 @@ function formButton(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../queryOrderOrContract",
+        url:ctx+"/queryOrderOrContract",
         type:"post",
         data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         dataType:"json",
@@ -110,13 +110,13 @@ function formButton(){
             }
             $(".pageNo").val(PageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='../images/sts_4.png'></a>"
+            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             asButton+="<p>"+PageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+contract_id+"','"+purchasing_company+"','"+company_name+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+contract_id+"','"+purchasing_company+"','"+company_name+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
@@ -130,7 +130,7 @@ function formButton(){
 //页码跳转
 function goPage(contract_id,purchasing_company,company_name,startValue,limitValue,isGo){
     $.ajax({
-        url:"../queryStandard",
+        url:ctx+"/queryStandard",
         data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         dataType : 'json',
         success:function(data){
@@ -180,16 +180,16 @@ function goPage(contract_id,purchasing_company,company_name,startValue,limitValu
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+contract_id+"','"+purchasing_company+"','"+company_name+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+contract_id+"','"+purchasing_company+"','"+company_name+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_4.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+contract_id+"','"+purchasing_company+"','"+company_name+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+contract_id+"','"+purchasing_company+"','"+company_name+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
-                asButton+="<a><img src='../images/sts_5.png'></a>"
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
