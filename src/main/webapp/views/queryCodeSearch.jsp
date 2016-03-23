@@ -2,15 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%--<base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/">--%>
     <title>产品标识代码查询</title>
-    <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../js/queryCodeSearch.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/queryCodeSearch.css">
-    <link rel="stylesheet" type="text/css" href="../css/head_code.css">
-    <link rel="stylesheet" type="text/css" href="../css/foot.css">
+    <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="${ctx}/js/queryCodeSearch.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/queryCodeSearch.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/head_code.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/foot.css">
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
+<jsp:include page="resource.jsp"/>
   <input type="hidden" class="pageNo" value="">
 <div class="cq">
     <div class="cq_top">

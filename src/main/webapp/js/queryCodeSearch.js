@@ -19,7 +19,7 @@ $(function(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../product",
+        url:ctx+"/product",
         data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
