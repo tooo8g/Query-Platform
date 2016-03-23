@@ -46,11 +46,9 @@ public class ProductController {
 			@RequestParam(required = false) int start,
 			@RequestParam(required = false) int limit,
 			HttpServletResponse response) throws IOException {
-		System.out.println("^^^^^"+company_name+"^^^^^^"+start);
 		MongoDirver md = new MongoDirver();
 		String result = md.queryProductInfo(company_name, product_identify,
 				product_name, specification, start, limit);
-		System.out.println("%%%%%%%"+result);
 		md.close();
 		response.getWriter().print(result);
 	}
