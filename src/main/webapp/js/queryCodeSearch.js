@@ -43,7 +43,7 @@ $(function(){
             }
             $(".cq_tbody").html(" ")
             $(".cq_tbody").append(tbodyList)
-            if(count>0) {
+//            if(count>0) {
                 var asButton = ""
                 var countPages = Math.ceil(count / limitValue)
                 var PageNo  //当前页码
@@ -52,7 +52,7 @@ $(function(){
                 }
                 $(".pageNo").val(PageNo)
                 var nextStartRow//下一页开始显示的编号
-                asButton += "<a><img src='../images/sts_4.png'></a>"
+                asButton += "<a><img src='"+ctx+"/images/sts_4.png'></a>"
                 asButton += "<p>" + PageNo + "/" + countPages + "</p>"
                 if (countPages > 1) {
                     nextStartRow = PageNo * limitValue
@@ -62,7 +62,7 @@ $(function(){
                 }
                 $(".listperAuth_button").html(" ")
                 $(".listperAuth_button").append(asButton)
-            }
+//            }
         },
         error:function(){
             alert("链接失败")
@@ -120,7 +120,7 @@ function  formButton(){
             }
             $(".pageNo").val(PageNo)
             var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='../images/sts_4.png'></a>"
+            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             asButton+="<p>"+PageNo+"/"+countPages+"</p>"
             if(countPages>1){
                 nextStartRow=PageNo*limitValue
