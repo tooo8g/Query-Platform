@@ -28,7 +28,7 @@
                 <img src="${ctx}/images/login_03.png">
               </div>
               <div class="username_input">
-                <input type="text" name="username" class="username_input_value" value="">
+                <input type="text" name="username" class="username_input_value" value="admin">
               </div>
 
               <div class="username_img1">
@@ -40,7 +40,7 @@
                 <img src="${ctx}/images/login_05.png">
               </div>
               <div class="password_input">
-                <input type="password" name="password" class="password_input_value" value="">
+                <input type="password" name="password" class="password_input_value" value="123">
               </div>
               <div class="password_img1">
                 <img src="${ctx}/images/login_04.png" onclick="deletePassword()">

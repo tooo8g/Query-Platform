@@ -37,7 +37,7 @@ $(function(){
                 tbodyList+="<td>"+productInfos[i].measurement+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
                 tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='querySerialCreatep.jsp?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
+                tbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatep?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
                 tbodyList+="</tr>"
             }
             $(".cq_tbody").html(" ")
@@ -105,7 +105,7 @@ function  formButton(){
                 tbodyList+="<td>"+productInfos[i].measurement+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
                 tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='querySerialCreatep.jsp?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
+                tbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatep?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
                 tbodyList+="</tr>"
             }
             $(".cq_tbody").html(" ")
@@ -160,7 +160,7 @@ function goPage(company_name,product_identify,product_name,specification,startVa
                 tbodyList+="<td>"+productInfos[i].measurement+"</td>"
                 tbodyList+="<td>"+productInfos[i].material_code+"</td>"
                 tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='querySerialCreatep.jsp?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
+                tbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatep?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
                 tbodyList+="</tr>"
             }
             $(".cq_tbody").html(" ")

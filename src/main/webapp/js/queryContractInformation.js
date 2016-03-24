@@ -55,9 +55,9 @@ $(function(){
                 supplyPlanTbodyList += "<td>" + supply[i].address + "</td>"
                 supplyPlanTbodyList += "<td>" + supply[i].person + "</td>"
                 if(supply[i].code_num==0){
-                    supplyPlanTbodyList+="<td><a href='"+ctx+"/views/querySerialCreatec.jsp?contract_id="+contract_id+"&_id="+supply[i]._id.$oid+"'>编制序列号</a></td>"
+                    supplyPlanTbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatec?contract_id="+contract_id+"&_id="+supply[i]._id.$oid+"'>编制序列号</a></td>"
                 }else{
-                    supplyPlanTbodyList+="<td><a href='"+ctx+"/views/querySerialNumSearch.jsp?_id="+supply[i]._id.$oid+"'>查看详情</a></td>"
+                    supplyPlanTbodyList+="<td><a href='"+ctx+"/serial/querySerialNumSearch?_id="+supply[i]._id.$oid+"'>查看详情</a></td>"
                 }
                 supplyPlanTbodyList+="</tr>"
             }
