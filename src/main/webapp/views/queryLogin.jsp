@@ -61,6 +61,9 @@
           </div>
         </div>
       </form>
+      <div class="qLogin_version">
+        版本：1.1.0
+      </div>
     </div>
   </div>
 </div>

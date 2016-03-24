@@ -165,3 +165,10 @@ img{border: none;margin: 0px;padding: 0px;}
     font-weight: bold;
     display: block;
 }
+.qLogin_version{
+    float: left;
+    margin-top: 385px;
+    margin-left: -75px;
+    color: #222222;
+    font-size: 14px;
+}
