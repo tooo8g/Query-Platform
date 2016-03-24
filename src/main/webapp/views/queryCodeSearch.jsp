@@ -12,7 +12,11 @@
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
-
+<div class="loading_Img">
+    <div class="loadingImg">
+        <img src="../images/loading.gif">
+    </div>
+</div>
   <input type="hidden" class="pageNo" value="">
 <div class="cq">
     <div class="cq_top">

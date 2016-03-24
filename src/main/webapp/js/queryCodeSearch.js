@@ -7,6 +7,20 @@ $(function(){
         $(".nav a").removeClass("colorClick").addClass("colorNoClick")
         $(this).removeClass("colorNoClick").addClass("colorClick")
     })
+   /*添加loading页面*/
+    var c = $(window).width();
+    var e = $(window).height();
+    var d = $(".fl").outerWidth();
+    var f = $(".fl").outerHeight();
+    $(".loadingImg").css({
+        position: "absolute",
+        left: (c / 2) - (d / 2),
+        top: (e / 2) - (f / 2)
+    })
+
+    $(".loading_Img").css("display","block")
+
+
     /*页面打开，直接调用一个方法*/
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -24,6 +38,7 @@ $(function(){
         type:"post",
         dataType:"json",
         success:function(data){
+            $(".loading_Img").css("display","none")
             count=data.count
             productInfos=data.productInfos
             for(var i=0;i<productInfos.length;i++){
@@ -76,6 +91,7 @@ function resetSubmit(){
 
 /*查询*/
 function  formButton(){
+    $(".loading_Img").css("display","block")
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     var company_name=$(".cqt_enterpriseName").val() //企业名称
@@ -92,6 +108,7 @@ function  formButton(){
         type:"post",
         dataType:"json",
         success:function(data){
+            $(".loading_Img").css("display","none")
             count=data.count
             productInfos=data.productInfos
             for(var i=0;i<productInfos.length;i++){
@@ -139,12 +156,14 @@ function  formButton(){
 
 //页码跳转
 function goPage(company_name,product_identify,product_name,specification,startValue,limitValue,isGo){
+    $(".loading_Img").css("display","block")
     $.ajax({
     	url:ctx+"/product",
         data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
         success:function(data){
+            $(".loading_Img").css("display","none")
             var tbodyList="" //保存解析的json数据
             var count=data.count
             var productInfos=data.productInfos
