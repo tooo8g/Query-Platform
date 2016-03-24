@@ -54,7 +54,7 @@
         <div class="qwbs_top_click">
           <a type="reset" id="reset_submit" onclick="resetSubmit()">清除</a>
           <a type="button" id="form_button" onclick="formButton()">查询</a>
-          <a class="queryWaybillOz" href="queryWaybillOz.jsp" target="_self">运单编制</a>
+          <a class="queryWaybillOz" href="${ctx}/waybill/queryWaybillOz" target="_self">运单编制</a>
         </div>
       </form>
     </div>

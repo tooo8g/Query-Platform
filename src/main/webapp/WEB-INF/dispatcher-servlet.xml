@@ -15,10 +15,22 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<mvc:annotation-driven />
-	<mvc:resources location="/js/" mapping="/js/**"/>
-	<mvc:resources location="/css/" mapping="/css/**"/>
-	<mvc:resources location="/images/" mapping="/images/**"/>
+	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/css/" mapping="/css/**" />
+	<mvc:resources location="/images/" mapping="/images/**" />
 	<context:component-scan base-package="com.crec.*" />
+
+	<!--配置拦截器, 多个拦截器,顺序执行 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+			<mvc:mapping path="/code/**" />
+			<mvc:mapping path="/contract/**" />
+			<mvc:mapping path="/serial/**" />
+			<mvc:mapping path="/waybill/**" />
+			<bean class="com.crec.work.CommonInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -18,13 +18,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.platform.io.bean.OrderOrContract;
+import com.platform.io.bean.Account;
 import com.platform.io.bean.WaybillInfo;
 import com.platform.mongo.s1.MongoDirver;
+import com.platform.mongo.util.MD5Util;
 import com.platform.mongo.util.TimeUtil;
 
 @Controller
@@ -458,6 +460,22 @@ public class GeneralController {
 		md.close();
 		response.getWriter().print(result);
 	}
+	
+	@RequestMapping("/goLogin")
+	public ModelAndView login(String username,String password,HttpSession session) throws Exception{
+		Map<String,Object> jsonMap = new HashMap<String,Object>();
+		MongoDirver md = new MongoDirver();
+		Account account = md.login(username,MD5Util.MD5(password));
+		System.out.println(account);
+		if(account!=null){
+			session.setAttribute("account", account);
+			jsonMap.put("success", true);
+			return new ModelAndView("queryCodeSearch");
+		}else{
+			return new ModelAndView("queryLogin");
+		}
+	}
+	
 	
 	public static void main(String[] args) {
 		GeneralController g = new GeneralController();

@@ -31,7 +31,7 @@
       <div class="conser_top_click">
         <a type="reset" id="reset_submit" onclick="resetSubmit()">清除</a>
         <a type="button" id="form_button" onclick="formButton()">查询</a>
-        <a class="contractCreat" href="queryContractCreat.jsp" target="_self">新增合同/订单</a>
+        <a class="contractCreat" href="${ctx}/contract/queryContractCreat" target="_self">新增合同/订单</a>
       </div>
     </form>
   </div>
