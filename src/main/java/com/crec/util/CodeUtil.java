@@ -16,12 +16,13 @@ public class CodeUtil {
 	 *            生成数量
 	 * @return
 	 */
-	public static List<Code> codec(Code code, int num) {
+	public static List<Code> codec(Code code, int num,List<Integer> list) {
 		List<Code> codes = new ArrayList<Code>();
 		for (int i = 0; i < num; i++) {
 			Code c = (Code) code.clone();
 			c.setCode("ABC123567"+i);
 			c.setInner_id(i);
+			c.setFiled(list);
 			codes.add(c);
 		}
 
@@ -31,7 +32,7 @@ public class CodeUtil {
 	public static void main(String[] args) {
 		Code c = new Code();
 		c.setContract_id("abc123");
-		List<Code> cs = CodeUtil.codec(c, 5);
+		List<Code> cs = CodeUtil.codec(c, 5,new ArrayList<Integer>());
 		for (Code cc : cs) {
 			System.out.println(cc.getCode());
 		}
