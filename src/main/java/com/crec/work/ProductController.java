@@ -94,7 +94,8 @@ public class ProductController {
 		code.setGroup_id(group_id);// 组Id
 		code.setAdd_time(new Date());
 		Account a = (Account)session.getAttribute("account");
-		List<Code> codes = CodeUtil.codec(code, num,a.getField());
+		code.setFiled(a.getField());
+		List<Code> codes = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
 		for (Code c : codes) {
 			md.addCode(c);
