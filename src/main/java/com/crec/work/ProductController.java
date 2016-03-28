@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.crec.util.CodeUtil;
 import com.platform.io.bean.Account;
 import com.platform.io.bean.Code;
-import com.platform.mongo.s1.MongoDirver;
+import com.platform.mongo.s2.MongoDirver;
 import com.platform.mongo.util.TimeUtil;
 
 /**
@@ -36,23 +36,23 @@ public class ProductController {
 	 * @throws IOException
 	 * @author zhangyb
 	 */
-	@RequestMapping("/product")
-	public void queryProduct(
-			@RequestParam(required = false) String company_name,
-			@RequestParam(required = false) String product_identify,
-			@RequestParam(required = false) String product_name,
-			@RequestParam(required = false) String specification,
-			@RequestParam(required = false) int start,
-			@RequestParam(required = false) int limit,
-			HttpSession session,
-			HttpServletResponse response) throws IOException {
-		MongoDirver md = new MongoDirver();
-		Account a =(Account)session.getAttribute("account");
-		String result = md.queryProductInfo(company_name, product_identify,
-				product_name, specification,a.getField(), start, limit);
-		md.close();
-		response.getWriter().print(result);
-	}
+//	@RequestMapping("/product")
+//	public void queryProduct(
+//			@RequestParam(required = false) String company_name,
+//			@RequestParam(required = false) String product_identify,
+//			@RequestParam(required = false) String product_name,
+//			@RequestParam(required = false) String specification,
+//			@RequestParam(required = false) int start,
+//			@RequestParam(required = false) int limit,
+//			HttpSession session,
+//			HttpServletResponse response) throws IOException {
+//		MongoDirver md = new MongoDirver();
+//		Account a =(Account)session.getAttribute("account");
+//		String result = md.queryProductInfo(company_name, product_identify,
+//				product_name, specification,a.getField(), start, limit);
+//		md.close();
+//		response.getWriter().print(result);
+//	}
 
 	/**
 	 * 创建序列号并且默认查询出第一页
@@ -61,7 +61,7 @@ public class ProductController {
 	 * @param code
 	 * @param num
 	 * @return
-	 * @throws IOException
+	 * @throws Exception 
 	 */
 	@RequestMapping("/createCode")
 	public void createCode(@RequestParam(required = false) String product_name,
@@ -77,7 +77,7 @@ public class ProductController {
 			@RequestParam(required = false) int start,
 			@RequestParam(required = false) int limit,
 			HttpSession session,
-			HttpServletResponse response) throws IOException {
+			HttpServletResponse response) throws Exception {
 		Code code = new Code();
 		ObjectId group_id = new ObjectId();
 		code.setProduct_name(product_name);// 产品名称
