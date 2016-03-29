@@ -59,7 +59,7 @@
         <p>新增公司</p>
         <a href="javaScript:;" class="create_cpl_title_a" onclick="closeCreate()"><img src="${ctx}/images/qws_1.png" ></a>
       </div>
-      <form id="create_cpl_form" action="" method="post">
+      <form id="create_cpl_form" >
         <div class="create_cpl_content">
           <div>
             <label>公司名称</label>
@@ -79,7 +79,7 @@
           </div>
           <div>
             <label>联系方式</label>
-            <input type="text" class="con_method" name="con_method" value="">
+            <input type="text" class="con_way" name="con_way" value="">
           </div>
           <div class="creat_button">
             <a href="javaScript:;" onclick="creat_button()">保存</a>

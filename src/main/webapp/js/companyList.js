@@ -132,6 +132,7 @@ function companyCreat(){
     $(".cpl_create").height(docuHeight)
 }
 
+
 //页码跳转
 function goPage(com_name,org_code,startValue,limitValue,isGo){
     $.ajax({
@@ -209,7 +210,13 @@ function closeCreate(){
 }
 /*保存公司*/
 function creat_button(){
-    $("#create_cpl_form").submit()
-    formButton()
-    closeCreate()
+     var option={
+         url:ctx+"/addCompany",
+         type:"post",
+         success:function(data){
+                 formButton()
+                 closeCreate()
+         }
+     }
+    $("#create_cpl_form").ajaxSubmit(option)
 }
