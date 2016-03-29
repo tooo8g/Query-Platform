@@ -128,6 +128,8 @@ function resetSubmit(){
 * */
 function companyCreat(){
    $(".cpl_create").removeClass("displayNo").addClass("displayBlock")
+    var docuHeight = $(document).height()  //页面可视区域
+    $(".cpl_create").height(docuHeight)
 }
 
 //页码跳转
