@@ -12,7 +12,7 @@ $(function(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../json/demo_companyList.json",
+        url:ctx+"/queryCompanyList",
         type:"post",
         data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
         dataType:"json",
@@ -71,7 +71,7 @@ function formButton(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../json/demo_companyList.json",
+        url:ctx+"/queryCompanyList",
         type:"post",
         data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
         dataType:"json",
@@ -133,7 +133,7 @@ function companyCreat(){
 //页码跳转
 function goPage(com_name,org_code,startValue,limitValue,isGo){
     $.ajax({
-        url:"../json/demo_companyList.json",
+        url:ctx+"/queryCompanyList",
         data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
@@ -207,8 +207,9 @@ function closeCreate(){
 }
 /*保存公司*/
 function creat_button(){
+	alert();
      var option={
-         url:"companyList.html",
+         url:ctx+"/addCompany",
          type:"post",
          success:function(data){
              if(data=="true"){
