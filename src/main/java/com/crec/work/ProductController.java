@@ -2,21 +2,20 @@ package com.crec.work;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.crec.util.CodeUtil;
+import com.platform.io.bean.Account;
 import com.platform.io.bean.Code;
-import com.platform.mongo.s1.MongoDirver;
+import com.platform.mongo.s2.MongoDirver;
 import com.platform.mongo.util.TimeUtil;
 
 /**
@@ -37,21 +36,23 @@ public class ProductController {
 	 * @throws IOException
 	 * @author zhangyb
 	 */
-	@RequestMapping("/product")
-	public void queryProduct(
-			@RequestParam(required = false) String company_name,
-			@RequestParam(required = false) String product_identify,
-			@RequestParam(required = false) String product_name,
-			@RequestParam(required = false) String specification,
-			@RequestParam(required = false) int start,
-			@RequestParam(required = false) int limit,
-			HttpServletResponse response) throws IOException {
-		MongoDirver md = new MongoDirver();
-		String result = md.queryProductInfo(company_name, product_identify,
-				product_name, specification, start, limit);
-		md.close();
-		response.getWriter().print(result);
-	}
+//	@RequestMapping("/product")
+//	public void queryProduct(
+//			@RequestParam(required = false) String company_name,
+//			@RequestParam(required = false) String product_identify,
+//			@RequestParam(required = false) String product_name,
+//			@RequestParam(required = false) String specification,
+//			@RequestParam(required = false) int start,
+//			@RequestParam(required = false) int limit,
+//			HttpSession session,
+//			HttpServletResponse response) throws IOException {
+//		MongoDirver md = new MongoDirver();
+//		Account a =(Account)session.getAttribute("account");
+//		String result = md.queryProductInfo(company_name, product_identify,
+//				product_name, specification,a.getField(), start, limit);
+//		md.close();
+//		response.getWriter().print(result);
+//	}
 
 	/**
 	 * 创建序列号并且默认查询出第一页
@@ -60,7 +61,7 @@ public class ProductController {
 	 * @param code
 	 * @param num
 	 * @return
-	 * @throws IOException
+	 * @throws Exception 
 	 */
 	@RequestMapping("/createCode")
 	public void createCode(@RequestParam(required = false) String product_name,
@@ -75,7 +76,8 @@ public class ProductController {
 			@RequestParam(required = false) int num,
 			@RequestParam(required = false) int start,
 			@RequestParam(required = false) int limit,
-			HttpServletResponse response) throws IOException {
+			HttpSession session,
+			HttpServletResponse response) throws Exception {
 		Code code = new Code();
 		ObjectId group_id = new ObjectId();
 		code.setProduct_name(product_name);// 产品名称
@@ -91,12 +93,14 @@ public class ProductController {
 		code.setBranch_id(branchId);// 关联Id
 		code.setGroup_id(group_id);// 组Id
 		code.setAdd_time(new Date());
+		Account a = (Account)session.getAttribute("account");
+		code.setFiled(a.getField());
 		List<Code> codes = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
 		for (Code c : codes) {
 			md.addCode(c);
 		}
-		String result = md.queryCodes(group_id, branchId, start, limit);
+		String result = md.queryCodes(group_id, branchId,a.getField(), start, limit);
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -113,11 +117,12 @@ public class ProductController {
 	 */
 	@RequestMapping("/queryCodes")
 	public void queryCodes(String group_id, String branch_id, int start,
-			int limit, HttpServletResponse response) throws IOException {
+			int limit,HttpSession session, HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		ObjectId gId = new ObjectId(group_id);
 		ObjectId bId = new ObjectId(branch_id);
-		String result = md.queryCodes(gId, bId, start, limit);
+		Account a = (Account)session.getAttribute("account");
+		String result = md.queryCodes(gId, bId, a.getField(),start, limit);
 		md.close();
 		response.getWriter().print(result);
 
@@ -133,9 +138,11 @@ public class ProductController {
 	@RequestMapping("/empty")
 	public void deleteByGroupId(
 			@RequestParam(required = false) String group_id,
+			HttpSession session,
 			HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
-		md.deleteByGroupId(group_id);
+		Account a = (Account)session.getAttribute("account");
+		md.deleteByGroupId(group_id,a.getField());
 		md.close();
 		response.getWriter().print(true);
 	}
@@ -150,9 +157,11 @@ public class ProductController {
 	@RequestMapping("/queryCode")
 	public void querySingleCode(
 			@RequestParam(required = false) String branch_id,
+			HttpSession session,
 			HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
-		String result = md.querySingleCode(branch_id);
+		Account a = (Account)session.getAttribute("account");
+		String result = md.querySingleCode(branch_id,a.getField());
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -185,10 +194,12 @@ public class ProductController {
 			@RequestParam(required = false) String company_name,
 			@RequestParam(required = false) int start,
 			@RequestParam(required = false) int limit,
+			HttpSession session,
 			HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
+		Account a = (Account)session.getAttribute("account");
 		String result = md.queryAllCode(contract_id, state, program_time,
-				purchasing_company, company_name, start, limit);
+				purchasing_company, company_name,a.getField(), start, limit);
 		md.close();
 		response.getWriter().print(result);
 
