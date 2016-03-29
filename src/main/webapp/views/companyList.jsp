@@ -59,7 +59,7 @@
         <p>新增公司</p>
         <a href="javaScript:;" class="create_cpl_title_a" onclick="closeCreate()"><img src="${ctx}/images/qws_1.png" ></a>
       </div>
-      <form id="create_cpl_form">
+      <form id="create_cpl_form" action="" method="post">
         <div class="create_cpl_content">
           <div>
             <label>公司名称</label>

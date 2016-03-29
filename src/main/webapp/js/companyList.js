@@ -209,16 +209,7 @@ function closeCreate(){
 }
 /*保存公司*/
 function creat_button(){
-	alert();
-     var option={
-         url:ctx+"/addCompany",
-         type:"post",
-         success:function(data){
-             if(data=="true"){
-                 formButton()
-                 closeCreate()
-             }
-         }
-     }
-    $("#create_cpl_form").ajaxSubmit(option)
+    $("#create_cpl_form").submit()
+    formButton()
+    closeCreate()
 }
