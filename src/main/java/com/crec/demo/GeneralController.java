@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.platform.io.bean.OrderOrContract;
+import com.platform.io.bean.Person;
 import com.platform.io.bean.Account;
+import com.platform.io.bean.Company;
 import com.platform.io.bean.WaybillInfo;
 import com.platform.mongo.s2.MongoDirver;
 import com.platform.mongo.util.MD5Util;
@@ -346,9 +348,9 @@ public class GeneralController {
 	public void addOrderOrContract(@RequestBody OrderOrContract orderOrContracts,HttpSession session,HttpServletResponse response) throws Exception {
 	    System.out.println(orderOrContracts);
 	    Account a= (Account) session.getAttribute("account");
-	    orderOrContracts.setFiled(a.getField());
+	    orderOrContracts.setFiled(a.getFiled());
 	    MongoDirver md = new MongoDirver();
-	    md.addOrderOrContract(orderOrContracts,a.getUsername());
+	    md.addOrderOrContract(orderOrContracts,a.getName());
 	}
 	
 	
@@ -358,7 +360,7 @@ public class GeneralController {
 			@RequestParam int limit, HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		Account a =(Account) session.getAttribute("account");
-		String result = md.queryOrderOrContract(contract_id,purchasing_company,company_name, a.getField(),start,	limit);
+		String result = md.queryOrderOrContract(contract_id,purchasing_company,company_name, a.getFiled(),start,	limit);
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -401,7 +403,7 @@ public class GeneralController {
 	public void queryOrderOrContractDetail(@RequestParam String contract_id, HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		Account a =(Account) session.getAttribute("account");
-		String result = md.queryOrderOrContractDetail(contract_id,a.getField());
+		String result = md.queryOrderOrContractDetail(contract_id,a.getFiled());
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -423,7 +425,7 @@ public class GeneralController {
 	public void addWaybillInfo(@RequestBody WaybillInfo waybillInfo,HttpSession session,HttpServletResponse response) throws Exception {
 	    System.out.println(waybillInfo);
 	    Account a= (Account) session.getAttribute("account");
-	    waybillInfo.setFiled(a.getField());
+	    waybillInfo.setFiled(a.getFiled());
 	    MongoDirver md = new MongoDirver();
 	    md.addWaybillInfo(waybillInfo);
 	}
@@ -440,7 +442,7 @@ public class GeneralController {
 			@RequestParam int limit, HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		Account a= (Account) session.getAttribute("account");
-		String result = md.queryWaybillInfo(logistics_id,logistics_company,car_license, contract_id,logistics_stats,good_num,a.getField(),start,	limit);
+		String result = md.queryWaybillInfo(logistics_id,logistics_company,car_license, contract_id,logistics_stats,good_num,a.getFiled(),start,	limit);
 		System.out.println(result);
 		md.close();
 		response.getWriter().print(result);
@@ -453,7 +455,7 @@ public class GeneralController {
 			@RequestParam int limit,HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException {
 		Account a= (Account) session.getAttribute("account");
 		MongoDirver md = new MongoDirver();
-		String result = md.queryGoodsInfo(_id,a.getField(),start,limit);
+		String result = md.queryGoodsInfo(_id,a.getFiled(),start,limit);
 		System.out.println(result);
 		md.close();
 		response.getWriter().print(result);
@@ -464,7 +466,7 @@ public class GeneralController {
 			@RequestParam String _id,HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		Account a= (Account) session.getAttribute("account");
-		String result = md.queryLogisticsInfo(_id,a.getField());
+		String result = md.queryLogisticsInfo(_id,a.getFiled());
 		System.out.println(result);
 		md.close();
 		response.getWriter().print(result);
@@ -485,6 +487,100 @@ public class GeneralController {
 		}
 	}
 	
+	@RequestMapping("/goLogout")
+	public ModelAndView logout(HttpSession session){
+		session.invalidate();
+		return new ModelAndView("queryLogin");
+	}
+	
+	@RequestMapping("/queryCompanyList")
+	public void queryCompanyList(
+			@RequestParam String com_name,@RequestParam String org_code,HttpServletRequest request,HttpSession session,HttpServletResponse response,
+			int start,int limit
+			) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryCompany(com_name, org_code, start, limit);
+		System.out.println(result);
+		md.close();
+		response.getWriter().print(result);
+	}
+	
+	@RequestMapping("/addCompany")
+	@ResponseBody
+	public void addCompany(Company company) throws Exception {
+		MongoDirver md = new MongoDirver();
+		md.addCompany(company);
+		md.close();
+	}
+	
+	@RequestMapping("/queryAccountList")
+	public void queryAccountList(
+			@RequestParam String name,
+			@RequestParam String username,
+			@RequestParam String company,
+			HttpServletRequest request,HttpSession session,HttpServletResponse response,
+			int start,int limit
+			) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryAccount(name, username, company, start, limit);
+		System.out.println(result);
+		md.close();
+		response.getWriter().print(result);
+	}
+	
+	@RequestMapping("/addAccount")
+	@ResponseBody
+	public void addAccount(
+			@RequestParam String name,
+			@RequestParam String password,
+			@RequestParam String username,
+			@RequestParam String company,
+			@RequestParam String tel,
+			@RequestParam String email,
+			HttpServletRequest request,HttpSession session,HttpServletResponse response
+			) throws Exception {
+		Account a = new Account();
+		Person p = new  Person();
+		p.setCompany(company);
+		p.setEmail(email);
+		p.setUsername(username);
+		p.setTel(tel);
+		List<Integer> filed = new ArrayList<Integer>();
+		a.setName(name);
+		a.setPassword(MD5Util.MD5(password));
+		a.setPerson(p);
+		a.setFiled(filed);
+		MongoDirver md = new MongoDirver();
+	    md.addAccount(a);
+		md.close();
+	}
+	
+	@RequestMapping("/queryAuthorityInfo")
+	public void queryAuthorityInfo(
+			@RequestParam String _id,
+			HttpServletRequest request,HttpSession session,HttpServletResponse response
+			) throws Exception {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryAuthorityInfo(_id);
+		System.out.println(result);
+		md.close();
+		response.getWriter().print(result);
+	}
+	
+	@RequestMapping("/assign")
+	public void assign(
+			@RequestParam String fileds,
+			@RequestParam String _id,
+			HttpServletRequest request,HttpSession session,HttpServletResponse response
+			) throws Exception {
+		String[] f  = {};
+		if((fileds.length()>0)&&fileds!=null){
+			f =  fileds.split(",");
+		}
+		MongoDirver md = new MongoDirver();
+		md.assign(f, _id);
+		md.close();
+	}
 	
 	public static void main(String[] args) {
 		GeneralController g = new GeneralController();

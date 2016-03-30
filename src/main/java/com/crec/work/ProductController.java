@@ -36,23 +36,23 @@ public class ProductController {
 	 * @throws IOException
 	 * @author zhangyb
 	 */
-//	@RequestMapping("/product")
-//	public void queryProduct(
-//			@RequestParam(required = false) String company_name,
-//			@RequestParam(required = false) String product_identify,
-//			@RequestParam(required = false) String product_name,
-//			@RequestParam(required = false) String specification,
-//			@RequestParam(required = false) int start,
-//			@RequestParam(required = false) int limit,
-//			HttpSession session,
-//			HttpServletResponse response) throws IOException {
-//		MongoDirver md = new MongoDirver();
-//		Account a =(Account)session.getAttribute("account");
-//		String result = md.queryProductInfo(company_name, product_identify,
-//				product_name, specification,a.getField(), start, limit);
-//		md.close();
-//		response.getWriter().print(result);
-//	}
+	@RequestMapping("/product")
+	public void queryProduct(
+			@RequestParam(required = false) String company_name,
+			@RequestParam(required = false) String product_identify,
+			@RequestParam(required = false) String product_name,
+			@RequestParam(required = false) String specification,
+			@RequestParam(required = false) int start,
+			@RequestParam(required = false) int limit,
+			HttpSession session,
+			HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		Account a =(Account)session.getAttribute("account");
+		String result = md.queryProductInfo(company_name, product_identify,
+				product_name, specification,a.getFiled(), start, limit);
+		md.close();
+		response.getWriter().print(result);
+	}
 
 	/**
 	 * 创建序列号并且默认查询出第一页
@@ -94,13 +94,13 @@ public class ProductController {
 		code.setGroup_id(group_id);// 组Id
 		code.setAdd_time(new Date());
 		Account a = (Account)session.getAttribute("account");
-		code.setFiled(a.getField());
+		code.setFiled(a.getFiled());
 		List<Code> codes = CodeUtil.codec(code, num);
 		MongoDirver md = new MongoDirver();
 		for (Code c : codes) {
 			md.addCode(c);
 		}
-		String result = md.queryCodes(group_id, branchId,a.getField(), start, limit);
+		String result = md.queryCodes(group_id, branchId,a.getFiled(), start, limit);
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -122,7 +122,7 @@ public class ProductController {
 		ObjectId gId = new ObjectId(group_id);
 		ObjectId bId = new ObjectId(branch_id);
 		Account a = (Account)session.getAttribute("account");
-		String result = md.queryCodes(gId, bId, a.getField(),start, limit);
+		String result = md.queryCodes(gId, bId, a.getFiled(),start, limit);
 		md.close();
 		response.getWriter().print(result);
 
@@ -142,7 +142,7 @@ public class ProductController {
 			HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		Account a = (Account)session.getAttribute("account");
-		md.deleteByGroupId(group_id,a.getField());
+		md.deleteByGroupId(group_id,a.getFiled());
 		md.close();
 		response.getWriter().print(true);
 	}
@@ -161,7 +161,7 @@ public class ProductController {
 			HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		Account a = (Account)session.getAttribute("account");
-		String result = md.querySingleCode(branch_id,a.getField());
+		String result = md.querySingleCode(branch_id,a.getFiled());
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -199,7 +199,7 @@ public class ProductController {
 		MongoDirver md = new MongoDirver();
 		Account a = (Account)session.getAttribute("account");
 		String result = md.queryAllCode(contract_id, state, program_time,
-				purchasing_company, company_name,a.getField(), start, limit);
+				purchasing_company, company_name,a.getFiled(), start, limit);
 		md.close();
 		response.getWriter().print(result);
 

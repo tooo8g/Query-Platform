@@ -57,4 +57,15 @@ public class GotoController {
 	public ModelAndView queryWaybillSearch(){
 		return new ModelAndView("queryWaybillSearch");
 	}
+	
+	@RequestMapping("/company/queryCompanyList")
+	public ModelAndView queryCompanyList(){
+		return new ModelAndView("companyList");
+	}
+	
+	@RequestMapping("/account/queryAccountList")
+	public ModelAndView queryAccountList(){
+		return new ModelAndView("personList");
+	}
+	
 }

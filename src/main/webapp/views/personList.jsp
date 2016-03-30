@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+  <jsp:include page="resource.jsp"/>
   <title>用户列表</title>
   <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="${ctx}/js/transTime.js"></script>
@@ -65,7 +66,7 @@
         <div class="create_psl_content">
           <div>
             <label>登录名</label>
-            <input type="text" class="name" name="name" value="">
+            <input type="text" class="login_name" name="login_name" value="">
           </div>
           <div>
             <label>密码</label>
@@ -73,7 +74,7 @@
           </div>
           <div>
             <label>重复密码</label>
-            <input type="password" class="name" name="name" value="">
+            <input type="password" class="confirm_pwd" name="confirm_pwd" value="">
           </div>
           <div>
             <label>姓名</label>
