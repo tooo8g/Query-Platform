@@ -59,6 +59,15 @@ $(function(){
             alert("链接失败")
         }
     })
+
+    /*给新增公司页绑定一个click事件，点击cpl_create之外的地方，调用closeCreate方法*/
+    $(".cpl_create").on("click",function(event){
+        event.stopPropagation();
+        var evt = event.srcElement ? event.srcElement : event.target;
+        if(evt.id=='cpl_create'){
+            closeCreate()
+        }
+    });
 })
 /*查询*/
 function formButton(){

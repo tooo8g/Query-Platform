@@ -52,7 +52,7 @@
 
   </div>
 </div>
-<div class="cpl_create displayNo">
+<div class="cpl_create displayNo" id="cpl_create">
   <div class="cplCreate">
     <div class="create_cpl">
       <div class="create_cpl_title">
