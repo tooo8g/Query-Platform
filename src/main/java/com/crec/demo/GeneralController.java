@@ -2,34 +2,28 @@ package com.crec.demo;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.bson.Document;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.platform.io.bean.OrderOrContract;
-import com.platform.io.bean.Person;
 import com.platform.io.bean.Account;
 import com.platform.io.bean.Company;
+import com.platform.io.bean.OrderOrContract;
+import com.platform.io.bean.Person;
 import com.platform.io.bean.WaybillInfo;
 import com.platform.mongo.s2.MongoDirver;
 import com.platform.mongo.util.MD5Util;
-import com.platform.mongo.util.TimeUtil;
 
 @Controller
 public class GeneralController {
@@ -349,9 +343,6 @@ public class GeneralController {
 	    System.out.println(orderOrContracts);
 	    Account a= (Account) session.getAttribute("account");
 	    List<Integer>  list = a.getFiled();
-	    if(!list.contains(0)){
-	    	list.add(0);
-	    }
  	    orderOrContracts.setFiled(list);
 	    MongoDirver md = new MongoDirver();
 	    md.addOrderOrContract(orderOrContracts,a.getName());
@@ -430,11 +421,7 @@ public class GeneralController {
 	public String addWaybillInfo(@RequestBody WaybillInfo waybillInfo,HttpSession session,HttpServletResponse response) throws Exception {
 	    System.out.println(waybillInfo);
 	    Account a= (Account) session.getAttribute("account");
-	    List<Integer>  list = a.getFiled();
-	    if(!list.contains(0)){
-	    	list.add(0);
-	    }
-	    waybillInfo.setFiled(list);
+	    waybillInfo.setFiled(a.getFiled());
 	    MongoDirver md = new MongoDirver();
 	    md.addWaybillInfo(waybillInfo);
 	    return "success";
@@ -583,8 +570,6 @@ public class GeneralController {
 			@RequestParam String _id,
 			HttpServletRequest request,HttpSession session,HttpServletResponse response
 			) throws Exception {
-		System.out.println("===================================================="+_id);
-		
 		String[] f  = {};
 		if((fileds.length()>0)&&fileds!=null){
 			f =  fileds.split(",");
