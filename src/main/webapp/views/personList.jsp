@@ -101,7 +101,7 @@
   </div>
 </div>
 <div class="psl_juris displayNo" id="psl_juris">
-  <input type="hidden" class="_id" value="">
+  <input type="text" class="_id" value="">
   <div class="pslJuris">
     <div class="juris_psl">
       <div class="juris_psl_title">
