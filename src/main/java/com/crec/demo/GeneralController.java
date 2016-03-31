@@ -348,7 +348,11 @@ public class GeneralController {
 	public void addOrderOrContract(@RequestBody OrderOrContract orderOrContracts,HttpSession session,HttpServletResponse response) throws Exception {
 	    System.out.println(orderOrContracts);
 	    Account a= (Account) session.getAttribute("account");
-	    orderOrContracts.setFiled(a.getFiled());
+	    List<Integer>  list = a.getFiled();
+	    if(!list.contains(0)){
+	    	list.add(0);
+	    }
+ 	    orderOrContracts.setFiled(list);
 	    MongoDirver md = new MongoDirver();
 	    md.addOrderOrContract(orderOrContracts,a.getName());
 	}
@@ -425,7 +429,11 @@ public class GeneralController {
 	public void addWaybillInfo(@RequestBody WaybillInfo waybillInfo,HttpSession session,HttpServletResponse response) throws Exception {
 	    System.out.println(waybillInfo);
 	    Account a= (Account) session.getAttribute("account");
-	    waybillInfo.setFiled(a.getFiled());
+	    List<Integer>  list = a.getFiled();
+	    if(!list.contains(0)){
+	    	list.add(0);
+	    }
+	    waybillInfo.setFiled(list);
 	    MongoDirver md = new MongoDirver();
 	    md.addWaybillInfo(waybillInfo);
 	}

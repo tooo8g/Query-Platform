@@ -103,33 +103,6 @@
         <a href="javascript:;" class="body_empty" onclick="codeEmpty()">清空</a>
       </div>
     </div>
-    <div class="qscc_body_codeList_button displayNo">
-      <div class="qscc_body_codeList">
-        <table class="body_codeList_table">
-          <thead class="body_codeList_thead">
-          <tr>
-            <td width="73">序号</td>
-            <td width="200">序列号</td>
-            <td>编制日期</td>
-            <td>采购单位</td>
-            <td>订单号/合同号</td>
-            <td>物资编码</td>
-            <td>物资名称</td>
-            <td>规格型号</td>
-            <td>产品标识代码</td>
-          </tr>
-          </thead>
-          <tbody class="body_codeList_tbody"></tbody>
-        </table>
-      </div>
-      <div class="listperAuth_button">
-
-      </div>
-      <div class="qscc_body_delete">
-        <a href="javascript:;" class="body_generateCode" onclick="generateCode()">生成序列号</a>
-        <a href="javascript:;" class="body_empty" onclick="codeEmpty()">清空</a>
-      </div>
-    </div>
   </div>
 </div>
 <jsp:include page="foot.jsp"/>
