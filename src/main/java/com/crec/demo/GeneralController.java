@@ -583,6 +583,8 @@ public class GeneralController {
 			@RequestParam String _id,
 			HttpServletRequest request,HttpSession session,HttpServletResponse response
 			) throws Exception {
+		System.out.println("===================================================="+_id);
+		
 		String[] f  = {};
 		if((fileds.length()>0)&&fileds!=null){
 			f =  fileds.split(",");
