@@ -2,6 +2,15 @@
  * Created by zb on 2016/3/28.
  */
 $(function(){
+    /*改变头部的css*/
+    $(".codeUl").removeClass("displayBlock").addClass("displayNo")
+    $(".guanliUl").removeClass("displayNo").addClass("displayBlock")
+
+    /*给nav a 绑定一个click事件*/
+    $(".nav a").on("click",function(){
+        $(".nav a").removeClass("colorClick").addClass("colorNoClick")
+        $(this).removeClass("colorNoClick").addClass("colorClick")
+    })
     /*页面刚点开调用此方法*/
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据

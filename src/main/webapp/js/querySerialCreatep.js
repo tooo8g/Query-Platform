@@ -9,6 +9,10 @@ var group_id=""
 var specification=""  //规格型号
 var company_name="" //企业名称	
 $(function(){
+    /*改变头部的css*/
+    $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
+    $(".codeUl").removeClass("displayNo").addClass("displayBlock")
+
     /*通过id获取产品详情信息*/
     var branch_id=$(".branch_id").val() //关联ID
     var jsonData="" //返回的JSON

@@ -2,7 +2,11 @@
  * Created by zb on 2016/3/4.
  */
 $(function(){
-	 /*调整头部*/
+    /*改变头部的css*/
+    $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
+    $(".codeUl").removeClass("displayNo").addClass("displayBlock")
+
+    /*调整头部*/
     $(".nav ul li a").removeClass("colorClick").addClass("colorNoClick")
     $(".serialNumber").removeClass("colorNoClick").addClass("colorClick")
 	

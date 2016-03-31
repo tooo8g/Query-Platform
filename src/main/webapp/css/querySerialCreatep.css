@@ -50,27 +50,27 @@ body{
     float: left;
     background-color: #fafafa;
 }
-.qscp_body_information p{
-    margin-left: 20px;
+.qscp_body_title{
+    width: 1200px;
     font-size: 14px;
-    color: #222222;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    float: left;
+    height: 35px;
+    line-height: 35px;
+    background-color: #eeeeee;
+    padding-left: 20px;
 }
-.qscp_body_product_name,.qscp_body_product_identify,.qscp_body_material_code{
-    padding-top: 25px;
-    padding-bottom: 25px;
+.qscp_body_information div,.qscp_body_createCode div{
+    padding-top: 20px;
+    padding-bottom: 20px;
     height: 25px;
     line-height: 25px;
     float: left;
     margin-left: 20px;
 }
-.qscp_body_product_name label,.qscp_body_product_identify label,.qscp_body_material_code label{
+.qscp_body_information label,.qscp_body_createCode label{
     font-size: 12px;
     color: #777777;
 }
-.body_product_name,.body_product_identify,.body_material_code{
+.qscp_body_information input,.qscp_body_createCode input{
     width: 193px;
     padding-left: 5px;
     margin-left: 10px;
@@ -79,32 +79,31 @@ body{
     border: 1px solid #dddddd;
     color: #777777;
 }
+.qscp_body_product_name,.body_createCode_date{
+    margin-left: 10px !important;
+}
+.body_createCode_purchasing_company{
+    padding-top: 0px !important;
+    margin-left: 10px !important;
+}
 .qscp_body_createCode{
     width: 1200px;
     float: left;
 }
-.body_createCode_purchasing_company,.body_createCode_orderno,.body_createCode_date,.body_createCode_creatNum,.body_createCode_creatCode{
-    width: 1200px;
-    float: left;
-    margin-top: 20px;
-}
-.body_createCode_purchasing_company label,.body_createCode_orderno label,.body_createCode_date label,.body_createCode_creatNum label{
-    width: 80px;
-    font-size: 12px;
+.body_createCode_mode select{
+    width: 200px;
     height: 25px;
-    line-height: 25px;
-    text-align: right;
-    float: left;
-    color: #777777;
-}
-.createCode_business,.createCode_orderno,.createCode_date,.createCode_creatNum,.createCode_purchasing_company{
-    width: 193px;
-    float: left;
-    height: 25px;
-    line-height: 25px;
-    padding-left: 5px;
-    border: 1px solid #dddddd;
     margin-left: 10px;
+    border: 1px solid #dddddd;
+}
+.body_createCode_creatCode{
+    width: 1200px;
+    height: 30px !important;
+    line-height: 30px !important;
+    float: left;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-left: 0px !important;
 }
 .contract_id_earch,.serialNumberSearch{
     width: auto;
@@ -123,9 +122,9 @@ body{
     border: 1px solid #bbbbbb;
 }
 .createCode_date{
-     background: url("../images/codeQuery_1.png") no-repeat 188px;
+    background: url("../images/codeQuery_1.png") no-repeat 188px;
 }
-.createCode_creatCode{
+.createCode_creatCode {
     width: auto;
     float: left;
     display: block;
@@ -138,7 +137,7 @@ body{
     border-radius: 4px;
     background-color: #77afea;
     color: white;
-    margin-left: 90px;
+    margin-left: 72px;
 }
 .qscp_body_codeList_button{
     width: 1200px;
@@ -188,21 +187,22 @@ body{
     padding: 10px 5px;
 }
 .body_codeList_tbody td a{
-    cursor: pointer;
-    width: 12px;
-    height: 12px;
-    float: left;
-    margin-top: 1px;
-    margin-left: 15px;
-}
+     cursor: pointer;
+     width: 12px;
+     height: 12px;
+     float: left;
+     margin-top: 1px;
+     margin-left: 15px;
+ }
 .body_codeList_tbody td p{
-    float: left;
+     float: left;
     margin-left: 10px;
 }
 .listperAuth_button{
     height: 20px;
     float: right;
     line-height: 20px;
+    margin-right: 6px;
     margin-bottom: 20px;
     margin-top: 20px;
     text-align: right;
@@ -245,7 +245,4 @@ body{
 }
 .displayNo{
     display: none;
-}
-.clickCursor{
-    cursor: pointer;
 }

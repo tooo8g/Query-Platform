@@ -4,6 +4,10 @@
 var specification="" //规格型号
 var groupId=""
 $(function(){
+    /*改变头部的css*/
+    $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
+    $(".codeUl").removeClass("displayNo").addClass("displayBlock")
+
     /*页面打开，调用一个方法，返回需要的数据
     * data: _id 订单ID
     * return

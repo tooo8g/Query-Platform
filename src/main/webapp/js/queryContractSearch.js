@@ -2,6 +2,10 @@
  * Created by zb on 2016/3/3.
  */
 $(function(){
+    /*改变头部的css*/
+    $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
+    $(".codeUl").removeClass("displayNo").addClass("displayBlock")
+
     /*修改头部的css*/
     $(".nav li a").removeClass("colorClick").addClass("colorNoClick")
     $(".contract").removeClass("colorNoClick").addClass("colorClick")

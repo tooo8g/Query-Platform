@@ -85,3 +85,10 @@
 .colorNoClick{
     color: #777777;
 }
+
+.displayBlock{
+    display: block;
+}
+.displayNo{
+    display: none;
+}

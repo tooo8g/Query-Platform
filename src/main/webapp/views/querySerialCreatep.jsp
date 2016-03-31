@@ -23,8 +23,10 @@
      <p>序列号编制</p>
   </div>
   <div class="qscp_body">
+    <div class="qscp_body_title">
+      产品详情信息
+    </div>
     <div class="qscp_body_information">
-      <p>产品详情信息</p>
       <div class="qscp_body_product_name">
         <label>产品名称</label>
         <input type="text" class="body_product_name" value="">
@@ -37,18 +39,16 @@
         <label>物资编码</label>
         <input type="text" class="body_material_code" value="">
       </div>
-    </div>
-    <div class="qscp_body_createCode">
+      <div class="body_createCode_orderno">
+        <label>订单号/合同号</label>
+        <input type="text" class="createCode_orderno" value="">
+      </div>
       <div class="body_createCode_purchasing_company">
         <label>采购单位</label>
         <input type="text" class="createCode_purchasing_company" value="">
       </div>
-      <div class="body_createCode_orderno">
-        <label>订单号/合同号</label>
-        <input type="text" class="createCode_orderno" value="">
-        <a href="queryContractSearch.jsp"  class="contract_id_earch" target="_self">订单号/合同号查询</a>
-        <a href="querySerialNumSearch.jsp" class="serialNumberSearch" target="_self">以编制序列号查询</a>
-      </div>
+    </div>
+    <div class="qscp_body_createCode">
       <div class="body_createCode_date">
         <label>编制日期</label>
         <input id="startDate1" name="createCode_date" class="createCode_date" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/>
@@ -56,6 +56,15 @@
       <div class="body_createCode_creatNum">
         <label>生成数量</label>
         <input type="text" class="createCode_creatNum" value="">
+      </div>
+      <div class="body_createCode_mode">
+        <label>编制模式</label>
+        <select>
+          <option value=""></option>
+          <option value="物资编码模式">物资编码模式</option>
+          <option value="产品标示代码模式">产品标示代码模式</option>
+          <option value="产品代码模式">产品代码模式</option>
+        </select>
       </div>
       <div class="body_createCode_creatCode">
         <a class="createCode_creatCode" onclick="creatCode()">自动创建序列号</a>

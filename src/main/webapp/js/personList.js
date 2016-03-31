@@ -2,6 +2,15 @@
  * Created by zb on 2016/3/29.
  */
 $(function(){
+    /*改变头部的css*/
+    $(".codeUl").removeClass("displayBlock").addClass("displayNo")
+    $(".guanliUl").removeClass("displayNo").addClass("displayBlock")
+
+    /*给nav a 绑定一个click事件*/
+    $(".nav a").on("click",function(){
+        $(".nav a").removeClass("colorClick").addClass("colorNoClick")
+        $(this).removeClass("colorNoClick").addClass("colorClick")
+    })
     /*页面进来直接调用*/
     psl_formButton()
 

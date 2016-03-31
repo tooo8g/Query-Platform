@@ -2,6 +2,11 @@
  * Created by zb on 2016/2/29.
  */
 $(function(){
+    /*改变头部的css*/
+    $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
+    $(".codeUl").removeClass("displayNo").addClass("displayBlock")
+
+
     /*给nav a 绑定一个click事件*/
     $(".nav a").on("click",function(){
         $(".nav a").removeClass("colorClick").addClass("colorNoClick")
