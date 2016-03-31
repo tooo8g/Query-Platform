@@ -21,8 +21,9 @@ $(function(){
         dataType:"json",
         success:function(data){
             var contractJson=data //保存json
-            var purchasing=contractJson.purchasing //订单明细表
-            var supply=contractJson.supply //供货计划
+            var purchasing=contractJson.purchasing[0].purchasing //订单明细表
+            var supply=contractJson.supply[0].supply //供货计划
+            var supplyId=contractJson.supply[0]._id.$oid //供货计划ID
             var company_name=contractJson.bzxx[0].company_name //企业名称
             var purchasing_company=contractJson.bzxx[0].purchasing_company //采购单位
             //给企业名称  订单号/合同号 采购单位 赋值
@@ -59,9 +60,9 @@ $(function(){
                 supplyPlanTbodyList += "<td>" + supply[i].address + "</td>"
                 supplyPlanTbodyList += "<td>" + supply[i].person + "</td>"
                 if(supply[i].code_num==0){
-                    supplyPlanTbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatec?contract_id="+contract_id+"&_id="+supply[i]._id.$oid+"'>编制序列号</a></td>"
+                    supplyPlanTbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatec?contract_id="+contract_id+"&_id="+supplyId+"'>编制序列号</a></td>"
                 }else{
-                    supplyPlanTbodyList+="<td><a href='"+ctx+"/serial/querySerialNumSearch?_id="+supply[i]._id.$oid+"'>查看详情</a></td>"
+                   supplyPlanTbodyList+="<td><a href='"+ctx+"/serial/querySerialNumSearch?_id="+supplyId+"'>查看详情</a></td>"
                 }
                 supplyPlanTbodyList+="</tr>"
             }

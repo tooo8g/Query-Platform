@@ -12,7 +12,7 @@
             </div>
             <div class="head_right">
                 <img src="${ctx}/images/head_1.png">
-                <span>${account.name}</span>
+                <span>${account.person.username}</span>
                 <a href="${ctx}/code/queryCodeSearch" target="_self">供应商服务</a>
                 <c:if test="${account.name.equals('admin')}">
                 	|<a href="${ctx}/company/queryCompanyList" target="_self">系统管理</a>
