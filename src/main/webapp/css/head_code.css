@@ -19,7 +19,7 @@
     float: left;
 }
 .head_left p{
-    color: #777777;
+    color: #ffffff;
     float: left;
     padding-right: 20px;
     margin-top: 0px;
@@ -31,7 +31,7 @@
 }
 .head_right a{
     font-size: 14px;
-    color: #777777;
+    color: #ffffff;
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
