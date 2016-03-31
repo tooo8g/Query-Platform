@@ -2,7 +2,7 @@
 <html>
 <head>
     <jsp:include page="resource.jsp"/>
-    <title>公司列表</title>
+    <title>公司列表</title>     
     <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
     <script type="text/javascript" src="${ctx}/js/companyList.js"></script>
     <script type="text/javascript" src="${ctx}/js/transTime.js"></script>
@@ -26,7 +26,7 @@
       <div class="cpl_top_click">
         <a type="reset" id="reset_submit" onclick="resetSubmit()">清除</a>
         <a type="button" id="form_button" onclick="formButton()">查询</a>
-        <a href="javaScript:;"  class="companyCreat" onclick="companyCreat()">新增</a>
+        <a href="javaScript:;"  class="companyCreat" onclick="cpl_companyCreat()">新增</a>
       </div>
     </form>
   </div>

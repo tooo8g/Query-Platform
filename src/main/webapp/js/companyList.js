@@ -144,7 +144,7 @@ function resetSubmit(){
 /*新增公司
 * 点击此方法，弹出悬浮框
 * */
-function companyCreat(){
+function cpl_companyCreat(){
    $(".cpl_create").removeClass("displayNo").addClass("displayBlock")
     var docuHeight = $(document).height()  //页面可视区域
     $(".cpl_create").height(docuHeight)
@@ -228,13 +228,18 @@ function closeCreate(){
 }
 /*保存公司*/
 function creat_button(){
-     var option={
-         url:ctx+"/addCompany",
+    var com_name=$(".com_name").val()
+    var org_code=$(".org_code").val()
+    var com_addr=$(".com_addr").val()
+    var con_person=$(".con_person").val()
+    var con_way=$(".con_way").val()
+    $.ajax({
+    	url:ctx+"/addCompany",
          type:"post",
+         data:{com_name:com_name,org_code:org_code,com_addr:com_addr,con_person:con_person,con_way:con_way},
          success:function(data){
                  formButton()
                  closeCreate()
          }
-     }
-    $("#create_cpl_form").ajaxSubmit(option)
+    })
 }
