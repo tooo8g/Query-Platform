@@ -105,9 +105,8 @@ function qcti_od_sp_preservation(){
         type:"post",
         data:orderOrContracts,
         contentType:"application/json",
-        dataType:"json",
         success:function(data){
-
+        	window.location.href=ctx+"/contract/queryContractSearch";
         }
     })
 }

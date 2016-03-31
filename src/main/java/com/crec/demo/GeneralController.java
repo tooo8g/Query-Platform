@@ -345,7 +345,7 @@ public class GeneralController {
 
 	@RequestMapping(value="/addOrderOrContract")
 	@ResponseBody
-	public void addOrderOrContract(@RequestBody OrderOrContract orderOrContracts,HttpSession session,HttpServletResponse response) throws Exception {
+	public String addOrderOrContract(@RequestBody OrderOrContract orderOrContracts,HttpSession session,HttpServletResponse response) throws Exception {
 	    System.out.println(orderOrContracts);
 	    Account a= (Account) session.getAttribute("account");
 	    List<Integer>  list = a.getFiled();
@@ -355,6 +355,7 @@ public class GeneralController {
  	    orderOrContracts.setFiled(list);
 	    MongoDirver md = new MongoDirver();
 	    md.addOrderOrContract(orderOrContracts,a.getName());
+	    return "success";
 	}
 	
 	
@@ -426,7 +427,7 @@ public class GeneralController {
 	
 	@RequestMapping(value="/addWaybillInfo")
 	@ResponseBody
-	public void addWaybillInfo(@RequestBody WaybillInfo waybillInfo,HttpSession session,HttpServletResponse response) throws Exception {
+	public String addWaybillInfo(@RequestBody WaybillInfo waybillInfo,HttpSession session,HttpServletResponse response) throws Exception {
 	    System.out.println(waybillInfo);
 	    Account a= (Account) session.getAttribute("account");
 	    List<Integer>  list = a.getFiled();
@@ -436,6 +437,7 @@ public class GeneralController {
 	    waybillInfo.setFiled(list);
 	    MongoDirver md = new MongoDirver();
 	    md.addWaybillInfo(waybillInfo);
+	    return "success";
 	}
 	
 	@RequestMapping("/queryWaybillInfo")

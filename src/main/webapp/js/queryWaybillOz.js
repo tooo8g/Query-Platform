@@ -80,11 +80,11 @@ function qwob_submit(){
         type:"post",
         data:JSON.stringify(qwbo),
         contentType:"application/json",
-        dataType:"json",
         success:function(data){
-            if(data=="true"){
-                alert("保存成功")
-            }
+                window.location.href = ctx+"/waybill/queryWaybillSearch";
+        },
+        error:function(){
+        	alert("连接失败")
         }
     })
 }
