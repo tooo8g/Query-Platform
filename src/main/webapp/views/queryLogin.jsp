@@ -61,8 +61,19 @@
           </div>
         </div>
       </form>
+      <div class="qLogin_ver"></div>
       <div class="qLogin_version">
-        版本：1.1.0
+        <span class="qLogin_version_span">版本：1.2.0</span>
+        <div class="qLogin_version_prompt displayNo" id="qLogin_version_prompt">
+          1.2.0修改记录：<br>
+          &nbsp;&nbsp;1，增加数据权限管理功能。<br>
+          &nbsp;&nbsp;2，编制序列号界面空间布局调整。<br>
+          &nbsp;&nbsp;3，编制序列号增加编制状态字段。<br>
+          &nbsp;&nbsp;4，页面头部和主功能菜单字段及样式调整。<br>
+          &nbsp;&nbsp;5，新增订单、合同时订货明细中增加产品标示代码字段。<br>
+          &nbsp;&nbsp;6，企业名称修改为供应商。<br>
+          &nbsp;&nbsp;7，调整title的菜单。<br>
+        </div>
       </div>
     </div>
   </div>

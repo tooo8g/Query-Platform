@@ -13,7 +13,13 @@ $(function(){
     })
     ///*通过判断saveUsername是否被选中来修改背景图片,默认为选中状态*/
     //$(".saveUser").css("background-image","url('../images/login_06.png')")
+    $(".qLogin_version span").on("mouseover",function(){
+        $(".qLogin_version_prompt").removeClass("displayNo").addClass("displayBlock")
+    })
 
+    $(".qLogin_version_prompt").on("mouseout",function(){
+        $(".qLogin_version_prompt").removeClass("displayBlock").addClass("displayNo")
+    })
 
 
 })

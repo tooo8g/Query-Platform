@@ -165,10 +165,35 @@ img{border: none;margin: 0px;padding: 0px;}
     font-weight: bold;
     display: block;
 }
+.qLogin_ver{
+    clear: both;
+}
 .qLogin_version{
     float: left;
-    margin-top: 385px;
-    margin-left: -75px;
+    width: 415px;
+    margin-left: 750px;
+}
+.qLogin_version_span{
+    float: left;
     color: #222222;
     font-size: 14px;
+    display: block;
+}
+.qLogin_version_prompt{
+    width: 330px;
+    height: 260px;
+    float: left;
+    margin-left: 90px;
+    background-color: #77afea;
+    color: #FFFFFF;
+    position: absolute;
+    margin-top: -260px;
+    overflow: auto;
+    font-size: 14px;
+}
+.displayBlock{
+    display: block;
+}
+.displayNo{
+    display: none;
 }
