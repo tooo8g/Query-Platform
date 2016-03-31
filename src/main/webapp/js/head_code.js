@@ -3,11 +3,12 @@
  */
 /*退出*/
 function loginOut(){
-    $.ajax({
-        url:"",
-        type:"post",
-        success:function(){
-            window.location.href=ctx+"/login"
-        }
-    })
+	 window.location.href=ctx+"/goLogout"
+//    $.ajax({
+//        url:"",
+//        type:"post",
+//        success:function(){
+//            window.location.href=ctx+"/login"
+//        }
+//    })
 }

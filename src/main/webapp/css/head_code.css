@@ -28,8 +28,9 @@
 }
 .head_right{
     float: right;
+    color:#ffffff
 }
-.head_right a{
+.head_right a,.head_right span{
     font-size: 14px;
     color: #ffffff;
     margin-left: 10px;

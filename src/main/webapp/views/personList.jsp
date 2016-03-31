@@ -21,11 +21,11 @@
       </div>
       <div>
         <label>姓名</label>
-        <input name="username" value="">
+        <input class="psl_username" name="username" value="">
       </div>
       <div>
         <label>所属公司</label>
-        <input name="company" value="">
+        <input class="psl_company"  name="company" value="">
       </div>
       <div class="psl_top_click">
         <a type="reset" id="reset_submit" onclick="resetSubmit()">清除</a>
