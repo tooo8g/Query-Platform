@@ -53,12 +53,12 @@ $(function () {
                 tbodyList+="<td>"+codes[i].good_num+"</td>"
                 tbodyList+="<td>"+codes[i].send_addr+"</td>"
                 tbodyList+="<td>"+codes[i].send_duty+"</td>"
-                tbodyList+="<td>"+codes[i].send_time+"</td>"
+                tbodyList+="<td></td>"
                 tbodyList+="<td>"+codes[i].receive_addr+"</td>"
 //                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
                 tbodyList+="<td></td>"
                 tbodyList+="<td><a onclick=showSendInfor('"+codes[i]._id.$oid+"')>发货清单</a></td>"
-                tbodyList+="<td id='stateCss'>"+codes[i].logistics_stats+"</td>"
+                tbodyList+="<td id='stateCss'></td>"
                 tbodyList+="</tr>"
             }
             $(".qwbs_bottom_tbody").html(" ")
@@ -142,12 +142,12 @@ function formButton(){
                 tbodyList+="<td>"+codes[i].good_num+"</td>"
                 tbodyList+="<td>"+codes[i].send_addr+"</td>"
                 tbodyList+="<td>"+codes[i].send_duty+"</td>"
-                tbodyList+="<td>"+codes[i].send_time+"</td>"
+                tbodyList+="<td></td>"
                 tbodyList+="<td>"+codes[i].receive_addr+"</td>"
 //                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
                 tbodyList+="<td></td>"
                 tbodyList+="<td><a onclick=showSendInfor('"+codes[i]._id.$oid+"')>发货清单</a></td>"
-                tbodyList+="<td id='stateCss'>"+codes[i].logistics_stats+"</td>"
+                tbodyList+="<td id='stateCss'></td>"
                 tbodyList+="</tr>"
             }
             $(".qwbs_bottom_tbody").html(" ")
@@ -204,12 +204,12 @@ function goPage(logistics_id,logistics_company,contract_id,logistics_stats,car_l
                 tbodyList+="<td>"+codes[i].good_num+"</td>"
                 tbodyList+="<td>"+codes[i].send_addr+"</td>"
                 tbodyList+="<td>"+codes[i].send_duty+"</td>"
-                tbodyList+="<td>"+codes[i].send_time+"</td>"
+                tbodyList+="<td></td>"
                 tbodyList+="<td>"+codes[i].receive_addr+"</td>"
 //                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
                 tbodyList+="<td></td>"
                 tbodyList+="<td><a onclick=showSendInfor('"+codes[i]._id.$oid+"')>发货清单</a></td>"
-                tbodyList+="<td id='stateCss'>"+codes[i].logistics_stats+"</td>"
+                tbodyList+="<td id='stateCss'></td>"
                 tbodyList+="</tr>"
             }
             $(".qwbs_bottom_tbody").html(" ")
