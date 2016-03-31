@@ -34,9 +34,10 @@ $(function(){
                 tbodyList+="<td>"+bzxx[i].contract_id+"</td>"
                 tbodyList+="<td>"+bzxx[i].company_name+"</td>"
                 tbodyList+="<td>"+bzxx[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?contract_id="+bzxx[i].contract_id+"'>查看</a></td>"
+                tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?contract_id="+bzxx[i].contract_id+"'>查看/编制序列号</a></td>"
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
+                tbodyList+="<td>编制中</td>"
                 tbodyList+="</tr>"
             }
             $(".conser_bottom_tbody").html(" ")
@@ -98,9 +99,10 @@ function formButton(){
                 tbodyList+="<td>"+bzxx[i].contract_id+"</td>"
                 tbodyList+="<td>"+bzxx[i].company_name+"</td>"
                 tbodyList+="<td>"+bzxx[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?contract_id="+bzxx[i].contract_id+"'>查看</a></td>"
+                tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?contract_id="+bzxx[i].contract_id+"'>查看/编制序列号</a></td>"
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
+                tbodyList+="<td>编制中</td>"
                 tbodyList+="</tr>"
             }
             $(".conser_bottom_tbody").html(" ")
@@ -151,9 +153,10 @@ function goPage(contract_id,purchasing_company,company_name,startValue,limitValu
                 tbodyList+="<td>"+bzxx[i].contract_id+"</td>"
                 tbodyList+="<td>"+bzxx[i].company_name+"</td>"
                 tbodyList+="<td>"+bzxx[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?contract_id="+bzxx[i].contract_id+"'>查看</a></td>"
+                tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?contract_id="+bzxx[i].contract_id+"'>查看/编制序列号</a></td>"
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
+                tbodyList+="<td>编制中</td>"
                 tbodyList+="</tr>"
             }
             $(".conser_bottom_tbody").html(" ")

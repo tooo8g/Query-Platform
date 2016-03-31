@@ -27,9 +27,9 @@
       </div>
       <div class="qcti_contractCreat_content">
         <div class="contractCreat_content_company_name">
-          <label>企业名称</label>
+          <label>供应商</label>
           <input type="text" class="content_company_name" value="">
-          <a href="javascript:;" class="companySearch">企业查询</a>
+          <a href="javascript:;" class="companySearch">供应商查询</a>
         </div>
         <div class="contractCreat_content_contract_id">
           <label>订单号/合同号</label>

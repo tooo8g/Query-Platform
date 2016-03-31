@@ -54,7 +54,7 @@
         <input type="text" class="content_send_addr" value="">
       </div>
       <div class="information_content_send_company">
-        <label>企业名称</label>
+        <label>供应商</label>
         <input type="text" class="content_send_company" value="">
       </div>
     </div>

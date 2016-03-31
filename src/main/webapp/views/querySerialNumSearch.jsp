@@ -35,7 +35,7 @@
         <input type="text" class="top_purchasing_company" value="">
       </div>
       <div class="qsns_top_company_name">
-        <label>企业名称</label>
+        <label>供应商</label>
         <input type="text" class="top_company_name" value="">
       </div>
       <div class="qsns_top_click">
@@ -53,7 +53,7 @@
         <td>编制日期</td>
         <td>采购单位</td>
         <td>订单号/合同号</td>
-        <td>企业名称</td>
+        <td>供应商</td>
         <td>物资编码</td>
         <td>产品标识代码</td>
         <td>产品名称</td>

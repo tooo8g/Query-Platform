@@ -22,7 +22,7 @@
     <div class="cq_top">
         <form id="cqForm">
             <div class="cq_top_enterpriseName">
-                <label>企业名称</label>
+                <label>供应商</label>
                 <input type="text" name="cqt_enterpriseName" class="cqt_enterpriseName" value="">
             </div>
             <div class="cq_top_productCode">
@@ -47,7 +47,7 @@
         <table class="cq_table">
             <thead class="cq_thead">
             <td width="73"></td>
-            <td width="200">企业名称</td>
+            <td width="200">供应商</td>
             <td>产品标识代码</td>
             <td>产品名称</td>
             <td>规格型号</td>

@@ -46,7 +46,7 @@
         <input type="text" class="createCode_orderno" value="">
       </div>
       <div class="body_createCode_company_name">
-        <label>企业名称</label>
+        <label>供应商</label>
         <input type="text" class="createCode_company_name" value="">
       </div>
       <div class="body_createCode_purchasing_company">

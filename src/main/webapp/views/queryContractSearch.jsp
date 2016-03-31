@@ -41,11 +41,12 @@
       <tr>
         <td width="73"></td>
         <td>订单号/合同号</td>
-        <td width="200">企业名称</td>
+        <td width="200">供应商</td>
         <td>采购单位</td>
         <td>订单/合同详细信息</td>
         <td>编制人员</td>
         <td>编制时间</td>
+        <td>编制状态</td>
       </tr>
       </thead>
       <tbody class="conser_bottom_tbody">
