@@ -85,7 +85,6 @@ function qcti_od_sp_preservation(){
         })
         if(flagsu){
             trInputValsu={"material_code":""+$(this).find("input").eq(0).val()+"","material_name":""+$(this).find("input").eq(1).val()+"","specification":""+$(this).find("input").eq(2).val()+"","measurement":""+$(this).find("input").eq(3).val()+"","num":""+$(this).find("input").eq(4).val()+"","supply_time":""+$(this).find("input").eq(5).val()+"","address":""+$(this).find("input").eq(6).val()+"","person":""+$(this).find("input").eq(7).val()+"","product_identify":""+$(this).find("input").eq(8).val()+""}
-            console.log(trInputValsu)
             tableValsu.push(trInputValsu)
         }else{
             return false
