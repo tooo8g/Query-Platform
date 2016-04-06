@@ -61,13 +61,15 @@ public class GeneralController {
 	}
 	
 	@RequestMapping("/queryPurchase_bidding")
-	public void QueryPurchaseBidding(@RequestParam String str,
+	public void QueryPurchaseBidding(
+			@RequestParam String str,
+			@RequestParam String industry,
 			@RequestParam int start, @RequestParam int limit,
 			HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
-		System.out.println(str);
+		System.out.println(industry);
 		MongoDirverS1 md = new MongoDirverS1();
-		String result = md.queryPurchaseBidding(str, start, limit);
+		String result = md.queryPurchaseBidding(str,industry, start, limit);
 		md.close();
 		System.out.println(result);
 		response.getWriter().print(result);

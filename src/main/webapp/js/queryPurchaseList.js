@@ -40,12 +40,12 @@ function goPage(str,industry,start,limit,isGo){
                 tbodyList+="<td>"+bzxx[i].purchaseOrderNo+"</td>"
                 tbodyList+="<td title='"+bzxx[i].purchaserName+"'>"+bzxx[i].purchaserName+"</td>"
                 tbodyList+="<td title='"+bzxx[i].purchaserCompany+"'>"+bzxx[i].purchaserCompany+"</td>"
-                tbodyList+="<td>"+bzxx[i].announcementType+"</td>"
+                tbodyList+="<td title='"+bzxx[i].announcementType+"'>"+bzxx[i].announcementType+"</td>"
                 tbodyList+="<td title='"+bzxx[i].purchaserVariety+"'>"+bzxx[i].purchaserVariety+"</td>"
                 tbodyList+="<td title='"+bzxx[i].purchaserArea+"'>"+bzxx[i].purchaserArea+"</td>"
                 tbodyList+="<td>"+bzxx[i].industry+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].publishTime.$date)+"</td>"
-                tbodyList+="<td title='"+bzxx[i].dataSource+"'><a>"+bzxx[i].address+"</a></td>"
+                tbodyList+="<td title='"+bzxx[i].address+"'><a>"+bzxx[i].dataSource+"</a></td>"
                 tbodyList+="</tr>"
             }
             $(".purchase_tbody").append(tbodyList)
@@ -113,7 +113,7 @@ function search_purchase_button(){
         if($(this).hasClass("colorWhite")){
             industry= $(this).text().trim()
             if(industry=="不限"){
-                industry==""
+                industry=""
             }
         }
     })
@@ -138,12 +138,12 @@ function search_purchase_button(){
                     tbodyList+="<td>"+bzxx[i].purchaseOrderNo+"</td>"
                     tbodyList+="<td title='"+bzxx[i].purchaserName+"'>"+bzxx[i].purchaserName+"</td>"
                     tbodyList+="<td title='"+bzxx[i].purchaserCompany+"'>"+bzxx[i].purchaserCompany+"</td>"
-                    tbodyList+="<td>"+bzxx[i].announcementType+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].announcementType+"'>"+bzxx[i].announcementType+"</td>"
                     tbodyList+="<td title='"+bzxx[i].purchaserVariety+"'>"+bzxx[i].purchaserVariety+"</td>"
                     tbodyList+="<td title='"+bzxx[i].purchaserArea+"'>"+bzxx[i].purchaserArea+"</td>"
-                    tbodyList+="<td>"+timeStamp2String(bzxx[i].purchaserFileGetTime.$date)+"</td>"
+                    tbodyList+="<td>"+bzxx[i].industry+"</td>"
                     tbodyList+="<td>"+timeStamp2String(bzxx[i].publishTime.$date)+"</td>"
-                    tbodyList+="<td title='"+bzxx[i].dataSource+"'><a>"+bzxx[i].dataSource+"</a></td>"
+                    tbodyList+="<td title='"+bzxx[i].address+"'><a>"+bzxx[i].dataSource+"</a></td>"
                     tbodyList+="</tr>"
                 }
                 $(".purchase_tbody").append(tbodyList)
