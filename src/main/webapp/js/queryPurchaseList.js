@@ -4,57 +4,12 @@
 
 $(function(){
     /*打开页面，自动调用下面的方法，把相关信息放到biiLis_tbody里面*/
-    var str="" //搜索框里的值
-    var startValue=0 //初始值
-    var limitValue=10 //一次取出多少条数据
-    var tbodyList="" //保存解析的数据
-    var count //保存总条数
-    var bzxx //保存json的bzxx里的数据
-    var bzNum //条数
-    $.ajax({
-        url:ctx+"/queryPurchase_bidding",
-        data:{str:str,start:startValue,limit:limitValue},
-        type:"post",
-        dataType:"json",
-        success:function(data){
-            count=data.count
-            bzxx=data.bzxx
-            for(var i=0;i<bzxx.length;i++){
-                bzNum=Number(startValue+i)+1
-                tbodyList+="<tr>"
-                tbodyList+="<td>"+bzNum+"</td>"
-                tbodyList+="<td>"+bzxx[i].purchaseOrderNo+"</td>"
-                tbodyList+="<td title='"+bzxx[i].purchaserName+"'>"+bzxx[i].purchaserName+"</td>"
-                tbodyList+="<td title='"+bzxx[i].purchaserCompany+"'>"+bzxx[i].purchaserCompany+"</td>"
-                tbodyList+="<td>"+bzxx[i].announcementType+"</td>"
-                tbodyList+="<td title='"+bzxx[i].purchaserVariety+"'>"+bzxx[i].purchaserVariety+"</td>"
-                tbodyList+="<td title='"+bzxx[i].purchaserArea+"'>"+bzxx[i].purchaserArea+"</td>"
-                tbodyList+="<td>"+timeStamp2String(bzxx[i].purchaserFileGetTime.$date)+"</td>"
-                tbodyList+="<td>"+timeStamp2String(bzxx[i].publishTime.$date)+"</td>"
-                tbodyList+="<td title='"+bzxx[i].dataSource+"'><a>"+bzxx[i].dataSource+"</a></td>"
-                tbodyList+="</tr>"
-            }
-            $(".purchase_tbody").append(tbodyList)
+    search_purchase_button()
 
-            //分页
-            var plButton=""
-            var countPages=Math.ceil(count/limitValue)
-            var PageNo=0  //当前页码
-            if(startValue==0){
-                PageNo=1
-            }
-            $(".pageNo").val(PageNo)
-            var nextStartRow//下一页开始显示的编号
-            plButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
-            plButton+="<p>"+PageNo+"/"+countPages+"</p>"
-            if(countPages>1){
-                nextStartRow=PageNo*limitValue
-                plButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
-            }else{
-                plButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
-            }
-            $(".listperAuth_button").append(plButton)
-        }
+    /*fileStatus_a里面的a的方法*/
+    $(".industryList a").on("click",function(){
+        $(".industryList a").removeClass("colorWhite").addClass("colorBule")
+        $(this).removeClass("colorBule").addClass("colorWhite")
     })
 })
 
@@ -63,7 +18,7 @@ $(function(){
  * 页码跳转
  * isGo判断是next还是pre
  * */
-function goPage(str,start,limit,isGo){
+function goPage(str,industry,start,limit,isGo){
     $(".purchase_tbody").html("")
     $(".listperAuth_button").html("")
     var tbodyList="" //保存解析的数据
@@ -72,7 +27,7 @@ function goPage(str,start,limit,isGo){
     var bzNum //标记
     $.ajax({
         url:ctx+"/queryPurchase_bidding",
-        data:{str:str,start:start,limit:limit},
+        data:{str:str,industry:industry,start:start,limit:limit},
         type : 'post',
         dataType : 'json',
         success:function(data){
@@ -88,9 +43,9 @@ function goPage(str,start,limit,isGo){
                 tbodyList+="<td>"+bzxx[i].announcementType+"</td>"
                 tbodyList+="<td title='"+bzxx[i].purchaserVariety+"'>"+bzxx[i].purchaserVariety+"</td>"
                 tbodyList+="<td title='"+bzxx[i].purchaserArea+"'>"+bzxx[i].purchaserArea+"</td>"
-                tbodyList+="<td>"+timeStamp2String(bzxx[i].purchaserFileGetTime.$date)+"</td>"
+                tbodyList+="<td>"+bzxx[i].industry+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].publishTime.$date)+"</td>"
-                tbodyList+="<td title='"+bzxx[i].dataSource+"'><a>"+bzxx[i].dataSource+"</a></td>"
+                tbodyList+="<td title='"+bzxx[i].dataSource+"'><a>"+bzxx[i].address+"</a></td>"
                 tbodyList+="</tr>"
             }
             $(".purchase_tbody").append(tbodyList)
@@ -120,14 +75,14 @@ function goPage(str,start,limit,isGo){
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                plButton+="<a class=clickCursor onclick=goPage('"+str+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
+                plButton+="<a class=clickCursor onclick=goPage('"+str+"','"+industry+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
                 plButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             plButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                plButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
+                plButton+="<a class=clickCursor onclick=goPage('"+str+"','"+industry+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
                 plButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
@@ -153,6 +108,12 @@ function search_purchase_button(){
     $(".purchase_tbody").html("")
     $(".listperAuth_button").html("")
     var str=$(".serInput").val() //搜索框里的值
+    var industry //所属行业
+    $(".industryList a").each(function(){
+        if($(this).hasClass("colorWhite")){
+            industry= $(this).text().trim()
+        }
+    })
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     var tbodyList="" //保存解析的数据
@@ -161,7 +122,7 @@ function search_purchase_button(){
     var bzNum //标记
     $.ajax({
             url:ctx+"/queryPurchase_bidding",
-            data:{str:str,start:startValue,limit:limitValue},
+            data:{str:str,industry:industry,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
             success:function(data){
@@ -197,7 +158,7 @@ function search_purchase_button(){
                 asButton+="<p>"+pageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=pageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+industry+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 }else{
                     asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
                 }
