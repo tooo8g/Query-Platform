@@ -45,7 +45,7 @@ function goPage(str,industry,start,limit,isGo){
                 tbodyList+="<td title='"+bzxx[i].purchaserArea+"'>"+bzxx[i].purchaserArea+"</td>"
                 tbodyList+="<td>"+bzxx[i].industry+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].publishTime.$date)+"</td>"
-                tbodyList+="<td title='"+bzxx[i].address+"'><a>"+bzxx[i].dataSource+"</a></td>"
+                tbodyList+="<td title='"+bzxx[i].dataSource+"'><a href='"+bzxx[i].address+"' target='_blank'>"+bzxx[i].dataSource+"</a></td>"
                 tbodyList+="</tr>"
             }
             $(".purchase_tbody").append(tbodyList)
@@ -143,7 +143,7 @@ function search_purchase_button(){
                     tbodyList+="<td title='"+bzxx[i].purchaserArea+"'>"+bzxx[i].purchaserArea+"</td>"
                     tbodyList+="<td>"+bzxx[i].industry+"</td>"
                     tbodyList+="<td>"+timeStamp2String(bzxx[i].publishTime.$date)+"</td>"
-                    tbodyList+="<td title='"+bzxx[i].address+"'><a>"+bzxx[i].dataSource+"</a></td>"
+                    tbodyList+="<td title='"+bzxx[i].dataSource+"'><a href='"+bzxx[i].address+"' target='_blank'>"+bzxx[i].dataSource+"</a></td>"
                     tbodyList+="</tr>"
                 }
                 $(".purchase_tbody").append(tbodyList)
