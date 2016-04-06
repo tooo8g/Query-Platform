@@ -152,3 +152,11 @@ body{
 .clickCursor {
     cursor: pointer;
 }
+.colorWhite {
+    color: white;
+    background-color: #77afea;
+}
+.colorBule {
+    color: #77afea;
+    background-color: white;
+}
