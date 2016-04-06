@@ -112,6 +112,9 @@ function search_purchase_button(){
     $(".industryList a").each(function(){
         if($(this).hasClass("colorWhite")){
             industry= $(this).text().trim()
+            if(industry=="不限"){
+                industry==""
+            }
         }
     })
     var startValue=0 //初始值
