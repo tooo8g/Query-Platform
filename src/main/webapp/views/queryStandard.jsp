@@ -90,6 +90,7 @@
                         <td>标准状态</td>
                         <td>发布日期</td>
                         <td>实施日期</td>
+                        <td>下载</td>
                     </tr>
                     </thead>
                     <tbody class="sts_search_tbody">

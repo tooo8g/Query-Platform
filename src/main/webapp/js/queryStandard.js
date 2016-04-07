@@ -34,6 +34,7 @@ $(function(){
                 tbodyList+="<td>"+bzxx[i].standard_status+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].publish_date.$date)+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].execute_date.$date)+"</td>"
+                tbodyList+="<td><a onclick=qsdownload(bzxx[i].file_name)>"+bzxx[i].file_name+"</a></td>"
                 tbodyList+="</tr>"
             }
             $(".sts_search_tbody").html(" ")
@@ -98,6 +99,7 @@ $(function(){
                    tbodyList+="<td>"+bzxx[i].standard_status+"</td>"
                    tbodyList+="<td>"+timeStamp2String(bzxx[i].publish_date.$date)+"</td>"
                    tbodyList+="<td>"+timeStamp2String(bzxx[i].execute_date.$date)+"</td>"
+                   tbodyList+="<td><a onclick=qsdownload(bzxx[i].file_name)>"+bzxx[i].file_name+"</a></td>"
                    tbodyList+="</tr>"
                }
                $(".sts_search_tbody").html(" ")
@@ -206,6 +208,7 @@ function formButton(){
                  tbodyList+="<td>"+bzxx[i].standard_status+"</td>"
                  tbodyList+="<td>"+timeStamp2String(bzxx[i].publish_date.$date)+"</td>"
                  tbodyList+="<td>"+timeStamp2String(bzxx[i].execute_date.$date)+"</td>"
+                 tbodyList+="<td><a onclick=qsdownload(bzxx[i].file_name)>"+bzxx[i].file_name+"</a></td>"
                  tbodyList+="</tr>"
              }
              $(".sts_search_tbody").html(" ")
@@ -306,3 +309,25 @@ function goPage(str,standard_group,standard_status,special_subject,start,limitVa
     })
 }
 
+/*下载*/
+function qsdownload(str){
+    var form = $("<form>");
+    form.attr('style', 'display:none');
+    form.attr('target', '');
+    form.attr('method', 'post');
+    form.attr('action', 'AjaxPost.aspx');
+    var input1 = $('<input>');
+    input1.attr('type', 'hidden');
+    input1.attr('name', 'type');
+    input1.attr('value', 'Export');
+    var input2 = $('<input>');
+    input2.attr('type', 'hidden');
+    input2.attr('name', 'fileId');
+    input2.attr('value', str);
+    $('body').append(form);
+    form.append(input1);
+    form.append(input2);
+
+    form.submit();
+    form.remove();
+}
