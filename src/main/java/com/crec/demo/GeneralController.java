@@ -1,6 +1,7 @@
 package com.crec.demo;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mongodb.gridfs.GridFSDBFile;
 import com.platform.io.bean.Account;
 import com.platform.io.bean.Company;
 import com.platform.io.bean.OrderOrContract;
@@ -29,6 +31,7 @@ import com.platform.io.bean.Person;
 import com.platform.io.bean.WaybillInfo;
 import com.platform.mongo.s1.MongoDirverS1;
 import com.platform.mongo.s2.MongoDirver;
+import com.platform.mongo.util.FileUtils;
 import com.platform.mongo.util.MD5Util;
 import com.platform.mongo.util.TimeUtil;
 
@@ -587,6 +590,32 @@ public class GeneralController {
 		md.assign(f, _id);
 		md.close();
 	}
+	
+    @RequestMapping("/download")  
+    public void download(
+    		@RequestParam String file_name,
+    		HttpServletResponse res) throws Exception {  
+        OutputStream os = res.getOutputStream();  
+        try {  
+            res.reset();  
+            res.setHeader("Content-Disposition", "attachment;filename="+ new String((file_name + ".pdf").getBytes(), "iso-8859-1"));
+            res.setContentType("application/octet-stream; charset=utf-8");  
+            MongoDirver md = new MongoDirver();
+            GridFSDBFile gfFile = md.downloadPDF(file_name, null);
+            if(gfFile!=null){
+            	gfFile.writeTo(os);
+            	res.getWriter().println(gfFile);
+            }else{
+            	res.getWriter().println("文件为空，请上传");
+            }
+            os.flush();  
+        } finally {  
+            if (os != null) {  
+                os.close();  
+            }  
+        }  
+    }  
+
 	
 	public static void main(String[] args) {
 		GeneralController g = new GeneralController();

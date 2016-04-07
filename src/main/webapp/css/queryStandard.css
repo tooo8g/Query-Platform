@@ -212,6 +212,10 @@ body{
     color: #222222;
     font-size: 12px;
 }
+.sts_search_tbody a{
+	color:#77afea;
+	cursor:pointer
+}
 .sts_search_thead td{
     height: 35px;
 }
