@@ -31,6 +31,7 @@ body{
     width: 1200px;
     height: 12px;
     line-height: 12px;
+    padding-top: 10px;
 }
 .jq_message_title p{
     float: left;

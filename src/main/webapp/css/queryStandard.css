@@ -30,6 +30,7 @@ body{
     width: 1200px;
     height: 12px;
     line-height: 12px;
+    padding-top: 10px;
 }
 .sts_title p{
     float: left;

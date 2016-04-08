@@ -44,7 +44,7 @@
     width: 100%;
     float: left;
     height: auto;
-    background-color: #fafafa;
+    background-color: #eeeeee;
 }
 .head_nav{
     width: 1200px;
@@ -53,13 +53,13 @@
 }
 
 .logo{
-    width: 200px;
+    width: 457px;
     float: left;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 .logo_img{
-    width: 200px;
+    width: 457px;
 }
 
 .nav{

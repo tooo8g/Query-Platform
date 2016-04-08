@@ -34,7 +34,7 @@ $(function(){
                 tbodyList+="<td>"+bzxx[i].standard_status+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].publish_date.$date)+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].execute_date.$date)+"</td>"
-                tbodyList+="<td><a onclick=qsdownload("+bzxx[i].file_name+")>"+bzxx[i].file_name+"</a></td>"
+                tbodyList+="<td><a onclick=qsdownload("+bzxx[i].file_name+")>查看</a></td>"
                 tbodyList+="</tr>"
             }
             $(".sts_search_tbody").html(" ")
@@ -99,7 +99,7 @@ $(function(){
                    tbodyList+="<td>"+bzxx[i].standard_status+"</td>"
                    tbodyList+="<td>"+timeStamp2String(bzxx[i].publish_date.$date)+"</td>"
                    tbodyList+="<td>"+timeStamp2String(bzxx[i].execute_date.$date)+"</td>"
-                   tbodyList+="<td><a onclick=qsdownload("+bzxx[i].file_name+")>"+bzxx[i].file_name+"</a></td>"
+                   tbodyList+="<td><a onclick=qsdownload("+bzxx[i].file_name+")>查看</a></td>"
                    tbodyList+="</tr>"
                }
                $(".sts_search_tbody").html(" ")
@@ -208,7 +208,7 @@ function formButton(){
                  tbodyList+="<td>"+bzxx[i].standard_status+"</td>"
                  tbodyList+="<td>"+timeStamp2String(bzxx[i].publish_date.$date)+"</td>"
                  tbodyList+="<td>"+timeStamp2String(bzxx[i].execute_date.$date)+"</td>"
-                 tbodyList+="<td><a onclick=qsdownload("+bzxx[i].file_name+")>"+bzxx[i].file_name+"</a></td>"
+                 tbodyList+="<td><a onclick=qsdownload("+bzxx[i].file_name+")>查看</a></td>"
                  tbodyList+="</tr>"
              }
              $(".sts_search_tbody").html(" ")
@@ -263,7 +263,7 @@ function goPage(str,standard_group,standard_status,special_subject,start,limitVa
                 tbodyList+="<td>"+bzxx[i].standard_status+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].publish_date.$date)+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].execute_date.$date)+"</td>"
-                tbodyList+="<td><a onclick=qsdownload("+bzxx[i].file_name+")>"+bzxx[i].file_name+"</a></td>"
+                tbodyList+="<td><a onclick=qsdownload("+bzxx[i].file_name+")>查看</a></td>"
                 tbodyList+="</tr>"
             }
             $(".sts_search_tbody").html(" ")

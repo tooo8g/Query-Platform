@@ -3,7 +3,7 @@
 <html>
 <head>
   <jsp:include page="resource.jsp"/>
-  \<title>最新发布标准信息</title>
+  <title>最新发布标准信息</title>
   <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="${ctx}/js/queryLatestStandard.js"></script>
   <link rel="stylesheet" type="text/css" href="${ctx}/css/queryLatestStandard.css">

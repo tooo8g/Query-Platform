@@ -7,8 +7,8 @@
     <div class="head_title">
         <div class="head_show">
             <div class="head_left">
-                <p>欢迎来到某某有限公司</p>
-                <p>客服热线-400-698000</p>
+                <p>欢迎进入铁路产品标识代码管理系统</p>
+                <p>客服热线：010-51874060</p>
             </div>
             <div class="head_right">
                 <img src="${ctx}/images/head_1.png">
