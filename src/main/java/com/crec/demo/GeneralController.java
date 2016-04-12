@@ -599,12 +599,11 @@ public class GeneralController {
         try {  
             res.reset();  
             res.setHeader("Content-Disposition", "attachment;filename="+ new String((file_name + ".pdf").getBytes(), "iso-8859-1"));
-            res.setContentType("application/octet-stream; charset=utf-8");  
+            res.setContentType("application/octet-stream");
             MongoDirver md = new MongoDirver();
             GridFSDBFile gfFile = md.downloadPDF(file_name, null);
             if(gfFile!=null){
             	gfFile.writeTo(os);
-            	res.getWriter().println(gfFile);
             }else{
             	res.getWriter().println("文件为空，请上传");
             }

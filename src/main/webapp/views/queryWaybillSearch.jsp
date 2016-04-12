@@ -48,7 +48,7 @@
           <input type="text" class="top_car_license" value="">
         </div>
         <div class="qwbs_top_good_num">
-          <label>车号</label>
+          <label>货号</label>
           <input type="text" class="top_good_num" value="">
         </div>
         <div class="qwbs_top_click">
