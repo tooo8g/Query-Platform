@@ -186,7 +186,7 @@ function formButton(){
     		}
     	}
     })
-     $("#searchForm").ajaxSubmit({
+     $.ajax({
          url:ctx+"/queryStandard",
          data:{str:str,standard_group:standard_group,standard_status:standard_status,special_subject:special_subject,start:startValue,limit:limitValue},
          type:"post",
