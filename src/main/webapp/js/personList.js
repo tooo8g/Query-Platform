@@ -29,6 +29,15 @@ $(function(){
             close_psl_juris()
         }
     });
+
+    /*给操作权限页绑定一个click事件，点击psl_operation_juris之外的地方，调用close_operation_psl_juris方法*/
+    $(".psl_operation_juris").on("click",function(event){
+        event.stopPropagation();
+        var evt = event.srcElement ? event.srcElement : event.target;
+        if(evt.id=='psl_operation_juris'){
+            close_operation_psl_juris()
+        }
+    });
    
 })
 /*清除*/
@@ -68,6 +77,7 @@ function psl_formButton(){
                 tbodyList+="<td>"+accountList[i].person.email+"</td>"
                 tbodyList+="<td>"+accountList[i].person.company+"</td>"
                 tbodyList+="<td><a href='javascript:;' onclick=showJuris('"+accountList[i]._id.$oid+"')>修改</a></td>"
+                tbodyList+="<td><a href='javascript:;' onclick=showOperationJuris()>修改</a></td>"
                 tbodyList+="</tr>"
             }
             $(".psl_bottom_tbody").html("")
@@ -126,6 +136,7 @@ function goPage(name,username, company ,startValue,limitValue,isGo){
                 tbodyList+="<td>"+accountList[i].person.email+"</td>"
                 tbodyList+="<td>"+accountList[i].person.company+"</td>"
                 tbodyList+="<td><a href='javascript:;' onclick=showJuris('"+accountList[i]._id.$oid+"')>修改</a></td>"
+                tbodyList+="<td><a href='javascript:;' onclick=showOperationJuris()>修改</a></td>"
                 tbodyList+="</tr>"
             }
             $(".psl_bottom_tbody").html("")
@@ -277,6 +288,7 @@ function jurisRemov(){
 }
 
 
+
 /*保存分配的权限*/
 function juris_psl_button(){
     var os = new Array();
@@ -302,4 +314,49 @@ function juris_psl_button(){
             alert("保存失败")
         }
     })
+}
+
+/*点击后展开操作权限页面*/
+function showOperationJuris(){
+    $("#psl_operation_juris").removeClass("displayNo").addClass("displayBlock")
+}
+/*关闭操作权限页面*/
+function close_operation_psl_juris(){
+    $("#psl_operation_juris").removeClass("displayBlock").addClass("displayNo")
+}
+
+/*添加*/
+function jurisOperationAdd(){
+    if($(".juris_operation_company_select option:selected").val()) {
+        var os = new Array();
+        os = $(".juris_operation_company_select").find("option");
+        for (var i = 0; i < os.length; i++) {
+            if (os[i].selected) {
+                var o = new Option(os[i].text, os[i].value)
+                $(".juris_operation_person_select").append(o)
+                $(".juris_operation_company_select").find("option:selected").remove();
+            }
+        }
+    }
+}
+/*移去*/
+function jurisOperationRemov(){
+    if($(".juris_operation_person_select option:selected").val()){
+        var os = new Array();
+        os = $(".juris_operation_person_select").find("option");
+        for(var j=0;j<os.length;j++){
+            if (os[j].selected) {
+                var o = new Option(os[j].text, os[j].value)
+                $(".juris_operation_company_select").append(o)
+                $(".juris_operation_person_select").find("option:selected").remove();
+            }
+
+        }
+
+    }
+}
+
+/*保存操作权限*/
+function juris_operation_psl_button(){
+
 }

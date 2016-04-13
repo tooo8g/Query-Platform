@@ -46,6 +46,7 @@
         <td>邮箱</td>
         <td width="250">所属公司</td>
         <td>数据权限</td>
+        <td>操作权限</td>
       </tr>
       </thead>
       <tbody class="psl_bottom_tbody"></tbody>
@@ -136,6 +137,49 @@
           </div>
           <div class="juris_psl_save">
             <a href="javascript:;" onclick="juris_psl_button()">保存</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="psl_operation_juris displayNo" id="psl_operation_juris">
+  <input type="text" class="_id" value="">
+  <div class="pslJuris_operation">
+    <div class="juris_psl_operation">
+      <div class="juris_psl_title_operation">
+        <p>操作权限分配</p>
+        <a href="javaScript:;" class="juris_psl_title_operation_a" onclick="close_operation_psl_juris()"><img src="${ctx}/images/qws_1.png" ></a>
+      </div>
+      <form id="juris_operation_psl_form">
+        <div class="juris_operation_psl_content">
+          <div class="juris__operationpsl_person">
+            <div class="juris__operationpsl_person_title">
+              用户持有操作权限
+            </div>
+            <div class="juris_operation_psl_person_content">
+              <select name="juris_operation_person_select" size="10" multiple="multiple" class="juris_operation_person_select" id="juris_operation_person_select">
+
+              </select>
+            </div>
+          </div>
+          <div class="juris_operation_psl_person_move">
+            <a href="javascript:;" onclick="jurisOperationAdd()" class="jurisAdd_operation"><img src="${ctx}/images/pel_1.png"><span>添加</span></a>
+            <a href="javascript:;" onclick="jurisOperationRemov()" class="jurisRemov_operation"><span>移去</span><img src="${ctx}/images/pel_2.png"></a>
+          </div>
+          <div class="juris_operation_psl_company">
+            <div class="juris_operation_psl_company_title">
+              所有的操作权限
+            </div>
+            <div class="juris_operation_psl_company_content">
+              <select name="juris_operation_company_select" size="10" multiple="multiple" class="juris_operation_company_select" id="juris_operation_company_select">
+
+              </select>
+            </div>
+          </div>
+          <div class="juris_operation_psl_save">
+            <a href="javascript:;" onclick="juris_operation_psl_button()">保存</a>
           </div>
         </div>
       </form>

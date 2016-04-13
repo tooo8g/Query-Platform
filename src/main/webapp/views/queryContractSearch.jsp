@@ -59,48 +59,7 @@
 
   </div>
 </div>
-<div class="conser_juris displayNo" id="conser_juris">
-  <input type="text" class="_id" value="">
-  <div class="conserJuris">
-    <div class="juris_conser">
-      <div class="juris_conser_title">
-        <p>权限分配</p>
-        <a href="javaScript:;" class="juris_conser_title_a" onclick="close_conser_juris()"><img src="${ctx}/images/qws_1.png" ></a>
-      </div>
-      <form id="juris_conser_form">
-        <div class="juris_conser_content">
-          <div class="juris_conser_person">
-            <div class="juris_conser_person_title">
-              用户持有权限
-            </div>
-            <div class="juris_conser_person_content">
-              <select name="juris_person_select" size="10" multiple="multiple" class="juris_person_select" id="juris_person_select">
 
-              </select>
-            </div>
-          </div>
-          <div class="juris_conser_person_move">
-            <a href="javascript:;" onclick="jurisAdd()" class="jurisAdd"><img src="${ctx}/images/pel_1.png"><span>添加</span></a>
-            <a href="javascript:;" onclick="jurisRemov()" class="jurisRemov"><span>移去</span><img src="${ctx}/images/pel_2.png"></a>
-          </div>
-          <div class="juris_conser_company">
-            <div class="juris_conser_company_title">
-              所有公司的读/写权限
-            </div>
-            <div class="juris_conser_company_content">
-              <select name="juris_company_select" size="10" multiple="multiple" class="juris_company_select" id="juris_company_select">
-
-              </select>
-            </div>
-          </div>
-          <div class="juris_conser_save">
-            <a href="javascript:;" onclick="juris_conser_button()">保存</a>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 <jsp:include page="foot.jsp"/>
 </body>
 </html>

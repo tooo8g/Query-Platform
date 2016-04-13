@@ -39,7 +39,6 @@ $(function(){
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
                 tbodyList+="<td>编制中</td>"
-                tbodyList+="<td><a href='javascript:;' onclick=updateJuris()>修改</a></td>"
                 tbodyList+="</tr>"
             }
             $(".conser_bottom_tbody").html(" ")
@@ -105,7 +104,6 @@ function formButton(){
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
                 tbodyList+="<td>编制中</td>"
-                tbodyList+="<td><a href='javascript:;' onclick=updateJuris()>修改</a></td>"
                 tbodyList+="</tr>"
             }
             $(".conser_bottom_tbody").html(" ")
@@ -160,7 +158,6 @@ function goPage(contract_id,purchasing_company,company_name,startValue,limitValu
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
                 tbodyList+="<td>编制中</td>"
-                tbodyList+="<td><a href='javascript:;' onclick=updateJuris()>修改</a></td>"
                 tbodyList+="</tr>"
             }
             $(".conser_bottom_tbody").html(" ")
@@ -204,73 +201,6 @@ function goPage(contract_id,purchasing_company,company_name,startValue,limitValu
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
-        }
-    })
-}
-
-/*修改权限*/
-function updateJuris(){
-    $(".conser_juris").removeClass("displayNo").addClass("displayBlock")
-}
-
-/*关闭权限*/
-function close_conser_juris(){
-    $(".conser_juris").removeClass("displayBlock").addClass("displayNo")
-}
-
-/*添加*/
-function jurisAdd(){
-    if($(".juris_company_select option:selected").val()) {
-        var os = new Array();
-        os = $(".juris_company_select").find("option");
-        for (var i = 0; i < os.length; i++) {
-            if (os[i].selected) {
-                var o = new Option(os[i].text, os[i].value)
-                $(".juris_person_select").append(o)
-                $(".juris_company_select").find("option:selected").remove();
-            }
-        }
-    }
-}
-/*移去*/
-function jurisRemov(){
-    if($(".juris_person_select option:selected").val()){
-        var os = new Array();
-        os = $(".juris_person_select").find("option");
-        for(var j=0;j<os.length;j++){
-            if (os[j].selected) {
-                var o = new Option(os[j].text, os[j].value)
-                $(".juris_company_select").append(o)
-                $(".juris_person_select").find("option:selected").remove();
-            }
-
-        }
-
-    }
-}
-/*保存分配的权限*/
-function juris_conser_button(){
-    var os = new Array();
-    os = $(".juris_person_select").find("option");
-    var optionVal="";
-    if(os.length>0){
-        for(var i=0;i<os.length;i++){
-            if(optionVal){
-                optionVal+=","
-            }
-            optionVal+=document.getElementById("juris_person_select").options[i].value
-        }
-    }
-    var _id=$("._id").val()
-    $.ajax({
-        url:ctx+"/assign",
-        type:"post",
-        data:{fileds:optionVal,_id:_id},
-        success:function(){
-            close_psl_juris()
-        },
-        error:function(){
-            alert("保存失败")
         }
     })
 }
