@@ -2,8 +2,6 @@
  * Created by zb on 2016/3/29.
  */
 $(function(){
-	
-	
     /*改变头部的css*/
 	    $(".codeUl").removeClass("displayBlock").addClass("displayNo")
 	    $(".guanliUl").removeClass("displayNo").addClass("displayBlock")
@@ -54,6 +52,7 @@ function psl_formButton(){
         url:ctx+"/queryAccountList",
         type:"post",
         data:{name:name,username:username,company:company,start:startValue,limit:limitValue},
+        async:false,
         dataType:"json",
         success:function(data){
             count=data.count
@@ -107,6 +106,7 @@ function goPage(name,username, company ,startValue,limitValue,isGo){
     	url:ctx+"/queryAccountList",
     	data:{name:name,username:username,company:company,start:startValue,limit:limitValue},
         type : 'post',
+        async:false,
         dataType : 'json',
         success:function(data){
             var count="" //总数

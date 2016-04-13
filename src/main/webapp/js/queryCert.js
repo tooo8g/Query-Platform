@@ -19,6 +19,7 @@ $(function(){
             url: ctx+'/queryCert',
             data:{str:str,start:startValue,limit:limitValue},
             type : 'post',
+            async:false,
             dataType : 'json',
             success:function(data){
                 var trList=""
@@ -69,6 +70,11 @@ $(function(){
         }
     )
 
+
+    /*调用左边的方法*/
+    searchCatalogList()
+
+
     /*
      给itemShowList里面的a元素添加click事件
      点击的时候，遍历itemShow下的div,判断class_num值，如果有class_num值大于点击的div，就将其移除
@@ -114,8 +120,6 @@ $(function(){
         }
     });
 
-    /*调用左边的方法*/
-    searchCatalogList()
 })
 
 //搜索表单提交
@@ -399,7 +403,8 @@ function searchCatalogList(){
     $.ajax({
         url:ctx+"/queryCertMenu_tz",
         data:"",
-        type:"get",
+        type:"post",
+        async:false,
         dataType : 'json',
         success:function(str){
             $(".itemShow").removeClass("displayNo").addClass("displayBlock")
