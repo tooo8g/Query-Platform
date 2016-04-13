@@ -48,7 +48,7 @@
                     <label>专业分类</label>
                     <div class="proClss_a">
                         <a class="colorWhite">不限</a>
-                        <a class="colorBule">公务</a>
+                        <a class="colorBule">工务</a>
                         <a class="colorBule">牵引供电</a>
                         <a class="colorBule">通信信号</a>
                         <a class="colorBule">机车车辆</a>

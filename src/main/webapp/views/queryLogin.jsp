@@ -63,7 +63,7 @@
       </form>
       <div class="qLogin_ver"></div>
       <div class="qLogin_version">
-        <span class="qLogin_version_span">版本：1.2.0</span>
+        <span class="qLogin_version_span">版本：1.2.2</span>
         <div class="qLogin_version_prompt displayNo" id="qLogin_version_prompt">
           1.2.0修改记录：<br>
           &nbsp;&nbsp;1，增加数据权限管理功能。<br>
@@ -73,6 +73,13 @@
           &nbsp;&nbsp;5，新增订单、合同时订货明细中增加产品标示代码字段。<br>
           &nbsp;&nbsp;6，企业名称修改为供应商。<br>
           &nbsp;&nbsp;7，调整title的菜单。<br>
+          <br>
+          1.2.2修改记录：<br>
+          &nbsp;&nbsp;1，增加标准在线查看功能。<br>
+          &nbsp;&nbsp;2，修改一些错别字。<br>
+          &nbsp;&nbsp;3，修复序列号查询编制日期的BUG。<br>
+          &nbsp;&nbsp;4，增加资质多关键字查询功能。<br>
+          &nbsp;&nbsp;5，页面样式调整。<br>
         </div>
       </div>
     </div>
