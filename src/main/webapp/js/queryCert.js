@@ -113,6 +113,9 @@ $(function(){
             closeItemShow()
         }
     });
+
+    /*调用左边的方法*/
+    searchCatalogList()
 })
 
 //搜索表单提交

@@ -12,6 +12,7 @@ $(function(){
          url:ctx+"/queryStandard",
          data:{str:str,standard_group:staHtml,standard_status:standard_status,special_subject:special_subject,start:startValue,limit:limitValue},
          type:"post",
+         async:false,
          dataType : 'json',
          success:function(data){
          	var add_a="" //标题要加的东西
@@ -155,6 +156,11 @@ function timeStamp2String(time){
     return year + "-" + month + "-" + date;
 }
 
+/*清除*/
+function resetSubmit(){
+    $("#searchForm")[0].reset()
+    $(".search_number").css({"color":'#dddddd'})
+}
 /*
 * 异步提交表单
 * */

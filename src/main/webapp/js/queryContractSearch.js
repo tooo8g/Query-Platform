@@ -23,6 +23,7 @@ $(function(){
         url:ctx+"/queryOrderOrContract",
         type:"post",
         data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
+        async:false,
         dataType:"json",
         success:function(data){
             count=data.count

@@ -41,6 +41,7 @@ $(function(){
         url:ctx+"/product",
         data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
         type:"post",
+        async:false,
         dataType:"json",
         success:function(data){
             $(".loading_Img").css("display","none")
