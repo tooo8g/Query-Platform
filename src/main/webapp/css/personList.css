@@ -339,10 +339,10 @@ body{
     text-align: center;
     cursor: pointer;
 }
-.jurisAdd span{
+.jurisAdd span,.jurisAdd_operation span{
     padding-left: 5px;
 }
-.jurisRemov span{
+.jurisRemov span,.jurisRemov_operation span{
     padding-right: 5px;
 }
 .jurisAdd,.jurisAdd_operation{

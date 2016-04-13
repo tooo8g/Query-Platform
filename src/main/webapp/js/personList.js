@@ -77,7 +77,7 @@ function psl_formButton(){
                 tbodyList+="<td>"+accountList[i].person.email+"</td>"
                 tbodyList+="<td>"+accountList[i].person.company+"</td>"
                 tbodyList+="<td><a href='javascript:;' onclick=showJuris('"+accountList[i]._id.$oid+"')>修改</a></td>"
-                tbodyList+="<td><a href='javascript:;' onclick=showOperationJuris()>修改</a></td>"
+                tbodyList+="<td><a href='javascript:;' onclick=showOperationJuris('"+accountList[i]._id.$oid+"')>修改</a></td>"
                 tbodyList+="</tr>"
             }
             $(".psl_bottom_tbody").html("")
@@ -317,8 +317,42 @@ function juris_psl_button(){
 }
 
 /*点击后展开操作权限页面*/
-function showOperationJuris(){
-    $("#psl_operation_juris").removeClass("displayNo").addClass("displayBlock")
+function showOperationJuris(str){
+    $.ajax({
+        url:ctx+"/queryAuthorityInfo",
+        type:"post",
+        data:{_id:str},
+        dataType:"json",
+        success:function(data){
+            $("._id").val(str)
+            var assignedList="" //个人权限
+            assignedList=data.assignedList
+            var optionVal=""
+            for(var i=0;i<assignedList.length;i++){
+                optionVal+="<option value='"+assignedList[i].com_filed+"'>"+assignedList[i].com_name+"</option>"
+            }
+            $(".juris_operation_person_select").html("")
+            $(".juris_operation_person_select").append(optionVal)
+
+            var unassignedList="" //公司权限
+            unassignedList=data.unassignedList
+            var optionVals=""
+            for(var i=0;i<unassignedList.length;i++){
+                optionVals+="<option value='"+unassignedList[i].com_filed+"'>"+unassignedList[i].com_name+"</option>"
+            }
+            $(".juris_operation_company_select").html("")
+            $(".juris_operation_company_select").append(optionVals)
+
+
+
+            $(".psl_operation_juris").removeClass("displayNo").addClass("displayBlock")
+            var docuHeight = $(document).height()  //页面可视区域
+            $(".psl_operation_juris").height(docuHeight)
+        },
+        error:function(){
+            alert("链接失败")
+        }
+    })
 }
 /*关闭操作权限页面*/
 function close_operation_psl_juris(){
@@ -358,5 +392,27 @@ function jurisOperationRemov(){
 
 /*保存操作权限*/
 function juris_operation_psl_button(){
-
+    var os = new Array();
+    os = $(".juris_operation_person_select").find("option");
+    var optionVal="";
+    if(os.length>0){
+        for(var i=0;i<os.length;i++){
+            if(optionVal){
+                optionVal+=","
+            }
+            optionVal+=document.getElementById("juris_operation_person_select").options[i].value
+        }
+    }
+    var _id=$("._id").val()
+    $.ajax({
+        url:ctx+"/assign",
+        type:"post",
+        data:{fileds:optionVal,_id:_id},
+        success:function(){
+            close_psl_juris()
+        },
+        error:function(){
+            alert("保存失败")
+        }
+    })
 }
