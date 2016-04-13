@@ -319,7 +319,7 @@ function juris_psl_button(){
 /*点击后展开操作权限页面*/
 function showOperationJuris(str){
     $.ajax({
-        url:ctx+"/queryAuthorityInfo",
+        url:ctx+"/queryOperationInfo",
         type:"post",
         data:{_id:str},
         dataType:"json",
@@ -329,7 +329,7 @@ function showOperationJuris(str){
             assignedList=data.assignedList
             var optionVal=""
             for(var i=0;i<assignedList.length;i++){
-                optionVal+="<option value='"+assignedList[i].com_filed+"'>"+assignedList[i].com_name+"</option>"
+                optionVal+="<option value='"+assignedList[i].oper_num+"'>"+assignedList[i].oper_name+"</option>"
             }
             $(".juris_operation_person_select").html("")
             $(".juris_operation_person_select").append(optionVal)
@@ -338,7 +338,7 @@ function showOperationJuris(str){
             unassignedList=data.unassignedList
             var optionVals=""
             for(var i=0;i<unassignedList.length;i++){
-                optionVals+="<option value='"+unassignedList[i].com_filed+"'>"+unassignedList[i].com_name+"</option>"
+                optionVals+="<option value='"+unassignedList[i].oper_num+"'>"+unassignedList[i].oper_name+"</option>"
             }
             $(".juris_operation_company_select").html("")
             $(".juris_operation_company_select").append(optionVals)
@@ -405,11 +405,11 @@ function juris_operation_psl_button(){
     }
     var _id=$("._id").val()
     $.ajax({
-        url:ctx+"/assign",
+        url:ctx+"/assignOperation",
         type:"post",
         data:{fileds:optionVal,_id:_id},
         success:function(){
-            close_psl_juris()
+        	close_operation_psl_juris()
         },
         error:function(){
             alert("保存失败")

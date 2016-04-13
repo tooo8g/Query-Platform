@@ -14,7 +14,7 @@
                 <img src="${ctx}/images/head_1.png">
                 <span>${account.person.username}</span>
                 <a href="${ctx}/code/queryCodeSearch" target="_self">供应商服务</a>
-                <c:if test="${account.name.equals('admin')}">
+                <c:if test="${account.oper_filed.toString().indexOf('0')!=-1}">
                 	|<a href="${ctx}/company/queryCompanyList" target="_self">系统管理</a>
                 </c:if>
                 |
@@ -38,7 +38,7 @@
                     <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">运单查询</a></li>
                 </ul>
                 <ul class="guanliUl displayNo">
-                    <li><a href="${ctx}/company/queryCompanyList" target="_self" class="companyList colorClick">供应商管理</a></li>
+                    <li><a href="${ctx}/company/queryCompanyList" target="_self" class="companyList colorClick">公司域管理</a></li>
                     <li><a href="${ctx}/account/queryAccountList" target="_self" class="personList colorNoClick">用户管理</a></li>
                 </ul>
             </div>

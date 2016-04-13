@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,9 @@
       <div class="conser_top_click">
         <a type="reset" id="reset_submit" onclick="resetSubmit()">清除</a>
         <a type="button" id="form_button" onclick="formButton()">查询</a>
-        <a class="contractCreat" href="${ctx}/contract/queryContractCreat" target="_self">新增合同/订单</a>
+         <c:if test="${account.oper_filed.toString().indexOf('1')!=-1}">
+        	<a class="contractCreat" href="${ctx}/contract/queryContractCreat" target="_self">新增合同/订单</a>
+        </c:if>	
       </div>
     </form>
   </div>
@@ -47,7 +50,6 @@
         <td>编制人员</td>
         <td>编制时间</td>
         <td>编制状态</td>
-        <td>数据权限</td>
       </tr>
       </thead>
       <tbody class="conser_bottom_tbody">

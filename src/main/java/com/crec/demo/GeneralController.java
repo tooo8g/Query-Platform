@@ -576,6 +576,34 @@ public class GeneralController {
 		response.getWriter().print(result);
 	}
 	
+	@RequestMapping("/queryOperationInfo")
+	public void queryOperationInfo(
+			@RequestParam String _id,
+			HttpServletRequest request,HttpSession session,HttpServletResponse response
+			) throws Exception {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryOperationInfo(_id);
+		System.out.println(result);
+		md.close();
+		response.getWriter().print(result);
+	}
+	
+	@RequestMapping("/assignOperation")
+	public void assignOperation(
+			@RequestParam String fileds,
+			@RequestParam String _id,
+			HttpServletRequest request,HttpSession session,HttpServletResponse response
+			) throws Exception {
+		String[] f  = {};
+		if((fileds.length()>0)&&fileds!=null){
+			f =  fileds.split(",");
+		}
+		MongoDirver md = new MongoDirver();
+		md.assignOperation(f, _id);
+		md.close();
+	}
+	
+	
 	@RequestMapping("/assign")
 	public void assign(
 			@RequestParam String fileds,
