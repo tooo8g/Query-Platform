@@ -28,8 +28,29 @@
       <div class="qcti_contractCreat_content">
         <div class="contractCreat_content_company_name">
           <label>供应商</label>
-          <input type="text" class="content_company_name" value="">
-          <a href="javascript:;" class="companySearch">供应商查询</a>
+          <input type="text" class="content_company_name" value="" onfocus="companyNameSearchShow()">
+          <%--<a href="javascript:;" class="companySearch">供应商查询</a>--%>
+          <div class="company_name_search displayNo">
+            <input type="hidden" class="nameSearchPage" value="">
+            <input type="hidden" class="com_org_code" value="">
+            <div>
+              <input type="text" class="com_name" value="" placeholder="供应商名称">
+            </div>
+            <div>
+              <input type="text" class="org_code" value="" placeholder="组织机构代码">
+            </div>
+            <div>
+              <a class="name_search_a" onclick="companyNameSearch()">查询</a>
+            </div>
+            <div class="name_search_list">
+            </div>
+            <div class="name_searchAuth_button">
+
+            </div>
+            <div class="name_searchAuth_close">
+              <a onclick="companyNameSearchHidden()">关闭</a>
+            </div>
+          </div>
         </div>
         <div class="contractCreat_content_contract_id">
           <label>订单号/合同号</label>
@@ -331,6 +352,7 @@
     </div>
   </div>
 </div>
+
 <jsp:include page="foot.jsp"/>
 </body>
 </html>

@@ -109,3 +109,150 @@ function qcti_od_sp_preservation(){
         }
     })
 }
+
+
+/*企业查询*/
+function companyNameSearch(){
+    $(".content_company_name").val("")
+    var startValue=0 //初始值
+    var limitValue=10 //一次取出多少条数据
+    var com_name=$(".com_name").val()
+    var org_code=$(".org_code").val()
+    var count="" //总数
+    var companyList="" //保存data信息
+    var tbodyList=""
+    $.ajax({
+        url:ctx+"/queryCompanyList",
+        type:"post",
+        data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
+        async:"false",
+        dataType:"json",
+        success:function(data){
+            count=data.count
+            companyList=data.companyList
+            tbodyList+="<ul>"
+            for(var i=0;i<companyList.length;i++){
+                tbodyList+="<li org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
+            }
+            tbodyList+="</ul>"
+            $(".name_search_list").html("")
+            $(".name_search_list").append(tbodyList)
+
+            if(count>0) {
+                var asButton = ""
+                var countPages = Math.ceil(count / limitValue)
+                var PageNo  //当前页码
+                if (startValue == 0) {
+                    PageNo = 1
+                }
+                $(".nameSearchPage").val(PageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton += "<a><img src='../images/sts_4.png'></a>"
+                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
+                if (countPages > 1) {
+                    nextStartRow = PageNo * limitValue
+                    asButton += "<a class=clickCursor onclick=goNameSearchPage('" + com_name + "','" + org_code + "','" + nextStartRow + "','" + limitValue + "','next')><img src='../images/sts_5.png'></a>"
+                } else {
+                    asButton += "<a><img src='../images/sts_5.png'></a>"
+                }
+                $(".name_searchAuth_button").html(" ")
+                $(".name_searchAuth_button").append(asButton)
+            }
+
+            /*给name_search_list下面的li添加click方法，点击的时候，把选中的org_code赋值到input[class=org_code]中，把value添加到content_company_name中*/
+            $(".name_search_list ul li").on("click",function(){
+                $(".com_org_code").val($(this).attr("org_code"))
+                $(".content_company_name").val("")
+                $(".content_company_name").val($(this).attr("value"))
+                companyNameSearchHidden()
+            })
+        }
+    })
+}
+
+
+//页码跳转
+function goNameSearchPage(com_name,org_code,startValue,limitValue,isGo){
+    $.ajax({
+        url:ctx+"/queryCompanyList",
+        data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
+        type : 'post',
+        async:"false",
+        dataType : 'json',
+        success:function(data){
+            var count="" //总数
+            var companyList="" //保存data信息
+            var tbodyList=""
+            count=data.count
+            companyList=data.companyList
+            tbodyList+="<ul>"
+            for(var i=0;i<companyList.length;i++){
+                tbodyList+="<li org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
+            }
+            tbodyList+="</ul>"
+            $(".name_search_list").html("")
+            $(".name_search_list").append(tbodyList)
+
+
+
+            var asButton=""
+            var pageNo=$(".nameSearchPage").val()  //当前页码
+            var countPages=Math.ceil(count/limitValue)
+            var noPage
+            if(isGo=="next"){
+                noPage=Number($(".nameSearchPage").val())+1
+                if(noPage>countPages){
+                    pageNo=countPages
+                }else{
+                    pageNo=noPage
+                }
+            }
+            if(isGo=="pre"){
+                noPage=Number($(".nameSearchPage").val())-1
+                if(noPage==0){
+                    noPage=1
+                }
+                pageNo=noPage
+            }
+            $(".nameSearchPage").val(pageNo)
+            var preStartRow //上一页开始显示的编号
+            var nextStartRow//下一页开始显示的编号
+            if(pageNo>1){
+                preStartRow=(pageNo-2)*limitValue
+                asButton+="<a class=clickCursor onclick=goNameSearchPage('"+com_name+"','"+org_code+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+            }else{
+                asButton+="<a><img src='../images/sts_4.png'></a>"
+            }
+            asButton+="<p>"+pageNo+"/"+countPages+"</p>"
+            if(countPages>pageNo){
+                nextStartRow=pageNo*limitValue
+                asButton+="<a class=clickCursor onclick=goNameSearchPage('"+com_name+"','"+org_code+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+            }else{
+                asButton+="<a><img src='../images/sts_5.png'></a>"
+            }
+            $(".name_searchAuth_button").html(" ")
+            $(".name_searchAuth_button").append(asButton)
+
+            /*给name_search_list下面的li添加click方法，点击的时候，把选中的org_code赋值到input[class=org_code]中，把value添加到content_company_name中*/
+            $(".name_search_list ul li").on("click",function(){
+                $(".com_org_code").val($(this).attr("org_code"))
+                $(".content_company_name").val("")
+                $(".content_company_name").val($(this).attr("value"))
+                companyNameSearchHidden()
+            })
+        }
+
+
+    })
+}
+
+/*company_name_search打开*/
+function companyNameSearchShow(){
+    $(".company_name_search").removeClass("displayNo").addClass("displayBlcok")
+    $(".content_company_name").val("")
+}
+/*company_name_search关闭*/
+function companyNameSearchHidden() {
+    $(".company_name_search").removeClass("displayBlcok").addClass("displayNo")
+    $(".name_search_list").html("")
+}

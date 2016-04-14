@@ -84,6 +84,9 @@ body{
     color: #777777;
     text-align: right;
 }
+.contractCreat_content_company_name{
+    position: relative;
+}
 .content_company_name,.content_contract_id,.content_purchasing_company{
     width: 193px;
     height: 28px;
@@ -92,6 +95,9 @@ body{
     padding-left: 5px;
     float: left;
     margin-left: 10px;
+}
+.content_company_name{
+    background: url("../images/codeQuery_1.png") no-repeat 188px;
 }
 .companySearch{
     height: 18px;
@@ -229,4 +235,100 @@ body{
     border-radius: 4px;
     font-size: 16px;
     margin-left: 550px;
+}
+
+.company_name_search{
+    position: absolute;
+    z-index: 100010;
+    top: 31px;
+    left: 87px;
+    width: 398px;
+    height: 344px;
+    border: 1px solid #bbbbbb;
+    background: #FFFFFF;
+}
+
+.company_name_search div{
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.company_name_search input{
+    width: 153px;
+    height: 18px;
+    line-height: 20px;
+    border: 1px solid #dddddd;
+    padding-left: 5px;
+}
+.name_search_a{
+    display: block;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: #f44848;
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 6px;
+}
+.name_search_list{
+    width: 378px;
+    height: 268px;
+    border-bottom: 1px solid #dddddd;
+}
+.name_search_list li{
+    margin-top: 10px;
+    height: 15px !important;
+    line-height: 15px !important;
+    overflow: hidden;
+    cursor: pointer;
+}
+.name_search_list li:hover{
+    color: #77afea
+}
+.name_searchAuth_button{
+    height: 20px;
+    float: left;
+    line-height: 20px;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 3px !important;
+}
+.name_searchAuth_button p{
+    float: left;
+    padding: 0 10px;
+}
+.name_searchAuth_button a{
+    float: left;
+    cursor: pointer;
+}
+
+.name_searchAuth_close{
+    height: 20px;
+    float: right !important;
+    line-height: 20px;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-top: 3px !important;
+}
+.name_searchAuth_close a{
+    color: #bbbbbb;
+    cursor: pointer;
+}
+/*公共*/
+.nameLiClick{
+    color: #77afea;
+}
+.nameLiNoClick{
+    color: #777777;
+}
+.displayNo{
+    display: none;
+}
+.displayBlcok {
+    display: block;
 }
