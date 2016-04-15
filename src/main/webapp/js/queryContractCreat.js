@@ -13,7 +13,7 @@ $(function(){
 })
 /*新增订货明细，点击以后，订货明细列表增加*/
 function qcti_od_add(){
-  $(".qcti_orderDetails_tbody").append("<tr><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><a class='qcti_orderDetails_delete' onclick='qcti_orderDetails_delete(this)'>删除</a></td></tr>")
+  $(".qcti_orderDetails_tbody").append("<tr><td><input type='text' value=''  onblur='searchBymaterialCode(this)' ></td><td></td><td></td><td></td><td></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><a class='qcti_orderDetails_delete' onclick='qcti_orderDetails_delete(this)'>删除</a></td></tr>")
 }
 /*删除订货明细里面的列表*/
 function qcti_orderDetails_delete(str){
@@ -68,7 +68,6 @@ function qcti_od_sp_preservation(){
             return false
         }
    })
-
     var flagsu=true //用来判断每行tr是否有空白input
     var inputValuesu="" //保存input值
     var trInputValsu="" //用来保存每组tr的input
@@ -170,7 +169,6 @@ function companyNameSearch(){
     })
 }
 
-
 //页码跳转
 function goNameSearchPage(com_name,org_code,startValue,limitValue,isGo){
     $.ajax({
@@ -255,4 +253,183 @@ function companyNameSearchShow(){
 function companyNameSearchHidden() {
     $(".company_name_search").removeClass("displayBlcok").addClass("displayNo")
     $(".name_search_list").html("")
+}
+
+/*通过物资编号查询物资名称，规格型号，计量单位和产品标识代码*/
+function searchBymaterialCode(str){
+    var material_code=str.value
+    var wzxx="" //保存data信息
+    var material_name="" //物资名称
+    if(material_code){
+        $.ajax({
+            url:"../json/demo_wzcx.json",
+            type:"post",
+            data:{material_code:material_code},
+            dataType:"json",
+            success:function(data){
+                wzxx=data.wzxx
+                material_name=wzxx[0].material_name
+                var tdChild= $(str).parent().parent().children() //触发事件所在行的子元素
+                var td_material_name=""
+                td_material_name="<input type='hidden' value='"+wzxx[0].material_name+"'>"+wzxx[0].material_name+""
+                tdChild.eq(1).html("")
+                tdChild.eq(1).append(td_material_name)
+                var td_specification=""
+                td_specification="<input type='hidden' value='"+wzxx[0].specification+"'>"+wzxx[0].specification+""
+                tdChild.eq(2).html("")
+                tdChild.eq(2).append(td_specification)
+                var td_measurement=""
+                td_measurement="<input type='hidden' value='"+wzxx[0].measurement+"'>"+wzxx[0].measurement+""
+                tdChild.eq(3).html("")
+                tdChild.eq(3).append(td_measurement)
+                var td_material_code=""
+                td_material_code="<input type='hidden' value='"+wzxx[0].material_code+"'>"+wzxx[0].material_code+""
+                tdChild.eq(4).html("")
+                tdChild.eq(4).append(td_material_code)
+            },
+            error:function(){
+                $(str).focus()
+            }
+        })
+    }
+
+}
+
+/*企业查询*/
+function productNameSearch(){
+    var startValue=0 //初始值
+    var limitValue=10 //一次取出多少条数据
+    var com_name=$(".com_name_pro").val()
+    var org_code=$(".org_code_pro").val()
+    var count="" //总数
+    var companyList="" //保存data信息
+    var tbodyList=""
+    $.ajax({
+        url:ctx+"/queryCompanyList",
+        type:"post",
+        data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
+        async:"false",
+        dataType:"json",
+        success:function(data){
+            count=data.count
+            companyList=data.companyList
+            tbodyList+="<ul>"
+            for(var i=0;i<companyList.length;i++){
+                tbodyList+="<li org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
+            }
+            tbodyList+="</ul>"
+            $(".pro_name_search_list").html("")
+            $(".pro_name_search_list").append(tbodyList)
+
+            if(count>0) {
+                var asButton = ""
+                var countPages = Math.ceil(count / limitValue)
+                var PageNo  //当前页码
+                if (startValue == 0) {
+                    PageNo = 1
+                }
+                $(".nameSearchPage_pro").val(PageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton += "<a><img src='../images/sts_4.png'></a>"
+                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
+                if (countPages > 1) {
+                    nextStartRow = PageNo * limitValue
+                    asButton += "<a class=clickCursor onclick=goproductSearchPage('" + com_name + "','" + org_code + "','" + nextStartRow + "','" + limitValue + "','next')><img src='../images/sts_5.png'></a>"
+                } else {
+                    asButton += "<a><img src='../images/sts_5.png'></a>"
+                }
+                $(".pro_name_searchAuth_button").html(" ")
+                $(".pro_name_searchAuth_button").append(asButton)
+            }
+
+            /*给name_search_list下面的li添加click方法，点击的时候，把选中的org_code赋值到input[class=org_code]中，把value添加到content_company_name中*/
+            $(".pro_name_search_list ul li").on("click",function(){
+                $(".com_org_code").val($(this).attr("org_code"))
+                $(".content_company_name").val("")
+                $(".content_company_name").val($(this).attr("value"))
+                productNameSearchHidden()
+            })
+        }
+    })
+}
+
+//页码跳转
+function goproductSearchPage(com_name,org_code,startValue,limitValue,isGo){
+    $.ajax({
+        url:ctx+"/queryCompanyList",
+        data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
+        type : 'post',
+        async:"false",
+        dataType : 'json',
+        success:function(data){
+            var count="" //总数
+            var companyList="" //保存data信息
+            var tbodyList=""
+            count=data.count
+            companyList=data.companyList
+            tbodyList+="<ul>"
+            for(var i=0;i<companyList.length;i++){
+                tbodyList+="<li org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
+            }
+            tbodyList+="</ul>"
+            $(".pro_name_search_list").html("")
+            $(".pro_name_search_list").append(tbodyList)
+
+
+
+            var asButton=""
+            var pageNo=$(".nameSearchPage").val()  //当前页码
+            var countPages=Math.ceil(count/limitValue)
+            var noPage
+            if(isGo=="next"){
+                noPage=Number($(".nameSearchPage").val())+1
+                if(noPage>countPages){
+                    pageNo=countPages
+                }else{
+                    pageNo=noPage
+                }
+            }
+            if(isGo=="pre"){
+                noPage=Number($(".nameSearchPage").val())-1
+                if(noPage==0){
+                    noPage=1
+                }
+                pageNo=noPage
+            }
+            $(".nameSearchPage").val(pageNo)
+            var preStartRow //上一页开始显示的编号
+            var nextStartRow//下一页开始显示的编号
+            if(pageNo>1){
+                preStartRow=(pageNo-2)*limitValue
+                asButton+="<a class=clickCursor onclick=goproductSearchPage('"+com_name+"','"+org_code+"','"+preStartRow+"','"+limitValue+"','pre')><img src='../images/sts_4.png'></a>"
+            }else{
+                asButton+="<a><img src='../images/sts_4.png'></a>"
+            }
+            asButton+="<p>"+pageNo+"/"+countPages+"</p>"
+            if(countPages>pageNo){
+                nextStartRow=pageNo*limitValue
+                asButton+="<a class=clickCursor onclick=goproductSearchPage('"+com_name+"','"+org_code+"','"+nextStartRow+"','"+limitValue+"','next')><img src='../images/sts_5.png'></a>"
+            }else{
+                asButton+="<a><img src='../images/sts_5.png'></a>"
+            }
+            $(".pro_name_searchAuth_button").html(" ")
+            $(".pro_name_searchAuth_button").append(asButton)
+
+            /*给name_search_list下面的li添加click方法，点击的时候，把选中的org_code赋值到input[class=org_code]中，把value添加到content_company_name中*/
+            $(".pro_name_search_list ul li").on("click",function(){
+                $(".com_org_code").val($(this).attr("org_code"))
+                $(".content_company_name").val("")
+                $(".content_company_name").val($(this).attr("value"))
+                productNameSearchHidden()
+            })
+        }
+
+
+    })
+}
+
+/*company_name_search关闭*/
+function productNameSearchHidden() {
+    $(".product_name_search").removeClass("displayBlcok").addClass("displayNo")
+    $(".pro_name_search_list").html("")
 }
