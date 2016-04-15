@@ -141,6 +141,7 @@ body{
     overflow-y: auto;
     overflow-x: hidden;
     margin-top: 20px;
+    position: relative;
 }
 
 .qcti_orderDetails_table,.qcti_supplyPlan_table{
@@ -251,23 +252,26 @@ body{
     background: #FFFFFF;
 }
 
-.company_name_search div{
+.company_name_search div,.product_name_search div{
     float: left;
     margin-left: 10px;
     margin-top: 10px;
     font-size: 14px;
 }
-.company_name_search input{
+.company_name_search input,.product_name_search input{
     height: 18px;
     line-height: 20px;
     border: 1px solid #dddddd;
     padding-left: 5px;
 }
-.com_name{
+.com_name,.com_name_pro{
     width: 153px;
 }
-.org_code{
+.org_code,.org_code_pro{
     width: 102px;
+}
+.comNamePro,.orgCodePro{
+    line-height: 30px;
 }
 .name_search_a{
     display: block;
@@ -294,7 +298,7 @@ body{
     overflow: hidden;
     cursor: pointer;
 }
-.name_search_list li:hover{
+.name_search_list li:hover,.pro_name_search_list li:hover{
     color: #77afea
 }
 .name_searchAuth_button,.pro_name_searchAuth_button{
@@ -326,6 +330,15 @@ body{
 .name_searchAuth_close a{
     color: #bbbbbb;
     cursor: pointer;
+}
+.product_name_search{
+    position: absolute;
+    z-index: 100010;
+    width: 348px;
+    height: 344px;
+    left: 650px;
+    border: 1px solid #bbbbbb;
+    background: #FFFFFF;
 }
 /*公共*/
 .nameLiClick{

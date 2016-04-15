@@ -29,10 +29,12 @@
         <div class="contractCreat_content_company_name">
           <label>供应商</label>
           <input type="text" class="content_company_name" value="" onfocus="companyNameSearchShow()">
+
           <%--<a href="javascript:;" class="companySearch">供应商查询</a>--%>
           <div class="company_name_search displayNo" onmouseleave="companyNameSearchHidden()">
             <input type="hidden" class="nameSearchPage" value="">
             <input type="hidden" class="com_org_code" value="">
+            <input type="hidden" class="com_company_field" value="">
             <div>
               <input type="text" class="com_name" value="" placeholder="供应商名称">
             </div>
@@ -91,7 +93,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -103,7 +105,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -115,7 +117,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -127,7 +129,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -139,7 +141,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -151,7 +153,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -163,7 +165,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -175,7 +177,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -187,7 +189,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -199,7 +201,7 @@
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             </tbody>
@@ -207,10 +209,10 @@
           <div class="product_name_search displayNo">
             <input type="hidden" class="nameSearchPage_pro" value="">
             <input type="hidden" class="com_org_code_pro" value="">
-            <div>
+            <div class="comNamePro">
               <input type="text" class="com_name_pro" value="" placeholder="供应商名称">
             </div>
-            <div>
+            <div class="orgCodePro">
               <input type="text" class="org_code_pro" value="" placeholder="组织机构代码">
             </div>
             <div>
