@@ -62,7 +62,7 @@ function qcti_od_sp_preservation(){
            }
        })
         if(flag){
-            trInputVal={"material_code":""+$(this).find("input").eq(0).val()+"","material_name":""+$(this).find("input").eq(1).val()+"","specification":""+$(this).find("input").eq(2).val()+"","measurement":""+$(this).find("input").eq(3).val()+"","num":""+$(this).find("input").eq(4).val()+"","price":""+$(this).find("input").eq(5).val()+"","total_price":""+$(this).find("input").eq(6).val()+"","company":""+$(this).find("input").eq(7).val()+"","company_field":""+$(this).find("input").eq(8).val()+""}
+            trInputVal={"material_code":""+$(this).find("input").eq(0).val()+"","material_name":""+$(this).find("td").eq(0).val()+"","specification":""+$(this).find("td").eq(1).val()+"","measurement":""+$(this).find("td").eq(2).val()+"","product_code":""+$(this).find("td").eq(3).val()+"","num":""+$(this).find("input").eq(1).val()+"","price":""+$(this).find("input").eq(2).val()+"","total_price":""+$(this).find("input").eq(3).val()+"","company":""+$(this).find("input").eq(4).val()+"","company_field":""+$(this).find("input").eq(5).val()+""}
             tableVal.push(trInputVal)
         }else{
             return false
@@ -95,8 +95,7 @@ function qcti_od_sp_preservation(){
     contract_id=$(".content_contract_id").val()
     var purchasing_company="" //采购单位
     purchasing_company=$(".content_purchasing_company").val()
-    var com_company_field=$(".com_company_field").val()
-    orderOrCont={"company_name":""+company_name+"","contract_id":""+contract_id+"","purchasing_company":""+purchasing_company+"","company_field":""+com_company_field+"","purchasing":tableVal,"supply":tableValsu}
+    orderOrCont={"company_name":""+company_name+"","contract_id":""+contract_id+"","purchasing_company":""+purchasing_company+"","purchasing":tableVal,"supply":tableValsu}
     var orderOrContracts="" //保存的JSON
     orderOrContracts=JSON.stringify(orderOrCont)
     $.ajax({
@@ -132,7 +131,7 @@ function companyNameSearch(){
             companyList=data.companyList
             tbodyList+="<ul>"
             for(var i=0;i<companyList.length;i++){
-                tbodyList+="<li company_field="+companyList[i].com_filed+" org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
+                tbodyList+="<li org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
             }
             tbodyList+="</ul>"
             $(".name_search_list").html("")
@@ -162,7 +161,6 @@ function companyNameSearch(){
             /*给name_search_list下面的li添加click方法，点击的时候，把选中的org_code赋值到input[class=org_code]中，把value添加到content_company_name中*/
             $(".name_search_list ul li").on("click",function(){
                 $(".com_org_code").val($(this).attr("org_code"))
-                $(".com_company_field").val($(this).attr("company_field"))
                 $(".content_company_name").val("")
                 $(".content_company_name").val($(this).attr("value"))
                 companyNameSearchHidden()
@@ -187,7 +185,7 @@ function goNameSearchPage(com_name,org_code,startValue,limitValue,isGo){
             companyList=data.companyList
             tbodyList+="<ul>"
             for(var i=0;i<companyList.length;i++){
-                tbodyList+="<li company_field="+companyList[i].com_filed+" org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
+                tbodyList+="<li org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
             }
             tbodyList+="</ul>"
             $(".name_search_list").html("")
@@ -236,7 +234,6 @@ function goNameSearchPage(com_name,org_code,startValue,limitValue,isGo){
             /*给name_search_list下面的li添加click方法，点击的时候，把选中的org_code赋值到input[class=org_code]中，把value添加到content_company_name中*/
             $(".name_search_list ul li").on("click",function(){
                 $(".com_org_code").val($(this).attr("org_code"))
-                $(".com_company_field").val($(this).attr("company_field"))
                 $(".content_company_name").val("")
                 $(".content_company_name").val($(this).attr("value"))
                 companyNameSearchHidden()
@@ -265,32 +262,30 @@ function searchBymaterialCode(str){
     var material_name="" //物资名称
     if(material_code){
         $.ajax({
-            url:ctx+"/queryPurchasingByCode",
+            url:"../json/demo_wzcx.json",
             type:"post",
             data:{material_code:material_code},
             dataType:"json",
             success:function(data){
-                if(data){
-                    wzxx=data.wzxx
-                    material_name=wzxx[0].material_name
-                    var tdChild= $(str).parent().parent().children() //触发事件所在行的子元素
-                    var td_material_name=""
-                    td_material_name="<input type='hidden' value='"+wzxx[0].material_name+"'>"+wzxx[0].material_name+""
-                    tdChild.eq(1).html("")
-                    tdChild.eq(1).append(td_material_name)
-                    var td_specification=""
-                    td_specification="<input type='hidden' value='"+wzxx[0].specification+"'>"+wzxx[0].specification+""
-                    tdChild.eq(2).html("")
-                    tdChild.eq(2).append(td_specification)
-                    var td_measurement=""
-                    td_measurement="<input type='hidden' value='"+wzxx[0].measurement+"'>"+wzxx[0].measurement+""
-                    tdChild.eq(3).html("")
-                    tdChild.eq(3).append(td_measurement)
-                    var td_material_code=""
-                    td_material_code="<input type='hidden' value='"+wzxx[0].material_code+"'>"+wzxx[0].material_code+""
-                    tdChild.eq(4).html("")
-                    tdChild.eq(4).append(td_material_code)
-                }
+                wzxx=data.wzxx
+                material_name=wzxx[0].material_name
+                var tdChild= $(str).parent().parent().children() //触发事件所在行的子元素
+                var td_material_name=""
+                td_material_name="<input type='hidden' value='"+wzxx[0].material_name+"'>"+wzxx[0].material_name+""
+                tdChild.eq(1).html("")
+                tdChild.eq(1).append(td_material_name)
+                var td_specification=""
+                td_specification="<input type='hidden' value='"+wzxx[0].specification+"'>"+wzxx[0].specification+""
+                tdChild.eq(2).html("")
+                tdChild.eq(2).append(td_specification)
+                var td_measurement=""
+                td_measurement="<input type='hidden' value='"+wzxx[0].measurement+"'>"+wzxx[0].measurement+""
+                tdChild.eq(3).html("")
+                tdChild.eq(3).append(td_measurement)
+                var td_material_code=""
+                td_material_code="<input type='hidden' value='"+wzxx[0].material_code+"'>"+wzxx[0].material_code+""
+                tdChild.eq(4).html("")
+                tdChild.eq(4).append(td_material_code)
             },
             error:function(){
                 $(str).focus()
@@ -320,7 +315,7 @@ function productNameSearch(){
             companyList=data.companyList
             tbodyList+="<ul>"
             for(var i=0;i<companyList.length;i++){
-                tbodyList+="<li company_field="+companyList[i].com_filed+" org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
+                tbodyList+="<li org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
             }
             tbodyList+="</ul>"
             $(".pro_name_search_list").html("")
@@ -349,11 +344,9 @@ function productNameSearch(){
 
             /*给name_search_list下面的li添加click方法，点击的时候，把选中的org_code赋值到input[class=org_code]中，把value添加到content_company_name中*/
             $(".pro_name_search_list ul li").on("click",function(){
-                //$(".clickProduct").val($(this).attr("org_code"))
-
-                $(".clickProduct").val("")
-                $(".clickProduct").val($(this).attr("value"))
-                $(".clickProduct").next().val($(this).attr("company_field"))
+                $(".com_org_code").val($(this).attr("org_code"))
+                $(".content_company_name").val("")
+                $(".content_company_name").val($(this).attr("value"))
                 productNameSearchHidden()
             })
         }
@@ -376,7 +369,7 @@ function goproductSearchPage(com_name,org_code,startValue,limitValue,isGo){
             companyList=data.companyList
             tbodyList+="<ul>"
             for(var i=0;i<companyList.length;i++){
-                tbodyList+="<li company_field="+companyList[i].com_filed+" org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
+                tbodyList+="<li org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
             }
             tbodyList+="</ul>"
             $(".pro_name_search_list").html("")
@@ -424,10 +417,9 @@ function goproductSearchPage(com_name,org_code,startValue,limitValue,isGo){
 
             /*给name_search_list下面的li添加click方法，点击的时候，把选中的org_code赋值到input[class=org_code]中，把value添加到content_company_name中*/
             $(".pro_name_search_list ul li").on("click",function(){
-                //$(".clickProduct").val($(this).attr("org_code"))
+                $(".com_org_code").val($(this).attr("org_code"))
                 $(".content_company_name").val("")
                 $(".content_company_name").val($(this).attr("value"))
-                $(".clickProduct").next().val($(this).attr("company_field"))
                 productNameSearchHidden()
             })
         }
@@ -440,13 +432,4 @@ function goproductSearchPage(com_name,org_code,startValue,limitValue,isGo){
 function productNameSearchHidden() {
     $(".product_name_search").removeClass("displayBlcok").addClass("displayNo")
     $(".pro_name_search_list").html("")
-}
-
-
-/*product_name_search显示*/
-function product_name_search_show(str){
-    $(".qcti_orderDetails_tbody input").removeClass("clickProduct")
-    $(".product_name_search").removeClass("displayNo").addClass("displayBlcok")
-    $(".product_name_search").css({top:27})
-    $(str).attr("class","clickProduct")
 }
