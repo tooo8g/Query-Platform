@@ -35,7 +35,11 @@ $(function(){
                 tbodyList+="<td>"+bzxx[i].contract_id+"</td>"
                 tbodyList+="<td>"+bzxx[i].company_name+"</td>"
                 tbodyList+="<td>"+bzxx[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?contract_id="+bzxx[i].contract_id+"'>查看/编制序列号</a></td>"
+                if(bzxx[i].access=="read"){
+                    tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?contract_id="+bzxx[i].contract_id+"&access=read'>查看序列号</a></td>"
+                }else{
+                    tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?contract_id="+bzxx[i].contract_id+"&access=write'>编制序列号</a></td>"
+                }
                 tbodyList+="<td>"+bzxx[i].user_id+"</td>"
                 tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
                 tbodyList+="<td>编制中</td>"
