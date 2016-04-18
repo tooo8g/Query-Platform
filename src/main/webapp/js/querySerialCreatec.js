@@ -24,7 +24,7 @@ $(function(){
     var jsonBzxx="" //保存bzxx的data
     var material_code="" //物资编号
     var material_name="" //物资名称
-    var product_identify="" //产品标识代码
+    var product_code="" //产品标识代码
     var purchasing_company="" //采购单位
     var company_name=""  //企业名称
     var contract_id="" //订单号/合同号
@@ -35,8 +35,8 @@ $(function(){
         $(".body_material_code").val(material_code)
         material_name=isonSupply.material_name
         $(".body_material_name").val(material_name)
-        product_identify=isonSupply.product_identify
-        $(".body_product_identify").val(product_identify)
+        product_code=isonSupply.product_code
+        $(".body_product_identify").val(product_code)
         purchasing_company=jsonBzxx.purchasing_company
         $(".createCode_purchasing_company").val(purchasing_company)
         company_name=jsonBzxx.company_name
