@@ -12,10 +12,12 @@
 </head>
 <body>
 <% String contract_id=request.getParameter("contract_id");%>
+<% String access=request.getParameter("access");%>
 <jsp:include page="head_code.jsp"/>
 <div class="qcti">
   <input type="hidden" class="pageNo" value="">
   <input type="hidden" class="contract_id" value="<%=contract_id%>">
+    <input type="hidden" class="access" value="<%=access%>">
   <div class="qcti_title">
     <p>当前位置：</p>
     <p>订单/合同详细信息</p>

@@ -31,7 +31,7 @@
           <input type="text" class="content_company_name" value="" onfocus="companyNameSearchShow()">
 
           <%--<a href="javascript:;" class="companySearch">供应商查询</a>--%>
-          <div class="company_name_search displayNo" onmouseleave="companyNameSearchHidden()">
+          <div class="company_name_search displayNo" >
             <input type="hidden" class="nameSearchPage" value="">
             <input type="hidden" class="com_org_code" value="">
             <input type="hidden" class="com_company_field" value="">

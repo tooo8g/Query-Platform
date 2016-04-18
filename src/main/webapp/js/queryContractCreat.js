@@ -62,7 +62,7 @@ function qcti_od_sp_preservation(){
            }
        })
         if(flag){
-            trInputVal={"material_code":""+$(this).find("input").eq(0).val()+"","material_name":""+$(this).find("td").eq(0).val()+"","specification":""+$(this).find("td").eq(1).val()+"","measurement":""+$(this).find("td").eq(2).val()+"","product_code":""+$(this).find("td").eq(3).val()+"","num":""+$(this).find("input").eq(1).val()+"","price":""+$(this).find("input").eq(2).val()+"","total_price":""+$(this).find("input").eq(3).val()+"","company":""+$(this).find("input").eq(4).val()+"","company_field":""+$(this).find("input").eq(5).val()+""}
+            trInputVal={"material_code":""+$(this).find("input").eq(0).val()+"","material_name":""+$(this).find("td").eq(1).text()+"","specification":""+$(this).find("td").eq(2).text()+"","measurement":""+$(this).find("td").eq(3).text()+"","product_code":""+$(this).find("td").eq(4).text()+"","num":""+$(this).find("input").eq(5).val()+"","price":""+$(this).find("input").eq(6).val()+"","total_price":""+$(this).find("input").eq(7).val()+"","company":""+$(this).find("input").eq(8).val()+"","company_field":""+$(this).find("input").eq(9).val()+""}
             tableVal.push(trInputVal)
         }else{
             return false
