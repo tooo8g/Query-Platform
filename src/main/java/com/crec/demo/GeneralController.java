@@ -383,9 +383,9 @@ public class GeneralController {
 	 * @throws IOException
 	 */
 	@RequestMapping("/queryPurchasingByCode")
-	public void queryPurchasingByCode(@RequestParam String materialCode,HttpServletRequest request,HttpServletResponse response) throws IOException {
+	public void queryPurchasingByCode(@RequestParam String material_code,HttpServletRequest request,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
-		String result = md.queryPurchasingByCode(materialCode);
+		String result = md.queryPurchasingByCode(material_code);
 		md.close();
 		response.getWriter().print(result);
 	}
