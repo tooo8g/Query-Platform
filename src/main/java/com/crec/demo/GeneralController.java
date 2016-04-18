@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.crec.util.CodeUtil;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.platform.io.bean.Account;
 import com.platform.io.bean.Company;
@@ -349,6 +350,15 @@ public class GeneralController {
 		response.getWriter().print(json.toJson());
 	}
 
+	/**
+	 * 新增合同订单号
+	 * @author niyn
+	 * @param orderOrContracts  对象
+	 * @param session
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/addOrderOrContract")
 	@ResponseBody
 	public String addOrderOrContract(@RequestBody OrderOrContract orderOrContracts,HttpSession session,HttpServletResponse response) throws Exception {
@@ -361,7 +371,19 @@ public class GeneralController {
 	    return "success";
 	}
 	
-	
+	/**
+	 * 查询合同订单号（带条件查询）
+	 * @author niyn
+	 * @param contract_id                     合同订单号
+	 * @param purchasing_company     采购单位
+	 * @param company_name              供应商
+	 * @param start
+	 * @param limit
+	 * @param request
+	 * @param session
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/queryOrderOrContract")
 	public void queryOrderOrContract(@RequestParam String contract_id,@RequestParam String purchasing_company,@RequestParam String company_name,
 			@RequestParam int start,
@@ -378,9 +400,6 @@ public class GeneralController {
 	 * @param str
 	 * @param start
 	 * @param limit
-	 * @param request
-	 * @param response
-	 * @throws IOException
 	 */
 	@RequestMapping("/queryPurchasingByCode")
 	public void queryPurchasingByCode(@RequestParam String material_code,HttpServletRequest request,HttpServletResponse response) throws IOException {
@@ -395,9 +414,6 @@ public class GeneralController {
 	 * @param str
 	 * @param start
 	 * @param limit
-	 * @param request
-	 * @param response
-	 * @throws IOException
 	 */
 	@RequestMapping("/querySupplyDetailByCode")
 	public void querySupplyDetailByCode(@RequestParam String materialCode,HttpServletRequest request,HttpServletResponse response) throws IOException {
@@ -406,7 +422,11 @@ public class GeneralController {
 		md.close();
 		response.getWriter().print(result);
 	}
-	
+	/**
+	 * 查询合同订单号详情
+	 * @author niyn
+	 * @param contract_id  合同订单号
+	 */
 	@RequestMapping("/queryOrderOrContractDetail")
 	public void queryOrderOrContractDetail(@RequestParam String contract_id, HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
@@ -427,7 +447,11 @@ public class GeneralController {
 		MongoDirver md = new MongoDirver();
 		md.updateOrderOrContract(orderOrContracts);
 	}
-	
+	/**
+	 * 新增运单
+	 * @author niyn
+	 * @param waybillInfo
+	 */
 	@RequestMapping(value="/addWaybillInfo")
 	@ResponseBody
 	public String addWaybillInfo(@RequestBody WaybillInfo waybillInfo,HttpSession session,HttpServletResponse response) throws Exception {
@@ -438,7 +462,18 @@ public class GeneralController {
 	    md.addWaybillInfo(waybillInfo);
 	    return "success";
 	}
-	
+	/**
+	 * 查询运单（带条件查询）
+	 * @author niyn
+	 * @param logistics_id                
+	 * @param logistics_company
+	 * @param car_license
+	 * @param contract_id
+	 * @param logistics_stats
+	 * @param good_num
+	 * @param start
+	 * @param limit
+	 */
 	@RequestMapping("/queryWaybillInfo")
 	public void queryWaybillInfo(
 			@RequestParam String logistics_id,
@@ -481,6 +516,12 @@ public class GeneralController {
 		response.getWriter().print(result);
 	}
 	
+	/**
+	 * 登录
+	 * @author niyn
+	 * @param username  登录名
+	 * @param password   密码
+	 */
 	@RequestMapping("/goLogin")
 	public ModelAndView login(String username,String password,HttpSession session) throws Exception{
 		Map<String,Object> jsonMap = new HashMap<String,Object>();
@@ -496,12 +537,24 @@ public class GeneralController {
 		}
 	}
 	
+	/**
+	 * 退出
+	 * @author niyn
+	 */
 	@RequestMapping("/goLogout")
 	public ModelAndView logout(HttpSession session){
 		session.invalidate();
 		return new ModelAndView("queryLogin");
 	}
 	
+	/**
+	 * 查询公司列表
+	 * @author niyn
+	 * @param com_name   公司名称
+	 * @param org_code      机构代码
+	 * @param start
+	 * @param limit
+	 */
 	@RequestMapping("/queryCompanyList")
 	public void queryCompanyList(
 			@RequestParam String com_name,@RequestParam String org_code,HttpServletRequest request,HttpSession session,HttpServletResponse response,
@@ -514,6 +567,11 @@ public class GeneralController {
 		response.getWriter().print(result);
 	}
 	
+	/**
+	 * 新增公司
+	 * @author niyn         
+	 * @param company    company对象
+	 */
 	@RequestMapping("/addCompany")
 	@ResponseBody
 	public void addCompany(Company company) throws Exception {
@@ -521,6 +579,16 @@ public class GeneralController {
 		md.addCompany(company);
 		md.close();
 	}
+	
+	/**
+	 * 查询用户列表（带条件查询）
+	 * @author niyn
+	 * @param name            登录名
+	 * @param username     姓名
+	 * @param company      公司
+	 * @param start
+	 * @param limit
+	 */
 	
 	@RequestMapping("/queryAccountList")
 	public void queryAccountList(
@@ -537,6 +605,16 @@ public class GeneralController {
 		response.getWriter().print(result);
 	}
 	
+	/**
+	 * 新增用户
+	 * @author niyn
+	 * @param name         登录名
+	 * @param password   密码
+	 * @param username  姓名 
+	 * @param company   公司 
+	 * @param tel             电话
+	 * @param email        邮箱
+	 */
 	@RequestMapping("/addAccount")
 	@ResponseBody
 	public void addAccount(
@@ -564,6 +642,11 @@ public class GeneralController {
 		md.close();
 	}
 	
+	/**
+	 * 查询用户管理的数据权限列表
+	 * @author niyn
+	 * @param _id      用户id（account表中的_id）
+	 */
 	@RequestMapping("/queryAuthorityInfo")
 	public void queryAuthorityInfo(
 			@RequestParam String _id,
@@ -576,6 +659,11 @@ public class GeneralController {
 		response.getWriter().print(result);
 	}
 	
+	/**
+	 * 查询用户管理的操作权限列表
+	 * @author niyn
+	 * @param _id      用户id（account表中的_id）
+	 */
 	@RequestMapping("/queryOperationInfo")
 	public void queryOperationInfo(
 			@RequestParam String _id,
@@ -588,6 +676,12 @@ public class GeneralController {
 		response.getWriter().print(result);
 	}
 	
+	/**
+	 * 分配用户管理的操作权限
+	 * @author niyn
+	 * @param fileds  操作权限的字段（operation表中的oper_num字段）
+	 * @param _id      用户id（account表中的_id）
+	 */
 	@RequestMapping("/assignOperation")
 	public void assignOperation(
 			@RequestParam String fileds,
@@ -603,10 +697,15 @@ public class GeneralController {
 		md.close();
 	}
 	
-	
+	/**
+	 * 用户管理中的数据权限分配
+	 * @author niyn
+	 * @param fileds 权限数组 filed字段(company表中的com_filed字段)
+	 * @param _id     用户id（account表中的_id）
+	 */
 	@RequestMapping("/assign")
 	public void assign(
-			@RequestParam String fileds,
+			@RequestParam String fileds, 
 			@RequestParam String _id,
 			HttpServletRequest request,HttpSession session,HttpServletResponse response
 			) throws Exception {
@@ -619,6 +718,11 @@ public class GeneralController {
 		md.close();
 	}
 	
+	/**
+	 * PDF文件下载（暂时搁置）
+	 * @author niyn
+	 * @param file_name 文件名称，示例：4855.pdf名称为4855
+	 */
     @RequestMapping("/download")  
     public void download(
     		@RequestParam String file_name,
@@ -643,6 +747,34 @@ public class GeneralController {
         }  
     }  
 
+    /**
+     * 生成条形码
+     * @author niyn
+     * @param code 序列号
+     * @throws Exception 
+     */
+    @RequestMapping("/generateBarCode")
+	public void generateBarCode(
+			@RequestParam String code,
+			HttpServletResponse response) throws Exception{
+    	byte[] barCodeByte = CodeUtil.barcode(code);
+    	response.getWriter().print(barCodeByte);
+	} 
+    
+    /**
+     * 生成二维码
+     * @author niyn
+     * @param code 序列号
+     * @throws Exception 
+     */
+    @RequestMapping("/generateQrCode")
+	public void generateQrCode(
+			@RequestParam String code,
+			HttpServletResponse response) throws Exception{
+    	byte[] barCodeByte = CodeUtil.qrcode(code);
+    	System.out.println("二维码返回数据:"+barCodeByte);
+    	response.getWriter().print(barCodeByte);
+	} 
 	
 	public static void main(String[] args) {
 		GeneralController g = new GeneralController();
