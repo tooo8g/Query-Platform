@@ -29,9 +29,9 @@ $(function(){
     var company_name=""  //企业名称
     var contract_id="" //订单号/合同号
     $.post(""+ctx+"/queryOrderOrContractDetail",{contract_id:contractId},function(data){
-        isonSupply=data.supply[0]
+        isonSupply=data.purchasing[0]
         jsonBzxx=data.bzxx[0]
-        material_code=isonSupply.material_name
+        material_code=isonSupply.material_code
         $(".body_material_code").val(material_code)
         material_name=isonSupply.material_name
         $(".body_material_name").val(material_name)
