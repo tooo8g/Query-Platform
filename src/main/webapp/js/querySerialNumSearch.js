@@ -250,7 +250,7 @@ function create_qrCode(){
     var code="" //序列号
     code=$(".clickCodes").parent().next().text().trim()
     $(".qrcode").removeClass("displayNo").addClass("displayBlock")
-    $(".qrcodeContent").empty().qrcode(code)
+    $("#qrcodeContent").empty().qrcode(code)
 }
 /*点击序号，如果背景是白的，就变成蓝色，如果是蓝色，就变成白色*/
 function clickCodes(str){

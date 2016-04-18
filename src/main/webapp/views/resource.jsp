@@ -17,4 +17,4 @@
 	<%--<script src="${ctx}/static/js/common/jquery.validate.js" type="text/javascript"></script>--%>
 	<%--<script src="${ctx}/static/js/common/fun_all.js" type="text/javascript"></script>	--%>
 	<script type="text/javascript">var ctx ="<%=ctx%>";</script>
-    <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+    <%--<script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>--%>
