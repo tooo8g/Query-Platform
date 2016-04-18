@@ -12,8 +12,8 @@ $(function(){
     $(".contract").removeClass("colorNoClick").addClass("colorClick")
 })
 /*新增订货明细，点击以后，订货明细列表增加*/
-function qcti_od_add(){
-  $(".qcti_orderDetails_tbody").append("<tr><td><input type='text' value=''  onblur='searchBymaterialCode(this)' ></td><td></td><td></td><td></td><td></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><a class='qcti_orderDetails_delete' onclick='qcti_orderDetails_delete(this)'>删除</a></td></tr>")
+function qcti_od_add() {
+    $(".qcti_orderDetails_tbody").append("<tr><td><input type='text' value=''  onblur='searchBymaterialCode(this)' ></td><td></td><td></td><td></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text' class='checkProduct' onfocus='product_name_search_show(this)' value=''><input type='text' value=''></td><td><a class='qcti_orderDetails_delete' onclick='qcti_orderDetails_delete(this)'>删除</a></td></tr>")
 }
 /*删除订货明细里面的列表*/
 function qcti_orderDetails_delete(str){
@@ -297,10 +297,10 @@ function searchBymaterialCode(str){
                     td_measurement="<input type='hidden' value='"+wzxx[0].measurement+"'>"+wzxx[0].measurement+""
                     tdChild.eq(3).html("")
                     tdChild.eq(3).append(td_measurement)
-                    var td_material_code=""
-                    td_material_code="<input type='hidden' value='"+wzxx[0].material_code+"'>"+wzxx[0].material_code+""
-                    tdChild.eq(4).html("")
-                    tdChild.eq(4).append(td_material_code)
+                    //var td_material_code=""
+                    //td_material_code="<input type='hidden' value='"+wzxx[0].material_code+"'>"+wzxx[0].material_code+""
+                    //tdChild.eq(4).html("")
+                    //tdChild.eq(4).append(td_material_code)
                 }
             },
             error:function(){

@@ -89,11 +89,11 @@
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
+              <td><input type="text"></td>
+              <td><input type="text" class="checkProduct" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -101,11 +101,11 @@
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
+              <td><input type="text"></td>
+              <td><input type="text" class="checkProduct" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -113,11 +113,11 @@
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
+              <td><input type="text"></td>
+              <td><input type="text" class="checkProduct" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -125,11 +125,11 @@
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
+              <td><input type="text"></td>
+              <td><input type="text" class="checkProduct" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -137,11 +137,11 @@
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
+              <td><input type="text"></td>
+              <td><input type="text" class="checkProduct" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -149,11 +149,11 @@
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
+              <td><input type="text"></td>
+              <td><input type="text" class="checkProduct" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -161,11 +161,11 @@
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
+              <td><input type="text"></td>
+              <td><input type="text" class="checkProduct" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -173,11 +173,11 @@
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
+              <td><input type="text"></td>
+              <td><input type="text" class="checkProduct" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -185,11 +185,11 @@
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
+              <td><input type="text"></td>
+              <td><input type="text" class="checkProduct" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
@@ -197,11 +197,11 @@
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
+              <td><input type="text"></td>
+              <td><input type="text" class="checkProduct" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             </tbody>

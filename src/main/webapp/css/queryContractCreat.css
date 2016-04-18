@@ -177,6 +177,7 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: center;
     /*padding: 10px 5px;*/
 }
 .qcti_orderDetails_tbody tr input{
@@ -184,6 +185,7 @@ body{
     margin:0px;
     border: none;
     padding: 10px 5px;
+    text-align: center;
 }
 .qcti_supplyPlan_tbody tr input{
     width: 114px;
