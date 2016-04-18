@@ -428,10 +428,10 @@ public class GeneralController {
 	 * @param contract_id  合同订单号
 	 */
 	@RequestMapping("/queryOrderOrContractDetail")
-	public void queryOrderOrContractDetail(@RequestParam String contract_id, HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException {
+	public void queryOrderOrContractDetail(@RequestParam String _id, HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		Account a =(Account) session.getAttribute("account");
-		String result = md.queryOrderOrContractDetail(contract_id,a.getFiled());
+		String result = md.queryOrderOrContractDetail(_id,a.getFiled());
 		md.close();
 		response.getWriter().print(result);
 	}
