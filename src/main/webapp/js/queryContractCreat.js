@@ -28,7 +28,18 @@ function qcti_orderDetails_delete(str){
 
 /*新增供货计划，点击以后，供货计划列表增加*/
 function qcti_supplyPlan_add(){
-    $(".qcti_supplyPlan_tbody").append("<tr><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><a class='qcti_supplyPlan_delete' onclick='qcti_supplyPlan_delete(this)'>删除</a></td></tr>")
+    $(".qcti_supplyPlan_tbody").append("<tr>" +
+    "<td><input type='text'></td>" +
+    "<td><input type='text'></td>" +
+    "<td><input type='text'></td>" +
+    "<td><input type='text'></td>" +
+    "<td><input type='text'></td>" +
+    "<td>"+"<input  name='createCode_date' class='createCode_date' type='text' onFocus='var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})' value=''/>"+"</td>" +
+    "<td><input type='text'></td>" +
+    "<td><input type='text'></td>" +
+    "<td><input type='text'></td>" +
+    "<td><a class='qcti_supplyPlan_delete' onclick='qcti_supplyPlan_delete(this)'>删除</a></td>" +
+    "</tr>")
 }
 /*删除供货计划里面的列表*/
 function qcti_supplyPlan_delete(str){
@@ -132,7 +143,7 @@ function companyNameSearch(){
             companyList=data.companyList
             tbodyList+="<ul>"
             for(var i=0;i<companyList.length;i++){
-                tbodyList+="<li company_field="+companyList[i].com_filed+" org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
+                tbodyList+="<li company_field='"+companyList[i].com_filed+"' org_code='"+companyList[i].org_code+"' value='"+companyList[i].com_name+"'>"+companyList[i].com_name+"</li>"
             }
             tbodyList+="</ul>"
             $(".name_search_list").html("")
@@ -260,7 +271,7 @@ function companyNameSearchHidden() {
 
 /*通过物资编号查询物资名称，规格型号，计量单位和产品标识代码*/
 function searchBymaterialCode(str){
-    var material_code=str.value
+    var material_code=str.value.trim()
     var wzxx="" //保存data信息
     var material_name="" //物资名称
     if(material_code){
@@ -320,7 +331,7 @@ function productNameSearch(){
             companyList=data.companyList
             tbodyList+="<ul>"
             for(var i=0;i<companyList.length;i++){
-                tbodyList+="<li company_field="+companyList[i].com_filed+" org_code="+companyList[i].org_code+" value="+companyList[i].com_name+">"+companyList[i].com_name+"</li>"
+                tbodyList+="<li company_field='"+companyList[i].com_filed+"' org_code='"+companyList[i].org_code+"' value='"+companyList[i].com_name+"'>"+companyList[i].com_name+"</li>"
             }
             tbodyList+="</ul>"
             $(".pro_name_search_list").html("")
