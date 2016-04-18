@@ -527,7 +527,7 @@ public class GeneralController {
 		Map<String,Object> jsonMap = new HashMap<String,Object>();
 		MongoDirver md = new MongoDirver();
 		Account account = md.login(username,MD5Util.MD5(password));
-		System.out.println(account);
+		System.out.println(account+"");
 		if(account!=null){
 			session.setAttribute("account", account);
 			jsonMap.put("success", true);
