@@ -459,5 +459,5 @@ function product_name_search_show(str){
     $(".qcti_orderDetails_tbody input").removeClass("clickProduct")
     $(".product_name_search").removeClass("displayNo").addClass("displayBlcok")
     $(".product_name_search").css({top:27})
-    $(str).attr("class","clickProduct")
+    $(str).addClass("clickProduct")
 }
