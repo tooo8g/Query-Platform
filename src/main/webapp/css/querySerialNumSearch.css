@@ -220,7 +220,8 @@ body{
      cursor: pointer;
 }
 
-.qrcode{
+
+.qrcode,.barcode{
     width: 100%;
     background-color: rgba(200, 200, 200, 0.6);
     position: absolute;
@@ -229,10 +230,16 @@ body{
     z-index: 1000;
 }
 .qrcodeContent{
-    width: 1200px;
+    width: 256px;
     text-align: center;
-    margin: 0px auto;
+    margin: 300px auto;
+}
+.barcodeContent{
+    width: 256px;
+    text-align: center;
+    margin: 450px auto;
 }
 
 .displayNo{display: none}
 .displayBlock{display: block}
+

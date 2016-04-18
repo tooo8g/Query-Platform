@@ -7,6 +7,7 @@
   <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="${ctx}/js/querySerialNumSearch.js"></script>
   <script type="text/javascript" src="${ctx}/js/jquery.qrcode.min.js"></script>
+  <script type="text/javascript" src="${ctx}/js/jquery-barcode.js"></script>
   <script type="text/javascript" src="${ctx}/js/transTime.js"></script>
   <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
   <link rel="stylesheet" type="text/css" href="${ctx}/css/querySerialNumSearch.css">
@@ -74,9 +75,14 @@
   </div>
 </div>
 <div class="qrcode displayNo" id="qrcode">
-   <div class="qrcodeContent">
+  <div class="qrcodeContent" id="qrcodeContent">
 
-   </div>
+  </div>
+</div>
+<div class="barcode displayNo" id="barcode">
+  <div class="barcodeContent" id="barcodeContent">
+
+  </div>
 </div>
 <jsp:include page="foot.jsp"/>
 </body>
