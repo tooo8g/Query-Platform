@@ -6,6 +6,7 @@
   <title>序列号查询</title>
   <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="${ctx}/js/querySerialNumSearch.js"></script>
+  <script type="text/javascript" src="${ctx}/js/jquery.qrcode.min.js"></script>
   <script type="text/javascript" src="${ctx}/js/transTime.js"></script>
   <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
   <link rel="stylesheet" type="text/css" href="${ctx}/css/querySerialNumSearch.css">
@@ -71,6 +72,11 @@
     <a href="javascript:;" class="create_barCode" onclick="create_barCode()">生成条形码</a>
     <a href="javascript:;" class="create_qrCode" onclick="create_qrCode()">生成二维码</a>
   </div>
+</div>
+<div class="qrcode displayNo" id="qrcode">
+   <div class="qrcodeContent">
+
+   </div>
 </div>
 <jsp:include page="foot.jsp"/>
 </body>

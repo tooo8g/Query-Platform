@@ -75,6 +75,15 @@ $(function(){
             alert("链接失败")
         }
     })
+
+    /*关闭qrcode*/
+    $(".qrcode").on("click",function(event){
+        event.stopPropagation();
+        var evt = event.srcElement ? event.srcElement : event.target;
+        if(evt.id=='qrcode'){
+            $(".qrcode").removeClass("displayNo").addClass("displayBlock")
+        }
+    });
 })
 /*清除*/
 function resetSubmit(){
@@ -218,15 +227,37 @@ function goPage(contract_id,state,program_time,purchasing_company,company_name,s
 }
 /*生成条形码*/
 function create_barCode(){
+    var code="" //序列号
+    code=$(".clickCodes").parent().next().text().trim()
+    alert(code)
+    $.ajax({
+        url:"",
+        type:"post",
+        data:{code:code},
+        success:function(data){
 
+        }
+    })
 }
 /*生成二维码*/
 function create_qrCode(){
-
+    var code="" //序列号
+    code=$(".clickCodes").parent().next().text().trim()
+    alert(code)
+    $.ajax({
+        url:"",
+        type:"post",
+        data:{code:code},
+        success:function(data){
+            $(".qrcode").removeClass("displayNo").addClass("displayBlock")
+            $(".qrcodeContent").qrcode(data)
+        }
+    })
 }
 /*点击序号，如果背景是白的，就变成蓝色，如果是蓝色，就变成白色*/
 function clickCodes(str){
     if($(str).hasClass("noclickCodes")){
+        $(".qsns_bottom_tbody a").removeClass("clickCodes").addClass("noclickCodes")
         $(str).removeClass("noclickCodes").addClass("clickCodes")
     }else{
         $(str).removeClass("clickCodes").addClass("noclickCodes")

@@ -219,3 +219,20 @@ body{
 .clickCursor{
      cursor: pointer;
 }
+
+.qrcode{
+    width: 100%;
+    background-color: rgba(200, 200, 200, 0.6);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+.qrcodeContent{
+    width: 1200px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.displayNo{display: none}
+.displayBlock{display: block}
