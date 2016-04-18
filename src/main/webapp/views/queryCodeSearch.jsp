@@ -14,7 +14,7 @@
 <jsp:include page="head_code.jsp"/>
 <div class="loading_Img">
     <div class="loadingImg">
-        <img src="../images/loading.gif">
+        <img src="${ctx}/images/loading.gif">
     </div>
 </div>
   <input type="hidden" class="pageNo" value="">

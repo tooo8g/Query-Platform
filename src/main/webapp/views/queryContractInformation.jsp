@@ -12,10 +12,12 @@
 </head>
 <body>
 <% String contract_id=request.getParameter("contract_id");%>
+<% String access=request.getParameter("access");%>
 <jsp:include page="head_code.jsp"/>
 <div class="qcti">
   <input type="hidden" class="pageNo" value="">
   <input type="hidden" class="contract_id" value="<%=contract_id%>">
+    <input type="hidden" class="access" value="<%=access%>">
   <div class="qcti_title">
     <p>当前位置：</p>
     <p>订单/合同详细信息</p>
@@ -48,16 +50,16 @@
         <div class="qcti_contractCreat_orderDetails_content">
           <table class="qcti_orderDetails_table">
             <thead class="qcti_orderDetails_thead">
-            <tr>
-              <td>物资编号</td>
-              <td>物资名称</td>
-              <td>规格型号</td>
-              <td>计量单位</td>
-              <td>供货数量</td>
-              <td>单价（元）</td>
-              <td>总价（元）</td>
-              <td width="200">生产厂家</td>
-            </tr>
+            <%--<tr>--%>
+              <%--<td>物资编号</td>--%>
+              <%--<td>物资名称</td>--%>
+              <%--<td>规格型号</td>--%>
+              <%--<td>计量单位</td>--%>
+              <%--<td>供货数量</td>--%>
+              <%--<td>单价（元）</td>--%>
+              <%--<td>总价（元）</td>--%>
+              <%--<td width="200">生产厂家</td>--%>
+            <%--</tr>--%>
             </thead>
             <tbody class="qcti_orderDetails_tbody">
 

@@ -28,8 +28,31 @@
       <div class="qcti_contractCreat_content">
         <div class="contractCreat_content_company_name">
           <label>供应商</label>
-          <input type="text" class="content_company_name" value="">
-          <a href="javascript:;" class="companySearch">供应商查询</a>
+          <input type="text" class="content_company_name" value="" onfocus="companyNameSearchShow()">
+
+          <%--<a href="javascript:;" class="companySearch">供应商查询</a>--%>
+          <div class="company_name_search displayNo" >
+            <input type="hidden" class="nameSearchPage" value="">
+            <input type="hidden" class="com_org_code" value="">
+            <input type="hidden" class="com_company_field" value="">
+            <div>
+              <input type="text" class="com_name" value="" placeholder="供应商名称">
+            </div>
+            <div>
+              <input type="text" class="org_code" value="" placeholder="组织机构代码">
+            </div>
+            <div>
+              <a class="name_search_a" onclick="companyNameSearch()">查询</a>
+            </div>
+            <div class="name_search_list">
+            </div>
+            <div class="name_searchAuth_button">
+
+            </div>
+            <div class="name_searchAuth_close">
+              <a onclick="companyNameSearchHidden()">关闭</a>
+            </div>
+          </div>
         </div>
         <div class="contractCreat_content_contract_id">
           <label>订单号/合同号</label>
@@ -52,6 +75,7 @@
               <td>物资名称</td>
               <td>规格型号</td>
               <td>计量单位</td>
+              <td>产品标示代码</td>
               <td>供货数量</td>
               <td>单价（元）</td>
               <td>总价（元）</td>
@@ -61,117 +85,148 @@
             </thead>
             <tbody class="qcti_orderDetails_tbody">
             <tr>
+              <td><input type="text" value=""  onblur="searchBymaterialCode(this)" ></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
+              <td><input type="text" value=""  onblur="searchBymaterialCode(this)" ></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
+              <td><input type="text" value=""  onblur="searchBymaterialCode(this)" ></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
+              <td><input type="text" value=""  onblur="searchBymaterialCode(this)" ></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
+              <td><input type="text" value=""  onblur="searchBymaterialCode(this)" ></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
+              <td><input type="text" value=""  onblur="searchBymaterialCode(this)" ></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
+              <td><input type="text" value=""  onblur="searchBymaterialCode(this)" ></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
+              <td><input type="text" value=""  onblur="searchBymaterialCode(this)" ></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
+              <td><input type="text" value=""  onblur="searchBymaterialCode(this)" ></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             <tr>
+              <td><input type="text" value=""  onblur="searchBymaterialCode(this)" ></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
               <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
+              <td><input type="text" onfocus="product_name_search_show(this)" value=""><input type="text" value=""></td>
               <td><a href="javascript:;" class="qcti_orderDetails_delete" onclick="qcti_orderDetails_delete(this)">删除</a></td>
             </tr>
             </tbody>
           </table>
+          <div class="product_name_search displayNo">
+            <input type="hidden" class="nameSearchPage_pro" value="">
+            <input type="hidden" class="com_org_code_pro" value="">
+            <div class="comNamePro">
+              <input type="text" class="com_name_pro" value="" placeholder="供应商名称">
+            </div>
+            <div class="orgCodePro">
+              <input type="text" class="org_code_pro" value="" placeholder="组织机构代码">
+            </div>
+            <div>
+              <a class="name_search_a" onclick="productNameSearch()">查询</a>
+            </div>
+            <div class="pro_name_search_list">
+            </div>
+            <div class="pro_name_searchAuth_button">
+
+            </div>
+            <div class="name_searchAuth_close">
+              <a onclick="productNameSearchHidden()">关闭</a>
+            </div>
+          </div>
         </div>
         <div class="qcti_orderDetails_add">
           <a href="javascript:;" class="qcti_od_add" onclick="qcti_od_add()">新增订货明细</a>
@@ -331,6 +386,7 @@
     </div>
   </div>
 </div>
+
 <jsp:include page="foot.jsp"/>
 </body>
 </html>

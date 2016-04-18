@@ -12,7 +12,6 @@ $(function(){
 
     /*打开页面。获取contract_id;//订单、合同号，把这个传到后台，把返回的东西显示到页面*/
     var contract_id=$(".contract_id").val() //订单/合同号
-//    var contract_id='DDHTH123'; //订单/合同号
     
     $.ajax({
         url:ctx+"/queryOrderOrContractDetail",
@@ -25,24 +24,65 @@ $(function(){
             var supply=contractJson.supply //供货计划
             var company_name=contractJson.bzxx[0].company_name //企业名称
             var purchasing_company=contractJson.bzxx[0].purchasing_company //采购单位
+            var access=$(".access").val()
             //给企业名称  订单号/合同号 采购单位 赋值
             $(".content_company_name").val(company_name)
             $(".content_contract_id").val(contract_id)
             $(".content_purchasing_company").val(purchasing_company)
             //给订货明细表赋值
+            var qcti_orderDetails_table=""  //qcti_orderDetails_table里的值
+            var qcti_orderDetails_thead="" //qcti_orderDetails_thead里的值
             var purchasingTbodyList="" //qcti_orderDetails_tbody里面的东西
             for(var i=0;i<purchasing.length;i++){
-                purchasingTbodyList+="<tr>"
-                purchasingTbodyList+="<td>"+purchasing[i].material_code+"</td>"
-                purchasingTbodyList+="<td>"+purchasing[i].material_name+"</td>"
-                purchasingTbodyList+="<td>"+purchasing[i].specification+"</td>"
-                purchasingTbodyList+="<td>"+purchasing[i].measurement+"</td>"
-                purchasingTbodyList+="<td>"+purchasing[i].num+"</td>"
-                purchasingTbodyList+="<td>"+purchasing[i].price+"</td>"
-                purchasingTbodyList+="<td>"+purchasing[i].total_price+"</td>"
-                purchasingTbodyList+="<td>"+purchasing[i].company+"</td>"
-                purchasingTbodyList+="</tr>"
+            	if(access=="read"){
+                    qcti_orderDetails_thead+="<tr>"
+                    qcti_orderDetails_thead+="<td>物资编号</td>"
+                    qcti_orderDetails_thead+="<td>物资名称</td>"
+                    qcti_orderDetails_thead+="<td>规格型号</td>"
+                    qcti_orderDetails_thead+="<td>计量单位</td>"
+                    qcti_orderDetails_thead+="<td>供货数量</td>"
+                    qcti_orderDetails_thead+="<td>单价(元)</td>"
+                    qcti_orderDetails_thead+="<td>总价(元)</td>"
+                    qcti_orderDetails_thead+="<td width='200'>生产厂家</td>"
+                    qcti_orderDetails_thead+="</tr>"
+            		purchasingTbodyList+="<tr>"
+	                purchasingTbodyList+="<td>"+purchasing[i].material_code+"</td>"
+	                purchasingTbodyList+="<td>"+purchasing[i].material_name+"</td>"
+	                purchasingTbodyList+="<td>"+purchasing[i].specification+"</td>"
+	                purchasingTbodyList+="<td>"+purchasing[i].measurement+"</td>"
+	                purchasingTbodyList+="<td>"+purchasing[i].num+"</td>"
+	                purchasingTbodyList+="<td>"+purchasing[i].price+"</td>"
+	                purchasingTbodyList+="<td>"+purchasing[i].total_price+"</td>"
+	                purchasingTbodyList+="<td>"+purchasing[i].company+"</td>"
+	                purchasingTbodyList+="</tr>"
+            	}else{
+                    qcti_orderDetails_thead+="<tr>"
+                    qcti_orderDetails_thead+="<td>物资编号</td>"
+                    qcti_orderDetails_thead+="<td>物资名称</td>"
+                    qcti_orderDetails_thead+="<td>规格型号</td>"
+                    qcti_orderDetails_thead+="<td>计量单位</td>"
+                    qcti_orderDetails_thead+="<td>供货数量</td>"
+                    qcti_orderDetails_thead+="<td>单价(元)</td>"
+                    qcti_orderDetails_thead+="<td>总价(元)</td>"
+                    qcti_orderDetails_thead+="<td width='200'>生产厂家</td>"
+                    qcti_orderDetails_thead+="<td>操作</td>"
+                    qcti_orderDetails_thead+="</tr>"
+                    purchasingTbodyList+="<tr>"
+                    purchasingTbodyList+="<td>"+purchasing[i].material_code+"</td>"
+                    purchasingTbodyList+="<td>"+purchasing[i].material_name+"</td>"
+                    purchasingTbodyList+="<td>"+purchasing[i].specification+"</td>"
+                    purchasingTbodyList+="<td>"+purchasing[i].measurement+"</td>"
+                    purchasingTbodyList+="<td>"+purchasing[i].num+"</td>"
+                    purchasingTbodyList+="<td>"+purchasing[i].price+"</td>"
+                    purchasingTbodyList+="<td>"+purchasing[i].total_price+"</td>"
+                    purchasingTbodyList+="<td>"+purchasing[i].company+"</td>"
+                    purchasingTbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatec?contract_id="+contract_id+"&_id="+purchasing[i]._id.$oid+"'>编制序列号</a></td>"
+                    purchasingTbodyList+="</tr>"
+            	}
+                
             }
+            $(".qcti_orderDetails_thead").html("")
+            $(".qcti_orderDetails_thead").append(qcti_orderDetails_thead)
             $(".qcti_orderDetails_tbody").html("")
             $(".qcti_orderDetails_tbody").append(purchasingTbodyList)
 

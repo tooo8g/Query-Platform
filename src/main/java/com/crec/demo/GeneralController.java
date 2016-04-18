@@ -383,9 +383,9 @@ public class GeneralController {
 	 * @throws IOException
 	 */
 	@RequestMapping("/queryPurchasingByCode")
-	public void queryPurchasingByCode(@RequestParam String materialCode,HttpServletRequest request,HttpServletResponse response) throws IOException {
+	public void queryPurchasingByCode(@RequestParam String material_code,HttpServletRequest request,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
-		String result = md.queryPurchasingByCode(materialCode);
+		String result = md.queryPurchasingByCode(material_code);
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -575,6 +575,34 @@ public class GeneralController {
 		md.close();
 		response.getWriter().print(result);
 	}
+	
+	@RequestMapping("/queryOperationInfo")
+	public void queryOperationInfo(
+			@RequestParam String _id,
+			HttpServletRequest request,HttpSession session,HttpServletResponse response
+			) throws Exception {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryOperationInfo(_id);
+		System.out.println(result);
+		md.close();
+		response.getWriter().print(result);
+	}
+	
+	@RequestMapping("/assignOperation")
+	public void assignOperation(
+			@RequestParam String fileds,
+			@RequestParam String _id,
+			HttpServletRequest request,HttpSession session,HttpServletResponse response
+			) throws Exception {
+		String[] f  = {};
+		if((fileds.length()>0)&&fileds!=null){
+			f =  fileds.split(",");
+		}
+		MongoDirver md = new MongoDirver();
+		md.assignOperation(f, _id);
+		md.close();
+	}
+	
 	
 	@RequestMapping("/assign")
 	public void assign(

@@ -68,7 +68,8 @@
 
                 <div class="sts_search_number">
                     <label>编号/名称</label>
-                    <input type="text" name="search_number" class="search_number"  value="标准编号/标准名称" onfocus="if (value =='标准编号/标准名称'){value ='';this.style.color = '#222222';}" onblur="if (value ==''){value='标准编号/标准名称'; this.style.color = '#dddddd';}else{this.style.color = '#222222';}"  >
+                    <input type="text" name="search_number" class="search_number"  id="search_number" value="标准编号/标准名称" onfocus="if (value =='标准编号/标准名称'){value ='';this.style.color = '#222222';}" onblur="if (value ==''){value='标准编号/标准名称'; this.style.color = '#dddddd';}else{this.style.color = '#222222';}"  >
+                    <a type="reset" id="reset_submit" onclick="resetSubmit()">清除</a>
                     <a class="buttonForm" onclick="formButton()">查询</a>
                 </div>
             </form>

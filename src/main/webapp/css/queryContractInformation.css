@@ -157,7 +157,11 @@ body{
     font-size: 12px;
     text-align: center;
 }
-.qcti_supplyPlan_tbody a{
+
+.companyShow{
+    width: 190px !important;
+}
+.qcti_supplyPlan_tbody a,.qcti_orderDetails_tbody a{
     color: #77afea;
     cursor: pointer;
 }
@@ -165,10 +169,10 @@ body{
     border: 1px solid #dddddd;
     border-top: none;
     color: #222222;
+    padding: 10px 5px;
 }
 .qcti_orderDetails_tbody td,.qcti_supplyPlan_tbody td{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding: 10px 5px;
 }

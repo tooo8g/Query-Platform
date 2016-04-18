@@ -14,7 +14,7 @@
                 <img src="${ctx}/images/head_1.png">
                 <span>${account.person.username}</span>
                 <a href="${ctx}/code/queryCodeSearch" target="_self">供应商服务</a>
-                <c:if test="${account.name.equals('admin')}">
+                <c:if test="${account.oper_filed.toString().indexOf('0')!=-1}">
                 	|<a href="${ctx}/company/queryCompanyList" target="_self">系统管理</a>
                 </c:if>
                 |

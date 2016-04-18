@@ -24,6 +24,7 @@ $(function(){
         url:ctx+"/queryCompanyList",
         type:"post",
         data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
+        async:false,
         dataType:"json",
         success:function(data){
             count=data.count
@@ -92,6 +93,7 @@ function formButton(){
         url:ctx+"/queryCompanyList",
         type:"post",
         data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
+        async:false,
         dataType:"json",
         success:function(data){
             count=data.count
@@ -157,6 +159,7 @@ function goPage(com_name,org_code,startValue,limitValue,isGo){
         url:ctx+"/queryCompanyList",
         data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
         type : 'post',
+        async:false,
         dataType : 'json',
         success:function(data){
             var count="" //总数

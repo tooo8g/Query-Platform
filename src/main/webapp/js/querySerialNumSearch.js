@@ -26,6 +26,7 @@ $(function(){
         url:ctx+"/queryAllCode",
         data:{contract_id:contract_id,state:state,program_time:program_time,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         type:"post",
+        async:false,
         dataType:"json",
         success: function (data) {
             count=data.count
