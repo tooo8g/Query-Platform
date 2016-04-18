@@ -236,21 +236,31 @@ function goPage(contract_id,state,program_time,purchasing_company,company_name,s
 }
 /*生成条形码*/
 function create_barCode(){
-    var docuHeight=$(document).height()  //页面可视区域
-    $(".barcode").height(docuHeight)
     var code="" //序列号
     code=$(".clickCodes").parent().next().text().trim()
-    $(".barcode").removeClass("displayNo").addClass("displayBlock")
-    $(".barcodeContent").empty().barcode(code,"code128",{ barWidth: 2, barHeight: 30 })
+    if(code){
+        var docuHeight=$(document).height()  //页面可视区域
+        $(".barcode").height(docuHeight)
+        $(".barcode").removeClass("displayNo").addClass("displayBlock")
+        $(".barcodeContent").empty().barcode(code,"code128",{ barWidth: 2, barHeight: 30 })
+    }else{
+        alert("请选择")
+    }
+
 }
 /*生成二维码*/
 function create_qrCode(){
-    var docuHeight=$(document).height()  //页面可视区域
-    $(".qrcode").height(docuHeight)
     var code="" //序列号
     code=$(".clickCodes").parent().next().text().trim()
-    $(".qrcode").removeClass("displayNo").addClass("displayBlock")
-    $("#qrcodeContent").empty().qrcode(code)
+    if(code){
+        var docuHeight=$(document).height()  //页面可视区域
+        $(".qrcode").height(docuHeight)
+        $(".qrcode").removeClass("displayNo").addClass("displayBlock")
+        $("#qrcodeContent").empty().qrcode(code)
+    }else{
+        alert("请选择")
+    }
+
 }
 /*点击序号，如果背景是白的，就变成蓝色，如果是蓝色，就变成白色*/
 function clickCodes(str){
