@@ -52,7 +52,8 @@ $(function(){
     /*调用gopage方法*/
       var branchId="" //关联Id
        branchId=$("._id").val()
-       goPage（branchId,'0','10','next'）
+       goPage(branchId,'0','10','next')
+       
 })
 
 /*自动创建序列号*/
@@ -83,72 +84,85 @@ function creatCode(){
     var codes="" //保存data信息
     var tbodyList=""
     var bzNum
-    if(product_identify.trim()==""||product_identify.trim()==null){
-        alert("请填写产品标识代码")
-    }else if(program_time.trim()==""||program_time.trim()==null){
-        alert("请填写编制日期")
-    }else{
-        $.ajax({
-            url:ctx+"/createCode",
-            data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branch_id:branchId,start:startValue,limit:limitValue},
-            type:"post",
-            dataType:"json",
-            success:function(data){
-                $(".qscc_body_codeList_button").removeClass("displayNo").addClass("displayBlock")
-                count=data.count
-                codes=data.codes
-                groupId=codes[0].group_id.$oid
-                for(var i=0;i<codes.length;i++){
-                    bzNum=Number(startValue)+i+1
-                    tbodyList+="<tr>"
-                    tbodyList+="<td>"+bzNum+"</td>"
-                    tbodyList+="<td>"+codes[i].code+"</td>"
-                    tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
-                    tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
-                    tbodyList+="<td>"+codes[i].contract_id+"</td>"
-                    tbodyList+="<td>"+codes[i].material_code+"</td>"
-                    tbodyList+="<td>"+codes[i].product_name+"</td>"
-                    tbodyList+="<td>"+codes[i].specification+"</td>"
-                    tbodyList+="<td>"+codes[i].product_identify+"</td>"
-                    tbodyList+="</tr>"
-                }
-                $(".body_codeList_tbody").html(" ")
-                $(".body_codeList_tbody").append(tbodyList)
+    	if(product_identify.trim()==""||product_identify.trim()==null){
+            alert("请填写产品标识代码")
+        }else if(program_time.trim()==""||program_time.trim()==null){
+            alert("请填写编制日期")
+        }else{
+            $.ajax({
+                url:ctx+"/createCode",
+                data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branch_id:branchId,start:startValue,limit:limitValue},
+                type:"post",
+                dataType:"json",
+                success:function(data){
+                    $(".qscc_body_codeList_button").removeClass("displayNo").addClass("displayBlock")
+                    count=data.count
+                    codes=data.codes
+    /*                groupId=codes[0].group_id.$oid*/
+                    for(var i=0;i<codes.length;i++){
+                        bzNum=Number(startValue)+i+1
+                        tbodyList+="<tr>"
+                        tbodyList+="<td>"+bzNum+"</td>"
+                        tbodyList+="<td>"+codes[i].code+"</td>"
+                        tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
+                        tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
+                        tbodyList+="<td>"+codes[i].contract_id+"</td>"
+                        tbodyList+="<td>"+codes[i].material_code+"</td>"
+                        tbodyList+="<td>"+codes[i].product_name+"</td>"
+                        tbodyList+="<td>"+codes[i].specification+"</td>"
+                        tbodyList+="<td>"+codes[i].product_identify+"</td>"
+                        tbodyList+="</tr>"
+                    }
+                    $(".body_codeList_tbody").html(" ")
+                    $(".body_codeList_tbody").append(tbodyList)
 
-                var asButton=""
-                var countPages=Math.ceil(count/limitValue)
-                var PageNo  //当前页码
-                if(startValue==0){
-                    PageNo=1
+                    var asButton=""
+                    var countPages=Math.ceil(count/limitValue)
+                    var PageNo  //当前页码
+                    if(startValue==0){
+                        PageNo=1
+                    }
+                    $(".pageNo").val(PageNo)
+                    var nextStartRow//下一页开始显示的编号
+                    asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
+                    asButton+="<p>"+PageNo+"/"+countPages+"</p>"
+                    if(countPages>1){
+                        nextStartRow=PageNo*limitValue
+                        asButton+="<a class=clickCursor onclick=goPage('"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
+                    }else{
+                        asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
+                    }
+                    $(".listperAuth_button").html(" ")
+                    $(".listperAuth_button").append(asButton)
+                    
+                    
+                    
+                    if($(".body_codeList_tbody tr").length>0){
+                  	   $(".body_createCode_creatCode").removeClass("displayBlock").addClass("displayNo")
+                  	   	$(".qscc_body_codeList_button").removeClass("displayNo").addClass("displayBlock")
+                     }else{
+                  	   $(".body_createCode_creatCode").removeClass("displayNo").addClass("displayBlock")
+                  	   	$(".qscc_body_codeList_button").removeClass("displayBlock").addClass("displayNo")
+                     }
+                },
+                error:function(){
+                    alert("链接失败")
                 }
-                $(".pageNo").val(PageNo)
-                var nextStartRow//下一页开始显示的编号
-                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
-                asButton+="<p>"+PageNo+"/"+countPages+"</p>"
-                if(countPages>1){
-                    nextStartRow=PageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
-                }else{
-                    asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
-                }
-                $(".listperAuth_button").html(" ")
-                $(".listperAuth_button").append(asButton)
-            },
-            error:function(){
-                alert("链接失败")
-            }
-        })
+            })
+    
     }
+    
 }
 
 //页码跳转
 function goPage(branchId,startValue,limitValue,isGo){
     $.ajax({
     	url:ctx+"/queryCodes",
-        data:{branch_id:branch_id,start:startValue,limit:limitValue},
+        data:{branch_id:branchId,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
         success:function(data){
+       
             var count="" //总数
             var codes="" //保存data信息
             var tbodyList=""
@@ -197,19 +211,27 @@ function goPage(branchId,startValue,limitValue,isGo){
             var nextStartRow//下一页开始显示的编号
             if(pageNo>1){
                 preStartRow=(pageNo-2)*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+branchId+"','"+preStartRow+"','"+limitValue+"','pre')><img src='"+ctx+"/images/sts_4.png'></a>"
             }else{
                 asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
             }
             asButton+="<p>"+pageNo+"/"+countPages+"</p>"
             if(countPages>pageNo){
                 nextStartRow=pageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
+                asButton+="<a class=clickCursor onclick=goPage('"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
             }else{
                 asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
             }
             $(".listperAuth_button").html(" ")
             $(".listperAuth_button").append(asButton)
+            
+            if($(".body_codeList_tbody tr").length>0){
+         	   $(".body_createCode_creatCode").removeClass("displayBlock").addClass("displayNo")
+         	   	$(".qscc_body_codeList_button").removeClass("displayNo").addClass("displayBlock")
+            }else{
+         	   $(".body_createCode_creatCode").removeClass("displayNo").addClass("displayBlock")
+         	   	$(".qscc_body_codeList_button").removeClass("displayBlock").addClass("displayNo")
+            }
         }
     })
 }

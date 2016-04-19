@@ -76,11 +76,11 @@
           <option value="产品代码模式">产品代码模式</option>
         </select>
       </div>
-      <div class="body_createCode_creatCode">
+      <div class="body_createCode_creatCode" >
         <a class="createCode_creatCode" onclick="creatCode()">自动创建序列号</a>
       </div>
     </div>
-    <div class="qscc_body_codeList_button displayNo">
+    <div class="qscc_body_codeList_button ">
       <div class="qscc_body_codeList">
         <table class="body_codeList_table">
           <thead class="body_codeList_thead">
