@@ -122,7 +122,7 @@ function  formButton(){
             for(var i=0;i<codes.length;i++){
                 bzNum=Number(startValue)+i+1
                 tbodyList+="<tr>"
-                tbodyList+="<td>"+bzNum+"</td>"
+                tbodyList+="<td><a class='noclickCodes' href='javascript:;' onclick='clickCodes(this)'></a><p>"+bzNum+"</p></td>"
                 tbodyList+="<td>"+codes[i].code+"</td>"
                 tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
                 tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
@@ -178,7 +178,7 @@ function goPage(contract_id,state,program_time,purchasing_company,company_name,s
             for(var i=0;i<codes.length;i++){
                 bzNum=Number(startValue)+i+1
                 tbodyList+="<tr>"
-                tbodyList+="<td>"+bzNum+"</td>"
+                tbodyList+="<td><a class='noclickCodes' href='javascript:;' onclick='clickCodes(this)'></a><p>"+bzNum+"</p></td>"
                 tbodyList+="<td>"+codes[i].code+"</td>"
                 tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
                 tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
