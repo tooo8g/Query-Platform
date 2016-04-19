@@ -7,6 +7,9 @@ $(function(){
     /*改变头部的css*/
     $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
     $(".codeUl").removeClass("displayNo").addClass("displayBlock")
+    /*调整头部*/
+    $(".nav ul li a").removeClass("colorClick").addClass("colorNoClick")
+    $(".contract").removeClass("colorNoClick").addClass("colorClick")
 
     /*页面打开，调用一个方法，返回需要的数据
     * data: _id 订单ID
@@ -75,56 +78,62 @@ function creatCode(){
     var codes="" //保存data信息
     var tbodyList=""
     var bzNum
-    $.ajax({
-        url:ctx+"/createCode",
-        data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branch_id:branchId,start:startValue,limit:limitValue},
-        type:"post",
-        dataType:"json",
-        success:function(data){
-            $(".qscc_body_codeList_button").removeClass("displayNo").addClass("displayBlock")
-            count=data.count
-            codes=data.codes
-            groupId=codes[0].group_id.$oid
-            for(var i=0;i<codes.length;i++){
-                bzNum=Number(startValue)+i+1
-                tbodyList+="<tr>"
-                tbodyList+="<td>"+bzNum+"</td>"
-                tbodyList+="<td>"+codes[i].code+"</td>"
-                tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
-                tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
-                tbodyList+="<td>"+codes[i].contract_id+"</td>"
-                tbodyList+="<td>"+codes[i].material_code+"</td>"
-                tbodyList+="<td>"+codes[i].product_name+"</td>"
-                tbodyList+="<td>"+codes[i].specification+"</td>"
-                tbodyList+="<td>"+codes[i].product_identify+"</td>"
-                tbodyList+="</tr>"
-            }
-            $(".body_codeList_tbody").html(" ")
-            $(".body_codeList_tbody").append(tbodyList)
+    if(product_identify.trim()==""||product_identify.trim()==null){
+        alert("请填写产品标识代码")
+    }else if(program_time.trim()==""||program_time.trim()==null){
+        alert("请填写编制日期")
+    }else{
+        $.ajax({
+            url:ctx+"/createCode",
+            data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branch_id:branchId,start:startValue,limit:limitValue},
+            type:"post",
+            dataType:"json",
+            success:function(data){
+                $(".qscc_body_codeList_button").removeClass("displayNo").addClass("displayBlock")
+                count=data.count
+                codes=data.codes
+                groupId=codes[0].group_id.$oid
+                for(var i=0;i<codes.length;i++){
+                    bzNum=Number(startValue)+i+1
+                    tbodyList+="<tr>"
+                    tbodyList+="<td>"+bzNum+"</td>"
+                    tbodyList+="<td>"+codes[i].code+"</td>"
+                    tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
+                    tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
+                    tbodyList+="<td>"+codes[i].contract_id+"</td>"
+                    tbodyList+="<td>"+codes[i].material_code+"</td>"
+                    tbodyList+="<td>"+codes[i].product_name+"</td>"
+                    tbodyList+="<td>"+codes[i].specification+"</td>"
+                    tbodyList+="<td>"+codes[i].product_identify+"</td>"
+                    tbodyList+="</tr>"
+                }
+                $(".body_codeList_tbody").html(" ")
+                $(".body_codeList_tbody").append(tbodyList)
 
-            var asButton=""
-            var countPages=Math.ceil(count/limitValue)
-            var PageNo  //当前页码
-            if(startValue==0){
-                PageNo=1
+                var asButton=""
+                var countPages=Math.ceil(count/limitValue)
+                var PageNo  //当前页码
+                if(startValue==0){
+                    PageNo=1
+                }
+                $(".pageNo").val(PageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
+                asButton+="<p>"+PageNo+"/"+countPages+"</p>"
+                if(countPages>1){
+                    nextStartRow=PageNo*limitValue
+                    asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
+                }else{
+                    asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
+                }
+                $(".listperAuth_button").html(" ")
+                $(".listperAuth_button").append(asButton)
+            },
+            error:function(){
+                alert("链接失败")
             }
-            $(".pageNo").val(PageNo)
-            var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
-            asButton+="<p>"+PageNo+"/"+countPages+"</p>"
-            if(countPages>1){
-                nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
-            }else{
-                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
-            }
-            $(".listperAuth_button").html(" ")
-            $(".listperAuth_button").append(asButton)
-        },
-        error:function(){
-            alert("链接失败")
-        }
-    })
+        })
+    }
 }
 
 //页码跳转
@@ -201,12 +210,6 @@ function goPage(material_code,material_name,product_identify,purchasing_company,
 }
 
 
-/*生成序列号*/
-function generateCode(){
-    var branchId=$(".branchId").val() //关联ID
-    groupId//组ID
-    //现在已经获取到了关联ID和组ID
-}
 /*清空序列号*/
 function codeEmpty(){
     $.ajax({

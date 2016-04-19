@@ -43,7 +43,7 @@
       </div>
       <div class="qscc_body_product_identify">
         <label>产品标识代码</label>
-        <input type="text" class="body_product_identify" value="" readonly="true">
+        <input type="text" class="body_product_identify" value="">
       </div>
       <div class="body_createCode_orderno">
         <label>订单号/合同号</label>
@@ -103,7 +103,6 @@
 
       </div>
       <div class="qscc_body_delete">
-        <a href="javascript:;" class="body_generateCode" onclick="generateCode()">生成序列号</a>
         <a href="javascript:;" class="body_empty" onclick="codeEmpty()">清空</a>
       </div>
     </div>

@@ -50,16 +50,6 @@
         <div class="qcti_contractCreat_orderDetails_content">
           <table class="qcti_orderDetails_table">
             <thead class="qcti_orderDetails_thead">
-            <%--<tr>--%>
-              <%--<td>物资编号</td>--%>
-              <%--<td>物资名称</td>--%>
-              <%--<td>规格型号</td>--%>
-              <%--<td>计量单位</td>--%>
-              <%--<td>供货数量</td>--%>
-              <%--<td>单价（元）</td>--%>
-              <%--<td>总价（元）</td>--%>
-              <%--<td width="200">生产厂家</td>--%>
-            <%--</tr>--%>
             </thead>
             <tbody class="qcti_orderDetails_tbody">
 
