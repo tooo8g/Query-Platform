@@ -19,16 +19,21 @@ $(function(){
     * contract_id;//订单、合同号
     * specification //规格型号
     * */
-    var contractId=$(".contract_id").val() //id
+    var contractId=$(".contract_id").val() //合同订单id
+    var company_name=$(".company_name").val() //供应商
+    var purchasing_company=$(".purchasing_company").val() //采购单位
+
+    $(".createCode_purchasing_company").val(purchasing_company)
+    $(".createCode_company_name").val(company_name)
+    $(".createCode_orderno").val(contractId)
+
+
     var _id = $("._id").val();
     var isonSupply="" //保存supply的data
     var jsonBzxx="" //保存bzxx的data
     var material_code="" //物资编号
     var material_name="" //物资名称
     var product_code="" //产品标识代码
-    var purchasing_company="" //采购单位
-    var company_name=""  //企业名称
-    var contract_id="" //订单号/合同号
     $.post(""+ctx+"/queryOrderOrContractDetail",{_id:_id},function(data){
         isonSupply=data.purchasing[0]
         jsonBzxx=data.bzxx[0]
@@ -38,12 +43,6 @@ $(function(){
         $(".body_material_name").val(material_name)
         product_code=isonSupply.product_code
         $(".body_product_identify").val(product_code)
-        purchasing_company=jsonBzxx.purchasing_company
-        $(".createCode_purchasing_company").val(purchasing_company)
-        company_name=jsonBzxx.company_name
-        $(".createCode_company_name").val(company_name)
-        contract_id=jsonBzxx.contract_id
-        $(".createCode_orderno").val(contract_id)
         specification=isonSupply.specification
         num = isonSupply.num
         $(".createCode_creatNum").val(num);

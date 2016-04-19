@@ -79,7 +79,7 @@ $(function(){
 		                    purchasingTbodyList+="<td>"+purchasing[i].price+"</td>"
 		                    purchasingTbodyList+="<td>"+purchasing[i].total_price+"</td>"
 		                    purchasingTbodyList+="<td>"+purchasing[i].company+"</td>"
-		                    purchasingTbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatec?contract_id="+contract_id+"&_id="+purchasing[i]._id.$oid+"'>编制序列号</a></td>"
+		                    purchasingTbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatec?_id="+purchasing[i]._id.$oid+"&company_name="+company_name+"&contract_id="+contract_id+"&purchasing_company="+purchasing_company+"'>编制序列号</a></td>"
 		                    purchasingTbodyList+="</tr>"
             		  } 	
             	}

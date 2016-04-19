@@ -63,22 +63,27 @@ function qcti_od_sp_preservation(){
     var tableVal=[] //总的input val
     var orderOrCont="" //保存列表里面的东西
     $(".qcti_orderDetails_tbody tr").each(function(){
-       $(this).find("input").each(function(){
-           inputValue=$(this).val()
-          if(inputValue==undefined || inputValue=="" || inputValue==null) {
-              flag=false
-          }
-           if(!flag){
-               return false
-           }
-       })
-        if(flag){
-            trInputVal={"material_code":""+$(this).find("input").eq(0).val()+"","material_name":""+$(this).find("td").eq(1).text()+"","specification":""+$(this).find("td").eq(2).text()+"","measurement":""+$(this).find("td").eq(3).text()+"","product_code":""+$(this).find("td").eq(4).text()+"","num":""+$(this).find("input").eq(5).val()+"","price":""+$(this).find("input").eq(6).val()+"","total_price":""+$(this).find("input").eq(7).val()+"","company":""+$(this).find("input").eq(8).val()+"","company_field":""+$(this).find("input").eq(9).val()+""}
-            tableVal.push(trInputVal)
-        }else{
-            return false
-        }
-   })
+            $(this).find("input").each(function(i){
+                if(i>3){
+                    return false
+                }else{
+                    inputValue=$(this).val()
+                    if(inputValue==undefined || inputValue=="" || inputValue==null) {
+                        flag=false
+                    }
+                    if(!flag){
+                        return false
+                    }
+                }
+            })
+             if(flag){
+                 trInputVal={"material_code":""+$(this).find("input").eq(0).val()+"","material_name":""+$(this).find("td").eq(1).text()+"","specification":""+$(this).find("td").eq(2).text()+"","measurement":""+$(this).find("td").eq(3).text()+"","product_code":""+$(this).find("td").eq(4).text()+"","num":""+$(this).find("input").eq(5).val()+"","price":""+$(this).find("input").eq(6).val()+"","total_price":""+$(this).find("input").eq(7).val()+"","company":""+$(this).find("input").eq(8).val()+"","company_field":""+$(this).find("input").eq(9).val()+""}
+                 tableVal.push(trInputVal)
+             }else{
+                 return false
+             }
+
+        })
     var flagsu=true //用来判断每行tr是否有空白input
     var inputValuesu="" //保存input值
     var trInputValsu="" //用来保存每组tr的input
@@ -110,15 +115,20 @@ function qcti_od_sp_preservation(){
     orderOrCont={"company_name":""+company_name+"","contract_id":""+contract_id+"","purchasing_company":""+purchasing_company+"","company_field":""+com_company_field+"","purchasing":tableVal,"supply":tableValsu}
     var orderOrContracts="" //保存的JSON
     orderOrContracts=JSON.stringify(orderOrCont)
-    $.ajax({
-        url:ctx+"/addOrderOrContract",
-        type:"post",
-        data:orderOrContracts,
-        contentType:"application/json",
-        success:function(data){
-        	window.location.href=ctx+"/contract/queryContractSearch";
-        }
-    })
+    if(trInputVal){
+        $.ajax({
+            url:ctx+"/addOrderOrContract",
+            type:"post",
+            data:orderOrContracts,
+            contentType:"application/json",
+            success:function(data){
+                window.location.href=ctx+"/contract/queryContractSearch";
+            }
+        })
+    }else{
+        alert("订货明细表必须有一条数据")
+    }
+
 }
 
 
@@ -458,6 +468,17 @@ function productNameSearchHidden() {
 function product_name_search_show(str){
     $(".qcti_orderDetails_tbody input").removeClass("clickProduct")
     $(".product_name_search").removeClass("displayNo").addClass("displayBlcok")
-    $(".product_name_search").css({top:27})
+    //$(".product_name_search").css({top:27})
     $(str).addClass("clickProduct")
+    var qcti_orderDetails_table_top=$(".qcti_orderDetails_table").offset().top  //qcti_orderDetails_table的top值
+    var strTop=$(str).offset().top //当前的top值
+    var qcti_orderDetails_table_height=$(".qcti_orderDetails_table").height() //qcti_orderDetails_table的高度
+    /*通过判断strTop和qcti_orderDetails_table_top的差值加上346,如果比qcti_orderDetails_table_height，则top为qcti_orderDetails_table_height-346*/
+    var product_name_search_top="" //product_name_search的top
+    product_name_search_top=strTop-qcti_orderDetails_table_top
+    if(qcti_orderDetails_table_height<product_name_search_top+346){
+        $(".product_name_search").css({top:qcti_orderDetails_table_height-346})
+    }else{
+        $(".product_name_search").css({top:product_name_search_top})
+    }
 }
