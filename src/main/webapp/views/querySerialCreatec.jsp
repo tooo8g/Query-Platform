@@ -102,9 +102,9 @@
       <div class="listperAuth_button">
 
       </div>
-      <div class="qscc_body_delete">
+      <!-- <div class="qscc_body_delete">
         <a href="javascript:;" class="body_empty" onclick="codeEmpty()">清空</a>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

@@ -79,7 +79,6 @@ public class ProductController {
 			HttpSession session,
 			HttpServletResponse response) throws Exception {
 		Code code = new Code();
-		ObjectId group_id = new ObjectId();
 		code.setProduct_name(product_name);// 产品名称
 		code.setProduct_identify(product_identify);// 产品标示代码
 		code.setMaterial_code(material_code);// 物资编码
@@ -91,7 +90,6 @@ public class ProductController {
 		// 把页面传过来的String类型的branch_id转换成ObjectId类型
 		ObjectId branchId = new ObjectId(branch_id);
 		code.setBranch_id(branchId);// 关联Id
-		code.setGroup_id(group_id);// 组Id
 		code.setAdd_time(new Date());
 		Account a = (Account)session.getAttribute("account");
 		code.setFiled(a.getFiled());
@@ -100,7 +98,7 @@ public class ProductController {
 		for (Code c : codes) {
 			md.addCode(c);
 		}
-		String result = md.queryCodes(group_id, branchId,a.getFiled(), start, limit);
+		String result = md.queryCodes(branchId,a.getFiled(), start, limit);
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -116,13 +114,12 @@ public class ProductController {
 	 * @throws IOException
 	 */
 	@RequestMapping("/queryCodes")
-	public void queryCodes(String group_id, String branch_id, int start,
+	public void queryCodes(String branch_id, int start,
 			int limit,HttpSession session, HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
-		ObjectId gId = new ObjectId(group_id);
 		ObjectId bId = new ObjectId(branch_id);
 		Account a = (Account)session.getAttribute("account");
-		String result = md.queryCodes(gId, bId, a.getFiled(),start, limit);
+		String result = md.queryCodes(bId, a.getFiled(),start, limit);
 		md.close();
 		response.getWriter().print(result);
 

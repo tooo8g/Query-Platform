@@ -48,6 +48,11 @@ $(function(){
         num = isonSupply.num
         $(".createCode_creatNum").val(num);
     },"json")
+    
+    /*调用gopage方法*/
+      var branchId="" //关联Id
+       branchId=$("._id").val()
+       goPage（branchId,'0','10','next'）
 })
 
 /*自动创建序列号*/
@@ -122,7 +127,7 @@ function creatCode(){
                 asButton+="<p>"+PageNo+"/"+countPages+"</p>"
                 if(countPages>1){
                     nextStartRow=PageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+material_code+"','"+product_name+"','"+product_identify+"','"+purchasing_company+"','"+company_name+"','"+contract_id+"','"+num+"','"+program_time+"','"+specification+"','"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
+                    asButton+="<a class=clickCursor onclick=goPage('"+branchId+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
                 }else{
                     asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
                 }
@@ -137,10 +142,10 @@ function creatCode(){
 }
 
 //页码跳转
-function goPage(material_code,material_name,product_identify,purchasing_company,company_name,contract_id,num,program_time,specification,branchId,startValue,limitValue,isGo){
+function goPage(branchId,startValue,limitValue,isGo){
     $.ajax({
-        url:ctx+"/createCode",
-        data:{material_code:material_code,product_name:material_name,product_identify:product_identify,purchasing_company:purchasing_company,company_name:company_name,contract_id:contract_id,num:num,program_time:program_time,specification:specification,branch_id:branchId,start:startValue,limit:limitValue},
+    	url:ctx+"/queryCodes",
+        data:{branch_id:branch_id,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
         success:function(data){
