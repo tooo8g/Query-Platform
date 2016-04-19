@@ -395,6 +395,22 @@ public class GeneralController {
 		response.getWriter().print(result);
 	}
 	/**
+	 * 根据物资id查询订货明细
+	 * @author niyn
+	 * @param str
+	 * @param start
+	 * @param limit
+	 */
+	@RequestMapping("/queryPurchasingById")
+	public void queryPurchasingById(@RequestParam String _id,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		String result = md.queryPurchasingById(_id);
+		System.out.println("根据_id查询订货明细的json："+result);
+		md.close();
+		response.getWriter().print(result);
+	}
+	
+	/**
 	 * 根据物资编号查询订货明细
 	 * @author niyn
 	 * @param str

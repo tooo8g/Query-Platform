@@ -17,7 +17,6 @@ $(function(){
     * purchasing_company//采购单位
     * company_name//企业名称
     * contract_id;//订单、合同号
-    * specification //规格型号
     * */
     var contractId=$(".contract_id").val() //合同订单id
     var company_name=$(".company_name").val() //供应商
@@ -34,16 +33,15 @@ $(function(){
     var material_code="" //物资编号
     var material_name="" //物资名称
     var product_code="" //产品标识代码
-    $.post(""+ctx+"/queryOrderOrContractDetail",{_id:_id},function(data){
-        isonSupply=data.purchasing[0]
-        jsonBzxx=data.bzxx[0]
+    var  num="" //生成数量	
+    $.post(""+ctx+"/queryPurchasingById",{_id:_id},function(data){
+        isonSupply=data.wzxx
         material_code=isonSupply.material_code
         $(".body_material_code").val(material_code)
         material_name=isonSupply.material_name
         $(".body_material_name").val(material_name)
         product_code=isonSupply.product_code
-        $(".body_product_identify").val(product_code)
-        specification=isonSupply.specification
+        $(".body_product_identify").val(product_code)      
         num = isonSupply.num
         $(".createCode_creatNum").val(num);
     },"json")

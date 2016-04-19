@@ -79,7 +79,8 @@ $(function(){
 		                    purchasingTbodyList+="<td>"+purchasing[i].price+"</td>"
 		                    purchasingTbodyList+="<td>"+purchasing[i].total_price+"</td>"
 		                    purchasingTbodyList+="<td>"+purchasing[i].company+"</td>"
-		                    purchasingTbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatec?_id="+purchasing[i]._id.$oid+"&company_name="+company_name+"&contract_id="+contract_id+"&purchasing_company="+purchasing_company+"'>编制序列号</a></td>"
+		                    purchasingTbodyList+="<td><a onclick=goQuerySerialCreatec('"+purchasing[i]._id.$oid+"','"+company_name+"','"+contract_id+"','"+purchasing_company+"')>编制序列号</a></td>"
+		                   /* purchasingTbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatec?_id="+purchasing[i]._id.$oid+"&company_name="+company_name+"&contract_id="+contract_id+"&purchasing_company="+purchasing_company+"'>编制序列号</a></td>"*/
 		                    purchasingTbodyList+="</tr>"
             		  } 	
             	}
@@ -111,4 +112,78 @@ $(function(){
             $(".qcti_supplyPlan_tbody").append(supplyPlanTbodyList)
         }
     })
+    
+    
+    
+  //设置命名空间
+    var CodeSTD = window.CodeSTD || {};
+
+    window.CodeSTD = CodeSTD; 
+
+    /**
+     * 创建Form表单
+     * @author 王成委
+     * @param config Object
+     *  <p>url:form的Action，提交的后台地址</p>
+     *  <p>method:使用POST还是GET提交表单</p>
+     *  <p>params:参数 K-V</p>
+     * @return Form
+     */
+    CodeSTD.form = function(config){
+        config = config || {};
+
+        var url = config.url,
+            method = config.method || 'GET',
+            params = config.params || {};
+
+        var form = document.createElement('form');
+        form.action = url;
+        form.method = method;
+        form.target = "_self";
+
+        for(var param in params){
+            var value = params[param],
+                input = document.createElement('input');
+
+            input.type = 'hidden';
+            input.name = param;
+            input.value = value;
+
+            form.appendChild(input);
+        }
+
+        return form;
+    }
  })
+
+ 
+ function goQuerySerialCreatec(_id,company_name,contract_id,purchasing_company){
+
+    var form = new CodeSTD.form({
+        url:ctx+'/serial/querySerialCreatec',
+        method:'POST',
+        target:"_blank",
+        params:{
+        	_id:_id,
+        	company_name:company_name,
+        	contract_id:contract_id,
+        	purchasing_company:purchasing_company
+        }
+    })
+
+    $(form).submit();
+    form = null;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
