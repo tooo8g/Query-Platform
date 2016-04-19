@@ -20,6 +20,7 @@ $(function(){
     * specification //规格型号
     * */
     var contractId=$(".contract_id").val() //id
+    var _id = $("._id").val();
     var isonSupply="" //保存supply的data
     var jsonBzxx="" //保存bzxx的data
     var material_code="" //物资编号
@@ -28,7 +29,7 @@ $(function(){
     var purchasing_company="" //采购单位
     var company_name=""  //企业名称
     var contract_id="" //订单号/合同号
-    $.post(""+ctx+"/queryOrderOrContractDetail",{contract_id:contractId},function(data){
+    $.post(""+ctx+"/queryOrderOrContractDetail",{_id:_id},function(data){
         isonSupply=data.purchasing[0]
         jsonBzxx=data.bzxx[0]
         material_code=isonSupply.material_code

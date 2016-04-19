@@ -374,9 +374,9 @@ public class GeneralController {
 	/**
 	 * 查询合同订单号（带条件查询）
 	 * @author niyn
-	 * @param contract_id                     合同订单号
-	 * @param purchasing_company     采购单位
-	 * @param company_name              供应商
+	 * @param contract_id 合同订单号
+	 * @param purchasing_company 采购单位
+	 * @param company_name 供应商
 	 * @param start
 	 * @param limit
 	 * @param request
@@ -390,7 +390,7 @@ public class GeneralController {
 			@RequestParam int limit, HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		Account a =(Account) session.getAttribute("account");
-		String result = md.queryOrderOrContract(contract_id,purchasing_company,company_name, a.getFiled(),start,	limit);
+		String result = md.queryOrderOrContract(contract_id,purchasing_company,company_name, a.getFiled(),start,limit);
 		md.close();
 		response.getWriter().print(result);
 	}
