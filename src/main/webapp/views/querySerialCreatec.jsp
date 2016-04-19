@@ -17,9 +17,13 @@
 <div class="qscc">
   <% String _id=request.getParameter("_id");%>
   <% String contract_id=request.getParameter("contract_id");%>
+  <% String company_name=request.getParameter("company_name");%>
+  <% String purchasing_company=request.getParameter("purchasing_company");%>
   <input type="hidden" class="pageNo" value="">
   <input type="hidden" class="_id" value="<%=_id%>">
   <input type="hidden" class="contract_id" value="<%=contract_id%>">
+  <input type="hidden" class="company_name" value="<%=company_name%>">
+  <input type="hidden" class="purchasing_company" value="<%=purchasing_company%>">
   <div class="qscc_title">
     <p>当前位置：</p>
     <p>资质信息查询</p>
@@ -31,27 +35,27 @@
     <div class="qscc_body_information">
       <div class="qscc_body_material_code">
         <label>物资编码</label>
-        <input type="text" class="body_material_code" value="">
+        <input type="text" class="body_material_code" value="" readonly="true">
       </div>
       <div class="qscc_body_material_name">
         <label>物资名称</label>
-        <input type="text" class="body_material_name" value="">
+        <input type="text" class="body_material_name" value="" readonly="true">
       </div>
       <div class="qscc_body_product_identify">
         <label>产品标识代码</label>
-        <input type="text" class="body_product_identify" value="">
+        <input type="text" class="body_product_identify" value="" readonly="true">
       </div>
       <div class="body_createCode_orderno">
         <label>订单号/合同号</label>
-        <input type="text" class="createCode_orderno" value="">
+        <input type="text" class="createCode_orderno" value="" readonly="true">
       </div>
       <div class="body_createCode_company_name">
         <label>供应商</label>
-        <input type="text" class="createCode_company_name" value="">
+        <input type="text" class="createCode_company_name" value="" readonly="true">
       </div>
       <div class="body_createCode_purchasing_company">
         <label>采购单位</label>
-        <input type="text" class="createCode_purchasing_company" value="">
+        <input type="text" class="createCode_purchasing_company" value="" readonly="true">
       </div>
     </div>
     <div class="qscc_body_createCode">
@@ -61,7 +65,7 @@
       </div>
       <div class="body_createCode_creatNum">
         <label>生成数量</label>
-        <input type="text" class="createCode_creatNum" value="">
+        <input type="text" class="createCode_creatNum" value="" readonly="true">
       </div>
       <div class="body_createCode_mode">
         <label>编制模式</label>
