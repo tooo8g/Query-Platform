@@ -80,6 +80,12 @@
           &nbsp;&nbsp;3，修复序列号查询编制日期的BUG。<br>
           &nbsp;&nbsp;4，增加资质多关键字查询功能。<br>
           &nbsp;&nbsp;5，页面样式调整。<br>
+          1.3.0修改记录:<br>
+          &nbsp;&nbsp;1，增加订单合同流程<br>
+          &nbsp;&nbsp;2，增加条码/二维码生成及预览功能<br>
+          &nbsp;&nbsp;3，根据合同的录入方、供应商、采购物资厂家等角色分配读、写(编制序列号)权限<br>
+          &nbsp;&nbsp;4，增加用户操作权限管理功能<br>
+          &nbsp;&nbsp;5，修复主流程BUG<br>
         </div>
       </div>
     </div>
