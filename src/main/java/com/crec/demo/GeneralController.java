@@ -1,5 +1,8 @@
 package com.crec.demo;
 
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.eq;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -15,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,12 +32,14 @@ import com.crec.util.CodeUtil;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.platform.io.bean.Account;
 import com.platform.io.bean.Company;
+import com.platform.io.bean.Material;
 import com.platform.io.bean.OrderOrContract;
 import com.platform.io.bean.Person;
 import com.platform.io.bean.WaybillInfo;
 import com.platform.mongo.s1.MongoDirverS1;
 import com.platform.mongo.s2.MongoDirver;
 import com.platform.mongo.util.FileUtils;
+import com.platform.mongo.util.JavaBeanToDBObject;
 import com.platform.mongo.util.MD5Util;
 import com.platform.mongo.util.TimeUtil;
 
@@ -792,20 +799,70 @@ public class GeneralController {
     	response.getWriter().print(barCodeByte);
 	} 
 	
-	public static void main(String[] args) {
-		GeneralController g = new GeneralController();
-		try {
-			// g.QueryPriceHistory("56a86fcd4d462a721c8496fd", null, null);
-			// g.QueryPriceHistory("56a86fcd4d462a721c8496fd", "设备BBA", "12345",
-			// "石家庄钢铁厂", "石家庄", null, null);
-//			g.QueryPriceMenu(null, null);
-//			MongoDirver md = new MongoDirver();
-//			String result = md.queryCertifications("车钩及缓冲装置总成", 0, 10);
-//			System.out.println(result);
-//			md.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    /**
+	 * 新增物资
+	 * @author niyn
+	 */
+    @RequestMapping("/addMaterial")
+	public void addMaterial(@RequestParam Material material) throws Exception{
+    	MongoDirver md = new MongoDirver();
+    	md.addMaterial(material);
 	}
+	
+	/**
+	 * 查询物资列表
+	 * @author niyn
+	 * @return
+	 * @throws IOException 
+	 */
+    @RequestMapping("/queryMaterial")
+	public void queryMaterial(
+			@RequestParam String material_code,
+			@RequestParam String material_name,
+			@RequestParam int skip,
+			@RequestParam int limit,
+			HttpServletResponse  response) throws IOException{
+		MongoDirver md = new MongoDirver();
+		String result = md.queryMaterial(material_code,material_name,skip, limit);
+		response.getWriter().println(result);
+	}
+	
+	/**
+	 * 根据id查询物资（修改物资）
+	 * @author niyn
+	 * @param _id
+	 * @throws Exception
+	 */
+    @RequestMapping("/queryMaterialById")
+	public void queryMaterialById(@RequestParam String _id,HttpServletResponse  response) throws Exception{
+    	MongoDirver md = new MongoDirver();
+    	String result = md.queryMaterialById(_id);
+    	response.getWriter().println(result);
+	}
+	
+	/**
+	 * 修改物资[保存]
+	 * @author niyn
+	 * @param _id
+	 * @param material
+	 * @throws Exception
+	 */
+    @RequestMapping("/updateMaterial")
+	public void updateMaterial(@RequestParam String _id,@RequestParam Material material) throws Exception{
+    	MongoDirver md = new MongoDirver();
+    	md.updateMaterial(_id, material);
+	}
+    /**
+	 * 删除物资
+	 * @author niyn
+	 * @param _id
+	 * @param material
+	 * @throws Exception
+	 */
+    @RequestMapping("/deleteMaterial")
+	public void deleteMaterial(@RequestParam String _id) throws Exception{
+    	MongoDirver md = new MongoDirver();
+    	md.deleteMaterial(_id);
+	}
+    
 }
