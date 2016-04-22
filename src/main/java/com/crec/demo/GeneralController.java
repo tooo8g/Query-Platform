@@ -819,11 +819,11 @@ public class GeneralController {
 	public void queryMaterial(
 			@RequestParam String material_code,
 			@RequestParam String material_name,
-			@RequestParam int skip,
+			@RequestParam int start,
 			@RequestParam int limit,
 			HttpServletResponse  response) throws IOException{
 		MongoDirver md = new MongoDirver();
-		String result = md.queryMaterial(material_code,material_name,skip, limit);
+		String result = md.queryMaterial(material_code,material_name,start, limit);
 		response.getWriter().println(result);
 	}
 	
@@ -848,9 +848,23 @@ public class GeneralController {
 	 * @throws Exception
 	 */
     @RequestMapping("/updateMaterial")
-	public void updateMaterial(@RequestParam String _id,@RequestParam Material material) throws Exception{
+	public void updateMaterial(
+			@RequestParam String _id,
+			@RequestParam String material_code,
+			@RequestParam String material_name,
+			@RequestParam String specification,
+			@RequestParam String measurement,
+			@RequestParam Integer isPrecious,
+			HttpServletResponse  response) throws Exception{
     	MongoDirver md = new MongoDirver();
-    	md.updateMaterial(_id, material);
+    	Material m = new Material();
+    	m.setMaterial_code(material_code);
+    	m.setMaterial_name(material_name);
+    	m.setSpecification(specification);
+    	m.setMeasurement(measurement);
+    	m.setIsPrecious(isPrecious);
+    	md.updateMaterial(_id, m);
+    	response.getWriter().println("success");
 	}
     /**
 	 * 删除物资
@@ -860,9 +874,13 @@ public class GeneralController {
 	 * @throws Exception
 	 */
     @RequestMapping("/deleteMaterial")
-	public void deleteMaterial(@RequestParam String _id) throws Exception{
+	public void deleteMaterial(
+			@RequestParam String _id,
+			HttpServletResponse  response)
+			throws Exception{
     	MongoDirver md = new MongoDirver();
     	md.deleteMaterial(_id);
+    	response.getWriter().println("success");
 	}
     
 }

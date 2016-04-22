@@ -23,7 +23,7 @@ function materManageSearch(){
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:"../json/demo_queryMaterialManage.json",
+    	url:ctx+"/queryMaterial",
         type:"post",
         data:{material_code:material_code,material_name:material_name,start:startValue,limit:limitValue},
         async:"false",
@@ -77,7 +77,7 @@ function materManageSearch(){
 
 function goPage(material_code,material_name,startValue,limitValue,isGo){
     $.ajax({
-        url:"../json/demo_queryMaterialManage.json",
+    	url:ctx+"/queryMaterial",
         data:{material_code:material_code,material_name:material_name,start:startValue,limit:limitValue},
         async:"false",
         dataType : 'json',
@@ -164,7 +164,7 @@ function show_modify_materManage(str){
     var measurement="" //计量单位
     var isPrecious="" //是否重要物质
     $.ajax({
-        url:"../json/query_updateMater.json",
+        url:ctx+"/queryMaterialById",
         data:{_id:str},
         type:"post",
         dataType:"json",
@@ -196,10 +196,9 @@ function close_materManage_modify(){
 /*删除物资*/
 function deleteMater(str){
     $.ajax({
-        url:"",
+        url:ctx+"/deleteMaterial",
         type:"post",
         data:{_id:str},
-        dataYpe:"json",
         success:function(){
             materManageSearch()
         }
@@ -223,13 +222,12 @@ function saveModify_materManage(){
     var measurement=$(".mater_measurement").val() //计量单位
     var isPrecious=$(".mater_isPrecious").is(':checked')?1:0//是否重要物质
     $.ajax({
-        url:"",
+        url:ctx+"/updateMaterial",
         type:"post",
         data:{_id:_id,material_code:material_code,material_name:material_name,specification:specification,measurement:measurement,isPrecious:isPrecious},
-        dataType:"json",
-        success:function(){
-            close_materManage_modify()
-            materManageSearch()
+        success:function(dd){
+        	close_materManage_modify()
+        	materManageSearch()
         }
     })
 }
