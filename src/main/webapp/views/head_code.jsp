@@ -40,7 +40,7 @@
                 <ul class="guanliUl displayNo">
                     <li><a href="${ctx}/company/queryCompanyList" target="_self" class="companyList colorClick">供应商管理</a></li>
                     <li><a href="${ctx}/account/queryAccountList" target="_self" class="personList colorNoClick">用户管理</a></li>
-                    <li><a href="${ctx}/account/queryAccountList" target="_self" class="materialManage colorNoClick">用户管理</a></li>
+                    <li><a href="${ctx}/account/queryAccountList" target="_self" class="materialManage colorNoClick">物资管理</a></li>
                 </ul>
             </div>
         </div>
