@@ -25,7 +25,7 @@
     </div>
     <div class="materManageOperation">
       <a href="javascript:;" type="button" id="materManageSearch" onclick="materManageSearch()">查询</a>
-      <a href="queryMaterMana"  id="materManageAdd" >新增物资</a>
+      <a href="${ctx}/material/addMaterial"  id="materManageAdd" >新增物资</a>
     </div>
   </div>
   <div class="materManage_bottom">

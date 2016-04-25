@@ -2,7 +2,13 @@
  * Created by zb on 2016/4/22.
  */
 $(function(){
+	   /*改变头部的css*/
+    $(".codeUl").removeClass("displayBlock").addClass("displayNo")
+    $(".guanliUl").removeClass("displayNo").addClass("displayBlock")
 
+    /*给nav a 绑定一个click事件*/
+    $(".nav a").removeClass("colorClick").addClass("colorNoClick")
+    $(".materialManage").removeClass("colorNoClick").addClass("colorClick")
 })
 /*新增物资明细*/
 function materManage_Add_add(){
@@ -49,17 +55,15 @@ function materManage_add_save(){
             return false
         }
     })
-    orderOrCont={"material":tableVal}
-    var orderOrContracts="" //保存的JSON
-    orderOrContracts=JSON.stringify(orderOrCont)
+    var material=JSON.stringify(tableVal)
     if(trInputVal){
         $.ajax({
-            url:ctx+"/addOrderOrContract",
+            url:ctx+"/addMaterial",
             type:"post",
-            data:orderOrContracts,
+            data:material,
             contentType:"application/json",
             success:function(data){
-                window.location.href=ctx+"/contract/queryContractSearch";
+                window.location.href=ctx+"/material/materialManager";
             }
         })
     }else{

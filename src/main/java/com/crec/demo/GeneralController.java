@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -42,6 +43,9 @@ import com.platform.mongo.util.FileUtils;
 import com.platform.mongo.util.JavaBeanToDBObject;
 import com.platform.mongo.util.MD5Util;
 import com.platform.mongo.util.TimeUtil;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 @Controller
 public class GeneralController {
@@ -804,9 +808,14 @@ public class GeneralController {
 	 * @author niyn
 	 */
     @RequestMapping("/addMaterial")
-	public void addMaterial(@RequestParam Material material) throws Exception{
+    @ResponseBody
+	public String addMaterial(@RequestBody List<Material> material) throws Exception{
+    	System.out.println("接收到的material物资参数："+material);
+    	JSONArray jsonarray = JSONArray.fromObject(material);  
+        List<Material> list = (List)JSONArray.toCollection(jsonarray, Material.class);  
     	MongoDirver md = new MongoDirver();
-    	md.addMaterial(material);
+    	md.addMaterial(list);
+    	return "success";
 	}
 	
 	/**
@@ -882,5 +891,4 @@ public class GeneralController {
     	md.deleteMaterial(_id);
     	response.getWriter().println("success");
 	}
-    
 }

@@ -67,5 +67,22 @@ public class GotoController {
 	public ModelAndView queryAccountList(){
 		return new ModelAndView("personList");
 	}
-	
+	/**
+	 * 物资管理页面
+	 * @author niyn
+	 * @return
+	 */
+	@RequestMapping("/material/materialManager")
+	public ModelAndView toMaterialManager(){
+		return new ModelAndView("queryMaterialManage");
+	}
+	/**
+	 * 新增物资页面
+	 * @author niyn
+	 * @return
+	 */
+	@RequestMapping("/material/addMaterial")
+	public ModelAndView toAddMaterial(){
+		return new ModelAndView("queryMaterManageAdd");
+	}
 }
