@@ -31,7 +31,6 @@ function materManage_add_save(){
     var inputValue="" //保存input值
     var trInputVal="" //用来保存每组tr的input
     var tableVal=[] //总的input val
-    var orderOrCont="" //保存列表里面的东西
     var isPrecious="" //是否是重要物质
     $(".materManageAdd_tbody tr").each(function(){
         $(this).find("input").each(function(i){
@@ -113,7 +112,6 @@ function completeFn(){
         && arguments[0]
         && arguments[0].data)
         rows = arguments[0].data.length;
-        console.log(arguments[0].data);
     var arrayList="" //保存导入的数据
     arrayList=arguments[0].data    //materManageAdd_tbody
     var tbodyList="" //保存到tbody里面的数据
