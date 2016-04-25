@@ -195,14 +195,16 @@ function close_materManage_modify(){
 
 /*删除物资*/
 function deleteMater(str){
-    $.ajax({
-        url:ctx+"/deleteMaterial",
-        type:"post",
-        data:{_id:str},
-        success:function(){
-            materManageSearch()
-        }
-    })
+    if(confirm("是否确定删除")){
+        $.ajax({
+            url:ctx+"/deleteMaterial",
+            type:"post",
+            data:{_id:str},
+            success:function(){
+                materManageSearch()
+            }
+        })
+    }
 }
 /*点击序号，如果背景是白的，就变成蓝色，如果是蓝色，就变成白色*/
 function clickCodes(str){
