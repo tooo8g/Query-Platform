@@ -12,7 +12,13 @@ $(function(){
     /*打开页面就调用查询方法*/
     materManageSearch()
 })
-/*查询*/
+/*查询
+* params:
+* startValue  初始值
+* limitValue 一次取出多少条数据
+* material_code 物资编码
+* material_name 物资名称
+* */
 function materManageSearch(){
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -75,6 +81,13 @@ function materManageSearch(){
     })
 }
 
+/*下一页
+ * params:
+ * startValue  初始值
+ * limitValue 一次取出多少条数据
+ * material_code 物资编码
+ * material_name 物资名称
+* */
 function goPage(material_code,material_name,startValue,limitValue,isGo){
     $.ajax({
     	url:ctx+"/queryMaterial",
@@ -150,7 +163,11 @@ function goPage(material_code,material_name,startValue,limitValue,isGo){
         }
     })
 }
-/*打开修改物资页面*/
+/*打开修改物资页面
+* params: _id
+* 传到后台，获取这个Id下面的所有值
+*显示到页面相应位置
+* */
 function show_modify_materManage(str){
     $(".materManageId").val("")
     $(".materManageId").val(str)
@@ -193,7 +210,9 @@ function close_materManage_modify(){
     $(".modify_materManage").removeClass("displayBlock").addClass("displayNo")
 }
 
-/*删除物资*/
+/*删除物资
+* 删除以后，调用查询方法
+* */
 function deleteMater(str){
     if(confirm("是否确定删除")){
         $.ajax({
@@ -215,7 +234,17 @@ function clickCodes(str){
         $(str).removeClass("clickCodes").addClass("noclickCodes")
     }
 }
-/*保存*/
+/*保存
+* params
+* _id
+* material_code 物资编码
+* material_name 物资名称
+* specification 规格型号
+* measurement 计量单位
+* isPrecious 是否重要物质
+*
+*保存成功以后，调用close_materManage_modify和materManageSearch方法
+* */
 function saveModify_materManage(){
     var _id=$(".materManageId").val() //ID
     var material_code=$(".mater_material_code").val() //物资编码

@@ -10,12 +10,16 @@ $(function(){
     $(".nav a").removeClass("colorClick").addClass("colorNoClick")
     $(".materialManage").removeClass("colorNoClick").addClass("colorClick")
 })
-/*新增物资明细*/
+/*新增物资明细
+* 刚打开网页，materManageAdd_tbody里面的tr条数为10条，可以最大显示20条，超过20以后，会出现滚动条
+* */
 function materManage_Add_add(){
     $(".materManageAdd_tbody").append("<tr><td><input class='material_code' type='text' value=''></td><td><input class='material_name' type='text' value=''></td><td><input class='specification' type='text' value=''></td><td><input class='measurement' type='text' value=''></td><td><input class='isPrecious' type='checkbox'></td> <td><a onclick=materManageAdd_delete(this)>删除</a></td></tr>")
 }
 
-/*删除订货明细里面的列表*/
+/*删除订货明细里面的列表
+* 删除点击的行以后，进行判断，如果行数小于10，就给自动添加一条
+* */
 function materManageAdd_delete(str){
     var trLength=$(".materManageAdd_tbody tr").length //materManageAdd_tbody里面的tr的个数
     /*通过判断tr的个数，如果tr大于10，则直接删除，如果等于10，则删除以后还要再加一个*/
@@ -25,7 +29,13 @@ function materManageAdd_delete(str){
     }
 }
 
-/*保存*/
+/*保存
+* 遍历每行前四列里面的值，将其保存在trInputVal里面
+*获取每行的值前进行判断，如果这行的input里面没有值，就跳出循环
+* 如果有值，就获取这行的前四个值，然后对第五个值进行checked判断，true为1，false为0
+* 所有的tr遍历完以后，全部保存到tableVal
+* material转换为json,传给后台
+* * */
 function materManage_add_save(){
     var flag=true //用来判断每行tr是否有空白input
     var inputValue="" //保存input值
@@ -34,6 +44,7 @@ function materManage_add_save(){
     var isPrecious="" //是否是重要物质
     $(".materManageAdd_tbody tr").each(function(){
         $(this).find("input").each(function(i){
+            /*通过i判断，如果超过4，即这行tr里面的的第五个input，就跳出判断，不获取第五个值*/
             if(i>4){
                 return false
             }else{
@@ -134,6 +145,7 @@ function errorFn(error, file)
     console.log("ERROR:", error, file);
 }
 
+/*files传入值以后，调用这个方法*/
 function filesCheange(){
         stepped = 0;
         chunks = 0;
@@ -189,7 +201,9 @@ function filesCheange(){
             console.log("Synchronous parse results:", results);
         }
 }
-
+/*触发#files的click方法,csv文件的格式必须为utf-8，不然会出现中文乱码，utf-8的csv文件，用excel打开后，会出现乱码
+* csv文件修改编码格式的方法：用记事本打开，然后点击另存为，选中相依的编码格式
+* */
 function inportMater(){
     return $("#files").click()
 }
