@@ -13,7 +13,7 @@
 <body>
 <div class="qLogin">
   <div class="qLogin_log">
-    <img src="${ctx}/images/head_3.png">
+    <img src="${ctx}/images/head_4.png">
   </div>
   <div class="qLogin_content">
     <div class="content_login">
