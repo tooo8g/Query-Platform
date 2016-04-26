@@ -6,6 +6,14 @@ var demoJson=""
 //列表JSON
 var list_json="";
 $(function(){
+    /*改变头部的css*/
+    $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
+    $(".codeUl").removeClass("displayNo").addClass("displayBlock")
+
+    /*修改头部的css*/
+    $(".nav li a").removeClass("colorClick").addClass("colorNoClick")
+    $(".seniorSearchSpan").removeClass("colorNoClick").addClass("colorClick")
+
     /*页面刚打开，触发的方法
      页面刚打开时，设定搜索框(str)的值为空，初始值(startValue)为0，每次取出的条数(limitValue)为0
      访问后台，返回Json数据

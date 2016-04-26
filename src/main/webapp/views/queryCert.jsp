@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<jsp:include page="head.jsp"/>
+<jsp:include page="head_code.jsp"/>
 <div class="as">
   <input type="hidden" class="pageNo" value="">
   <div class="as_title">

@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/css/queryPrchaseList.css">
 </head>
 <body>
-<jsp:include page="head.jsp"/>
+<jsp:include page="head_code.jsp"/>
 <input type="hidden" class="pageNo" value="">
 <div class="purchase">
   <div class="purchase_title">

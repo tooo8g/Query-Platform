@@ -3,6 +3,14 @@
  */
 
 $(function(){
+    /*改变头部的css*/
+    $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
+    $(".codeUl").removeClass("displayNo").addClass("displayBlock")
+
+    /*修改头部的css*/
+    $(".nav li a").removeClass("colorClick").addClass("colorNoClick")
+    $(".seniorSearchSpan").removeClass("colorNoClick").addClass("colorClick")
+
     /*打开页面，自动调用下面的方法，把相关信息放到biiLis_tbody里面*/
     search_purchase_button()
 

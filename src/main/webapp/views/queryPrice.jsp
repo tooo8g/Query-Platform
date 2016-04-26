@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/css/queryPrice.css">
 </head>
 <body>
-<jsp:include page="head.jsp"/>
+<jsp:include page="head_code.jsp"/>
 <div class="jq_message_content">
     <input type="hidden" class="pageNo" value="">
     <div class="jq_message_title">
@@ -115,11 +115,9 @@
                 </tbody>
             </table>
         </div>
-        <%--<div class="listperAuth">--%>
-            <div class="listperAuth_button">
+         <div class="listperAuth_button">
 
-            </div>
-        <%--</div>--%>
+        </div>
 
     </div>
 </div>

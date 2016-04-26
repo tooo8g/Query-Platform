@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/css/queryStandard.css">
 </head>
 <body>
-<jsp:include page="head.jsp"/>
+<jsp:include page="head_code.jsp"/>
 <input type="hidden" class="pageNo" value="">
 <div class="sts">
     <div class="sts_title">

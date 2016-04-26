@@ -5,6 +5,15 @@ var list_json=""; //保存目录列表的json
 var jsonData=""; //保存物资数据的json
 var jsonDetailsData="" //相情页面的json
 $(function(){
+    /*改变头部的css*/
+    $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
+    $(".codeUl").removeClass("displayNo").addClass("displayBlock")
+
+    /*修改头部的css*/
+    $(".nav li a").removeClass("colorClick").addClass("colorNoClick")
+    $(".seniorSearchSpan").removeClass("colorNoClick").addClass("colorClick")
+
+
     allCityList('regionSelect_city')
     /*
      * 进去页面，自动调此方法，获取左边的目录

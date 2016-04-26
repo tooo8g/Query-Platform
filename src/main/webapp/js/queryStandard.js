@@ -2,6 +2,14 @@
  * Created by zb on 2016/1/15.
  */
 $(function(){
+    /*改变头部的css*/
+    $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
+    $(".codeUl").removeClass("displayNo").addClass("displayBlock")
+
+    /*修改头部的css*/
+    $(".nav li a").removeClass("colorClick").addClass("colorNoClick")
+    $(".seniorSearchSpan").removeClass("colorNoClick").addClass("colorClick")
+
 	 var staHtml=$(".sts_title_add a").text().trim() //sts_standType a的值
      var str="" //标准编号标准名称
      var standard_status="" //标准状态
