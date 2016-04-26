@@ -38,10 +38,10 @@
                     <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">运单查询</a></li>
                     <li class="seniorSearch"><span  class="seniorSearchSpan colorNoClick">高级查询</span>
                         <ul>
-                            <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">资质查询</a></li>
-                            <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">标准查询</a></li>
-                            <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">价格查询</a></li>
-                            <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">招标采购</a></li>
+                            <li><a href="${ctx}/cert/queryCert" target="_self" class="waybill colorNoClick">资质查询</a></li>
+                            <li><a href="${ctx}/standard/queryStandard" target="_self" class="waybill colorNoClick">标准查询</a></li>
+                            <li><a href="${ctx}/price/queryPrice" target="_self" class="waybill colorNoClick">价格查询</a></li>
+                            <li><a href="${ctx}/purchase/queryPurchaseList" target="_self" class="waybill colorNoClick">招标采购</a></li>
                         </ul>
                     </li>
                 </ul>

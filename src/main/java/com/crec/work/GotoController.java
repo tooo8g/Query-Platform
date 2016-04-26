@@ -76,6 +76,7 @@ public class GotoController {
 	public ModelAndView toMaterialManager(){
 		return new ModelAndView("queryMaterialManage");
 	}
+	
 	/**
 	 * 新增物资页面
 	 * @author niyn
@@ -85,4 +86,58 @@ public class GotoController {
 	public ModelAndView toAddMaterial(){
 		return new ModelAndView("queryMaterManageAdd");
 	}
+	
+	/**
+	 * 资质查询页面
+	 * @author niyn
+	 * @return
+	 */
+	@RequestMapping("/cert/queryCert")
+	public ModelAndView toQueryCert(){
+		return new ModelAndView("queryCert");
+	}
+	
+	/**
+	 * 最新标准查询页面
+	 * @author niyn
+	 * @return
+	 */
+	@RequestMapping("/standard/queryLatestStandard")
+	public ModelAndView toQueryLatestStandard(){
+		return new ModelAndView("queryLatestStandard");
+	}
+	
+	/**
+	 * 标准查询页面
+	 * @author niyn
+	 * @return
+	 */
+	@RequestMapping("/standard/queryStandard")
+	public ModelAndView toQueryStandard(){
+		return new ModelAndView("queryStandard");
+	}
+	
+	/**
+	 * 价格查询页面
+	 * @author niyn
+	 * @return
+	 */
+	@RequestMapping("/price/queryPrice")
+	public ModelAndView toQueryPrice(){
+		return new ModelAndView("queryPrice");
+	}
+	
+	/**
+	 * 招标采购信息查询页面
+	 * @author niyn
+	 * @return
+	 */
+	@RequestMapping("/purchase/queryPurchaseList")
+	public ModelAndView toQueryPurchaseList(){
+		return new ModelAndView("queryPurchaseList");
+	}
+	
+	
+	
+	
 }
