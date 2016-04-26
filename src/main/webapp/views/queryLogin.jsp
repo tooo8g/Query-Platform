@@ -63,7 +63,7 @@
       </form>
       <div class="qLogin_ver"></div>
       <div class="qLogin_version">
-        <span class="qLogin_version_span">版本：1.2.2</span>
+        <span class="qLogin_version_span">版本：1.3.2</span>
         <div class="qLogin_version_prompt displayNo" id="qLogin_version_prompt">
           1.2.0修改记录：<br>
           &nbsp;&nbsp;1，增加数据权限管理功能。<br>
@@ -80,12 +80,20 @@
           &nbsp;&nbsp;3，修复序列号查询编制日期的BUG。<br>
           &nbsp;&nbsp;4，增加资质多关键字查询功能。<br>
           &nbsp;&nbsp;5，页面样式调整。<br>
+          <br>
           1.3.0修改记录:<br>
           &nbsp;&nbsp;1，增加订单合同流程<br>
           &nbsp;&nbsp;2，增加条码/二维码生成及预览功能<br>
           &nbsp;&nbsp;3，根据合同的录入方、供应商、采购物资厂家等角色分配读、写(编制序列号)权限<br>
           &nbsp;&nbsp;4，增加用户操作权限管理功能<br>
           &nbsp;&nbsp;5，修复主流程BUG<br>
+          <br>
+          1.3.1修改记录:<br>
+          &nbsp;&nbsp;1，增加物资管理功能<br>
+          <br>
+          1.3.2修改记录:<br>
+          &nbsp;&nbsp;1，变更功能摆放<br>
+          <br>
         </div>
       </div>
     </div>

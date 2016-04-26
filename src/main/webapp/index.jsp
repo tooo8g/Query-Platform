@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%response.sendRedirect("http://36.110.19.175/Query-Platform/login"); %>
 <html>
 <head lang="en">
     <meta charset="utf-8">
