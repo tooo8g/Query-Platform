@@ -285,6 +285,7 @@ function goPage(date,name,citySelect,specification,start,limit,isGo){
         url: ctx+'/queryPrice',
         data:{date:date,name:name,city:citySelect,specification:specification,start:start,limit:limit},
         type : 'post',
+        async:"false",
         dataType : 'json',
         success:function(data){
             var trList=""  //保存获取的数据
@@ -367,7 +368,7 @@ function closeItemShow(){
         if($(".itemShow .showItem").eq(i).attr("class_num") == 0 ){
             $(".itemShow .showItem").eq(i).html("");
             $(".itemShowList").append("<div class='mulluShowSh' name='mulluShowSh'></div><div id='scrollShow' class='scrollShow'><div id='scrollSh' class='scrollSh'></div></div>")
-            $(".jq_message_content").height(569)
+            //$(".jq_message_content").height(569)
         }
         else{
             $(".itemShow .showItem").eq(i).remove();

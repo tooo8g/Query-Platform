@@ -36,6 +36,14 @@
                     <li><a href="${ctx}/contract/queryContractSearch" target="_self" class="contract colorNoClick">合同/订单查询</a></li>
                     <li><a href="${ctx}/serial/querySerialNumSearch" target="_self" class="serialNumber colorNoClick">序列号查询</a></li>
                     <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">运单查询</a></li>
+                    <li class="seniorSearch"><span  class="seniorSearchSpan colorNoClick">高级查询</span>
+                        <ul>
+                            <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">资质查询</a></li>
+                            <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">标准查询</a></li>
+                            <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">价格查询</a></li>
+                            <li><a href="${ctx}/waybill/queryWaybillSearch" target="_self" class="waybill colorNoClick">招标采购</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="guanliUl displayNo">
                     <li><a href="${ctx}/company/queryCompanyList" target="_self" class="companyList colorClick">供应商管理</a></li>
