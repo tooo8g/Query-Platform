@@ -12,6 +12,7 @@
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
+<jsp:include page="loading.jsp"/>
 <div class="conser">
   <div class="conser_top">
     <form id="conser_top_form">

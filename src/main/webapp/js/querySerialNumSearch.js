@@ -9,72 +9,83 @@ $(function(){
     /*调整头部*/
     $(".nav ul li a").removeClass("colorClick").addClass("colorNoClick")
     $(".serialNumber").removeClass("colorNoClick").addClass("colorClick")
-	
-    /*页面进来直接调用方法*/
-    var startValue=0 //初始值
-    var limitValue=10 //一次取出多少条数据
-    var contract_id ="" //订单号/合同号
-    var state="" //序列号状态
-    var program_time="" //编制日期
-    var purchasing_company="" //采购单位
-    var company_name="" //企业名称
-    var count="" //总数
-    var codes="" //保存data信息
-    var tbodyList=""
-    var bzNum
-    $.ajax({
-        url:ctx+"/queryAllCode",
-        data:{contract_id:contract_id,state:state,program_time:program_time,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
-        type:"post",
-        async:false,
-        dataType:"json",
-        success: function (data) {
-            count=data.count
-            codes=data.codes
-            for(var i=0;i<codes.length;i++){
-                bzNum=Number(startValue)+i+1
-                tbodyList+="<tr>"
-                tbodyList+="<td><a class='noclickCodes' href='javascript:;' onclick='clickCodes(this)'></a><p>"+bzNum+"</p></td>"
-                tbodyList+="<td>"+codes[i].code+"</td>"
-//                tbodyList+="<td>"+codes[i].program_time+"</td>"
-                tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
-                tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
-                tbodyList+="<td>"+codes[i].contract_id+"</td>"
-                tbodyList+="<td>"+codes[i].company_name+"</td>"
-                tbodyList+="<td>"+codes[i].material_code+"</td>"
-                tbodyList+="<td>"+codes[i].product_identify+"</td>"
-                tbodyList+="<td>"+codes[i].product_name+"</td>"
-                tbodyList+="<td>"+codes[i].specification+"</td>"
-                tbodyList+="<td>"+(codes[i].state==0?"未打印":"已打印")+"</td>"
-                tbodyList+="</tr>"
-            }
-            $(".qsns_bottom_tbody").html(" ")
-            $(".qsns_bottom_tbody").append(tbodyList)
-            if(count>0) {
-                var asButton = ""
-                var countPages = Math.ceil(count / limitValue)
-                var PageNo  //当前页码
-                if (startValue == 0) {
-                    PageNo = 1
-                }
-                $(".pageNo").val(PageNo)
-                var nextStartRow//下一页开始显示的编号
-                asButton += "<a><img src='"+ctx+"/images/sts_4.png'></a>"
-                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
-                if (countPages > 1) {
-                    nextStartRow = PageNo * limitValue
-                    asButton += "<a class=clickCursor onclick=goPage('" + contract_id + "','" + state + "','" + program_time + "','" + purchasing_company + "','" + company_name + "','" + nextStartRow + "','" + limitValue + "','next')><img src='"+ctx+"/images/sts_5.png'></a>"
-                } else {
-                    asButton += "<a><img src='"+ctx+"/images/sts_5.png'></a>"
-                }
-                $(".listperAuth_button").html(" ")
-                $(".listperAuth_button").append(asButton)
-            }
-        },
-        error:function(){
-            alert("链接失败")
-        }
+
+    /*添加loading页面*/
+    var c = $(window).width();
+    var e = $(window).height();
+    var d = $(".fl").outerWidth();
+    var f = $(".fl").outerHeight();
+    $(".loadingImg").css({
+        position: "absolute",
+        left: (c / 2) - (d / 2),
+        top: (e / 2) - (f / 2)
     })
+    /*页面进来直接调用方法*/
+     formButton()
+//    var startValue=0 //初始值
+//    var limitValue=10 //一次取出多少条数据
+//    var contract_id ="" //订单号/合同号
+//    var state="" //序列号状态
+//    var program_time="" //编制日期
+//    var purchasing_company="" //采购单位
+//    var company_name="" //企业名称
+//    var count="" //总数
+//    var codes="" //保存data信息
+//    var tbodyList=""
+//    var bzNum
+//    $.ajax({
+//        url:ctx+"/queryAllCode",
+//        data:{contract_id:contract_id,state:state,program_time:program_time,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
+//        type:"post",
+//        async:false,
+//        dataType:"json",
+//        success: function (data) {
+//            count=data.count
+//            codes=data.codes
+//            for(var i=0;i<codes.length;i++){
+//                bzNum=Number(startValue)+i+1
+//                tbodyList+="<tr>"
+//                tbodyList+="<td><a class='noclickCodes' href='javascript:;' onclick='clickCodes(this)'></a><p>"+bzNum+"</p></td>"
+//                tbodyList+="<td>"+codes[i].code+"</td>"
+////                tbodyList+="<td>"+codes[i].program_time+"</td>"
+//                tbodyList+="<td>"+timeStamp2String(codes[i].program_time.$date)+"</td>"
+//                tbodyList+="<td>"+codes[i].purchasing_company+"</td>"
+//                tbodyList+="<td>"+codes[i].contract_id+"</td>"
+//                tbodyList+="<td>"+codes[i].company_name+"</td>"
+//                tbodyList+="<td>"+codes[i].material_code+"</td>"
+//                tbodyList+="<td>"+codes[i].product_identify+"</td>"
+//                tbodyList+="<td>"+codes[i].product_name+"</td>"
+//                tbodyList+="<td>"+codes[i].specification+"</td>"
+//                tbodyList+="<td>"+(codes[i].state==0?"未打印":"已打印")+"</td>"
+//                tbodyList+="</tr>"
+//            }
+//            $(".qsns_bottom_tbody").html(" ")
+//            $(".qsns_bottom_tbody").append(tbodyList)
+//            if(count>0) {
+//                var asButton = ""
+//                var countPages = Math.ceil(count / limitValue)
+//                var PageNo  //当前页码
+//                if (startValue == 0) {
+//                    PageNo = 1
+//                }
+//                $(".pageNo").val(PageNo)
+//                var nextStartRow//下一页开始显示的编号
+//                asButton += "<a><img src='"+ctx+"/images/sts_4.png'></a>"
+//                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
+//                if (countPages > 1) {
+//                    nextStartRow = PageNo * limitValue
+//                    asButton += "<a class=clickCursor onclick=goPage('" + contract_id + "','" + state + "','" + program_time + "','" + purchasing_company + "','" + company_name + "','" + nextStartRow + "','" + limitValue + "','next')><img src='"+ctx+"/images/sts_5.png'></a>"
+//                } else {
+//                    asButton += "<a><img src='"+ctx+"/images/sts_5.png'></a>"
+//                }
+//                $(".listperAuth_button").html(" ")
+//                $(".listperAuth_button").append(asButton)
+//            }
+//        },
+//        error:function(){
+//            alert("链接失败")
+//        }
+//    })
 
     /*关闭qrcode*/
     $(".qrcode").on("click",function(event){
@@ -100,6 +111,7 @@ function resetSubmit(){
 }
 /*查询*/
 function  formButton(){
+    $(".loading_Img").css("display", "block")
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     var contract_id =$(".top_contract_id").val() //订单号/合同号
@@ -117,6 +129,7 @@ function  formButton(){
         type:"post",
         dataType:"json",
         success: function (data) {
+            $(".loading_Img").css("display", "none")
             count=data.count
             codes=data.codes
             for(var i=0;i<codes.length;i++){

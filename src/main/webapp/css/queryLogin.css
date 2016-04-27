@@ -38,7 +38,7 @@ img{border: none;margin: 0px;padding: 0px;}
     height: 258px;
     float: left;
     background-color: #fafafa;
-    margin-left: 475px;
+    margin-left: 425px;
     margin-top: 120px;
     border-radius: 10px;
     border: 1px solid #dddddd
@@ -171,7 +171,7 @@ img{border: none;margin: 0px;padding: 0px;}
 .qLogin_version{
     float: left;
     width: 415px;
-    margin-left: 750px;
+    margin-left: 700px;
 }
 .qLogin_version_span{
     float: left;
