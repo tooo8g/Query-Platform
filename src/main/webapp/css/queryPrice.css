@@ -33,7 +33,7 @@ body{
     line-height: 12px;
     padding-top: 10px;
 }
-.jq_message_title p{
+.jq_message_title p,.jq_message_title a{
     float: left;
     color: #bbbbbb;
 }
@@ -661,6 +661,6 @@ font-size: 16px;
 .colorBlu{color: #77afea;border-bottom: 2px solid #77afea}
 .colorBlac{color: #222222;border-bottom: 2px solid #222222}
 
-.colorClick{color:#f44848}
+.colorClickLi{color:#f44848}
 .colorNoClickLi{color:#222222}
 .colorNoClick{color:#777777}

@@ -10,11 +10,22 @@ $(function(){
     $(".codeUl").removeClass("displayNo").addClass("displayBlock")
 
     /*修改头部的css*/
-    $(".nav li a").removeClass("colorClick").addClass("colorNoClick")
-    $(".seniorSearchSpan").removeClass("colorNoClick").addClass("colorClick")
-
+    $(".nav li a").removeClass("colorClickLi").addClass("colorNoClick")
+    $(".seniorSearchSpan").removeClass("colorNoClick").addClass("colorClickLi")
 
     allCityList('regionSelect_city')
+
+    /*添加loading页面*/
+    var c = $(window).width();
+    var e = $(window).height();
+    var d = $(".fl").outerWidth();
+    var f = $(".fl").outerHeight();
+    $(".loadingImg").css({
+        position: "absolute",
+        left: (c / 2) - (d / 2),
+        top: (e / 2) - (f / 2)
+    })
+
     /*
      * 进去页面，自动调此方法，获取左边的目录
      * */
@@ -35,9 +46,9 @@ $(function(){
     })
     //给目录添加click事件
     $(".itemShowList").on("click","a",function() {
-        $(".itemShow a").removeClass("colorClick").addClass("colorNoClick")
+        $(".itemShow a").removeClass("colorClickLi").addClass("colorNoClick")
         $(".itemShow a img").attr("src",""+ctx+"/images/as_2.png")
-        $(this).removeClass("colorNoClick").addClass("colorClick")
+        $(this).removeClass("colorNoClick").addClass("colorClickLi")
         $(this).find("img").attr("src",""+ctx+"/images/as_3.png")
         var list_num = $(this).attr("num");
         var itemShowList_data=list_json.childs[0].childs[list_num].childs
@@ -147,8 +158,8 @@ $(function(){
  * */
 
 function showChilds(str){
-    $(".list_content li").removeClass("colorClick").addClass("colorNoClickLi")
-    $(".list_content"+str).removeClass("colorNoClickLi").addClass("colorClick")
+    $(".list_content li").removeClass("colorClickLi").addClass("colorNoClickLi")
+    $(".list_content"+str).removeClass("colorNoClickLi").addClass("colorClickLi")
     $(".itemShow").removeClass("displayNo").addClass("displayBlock");
     for(var i = $(".itemShow .showItem").length;i >=0 ;i-- ){
         if($(".itemShow .showItem").eq(i).attr("class_num") == 0 ){
@@ -181,9 +192,9 @@ function itemShowList(append_dom,data){
             append_dom.append("<a href='javaScript:;' class='clas colorNoClick' num='"+i+"'><p>"+data[i].name+"</p><img src='"+ctx+"/images/as_2.png'></a>")
         };
         append_dom.on("click","a",function() {
-            $(this).parent().find("a").removeClass("colorClick").addClass("colorNoClick")
+            $(this).parent().find("a").removeClass("colorClickLi").addClass("colorNoClick")
             $(this).parent().find("a").find("img").attr("src",""+ctx+"/images/as_2.png")
-            $(this).removeClass("colorNoClick").addClass("colorClick")
+            $(this).removeClass("colorNoClick").addClass("colorClickLi")
             $(this).find("img").attr("src",""+ctx+"/images/as_3.png")
 
             list_n = $(this).attr("num");
@@ -215,6 +226,7 @@ function itemShowList(append_dom,data){
  * date 价格日期
  * */
 function itemShowButton(str){
+    $(".loading_Img").css("display", "block")
     closeItemShow()
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -227,6 +239,7 @@ function itemShowButton(str){
             type : 'post',
             dataType : 'json',
             success:function(data){
+                $(".loading_Img").css("display", "none")
                 jsonData=data
                 var trList=""  //保存获取的数据
                 var jgxx=data.jgxx  //返回的json里面的jgxx数据
@@ -289,6 +302,7 @@ function itemShowButton(str){
 
 //页码跳转
 function goPage(date,name,citySelect,specification,start,limit,isGo){
+    $(".loading_Img").css("display", "block")
     $(".listperAuth_button").html("")
     $.ajax({
         url: ctx+'/queryPrice',
@@ -297,6 +311,7 @@ function goPage(date,name,citySelect,specification,start,limit,isGo){
         async:"false",
         dataType : 'json',
         success:function(data){
+            $(".loading_Img").css("display", "none")
             var trList=""  //保存获取的数据
             var jgxx=data.jgxx  //返回的json里面的jgxx数据
             var count=data.count //总条数
@@ -392,6 +407,7 @@ function closeItemShow(){
  * specification 规格型号
  * */
 function formButton(){
+    $(".loading_Img").css("display", "block")
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     var price_Data=$(".price_Data").val()
@@ -405,6 +421,7 @@ function formButton(){
         type:"post",
         dataType:"json",
         success:function(data){
+            $(".loading_Img").css("display", "none")
             jsonData=data
             var trList=""  //保存获取的数据
             var jgxx=data.jgxx  //返回的json里面的jgxx数据

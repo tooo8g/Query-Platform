@@ -12,6 +12,7 @@ $(function(){
         $(".nav a").removeClass("colorClick").addClass("colorNoClick")
         $(this).removeClass("colorNoClick").addClass("colorClick")
     })
+
    /*添加loading页面*/
     var c = $(window).width();
     var e = $(window).height();
@@ -23,71 +24,8 @@ $(function(){
         top: (e / 2) - (f / 2)
     })
 
-    $(".loading_Img").css("display","block")
-
-
     /*页面打开，直接调用一个方法*/
-    var startValue=0 //初始值
-    var limitValue=10 //一次取出多少条数据
-    var company_name="" //企业名称
-    var product_identify="" //产品标识代码
-    var product_name="" //产品名称
-    var specification="" //规格型号
-    var count="" //总数
-    var productInfos="" //保存data信息
-    var tbodyList=""
-    var bzNum
-    $.ajax({
-        url:ctx+"/product",
-        data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
-        type:"post",
-        async:false,
-        dataType:"json",
-        success:function(data){
-            $(".loading_Img").css("display","none")
-            count=data.count
-            productInfos=data.productInfos
-            for(var i=0;i<productInfos.length;i++){
-                bzNum=Number(startValue)+i+1
-                tbodyList+="<tr>"
-                tbodyList+="<td>"+bzNum+"</td>"
-                tbodyList+="<td>"+productInfos[i].company_name+"</td>"
-                tbodyList+="<td>"+productInfos[i].product_identify+"</td>"
-                tbodyList+="<td>"+productInfos[i].product_name+"</td>"
-                tbodyList+="<td>"+productInfos[i].specification+"</td>"
-                tbodyList+="<td>"+productInfos[i].measurement+"</td>"
-                tbodyList+="<td>"+productInfos[i].material_code+"</td>"
-                tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatep?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
-                tbodyList+="</tr>"
-            }
-            $(".cq_tbody").html(" ")
-            $(".cq_tbody").append(tbodyList)
-            if(count>0) {
-                var asButton = ""
-                var countPages = Math.ceil(count / limitValue)
-                var PageNo  //当前页码
-                if (startValue == 0) {
-                    PageNo = 1
-                }
-                $(".pageNo").val(PageNo)
-                var nextStartRow//下一页开始显示的编号
-                asButton += "<a><img src='"+ctx+"/images/sts_4.png'></a>"
-                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
-                if (countPages > 1) {
-                    nextStartRow = PageNo * limitValue
-                    asButton += "<a class=clickCursor onclick=goPage('" + company_name + "','" + product_identify + "','" + product_name + "','" + specification + "','" + nextStartRow + "','" + limitValue + "','next')><img src='"+ctx+"/images/sts_5.png'></a>"
-                } else {
-                    asButton += "<a><img src='"+ctx+"/images/sts_5.png'></a>"
-                }
-                $(".listperAuth_button").html(" ")
-                $(".listperAuth_button").append(asButton)
-            }
-        },
-        error:function(){
-            alert("链接失败")
-        }
-    })
+    formButton()
 })
 
 /*清除*/
@@ -97,66 +35,74 @@ function resetSubmit(){
 
 /*查询*/
 function  formButton(){
-    $(".loading_Img").css("display","block")
-    var startValue=0 //初始值
-    var limitValue=10 //一次取出多少条数据
-    var company_name=$(".cqt_enterpriseName").val() //企业名称
-    var product_identify=$(".cqt_productCode").val() //产品标识代码
-    var product_name=$(".cqt_productName").val() //产品名称
-    var specification=$(".cqt_specifications").val() //规格型号
-    var count="" //总数
-    var productInfos="" //保存data信息
-    var tbodyList=""
-    var bzNum
-    $.ajax({
-        url:ctx+"/product",
-        data:{company_name:company_name,product_identify:product_identify,product_name:product_name,specification:specification,start:startValue,limit:limitValue},
-        type:"post",
-        dataType:"json",
-        success:function(data){
-            $(".loading_Img").css("display","none")
-            count=data.count
-            productInfos=data.productInfos
-            for(var i=0;i<productInfos.length;i++){
-                bzNum=Number(startValue)+i+1
-                tbodyList+="<tr>"
-                tbodyList+="<td>"+bzNum+"</td>"
-                tbodyList+="<td>"+productInfos[i].company_name+"</td>"
-                tbodyList+="<td>"+productInfos[i].product_identify+"</td>"
-                tbodyList+="<td>"+productInfos[i].product_name+"</td>"
-                tbodyList+="<td>"+productInfos[i].specification+"</td>"
-                tbodyList+="<td>"+productInfos[i].measurement+"</td>"
-                tbodyList+="<td>"+productInfos[i].material_code+"</td>"
-                tbodyList+="<td>"+productInfos[i].purchasing_company+"</td>"
-                tbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatep?branch_id="+productInfos[i]._id.$oid+"'>编制序列号</a></td>"
-                tbodyList+="</tr>"
-            }
-            $(".cq_tbody").html(" ")
-            $(".cq_tbody").append(tbodyList)
+        $(".loading_Img").css("display", "block")
+        var startValue = 0 //初始值
+        var limitValue = 10 //一次取出多少条数据
+        var company_name = $(".cqt_enterpriseName").val() //企业名称
+        var product_identify = $(".cqt_productCode").val() //产品标识代码
+        var product_name = $(".cqt_productName").val() //产品名称
+        var specification = $(".cqt_specifications").val() //规格型号
+        var count = "" //总数
+        var productInfos = "" //保存data信息
+        var tbodyList = ""
+        var bzNum
+        $.ajax({
+            url: ctx + "/product",
+            data: {
+                company_name: company_name,
+                product_identify: product_identify,
+                product_name: product_name,
+                specification: specification,
+                start: startValue,
+                limit: limitValue
+            },
+            type: "post",
+            //async:false,
+            dataType: "json",
+            success: function (data) {
+                $(".loading_Img").css("display", "none")
+                count = data.count
+                productInfos = data.productInfos
+                for (var i = 0; i < productInfos.length; i++) {
+                    bzNum = Number(startValue) + i + 1
+                    tbodyList += "<tr>"
+                    tbodyList += "<td>" + bzNum + "</td>"
+                    tbodyList += "<td>" + productInfos[i].company_name + "</td>"
+                    tbodyList += "<td>" + productInfos[i].product_identify + "</td>"
+                    tbodyList += "<td>" + productInfos[i].product_name + "</td>"
+                    tbodyList += "<td>" + productInfos[i].specification + "</td>"
+                    tbodyList += "<td>" + productInfos[i].measurement + "</td>"
+                    tbodyList += "<td>" + productInfos[i].material_code + "</td>"
+                    tbodyList += "<td>" + productInfos[i].purchasing_company + "</td>"
+                    tbodyList += "<td><a href='" + ctx + "/serial/querySerialCreatep?branch_id=" + productInfos[i]._id.$oid + "'>编制序列号</a></td>"
+                    tbodyList += "</tr>"
+                }
+                $(".cq_tbody").html(" ")
+                $(".cq_tbody").append(tbodyList)
 
-            var asButton=""
-            var countPages=Math.ceil(count/limitValue)
-            var PageNo  //当前页码
-            if(startValue==0){
-                PageNo=1
+                var asButton = ""
+                var countPages = Math.ceil(count / limitValue)
+                var PageNo  //当前页码
+                if (startValue == 0) {
+                    PageNo = 1
+                }
+                $(".pageNo").val(PageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton += "<a><img src='" + ctx + "/images/sts_4.png'></a>"
+                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
+                if (countPages > 1) {
+                    nextStartRow = PageNo * limitValue
+                    asButton += "<a class=clickCursor onclick=goPage('" + company_name + "','" + product_identify + "','" + product_name + "','" + specification + "','" + nextStartRow + "','" + limitValue + "','next')><img src='" + ctx + "/images/sts_5.png'></a>"
+                } else {
+                    asButton += "<a><img src='" + ctx + "/images/sts_5.png'></a>"
+                }
+                $(".listperAuth_button").html(" ")
+                $(".listperAuth_button").append(asButton)
+            },
+            error: function () {
+                alert("链接失败")
             }
-            $(".pageNo").val(PageNo)
-            var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
-            asButton+="<p>"+PageNo+"/"+countPages+"</p>"
-            if(countPages>1){
-                nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+company_name+"','"+product_identify+"','"+product_name+"','"+specification+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
-            }else{
-                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
-            }
-            $(".listperAuth_button").html(" ")
-            $(".listperAuth_button").append(asButton)
-        },
-        error:function(){
-            alert("链接失败")
-        }
-    })
+        })
 }
 
 

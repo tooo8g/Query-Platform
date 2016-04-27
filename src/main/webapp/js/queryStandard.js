@@ -10,6 +10,18 @@ $(function(){
     $(".nav li a").removeClass("colorClick").addClass("colorNoClick")
     $(".seniorSearchSpan").removeClass("colorNoClick").addClass("colorClick")
 
+    /*添加loading页面*/
+    var c = $(window).width();
+    var e = $(window).height();
+    var d = $(".fl").outerWidth();
+    var f = $(".fl").outerHeight();
+    $(".loadingImg").css({
+        position: "absolute",
+        left: (c / 2) - (d / 2),
+        top: (e / 2) - (f / 2)
+    })
+
+    $(".loading_Img").css("display", "block")
 	 var staHtml=$(".sts_title_add a").text().trim() //sts_standType a的值
      var str="" //标准编号标准名称
      var standard_status="" //标准状态
@@ -23,6 +35,7 @@ $(function(){
          async:false,
          dataType : 'json',
          success:function(data){
+             $(".loading_Img").css("display", "none")
          	var add_a="" //标题要加的东西
          		add_a+="<p>>></p><a>"+staHtml+"</a>"	
          		$(".sts_title_add").html("")
@@ -73,6 +86,7 @@ $(function(){
          }
      })
     $("#sts_standType a").on("click",function(){
+        $(".loading_Img").css("display", "block")
         $(this).siblings().removeClass("colorRed").addClass("colorHui")
         $(this).removeClass("colorHui").addClass("colorRed")
         var staHtml //sts_standType a的值
@@ -88,6 +102,7 @@ $(function(){
             type:"post",
             dataType : 'json',
             success:function(data){
+                $(".loading_Img").css("display", "none")
             	var add_a="" //标题要加的东西
             		add_a+="<p>>></p><a>"+staHtml+"</a>"	
             		$(".sts_title_add").html("")
@@ -173,6 +188,7 @@ function resetSubmit(){
 * 异步提交表单
 * */
 function formButton(){
+    $(".loading_Img").css("display", "block")
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     var standard_group="" //standard_group 行业分类
@@ -206,6 +222,7 @@ function formButton(){
          type:"post",
          dataType : 'json',
          success:function(data){
+             $(".loading_Img").css("display", "none")
              var tbodyList="" //保存解析的json数据
              var count=data.count
              var bzxx=data.bzxx
@@ -255,12 +272,14 @@ function formButton(){
 
 //页码跳转
 function goPage(str,standard_group,standard_status,special_subject,start,limitValue,isGo){
+    $(".loading_Img").css("display", "block")
     $.ajax({
         url:ctx+"/queryStandard",
         data:{str:str,standard_group:standard_group,standard_status:standard_status,special_subject:special_subject,start:start,limit:limitValue},
         type : 'post',
         dataType : 'json',
         success:function(data){
+            $(".loading_Img").css("display", "none")
             var tbodyList="" //保存解析的json数据
             var count=data.count
             var bzxx=data.bzxx

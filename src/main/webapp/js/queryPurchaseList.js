@@ -14,6 +14,17 @@ $(function(){
     /*打开页面，自动调用下面的方法，把相关信息放到biiLis_tbody里面*/
     search_purchase_button()
 
+    /*添加loading页面*/
+    var c = $(window).width();
+    var e = $(window).height();
+    var d = $(".fl").outerWidth();
+    var f = $(".fl").outerHeight();
+    $(".loadingImg").css({
+        position: "absolute",
+        left: (c / 2) - (d / 2),
+        top: (e / 2) - (f / 2)
+    })
+
     /*fileStatus_a里面的a的方法*/
     $(".industryList a").on("click",function(){
         $(".industryList a").removeClass("colorWhite").addClass("colorBule")
@@ -27,6 +38,7 @@ $(function(){
  * isGo判断是next还是pre
  * */
 function goPage(str,industry,start,limit,isGo){
+    $(".loading_Img").css("display", "block")
     $(".purchase_tbody").html("")
     $(".listperAuth_button").html("")
     var tbodyList="" //保存解析的数据
@@ -39,6 +51,7 @@ function goPage(str,industry,start,limit,isGo){
         type : 'post',
         dataType : 'json',
         success:function(data){
+            $(".loading_Img").css("display", "none")
             count=data.count
             bzxx=data.bzxx
             for(var i=0;i<bzxx.length;i++){
@@ -113,6 +126,7 @@ function timeStamp2String(time){
 
 //搜索
 function search_purchase_button(){
+    $(".loading_Img").css("display", "block")
     $(".purchase_tbody").html("")
     $(".listperAuth_button").html("")
     var str=$(".serInput").val() //搜索框里的值
@@ -137,6 +151,7 @@ function search_purchase_button(){
             type : 'post',
             dataType : 'json',
             success:function(data){
+                $(".loading_Img").css("display", "none")
                 count=data.count
                 bzxx=data.bzxx
                 for(var i=0;i<bzxx.length;i++){

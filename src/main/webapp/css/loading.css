@@ -1,0 +1,11 @@
+.loading_Img{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    opacity: 0.5;
+    z-index: 999;
+    display: none;
+    background-color: rgb(200,200,200)
+}

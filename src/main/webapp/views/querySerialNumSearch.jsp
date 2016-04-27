@@ -16,6 +16,7 @@
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
+<jsp:include page="loading.jsp"/>
 <div class="qsns">
   <input type="hidden" class="pageNo" value="">
   <div class="qsns_top">

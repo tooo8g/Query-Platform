@@ -10,6 +10,7 @@
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
+<jsp:include page="loading.jsp"/>
 <input type="hidden" class="pageNo" value="">
 <div class="purchase">
   <div class="purchase_title">

@@ -7,11 +7,12 @@
     <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
     <script type="text/javascript" src="${ctx}/js/queryCert.js"></script>
     <script type="text/javascript" src="${ctx}/js/scrollJs.js"></script>
-    <link rel="stylesheet" type="text/css" href="${ctx}/css/repariParts.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/queryCert.css">
 
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
+<jsp:include page="loading.jsp"/>
 <div class="as">
   <input type="hidden" class="pageNo" value="">
   <div class="as_title">
@@ -25,7 +26,7 @@
         </div>
         <div class="asLeft_ul">
             <ul>
-                <li class="item colorClick"  onclick="searchCatalogList('铁路总公司认证采信目录')">铁路总公司认证采信目录</li>
+                <li class="item colorClickLi"  onclick="searchCatalogList('铁路总公司认证采信目录')">铁路总公司认证采信目录</li>
                 <li class="item colorNoClickLi" >国家铁路局认证目录</li>
                 <li class="item colorNoClickLi" title="动车组维修用新品零部件目录">动车组维修用新品零部件目录</li>
                 <li class="item colorNoClickLi">铁路车辆零部件技术审查</li>

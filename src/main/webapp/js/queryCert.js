@@ -11,73 +11,18 @@ $(function(){
     $(".codeUl").removeClass("displayNo").addClass("displayBlock")
 
     /*修改头部的css*/
-    $(".nav li a").removeClass("colorClick").addClass("colorNoClick")
-    $(".seniorSearchSpan").removeClass("colorNoClick").addClass("colorClick")
-
-    /*页面刚打开，触发的方法
-     页面刚打开时，设定搜索框(str)的值为空，初始值(startValue)为0，每次取出的条数(limitValue)为0
-     访问后台，返回Json数据
-     解析json，获取总条数(count)和 其他数据(bzxx)
-     将bzxx解析后，动态添加到as_tbody里面
-     */
-    var str="" //搜索框里的值
-    var startValue=0 //初始值
-    var limitValue=10 //一次取出多少条数据
-    $.ajax({
-            url: ctx+'/queryCert',
-            data:{str:str,start:startValue,limit:limitValue},
-            type : 'post',
-            async:false,
-            dataType : 'json',
-            success:function(data){
-                var trList=""
-                demoJson=eval(data)
-                var count //总条数
-                count=demoJson.count
-                $("#as_num").text(count)
-                var bzxx=demoJson.bzxx
-                var bzNum
-                for(var i=0;i<bzxx.length;i++){
-                    bzNum=startValue+i+1
-                    trList+="<tr>"
-                    trList+="<td>"+bzNum+"</td>"
-                    trList+="<td title="+bzxx[i].cert_status+">"+bzxx[i].cert_status+"</td>"
-                    trList+="<td title="+bzxx[i].cert_unit+">"+bzxx[i].cert_unit+"</td>"
-                    trList+="<td title="+bzxx[i].company_name+">"+bzxx[i].company_name+"</td>"
-                    trList+="<td title="+bzxx[i].product_range+">"+bzxx[i].product_range+"</td>"
-                    trList+="<td title="+bzxx[i].cert_num+">"+bzxx[i].cert_num+"</td>"
-                    trList+="<td title="+bzxx[i].issue_organization+">"+bzxx[i].issue_organization+"</td>"
-                    trList+="<td title="+bzxx[i].cert_standards+">"+bzxx[i].cert_standards+"</td>"
-                    trList+="<td title="+timeStamp2String(bzxx[i].publish_date.$date)+">"+ timeStamp2String(bzxx[i].publish_date.$date)+"</td>"
-                    trList+="<td title="+timeStamp2String(bzxx[i].valid_date.$date)+">"+timeStamp2String(bzxx[i].valid_date.$date)+"</td>"
-                    trList+="<td><a id=asdt_"+bzxx[i]._id.$oid+" class='as_details colorHui' onclick=as_details('"+bzxx[i]._id.$oid+"')>详情</a></td>"
-                    trList+="</tr>"
-                }
-                $(".as_tbody").append(trList)
-
-
-                //分页
-                var asButton=""
-                var countPages=Math.ceil(count/limitValue)
-                var PageNo=0  //当前页码
-                if(startValue==0){
-                    PageNo=1
-                }
-                $(".pageNo").val(PageNo)
-                var nextStartRow//下一页开始显示的编号
-                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
-                asButton+="<p>"+PageNo+"/"+countPages+"</p>"
-                if(countPages>1){
-                    nextStartRow=PageNo*limitValue
-                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
-                }else{
-                    asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
-                }
-                $(".listperAuth_button").append(asButton)
-            }
-        }
-    )
-
+    $(".nav li a").removeClass("colorClickLi").addClass("colorNoClick")
+    $(".seniorSearchSpan").removeClass("colorNoClick").addClass("colorClickLi")
+    /*添加loading页面*/
+    var c = $(window).width();
+    var e = $(window).height();
+    var d = $(".fl").outerWidth();
+    var f = $(".fl").outerHeight();
+    $(".loadingImg").css({
+        position: "absolute",
+        left: (c / 2) - (d / 2),
+        top: (e / 2) - (f / 2)
+    })
 
     /*调用左边的方法*/
     searchCatalogList()
@@ -92,12 +37,12 @@ $(function(){
     $(".itemShowList").on("click","a",function() {
         var first_word=""
         if($(this).hasClass("clas")) {
-            $(".itemShow a").removeClass("colorClick").addClass("colorNoClick")
+            $(".itemShow a").removeClass("colorClickLi").addClass("colorNoClick")
             $(".itemShow a img").attr("src", ""+ctx+"/images/as_2.png")
-            $(this).removeClass("colorNoClick").addClass("colorClick")
+            $(this).removeClass("colorNoClick").addClass("colorClickLi")
             $(this).find("img").attr("src", ""+ctx+"/images/as_3.png")
             first_word=$(this).attr("first_word")
-            $(".titleNum_"+first_word).removeClass("colorNoClick").addClass("colorClick")
+            $(".titleNum_"+first_word).removeClass("colorNoClick").addClass("colorClickLi")
         }
 
         var list_num = $(this).attr("num");
@@ -132,6 +77,7 @@ $(function(){
 
 //搜索表单提交
 function search_a_button(){
+    $(".loading_Img").css("display", "block")
     closeItemShow()
     $(".as_tbody").html("")
     $(".listperAuth_button").html("")
@@ -144,6 +90,7 @@ function search_a_button(){
             type : 'post',
             dataType : 'json',
             success:function(data){
+                $(".loading_Img").css("display", "none")
                 var trList=""
                 demoJson=eval(data)
                 var count=demoJson.count
@@ -193,6 +140,7 @@ function search_a_button(){
 
 //目录提交
 function itemShowButton(str){
+    $(".loading_Img").css("display", "block")
     closeItemShow()
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -202,6 +150,7 @@ function itemShowButton(str){
             type : 'post',
             dataType : 'json',
             success:function(bzxx){
+                $(".loading_Img").css("display", "none")
                 $(".as_tbody").html("")
                 $(".listperAuth_button").html("")
                 var trList=""
@@ -321,6 +270,7 @@ function pis_close(){
 
 //页码跳转
 function goPage(str,start,limit,isGo){
+    $(".loading_Img").css("display", "block")
     $(".as_tbody").html("")
     $(".listperAuth_button").html("")
     $.ajax({
@@ -329,6 +279,7 @@ function goPage(str,start,limit,isGo){
         type : 'post',
         dataType : 'json',
         success:function(data){
+            $(".loading_Img").css("display", "none")
             var trList=""
             demoJson=eval(data)
             var count=demoJson.count
@@ -429,7 +380,7 @@ function searchCatalogList(){
             mousewheel_fn('itemShowList','mulluShow','scrollShow','scrollSh')
             //获取页面可视区域，然后确定showItem的高度
             var sihHeight=$("#itemShow").height()
-            $(".as").height(sihHeight+81)
+            $(".as").height(sihHeight+91)
         },
         error:function(){
             alert("链接错误！");
@@ -455,12 +406,12 @@ function itemShowList(append_dom,data){
         append_dom.on("click","a",function() {
             var first_word=""
             if($(this).hasClass("clas")){
-                $(this).parent().find("a").removeClass("colorClick").addClass("colorNoClick")
+                $(this).parent().find("a").removeClass("colorClickLi").addClass("colorNoClick")
                 $(this).parent().find("a").find("img").attr("src",""+ctx+"/images/as_2.png")
-                $(this).removeClass("colorNoClick").addClass("colorClick")
+                $(this).removeClass("colorNoClick").addClass("colorClickLi")
                 $(this).find("img").attr("src",""+ctx+"/images/as_3.png")
                 first_word=$(this).attr("first_word")
-                $(".titleNum_"+first_word).removeClass("colorNoClick").addClass("colorClick")
+                $(".titleNum_"+first_word).removeClass("colorNoClick").addClass("colorClickLi")
             }
 
             list_n = $(this).attr("num");

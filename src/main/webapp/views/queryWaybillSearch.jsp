@@ -13,6 +13,7 @@
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
+<jsp:include page="loading.jsp"/>
 <div class="qwbs">
   <input type="hidden" class="pageNo" value="">
   <div class="qwbs_title">

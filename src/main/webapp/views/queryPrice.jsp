@@ -15,6 +15,7 @@
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
+<jsp:include page="loading.jsp"/>
 <div class="jq_message_content">
     <input type="hidden" class="pageNo" value="">
     <div class="jq_message_title">
@@ -153,7 +154,7 @@
                             <option value="">厂家</option>
                         </select>
                         <label>地区</label>
-                        <select id="qp_region"  class="qp_region" onchange="regionClick('qp_region)">
+                        <select id="qp_region"  class="qp_region" onchange="regionClick('qp_region')">
                             <option value="">全部</option>
                             <option value="华北区">华北区</option>
                             <option value="东北区">东北区</option>
