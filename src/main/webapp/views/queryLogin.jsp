@@ -63,7 +63,7 @@
       </form>
       <div class="qLogin_ver"></div>
       <div class="qLogin_version">
-        <span class="qLogin_version_span">版本：1.3.2</span>
+        <span class="qLogin_version_span">版本：1.3.3</span>
         <div class="qLogin_version_prompt displayNo" id="qLogin_version_prompt">
           1.2.0修改记录：<br>
           &nbsp;&nbsp;1，增加数据权限管理功能。<br>
@@ -94,6 +94,8 @@
           1.3.2修改记录:<br>
           &nbsp;&nbsp;1，变更功能摆放<br>
           <br>
+          1.3.3修改记录:<br>
+          &nbsp;&nbsp;1，增加loading加载效果<br>
         </div>
       </div>
     </div>
