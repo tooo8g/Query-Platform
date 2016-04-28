@@ -226,7 +226,6 @@ function itemShowList(append_dom,data){
  * date 价格日期
  * */
 function itemShowButton(str){
-    $(".loading_Img").css("display", "block")
     closeItemShow()
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -238,6 +237,12 @@ function itemShowButton(str){
             data:{date:price_Data,name:str,city:citySelect,specification:specification,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
+            beforeSend:function(){
+                $(".loading_Img").css("display", "block")
+            },
+            complete:function(){
+                $(".loading_Img").css("display", "none")
+            },
             success:function(data){
                 $(".loading_Img").css("display", "none")
                 jsonData=data
@@ -302,14 +307,18 @@ function itemShowButton(str){
 
 //页码跳转
 function goPage(date,name,citySelect,specification,start,limit,isGo){
-    $(".loading_Img").css("display", "block")
     $(".listperAuth_button").html("")
     $.ajax({
         url: ctx+'/queryPrice',
         data:{date:date,name:name,city:citySelect,specification:specification,start:start,limit:limit},
         type : 'post',
-        async:"false",
         dataType : 'json',
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
         success:function(data){
             $(".loading_Img").css("display", "none")
             var trList=""  //保存获取的数据
@@ -407,7 +416,6 @@ function closeItemShow(){
  * specification 规格型号
  * */
 function formButton(){
-    $(".loading_Img").css("display", "block")
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     var price_Data=$(".price_Data").val()
@@ -420,8 +428,13 @@ function formButton(){
         data:{date:price_Data,name:wuziName,city:citySelect,specification:specification,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
-        success:function(data){
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
             $(".loading_Img").css("display", "none")
+        },
+        success:function(data){
             jsonData=data
             var trList=""  //保存获取的数据
             var jgxx=data.jgxx  //返回的json里面的jgxx数据

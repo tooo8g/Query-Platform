@@ -22,88 +22,83 @@ $(function () {
     })
 
    // 从页面直接进来调用方法
-    formButton()
+    $(".loading_Img").css("display", "block")
+    var startValue=0 //初始值
+    var limitValue=10 //一次取出多少条数据
+    var count="" //总数
+    var codes="" //保存data信息
+    var tbodyList=""
+    var bzNum
+    /*参数*/
+    var logistics_id=$(".top_logistics_id").val() //运单号
+    var logistics_company=$(".top_logistics_company").val() //承运公司
+    var contract_id=$(".top_contract_id").val() //订单号/合同号
+    var logistics_stats=$(".top_logistics_stats option:selected").val() //物流状态
+    var car_license=$(".top_car_license").val() //车号
+    var good_num=$(".top_good_num").val() //货号
 
+    $.ajax({
+        url:ctx+"/queryWaybillInfo",
+        data:{logistics_id:logistics_id,logistics_company:logistics_company,contract_id:contract_id,logistics_stats:logistics_stats,car_license:car_license,good_num:good_num,start:startValue,limit:limitValue},
+        type:"post",
+        async:false,
+        dataType:"json",
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
+        success:function(data){
+            count=data.count
+            codes=data.waybillInfo
+            for(var i=0;i<codes.length;i++){
+                bzNum=Number(startValue)+i+1
+                tbodyList+="<tr>"
+                tbodyList+="<td>"+bzNum+"</td>"
+                tbodyList+="<td>"+codes[i].logistics_id+"</td>"
+                tbodyList+="<td>"+codes[i].logistics_company+"</td>"
+//                tbodyList+="<td>"+codes[i].contract_id+"</td>"
+                tbodyList+="<td></td>"
+                tbodyList+="<td>"+codes[i].car_license+"</td>"
+                tbodyList+="<td>"+codes[i].good_num+"</td>"
+                tbodyList+="<td>"+codes[i].send_addr+"</td>"
+                tbodyList+="<td>"+codes[i].send_duty+"</td>"
+                tbodyList+="<td></td>"
+                tbodyList+="<td>"+codes[i].receive_addr+"</td>"
+//                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
+                tbodyList+="<td></td>"
+                tbodyList+="<td><a onclick=showSendInfor('"+codes[i]._id.$oid+"')>发货清单</a></td>"
+                tbodyList+="<td id='stateCss'></td>"
+                tbodyList+="</tr>"
+            }
+            $(".qwbs_bottom_tbody").html(" ")
+            $(".qwbs_bottom_tbody").append(tbodyList)
 
-    /*从页面直接进来调用方法
-    * 参数：
-    * var logistics_id 运单号
-    * var logistics_company 承运公司
-    * var contract_id 订单号/合同号
-    * var logistics_stats 物流状态
-    * var car_license 车号
-    * var good_num 货号
-    * 返回一个data,解析，将列表放到tbody里面
-    * */
-    //var startValue=0 //初始值
-    //var limitValue=10 //一次取出多少条数据
-    //var count="" //总数
-    //var codes="" //保存data信息
-    //var tbodyList=""
-    //var bzNum
-    ///*参数*/
-    //var logistics_id="" //运单号
-    //var logistics_company="" //承运公司
-    //var contract_id="" //订单号/合同号
-    //var logistics_stats="" //物流状态
-    //var car_license="" //车号
-    //var good_num="" //货号
+            var asButton=""
+            var countPages=Math.ceil(count/limitValue)
+            var PageNo  //当前页码
+            if(startValue==0){
+                PageNo=1
+            }
+            $(".pageNo").val(PageNo)
+            var nextStartRow//下一页开始显示的编号
+            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
+            asButton+="<p>"+PageNo+"/"+countPages+"</p>"
+            if(countPages>1){
+                nextStartRow=PageNo*limitValue
+                asButton+="<a class=clickCursor onclick=goPage('"+logistics_id+"','"+logistics_company+"','"+contract_id+"','"+logistics_stats+"','"+car_license+"','"+good_num+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
+            }else{
+                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
+            }
+            $(".listperAuth_button").html(" ")
+            $(".listperAuth_button").append(asButton)
+        },
+        error:function(){
+            alert("链接失败")
+        }
+    })
 
-//    $.ajax({
-//        url:ctx+"/queryWaybillInfo",
-//        data:{logistics_id:logistics_id,logistics_company:logistics_company,contract_id:contract_id,logistics_stats:logistics_stats,car_license:car_license,good_num:good_num,start:startValue,limit:limitValue},
-//        type:"post",
-//        dataType:"json",
-//        success:function(data){
-//            count=data.count
-//            codes=data.waybillInfo
-//            for(var i=0;i<codes.length;i++){
-//                bzNum=Number(startValue)+i+1
-//                tbodyList+="<tr>"
-//                tbodyList+="<td>"+bzNum+"</td>"
-//                tbodyList+="<td>"+codes[i].logistics_id+"</td>"
-//                tbodyList+="<td>"+codes[i].logistics_company+"</td>"
-////                tbodyList+="<td>"+codes[i].contract_id+"</td>"
-//                tbodyList+="<td></td>"
-//                tbodyList+="<td>"+codes[i].car_license+"</td>"
-//                tbodyList+="<td>"+codes[i].good_num+"</td>"
-//                tbodyList+="<td>"+codes[i].send_addr+"</td>"
-//                tbodyList+="<td>"+codes[i].send_duty+"</td>"
-//                tbodyList+="<td></td>"
-//                tbodyList+="<td>"+codes[i].receive_addr+"</td>"
-////                tbodyList+="<td>"+timeStamp2String(codes[i].supply_time.$date)+"</td>"
-//                tbodyList+="<td></td>"
-//                tbodyList+="<td><a onclick=showSendInfor('"+codes[i]._id.$oid+"')>发货清单</a></td>"
-//                tbodyList+="<td id='stateCss'></td>"
-//                tbodyList+="</tr>"
-//            }
-//            $(".qwbs_bottom_tbody").html(" ")
-//            $(".qwbs_bottom_tbody").append(tbodyList)
-//            if(count>0) {
-//                var asButton = ""
-//                var countPages = Math.ceil(count / limitValue)
-//                var PageNo  //当前页码
-//                if (startValue == 0) {
-//                    PageNo = 1
-//                }
-//                $(".pageNo").val(PageNo)
-//                var nextStartRow//下一页开始显示的编号
-//                asButton += "<a><img src='"+ctx+"/images/sts_4.png'></a>"
-//                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
-//                if (countPages > 1) {
-//                    nextStartRow = PageNo * limitValue
-//                    asButton += "<a class=clickCursor onclick=goPage('" + logistics_id + "','" + logistics_company + "','" + contract_id + "','" + logistics_stats + "','" + car_license + "','" + good_num + "','" + nextStartRow + "','" + limitValue + "','next')><img src='"+ctx+"/images/sts_5.png'></a>"
-//                } else {
-//                    asButton += "<a><img src='"+ctx+"/images/sts_5.png'></a>"
-//                }
-//                $(".listperAuth_button").html(" ")
-//                $(".listperAuth_button").append(asButton)
-//            }
-//        },
-//        error:function(){
-//            alert("链接失败")
-//        }
-//    })
 
     /*给发货清单页绑定一个click事件，点击sendList之外的地方，调用pis_close方法*/
     $(".sendList").on("click",function(event){
@@ -144,8 +139,13 @@ function formButton(){
         data:{logistics_id:logistics_id,logistics_company:logistics_company,contract_id:contract_id,logistics_stats:logistics_stats,car_license:car_license,good_num:good_num,start:startValue,limit:limitValue},
         type:"post",
         dataType:"json",
-        success:function(data){
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
             $(".loading_Img").css("display", "none")
+        },
+        success:function(data){
             count=data.count
             codes=data.waybillInfo
             for(var i=0;i<codes.length;i++){
@@ -203,6 +203,12 @@ function goPage(logistics_id,logistics_company,contract_id,logistics_stats,car_l
         data:{logistics_id:logistics_id,logistics_company:logistics_company,contract_id:contract_id,logistics_stats:logistics_stats,car_license:car_license,good_num:good_num,start:startValue,limit:limitValue},
         type : 'post',
         dataType : 'json',
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
         success:function(data){
             var count="" //总数
             var codes="" //保存data信息

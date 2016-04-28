@@ -2,6 +2,7 @@
  * Created by zb on 2016/3/3.
  */
 $(function(){
+    $(".loading_Img").css("display", "block")
     /*改变头部的css*/
     $(".guanliUl").removeClass("displayBlock").addClass("displayNo")
     $(".codeUl").removeClass("displayNo").addClass("displayBlock")
@@ -21,71 +22,81 @@ $(function(){
         top: (e / 2) - (f / 2)
     })
     /*打开页面，调用查询方法*/
-    formButton()
 
-    //var startValue=0 //初始值
-    //var limitValue=10 //一次取出多少条数据
-    //var contract_id="" //订单合同号
-    //var purchasing_company="" //采购单位
-    //var company_name="" //供应商
-    //var count="" //总数
-    //var bzxx="" //保存data信息
-    //var tbodyList=""
-    //var bzNum
-    ///*打开页面，直接调用下面的方法*/
-    //$.ajax({
-    //    url:ctx+"/queryOrderOrContract",
-    //    type:"post",
-    //    data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
-    //    async:false,
-    //    dataType:"json",
-    //    success:function(data){
-    //        count=data.count
-    //        bzxx=data.bzxx
-    //        for(var i=0;i<bzxx.length;i++){
-    //            bzNum=Number(startValue)+i+1
-    //            tbodyList+="<tr>"
-    //            tbodyList+="<td>"+bzNum+"</td>"
-    //            tbodyList+="<td>"+bzxx[i].contract_id+"</td>"
-    //            tbodyList+="<td>"+bzxx[i].company_name+"</td>"
-    //            tbodyList+="<td>"+bzxx[i].purchasing_company+"</td>"
-    //            if(bzxx[i].access=="read"){
-    //                tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?_id="+bzxx[i]._id.$oid+"&access=read'>查看序列号</a></td>"
-    //            }else{
-    //                tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?_id="+bzxx[i]._id.$oid+"&access=write'>编制序列号</a></td>"
-    //            }
-    //            tbodyList+="<td>"+bzxx[i].user_id+"</td>"
-    //            tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
-    //            tbodyList+="<td>编制中</td>"
-    //            tbodyList+="</tr>"
-    //        }
-    //        $(".conser_bottom_tbody").html(" ")
-    //        $(".conser_bottom_tbody").append(tbodyList)
-    //        if(count>0) {
-    //            var asButton = ""
-    //            var countPages = Math.ceil(count / limitValue)
-    //            var PageNo  //当前页码
-    //            if (startValue == 0) {
-    //                PageNo = 1
-    //            }
-    //            $(".pageNo").val(PageNo)
-    //            var nextStartRow//下一页开始显示的编号
-    //            asButton += "<a><img src='"+ctx+"/images/sts_4.png'></a>"
-    //            asButton += "<p>" + PageNo + "/" + countPages + "</p>"
-    //            if (countPages > 1) {
-    //                nextStartRow = PageNo * limitValue
-    //                asButton += "<a class=clickCursor onclick=goPage('" + contract_id + "','" + purchasing_company + "','" + company_name + "','" + nextStartRow + "','" + limitValue + "','next')><img src='"+ctx+"/images/sts_5.png'></a>"
-    //            } else {
-    //                asButton += "<a><img src='"+ctx+"/images/sts_5.png'></a>"
-    //            }
-    //            $(".listperAuth_button").html(" ")
-    //            $(".listperAuth_button").append(asButton)
-    //        }
-    //    },
-    //    error:function(){
-    //        alert("链接失败")
-    //    }
-    //})
+    var startValue = 0 //初始值
+    var limitValue = 10 //一次取出多少条数据
+    var contract_id = $(".top_contract").val();//订单合同号
+    var purchasing_company = $(".top_purchasing_company").val();//采购单位
+    var company_name = $(".top_company_name").val();//供应商
+    var count = "" //总数
+    var bzxx = "" //保存data信息
+    var tbodyList = ""
+    var bzNum
+    $.ajax({
+        url: ctx + "/queryOrderOrContract",
+        type: "post",
+        data: {
+            contract_id: contract_id,
+            purchasing_company: purchasing_company,
+            company_name: company_name,
+            start: startValue,
+            limit: limitValue
+        },
+        async:false,
+        dataType: "json",
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
+        success: function (data) {
+            count = data.count
+            bzxx = data.bzxx
+            for (var i = 0; i < bzxx.length; i++) {
+                bzNum = Number(startValue) + i + 1
+                tbodyList += "<tr>"
+                tbodyList += "<td>" + bzNum + "</td>"
+                tbodyList += "<td>" + bzxx[i].contract_id + "</td>"
+                tbodyList += "<td>" + bzxx[i].company_name + "</td>"
+                tbodyList += "<td>" + bzxx[i].purchasing_company + "</td>"
+                if (bzxx[i].access == "read") {
+                    tbodyList += "<td><a href='" + ctx + "/contract/queryContractInformation?_id=" + bzxx[i]._id.$oid + "&access=read'>查看序列号</a></td>"
+                } else {
+                    tbodyList += "<td><a href='" + ctx + "/contract/queryContractInformation?_id=" + bzxx[i]._id.$oid + "&access=write'>编制序列号</a></td>"
+                }
+                tbodyList += "<td>" + bzxx[i].user_id + "</td>"
+                tbodyList += "<td>" + timeStamp2String(bzxx[i].add_time.$date) + "</td>"
+                tbodyList += "<td>编制中</td>"
+                tbodyList += "</tr>"
+            }
+            $(".conser_bottom_tbody").html(" ")
+            $(".conser_bottom_tbody").append(tbodyList)
+
+            var asButton = ""
+            var countPages = Math.ceil(count / limitValue)
+            var PageNo  //当前页码
+            if (startValue == 0) {
+                PageNo = 1
+            }
+            $(".pageNo").val(PageNo)
+            var nextStartRow//下一页开始显示的编号
+            asButton += "<a><img src='" + ctx + "/images/sts_4.png'></a>"
+            asButton += "<p>" + PageNo + "/" + countPages + "</p>"
+            if (countPages > 1) {
+                nextStartRow = PageNo * limitValue
+                asButton += "<a class=clickCursor onclick=goPage('" + contract_id + "','" + purchasing_company + "','" + company_name + "','" + nextStartRow + "','" + limitValue + "','next')><img src='" + ctx + "/images/sts_5.png'></a>"
+            } else {
+                asButton += "<a><img src='" + ctx + "/images/sts_5.png'></a>"
+            }
+            $(".listperAuth_button").html(" ")
+            $(".listperAuth_button").append(asButton)
+        },
+        error: function () {
+            alert("链接失败")
+        }
+    })
+
 })
 
 /*清除*/
@@ -94,68 +105,78 @@ function resetSubmit(){
 }
 /*查询*/
 function formButton(){
-    $(".loading_Img").css("display", "block")
-    var startValue=0 //初始值
-    var limitValue=10 //一次取出多少条数据
-    var contract_id=$(".top_contract").val();//订单合同号
-    var purchasing_company=$(".top_purchasing_company").val();//采购单位
-    var company_name=$(".top_company_name").val();//供应商
-    var count="" //总数
-    var bzxx="" //保存data信息
-    var tbodyList=""
-    var bzNum
-    $.ajax({
-        url:ctx+"/queryOrderOrContract",
-        type:"post",
-        data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
-        dataType:"json",
-        success:function(data){
-            $(".loading_Img").css("display", "none")
-            count=data.count
-            bzxx=data.bzxx
-            for(var i=0;i<bzxx.length;i++){
-                bzNum=Number(startValue)+i+1
-                tbodyList+="<tr>"
-                tbodyList+="<td>"+bzNum+"</td>"
-                tbodyList+="<td>"+bzxx[i].contract_id+"</td>"
-                tbodyList+="<td>"+bzxx[i].company_name+"</td>"
-                tbodyList+="<td>"+bzxx[i].purchasing_company+"</td>"
-                if(bzxx[i].access=="read"){
-                    tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?_id="+bzxx[i]._id.$oid+"&access=read'>查看序列号</a></td>"
-                }else{
-                    tbodyList+="<td><a href='"+ctx+"/contract/queryContractInformation?_id="+bzxx[i]._id.$oid+"&access=write'>编制序列号</a></td>"
+        var startValue = 0 //初始值
+        var limitValue = 10 //一次取出多少条数据
+        var contract_id = $(".top_contract").val();//订单合同号
+        var purchasing_company = $(".top_purchasing_company").val();//采购单位
+        var company_name = $(".top_company_name").val();//供应商
+        var count = "" //总数
+        var bzxx = "" //保存data信息
+        var tbodyList = ""
+        var bzNum
+        $.ajax({
+            url: ctx + "/queryOrderOrContract",
+            type: "post",
+            data: {
+                contract_id: contract_id,
+                purchasing_company: purchasing_company,
+                company_name: company_name,
+                start: startValue,
+                limit: limitValue
+            },
+            dataType: "json",
+            beforeSend:function(){
+                $(".loading_Img").css("display", "block")
+            },
+            complete:function(){
+                $(".loading_Img").css("display", "none")
+            },
+            success: function (data) {
+                count = data.count
+                bzxx = data.bzxx
+                for (var i = 0; i < bzxx.length; i++) {
+                    bzNum = Number(startValue) + i + 1
+                    tbodyList += "<tr>"
+                    tbodyList += "<td>" + bzNum + "</td>"
+                    tbodyList += "<td>" + bzxx[i].contract_id + "</td>"
+                    tbodyList += "<td>" + bzxx[i].company_name + "</td>"
+                    tbodyList += "<td>" + bzxx[i].purchasing_company + "</td>"
+                    if (bzxx[i].access == "read") {
+                        tbodyList += "<td><a href='" + ctx + "/contract/queryContractInformation?_id=" + bzxx[i]._id.$oid + "&access=read'>查看序列号</a></td>"
+                    } else {
+                        tbodyList += "<td><a href='" + ctx + "/contract/queryContractInformation?_id=" + bzxx[i]._id.$oid + "&access=write'>编制序列号</a></td>"
+                    }
+                    tbodyList += "<td>" + bzxx[i].user_id + "</td>"
+                    tbodyList += "<td>" + timeStamp2String(bzxx[i].add_time.$date) + "</td>"
+                    tbodyList += "<td>编制中</td>"
+                    tbodyList += "</tr>"
                 }
-                tbodyList+="<td>"+bzxx[i].user_id+"</td>"
-                tbodyList+="<td>"+timeStamp2String(bzxx[i].add_time.$date)+"</td>"
-                tbodyList+="<td>编制中</td>"
-                tbodyList+="</tr>"
-            }
-            $(".conser_bottom_tbody").html(" ")
-            $(".conser_bottom_tbody").append(tbodyList)
+                $(".conser_bottom_tbody").html(" ")
+                $(".conser_bottom_tbody").append(tbodyList)
 
-            var asButton=""
-            var countPages=Math.ceil(count/limitValue)
-            var PageNo  //当前页码
-            if(startValue==0){
-                PageNo=1
+                var asButton = ""
+                var countPages = Math.ceil(count / limitValue)
+                var PageNo  //当前页码
+                if (startValue == 0) {
+                    PageNo = 1
+                }
+                $(".pageNo").val(PageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton += "<a><img src='" + ctx + "/images/sts_4.png'></a>"
+                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
+                if (countPages > 1) {
+                    nextStartRow = PageNo * limitValue
+                    asButton += "<a class=clickCursor onclick=goPage('" + contract_id + "','" + purchasing_company + "','" + company_name + "','" + nextStartRow + "','" + limitValue + "','next')><img src='" + ctx + "/images/sts_5.png'></a>"
+                } else {
+                    asButton += "<a><img src='" + ctx + "/images/sts_5.png'></a>"
+                }
+                $(".listperAuth_button").html(" ")
+                $(".listperAuth_button").append(asButton)
+            },
+            error: function () {
+                alert("链接失败")
             }
-            $(".pageNo").val(PageNo)
-            var nextStartRow//下一页开始显示的编号
-            asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
-            asButton+="<p>"+PageNo+"/"+countPages+"</p>"
-            if(countPages>1){
-                nextStartRow=PageNo*limitValue
-                asButton+="<a class=clickCursor onclick=goPage('"+contract_id+"','"+purchasing_company+"','"+company_name+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
-            }else{
-                asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
-            }
-            $(".listperAuth_button").html(" ")
-            $(".listperAuth_button").append(asButton)
-        },
-        error:function(){
-            alert("链接失败")
-        }
-    })
+        })
 }
 
 //页码跳转
@@ -164,6 +185,12 @@ function goPage(contract_id,purchasing_company,company_name,startValue,limitValu
         url:ctx+"/queryStandard",
         data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         dataType : 'json',
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
         success:function(data){
             var count="" //总数
             var bzxx="" //保存data信息
@@ -232,3 +259,6 @@ function goPage(contract_id,purchasing_company,company_name,startValue,limitValu
         }
     })
 }
+
+
+

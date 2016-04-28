@@ -12,7 +12,77 @@ $(function(){
     $(".seniorSearchSpan").removeClass("colorNoClick").addClass("colorClick")
 
     /*打开页面，自动调用下面的方法，把相关信息放到biiLis_tbody里面*/
-    search_purchase_button()
+    $(".purchase_tbody").html("")
+    $(".listperAuth_button").html("")
+    var str=$(".serInput").val() //搜索框里的值
+    var industry //所属行业
+    $(".industryList a").each(function(){
+        if($(this).hasClass("colorWhite")){
+            industry= $(this).text().trim()
+            if(industry=="不限"){
+                industry=""
+            }
+        }
+    })
+    var startValue=0 //初始值
+    var limitValue=10 //一次取出多少条数据
+    var tbodyList="" //保存解析的数据
+    var count //保存总条数
+    var bzxx //保存json的bzxx里的数据
+    var bzNum //标记
+    $.ajax({
+            url:ctx+"/queryPurchase_bidding",
+            data:{str:str,industry:industry,start:startValue,limit:limitValue},
+            type : 'post',
+            async:false,
+            dataType : 'json',
+            beforeSend:function(){
+                $(".loading_Img").css("display", "block")
+            },
+            complete:function(){
+                $(".loading_Img").css("display", "none")
+            },
+            success:function(data){
+                count=data.count
+                bzxx=data.bzxx
+                for(var i=0;i<bzxx.length;i++){
+                    bzNum=startValue+i+1
+                    tbodyList+="<tr>"
+                    tbodyList+="<td>"+bzNum+"</td>"
+                    tbodyList+="<td>"+bzxx[i].purchaseOrderNo+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].purchaserName+"'>"+bzxx[i].purchaserName+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].purchaserCompany+"'>"+bzxx[i].purchaserCompany+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].announcementType+"'>"+bzxx[i].announcementType+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].purchaserVariety+"'>"+bzxx[i].purchaserVariety+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].purchaserArea+"'>"+bzxx[i].purchaserArea+"</td>"
+                    tbodyList+="<td>"+bzxx[i].industry+"</td>"
+                    tbodyList+="<td>"+timeStamp2String(bzxx[i].publishTime.$date)+"</td>"
+                    tbodyList+="<td title='"+bzxx[i].dataSource+"'><a href='"+bzxx[i].address+"' target='_blank'>"+bzxx[i].dataSource+"</a></td>"
+                    tbodyList+="</tr>"
+                }
+                $(".purchase_tbody").append(tbodyList)
+
+                //分页
+                var asButton=""
+                var countPages=Math.ceil(count/limitValue)
+                var pageNo=0  //当前页码
+                if(startValue==0){
+                    pageNo=1
+                }
+                $(".pageNo").val(pageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton+="<a><img src='"+ctx+"/images/sts_4.png'></a>"
+                asButton+="<p>"+pageNo+"/"+countPages+"</p>"
+                if(countPages>1){
+                    nextStartRow=pageNo*limitValue
+                    asButton+="<a class=clickCursor onclick=goPage('"+str+"','"+industry+"','"+nextStartRow+"','"+limitValue+"','next')><img src='"+ctx+"/images/sts_5.png'></a>"
+                }else{
+                    asButton+="<a><img src='"+ctx+"/images/sts_5.png'></a>"
+                }
+                $(".listperAuth_button").append(asButton)
+            }
+        }
+    )
 
     /*添加loading页面*/
     var c = $(window).width();
@@ -38,7 +108,6 @@ $(function(){
  * isGo判断是next还是pre
  * */
 function goPage(str,industry,start,limit,isGo){
-    $(".loading_Img").css("display", "block")
     $(".purchase_tbody").html("")
     $(".listperAuth_button").html("")
     var tbodyList="" //保存解析的数据
@@ -50,8 +119,13 @@ function goPage(str,industry,start,limit,isGo){
         data:{str:str,industry:industry,start:start,limit:limit},
         type : 'post',
         dataType : 'json',
-        success:function(data){
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
             $(".loading_Img").css("display", "none")
+        },
+        success:function(data){
             count=data.count
             bzxx=data.bzxx
             for(var i=0;i<bzxx.length;i++){
@@ -126,7 +200,6 @@ function timeStamp2String(time){
 
 //搜索
 function search_purchase_button(){
-    $(".loading_Img").css("display", "block")
     $(".purchase_tbody").html("")
     $(".listperAuth_button").html("")
     var str=$(".serInput").val() //搜索框里的值
@@ -150,8 +223,13 @@ function search_purchase_button(){
             data:{str:str,industry:industry,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
-            success:function(data){
+            beforeSend:function(){
+                $(".loading_Img").css("display", "block")
+            },
+            complete:function(){
                 $(".loading_Img").css("display", "none")
+            },
+            success:function(data){
                 count=data.count
                 bzxx=data.bzxx
                 for(var i=0;i<bzxx.length;i++){

@@ -77,7 +77,6 @@ $(function(){
 
 //搜索表单提交
 function search_a_button(){
-    $(".loading_Img").css("display", "block")
     closeItemShow()
     $(".as_tbody").html("")
     $(".listperAuth_button").html("")
@@ -89,8 +88,13 @@ function search_a_button(){
             data:{str:str,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
-            success:function(data){
+            beforeSend:function(){
+                $(".loading_Img").css("display", "block")
+            },
+            complete:function(){
                 $(".loading_Img").css("display", "none")
+            },
+            success:function(data){
                 var trList=""
                 demoJson=eval(data)
                 var count=demoJson.count
@@ -140,7 +144,6 @@ function search_a_button(){
 
 //目录提交
 function itemShowButton(str){
-    $(".loading_Img").css("display", "block")
     closeItemShow()
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -149,8 +152,13 @@ function itemShowButton(str){
             data:{str:str,start:startValue,limit:limitValue},
             type : 'post',
             dataType : 'json',
-            success:function(bzxx){
+            beforeSend:function(){
+                $(".loading_Img").css("display", "block")
+            },
+            complete:function(){
                 $(".loading_Img").css("display", "none")
+            },
+            success:function(bzxx){
                 $(".as_tbody").html("")
                 $(".listperAuth_button").html("")
                 var trList=""
@@ -270,7 +278,6 @@ function pis_close(){
 
 //页码跳转
 function goPage(str,start,limit,isGo){
-    $(".loading_Img").css("display", "block")
     $(".as_tbody").html("")
     $(".listperAuth_button").html("")
     $.ajax({
@@ -278,8 +285,13 @@ function goPage(str,start,limit,isGo){
         data:{str:str,start:start,limit:limit},
         type : 'post',
         dataType : 'json',
-        success:function(data){
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
             $(".loading_Img").css("display", "none")
+        },
+        success:function(data){
             var trList=""
             demoJson=eval(data)
             var count=demoJson.count
