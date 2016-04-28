@@ -12,6 +12,7 @@
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
+<jsp:include page="loading.jsp"/>
 <div class="materManage">
   <input type="hidden" class="pageNo" value="">
   <div class="materManage_top">

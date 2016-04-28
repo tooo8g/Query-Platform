@@ -10,7 +10,71 @@ $(function(){
     $(".nav a").removeClass("colorClick").addClass("colorNoClick")
     $(".materialManage").removeClass("colorNoClick").addClass("colorClick")
     /*打开页面就调用查询方法*/
-    materManageSearch()
+    var startValue=0 //初始值
+    var limitValue=10 //一次取出多少条数据
+    var material_code=$(".materManage_material_code").val()  //物资编码
+    var material_name=$(".materManage_material_name").val()  //物资名称
+    var count="" //总数
+    var accountList="" //保存data信息
+    var tbodyList=""
+    var bzNum
+    $.ajax({
+        url:ctx+"/queryMaterial",
+        type:"post",
+        data:{material_code:material_code,material_name:material_name,start:startValue,limit:limitValue},
+        async:false,
+        dataType:"json",
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
+        success:function(data){
+            count=data.count
+            accountList=data.data
+            for(var i=0;i<accountList.length;i++){
+                bzNum=Number(startValue)+i+1
+                tbodyList+="<tr>"
+                tbodyList+="<td>"+bzNum+"</td>"
+                tbodyList+="<td>"+accountList[i].material_code+"</td>"
+                tbodyList+="<td>"+accountList[i].material_name+"</td>"
+                tbodyList+="<td>"+accountList[i].specification+"</td>"
+                tbodyList+="<td>"+accountList[i].measurement+"</td>"
+                if(accountList[i].isPrecious=="1"){
+                    tbodyList+="<td>是</td>"
+                }else{
+                    tbodyList+="<td>否</td>"
+                }
+                tbodyList+="<td>"+timeStamp2String(accountList[i].update_time.$date)+"</td>"
+                tbodyList+="<td><a onclick=show_modify_materManage('"+accountList[i]._id.$oid+"')>修改</a><a onclick=deleteMater('"+accountList[i]._id.$oid+"')>删除</a></td>"
+                tbodyList+="</tr>"
+            }
+            $(".materManage_tbody").html(" ")
+            $(".materManage_tbody").append(tbodyList)
+
+            if(count>0) {
+                var asButton = ""
+                var countPages = Math.ceil(count / limitValue)
+                var PageNo  //当前页码
+                if (startValue == 0) {
+                    PageNo = 1
+                }
+                $(".pageNo").val(PageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton += "<a><img src='"+ctx+"/images/sts_4.png'></a>"
+                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
+                if (countPages > 1) {
+                    nextStartRow = PageNo * limitValue
+                    asButton += "<a  onclick=goPage('"+material_code+"','"+material_name+"','" + nextStartRow + "','" + limitValue + "','next')><img src='"+ctx+"/images/sts_5.png'></a>"
+                } else {
+                    asButton += "<a><img src='"+ctx+"/images/sts_5.png'></a>"
+                }
+                $(".listperAuth_button").html(" ")
+                $(".listperAuth_button").append(asButton)
+            }
+        }
+    })
 })
 /*查询
 * params:
@@ -32,8 +96,13 @@ function materManageSearch(){
     	url:ctx+"/queryMaterial",
         type:"post",
         data:{material_code:material_code,material_name:material_name,start:startValue,limit:limitValue},
-        async:"false",
         dataType:"json",
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
         success:function(data){
             count=data.count
             accountList=data.data
@@ -92,8 +161,13 @@ function goPage(material_code,material_name,startValue,limitValue,isGo){
     $.ajax({
     	url:ctx+"/queryMaterial",
         data:{material_code:material_code,material_name:material_name,start:startValue,limit:limitValue},
-        async:"false",
         dataType : 'json',
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
         success:function(data){
             var accountList
             var count="" //总数

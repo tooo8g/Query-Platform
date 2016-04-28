@@ -11,6 +11,7 @@
 </head>
 <body>
 <jsp:include page="head_code.jsp"/>
+<jsp:include page="loading.jsp"/>
 <div class="cpl">
   <input type="hidden" class="pageNo" value="">
   <div class="cpl_top">

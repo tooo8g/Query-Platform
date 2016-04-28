@@ -11,6 +11,19 @@ $(function(){
         $(".nav a").removeClass("colorClick").addClass("colorNoClick")
         $(this).removeClass("colorNoClick").addClass("colorClick")
     })
+
+    /*添加loading页面*/
+    var c = $(window).width();
+    var e = $(window).height();
+    var d = $(".fl").outerWidth();
+    var f = $(".fl").outerHeight();
+    $(".loadingImg").css({
+        position: "absolute",
+        left: (c / 2) - (d / 2),
+        top: (e / 2) - (f / 2)
+    })
+
+
     /*页面刚点开调用此方法*/
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
@@ -25,6 +38,12 @@ $(function(){
         type:"post",
         data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
         async:false,
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
         dataType:"json",
         success:function(data){
             count=data.count
@@ -93,8 +112,13 @@ function formButton(){
         url:ctx+"/queryCompanyList",
         type:"post",
         data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
-        async:false,
         dataType:"json",
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
         success:function(data){
             count=data.count
             companyList=data.companyList
@@ -159,8 +183,13 @@ function goPage(com_name,org_code,startValue,limitValue,isGo){
         url:ctx+"/queryCompanyList",
         data:{com_name:com_name,org_code:org_code,start:startValue,limit:limitValue},
         type : 'post',
-        async:false,
         dataType : 'json',
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
         success:function(data){
             var count="" //总数
             var companyList="" //保存data信息

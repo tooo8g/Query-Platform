@@ -9,8 +9,86 @@ $(function(){
     /*给nav a 绑定一个click事件*/
         $(".nav a").removeClass("colorClick").addClass("colorNoClick")
         $(".personList").removeClass("colorNoClick").addClass("colorClick")
+
+    /*添加loading页面*/
+    var c = $(window).width();
+    var e = $(window).height();
+    var d = $(".fl").outerWidth();
+    var f = $(".fl").outerHeight();
+    $(".loadingImg").css({
+        position: "absolute",
+        left: (c / 2) - (d / 2),
+        top: (e / 2) - (f / 2)
+    })
+
+
     /*页面进来直接调用*/
-   psl_formButton();
+    var startValue=0 //初始值
+    var limitValue=10 //一次取出多少条数据
+    var count="" //总数
+    var accountList="" //保存data信息
+    var tbodyList=""
+    var bzNum
+    var name=$(".psl_name").val()
+    var username=$(".psl_username").val()
+    var company=$(".psl_company").val()
+    $.ajax({
+        url:ctx+"/queryAccountList",
+        type:"post",
+        data:{name:name,username:username,company:company,start:startValue,limit:limitValue},
+        async:false,
+        dataType:"json",
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
+        success:function(data){
+            count=data.count
+            accountList=data.accountList
+            for(var i=0;i<accountList.length;i++){
+                bzNum=Number(startValue)+i+1
+                tbodyList+="<tr>"
+                tbodyList+="<td>"+bzNum+"</td>"
+                tbodyList+="<td>"+accountList[i].name+"</td>"
+                tbodyList+="<td>"+accountList[i].person.username+"</td>"
+                tbodyList+="<td>"+timeStamp2String(accountList[i].add_time.$date)+"</td>"
+                tbodyList+="<td>"+accountList[i].person.tel+"</td>"
+                tbodyList+="<td>"+accountList[i].person.email+"</td>"
+                tbodyList+="<td>"+accountList[i].person.company+"</td>"
+                tbodyList+="<td><a href='javascript:;' onclick=showJuris('"+accountList[i]._id.$oid+"')>修改</a></td>"
+                tbodyList+="<td><a href='javascript:;' onclick=showOperationJuris('"+accountList[i]._id.$oid+"')>修改</a></td>"
+                tbodyList+="</tr>"
+            }
+            $(".psl_bottom_tbody").html("")
+            $(".psl_bottom_tbody").append(tbodyList)
+
+            if(count>0) {
+                var asButton = ""
+                var countPages = Math.ceil(count / limitValue)
+                var PageNo  //当前页码
+                if (startValue == 0) {
+                    PageNo = 1
+                }
+                $(".pageNo").val(PageNo)
+                var nextStartRow//下一页开始显示的编号
+                asButton += "<a><img src='../images/sts_4.png'></a>"
+                asButton += "<p>" + PageNo + "/" + countPages + "</p>"
+                if (countPages > 1) {
+                    nextStartRow = PageNo * limitValue
+                    asButton += "<a class=clickCursor onclick=goPage('" + name + "','" + username + "','" + company + "','" + nextStartRow + "','" + limitValue + "','next')><img src='../images/sts_5.png'></a>"
+                } else {
+                    asButton += "<a><img src='../images/sts_5.png'></a>"
+                }
+                $(".listperAuth_button").html(" ")
+                $(".listperAuth_button").append(asButton)
+            }
+        },
+        error:function(){
+            alert("链接失败")
+        }
+    })
 
     /*给新增用户页绑定一个click事件，点击sendList之外的地方，调用close_psl_Create方法*/
     $(".psl_person_create").on("click",function(event){
@@ -61,8 +139,13 @@ function psl_formButton(){
         url:ctx+"/queryAccountList",
         type:"post",
         data:{name:name,username:username,company:company,start:startValue,limit:limitValue},
-        async:false,
         dataType:"json",
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
         success:function(data){
             count=data.count
             accountList=data.accountList
@@ -116,8 +199,13 @@ function goPage(name,username, company ,startValue,limitValue,isGo){
     	url:ctx+"/queryAccountList",
     	data:{name:name,username:username,company:company,start:startValue,limit:limitValue},
         type : 'post',
-        async:false,
         dataType : 'json',
+        beforeSend:function(){
+            $(".loading_Img").css("display", "block")
+        },
+        complete:function(){
+            $(".loading_Img").css("display", "none")
+        },
         success:function(data){
             var count="" //总数
             var accountList="" //保存data信息
