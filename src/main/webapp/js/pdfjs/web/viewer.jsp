@@ -33,7 +33,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 
 
     <link rel="stylesheet" href="viewer.css"/>
-
+    <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>-
     <script src="compatibility.js"></script>
 
 
