@@ -78,15 +78,12 @@ function qcti_od_sp_preservation(){
             })
              if(flag){
                  trInputVal={"material_code":""+$(this).find("input").eq(0).val()+"","material_name":""+$(this).find("td").eq(1).text()+"","specification":""+$(this).find("td").eq(2).text()+"","measurement":""+$(this).find("td").eq(3).text()+"","product_code":""+$(this).find("input").eq(4).val()+"","num":""+$(this).find("input").eq(5).val()+"","price":""+$(this).find("input").eq(6).val()+"","total_price":""+$(this).find("input").eq(7).val()+"","company":""+$(this).find("input").eq(8).val()+"","company_field":""+$(this).find("input").eq(9).val()+""}
-                console.log(trInputVal)
                  tableVal.push(trInputVal)
              }else{
                  return false
              }
 
         })
-
-    console.log(tableVal)
     var flagsu=true //用来判断每行tr是否有空白input
     var inputValuesu="" //保存input值
     var trInputValsu="" //用来保存每组tr的input
