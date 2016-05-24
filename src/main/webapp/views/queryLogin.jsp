@@ -96,6 +96,8 @@
           <br>
           1.3.3修改记录:<br>
           &nbsp;&nbsp;1，增加loading加载效果<br>
+          &nbsp;&nbsp;2，解决重复加载时浏览器报错的BUG<br>
+          <br>
         </div>
       </div>
     </div>
