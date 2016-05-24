@@ -14,6 +14,7 @@
 <jsp:include page="head_code.jsp"/>
 <jsp:include page="loading.jsp"/>
 <div class="conser">
+  <input type="hidden" class="pageNo" value="">
   <div class="conser_top">
     <form id="conser_top_form">
       <div class="conser_top_contract">

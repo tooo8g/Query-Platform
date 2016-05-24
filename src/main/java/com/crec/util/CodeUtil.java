@@ -10,7 +10,7 @@ import java.util.Map;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
-//import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.platform.io.bean.Code;
 import com.platform.mongo.util.Format;

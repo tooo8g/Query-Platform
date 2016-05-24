@@ -182,7 +182,7 @@ function formButton(){
 //页码跳转
 function goPage(contract_id,purchasing_company,company_name,startValue,limitValue,isGo){
     $.ajax({
-        url:ctx+"/queryStandard",
+        url:ctx+"/queryOrderOrContract",
         data:{contract_id:contract_id,purchasing_company:purchasing_company,company_name:company_name,start:startValue,limit:limitValue},
         dataType : 'json',
         beforeSend:function(){

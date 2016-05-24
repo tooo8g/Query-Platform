@@ -205,3 +205,6 @@ body{
 .displayBlock {
     display: block;
 }
+.clickCursor{
+    cursor: pointer;
+}
