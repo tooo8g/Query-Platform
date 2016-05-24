@@ -71,7 +71,7 @@
                 <td>交货时间</td>
                 <td>交货地点</td>
                 <td>收货人</td>
-                <td width="100">操作</td>
+                <%--<td width="100">操作</td>--%>
               </tr>
               </thead>
               <tbody class="qcti_supplyPlan_tbody"></tbody>

@@ -13,7 +13,7 @@ $(function(){
 })
 /*新增订货明细，点击以后，订货明细列表增加*/
 function qcti_od_add() {
-    $(".qcti_orderDetails_tbody").append("<tr><td><input type='text' value=''  onblur='searchBymaterialCode(this)' ></td><td></td><td></td><td></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text' class='checkProduct' onfocus='product_name_search_show(this)' value=''><input type='text' value=''></td><td><a class='qcti_orderDetails_delete' onclick='qcti_orderDetails_delete(this)'>删除</a></td></tr>")
+    $(".qcti_orderDetails_tbody").append("<tr><td><input type='text' value=''  onblur='searchBymaterialCode(this)' ></td><td></td><td></td><td></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td> <td><input type='text' class='allPrice' onfocus='product_allPrice(this)'></td><td><input type='text' class='checkProduct' onfocus='product_name_search_show(this)' value=''><input type='text' value=''></td><td><a class='qcti_orderDetails_delete' onclick='qcti_orderDetails_delete(this)'>删除</a></td></tr>")
 }
 /*删除订货明细里面的列表*/
 function qcti_orderDetails_delete(str){
@@ -89,13 +89,17 @@ function qcti_od_sp_preservation(){
     var trInputValsu="" //用来保存每组tr的input
     var tableValsu=[] //总的input val
     $(".qcti_supplyPlan_tbody tr").each(function(){
-        $(this).find("input").each(function(){
-            inputValuesu=$(this).val()
-            if(inputValuesu==undefined || inputValuesu=="" || inputValuesu==null) {
-                flagsu=false
-            }
-            if(!flagsu){
+        $(this).find("input").each(function(i){
+            if(i>0) {
                 return false
+            }else {
+                inputValuesu = $(this).val()
+                if (inputValuesu == undefined || inputValuesu == "" || inputValuesu == null) {
+                    flagsu = false
+                }
+                if (!flagsu) {
+                    return false
+                }
             }
         })
         if(flagsu){
@@ -291,20 +295,23 @@ function searchBymaterialCode(str){
             success:function(data){
                 if(data){
                     wzxx=data.wzxx
-                    material_name=wzxx[0].material_name
-                    var tdChild= $(str).parent().parent().children() //触发事件所在行的子元素
-                    var td_material_name=""
-                    td_material_name="<input type='hidden' value='"+wzxx[0].material_name+"'>"+wzxx[0].material_name+""
-                    tdChild.eq(1).html("")
-                    tdChild.eq(1).append(td_material_name)
-                    var td_specification=""
-                    td_specification="<input type='hidden' value='"+wzxx[0].specification+"'>"+wzxx[0].specification+""
-                    tdChild.eq(2).html("")
-                    tdChild.eq(2).append(td_specification)
-                    var td_measurement=""
-                    td_measurement="<input type='hidden' value='"+wzxx[0].measurement+"'>"+wzxx[0].measurement+""
-                    tdChild.eq(3).html("")
-                    tdChild.eq(3).append(td_measurement)
+                    if(wzxx[0]){
+                        material_name=wzxx[0].material_name
+                        var tdChild= $(str).parent().parent().children() //触发事件所在行的子元素
+                        var td_material_name=""
+                        td_material_name="<input type='hidden' value='"+wzxx[0].material_name+"'>"+wzxx[0].material_name+""
+                        tdChild.eq(1).html("")
+                        tdChild.eq(1).append(td_material_name)
+                        var td_specification=""
+                        td_specification="<input type='hidden' value='"+wzxx[0].specification+"'>"+wzxx[0].specification+""
+                        tdChild.eq(2).html("")
+                        tdChild.eq(2).append(td_specification)
+                        var td_measurement=""
+                        td_measurement="<input type='hidden' value='"+wzxx[0].measurement+"'>"+wzxx[0].measurement+""
+                        tdChild.eq(3).html("")
+                        tdChild.eq(3).append(td_measurement)
+                    }
+
                     //var td_material_code=""
                     //td_material_code="<input type='hidden' value='"+wzxx[0].material_code+"'>"+wzxx[0].material_code+""
                     //tdChild.eq(4).html("")
@@ -477,4 +484,20 @@ function product_name_search_show(str){
     }else{
         $(".product_name_search").css({top:product_name_search_top})
     }
+}
+
+/*获取这行的总价*/
+function product_allPrice(str){
+    var num=""  //数量
+    var price="" //价格
+    var allprice=""  //总价
+    if($(str).parent().parent().find("input").length==10){
+        num=Number($(str).parent().parent().find("input").eq(5).val())
+        price=Number($(str).parent().parent().find("input").eq(6).val())
+    }else if($(str).parent().parent().find("input").length==7){
+        num=Number($(str).parent().parent().find("input").eq(2).val())
+        price=Number($(str).parent().parent().find("input").eq(3).val())
+    }
+    allprice=num*price
+    $(str).val(allprice)
 }

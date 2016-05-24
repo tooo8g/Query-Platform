@@ -105,11 +105,11 @@ $(function(){
                 supplyPlanTbodyList += "<td>" + supply[i].supply_time + "</td>"
                 supplyPlanTbodyList += "<td>" + supply[i].address + "</td>"
                 supplyPlanTbodyList += "<td>" + supply[i].person + "</td>"
-                if(supply[i].code_num==0){
-                    supplyPlanTbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatec?contract_id="+contract_id+"&_id="+supply[i]._id.$oid+"'>编制序列号</a></td>"
-                }else{
-                   supplyPlanTbodyList+="<td><a href='"+ctx+"/serial/querySerialNumSearch?_id="+supply[i]._id.$oid+"'>查看详情</a></td>"
-                }
+                //if(supply[i].code_num==0){
+                //    supplyPlanTbodyList+="<td><a href='"+ctx+"/serial/querySerialCreatec?contract_id="+contract_id+"&_id="+supply[i]._id.$oid+"'>编制序列号</a></td>"
+                //}else{
+                //   supplyPlanTbodyList+="<td><a href='"+ctx+"/serial/querySerialNumSearch?_id="+supply[i]._id.$oid+"'>查看详情</a></td>"
+                //}
                 supplyPlanTbodyList+="</tr>"
             }
             $(".qcti_supplyPlan_tbody").html("")

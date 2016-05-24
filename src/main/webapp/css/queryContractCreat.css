@@ -192,6 +192,7 @@ body{
     margin:0px;
     border: none;
     padding: 10px 5px;
+    text-align: center;
 }
 .qcti_orderDetails_tbody td a,.qcti_supplyPlan_tbody td a{
     font-size: 12px;
