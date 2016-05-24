@@ -10,7 +10,7 @@ import java.util.Map;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
+//import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.platform.io.bean.Code;
 import com.platform.mongo.util.Format;
@@ -55,20 +55,20 @@ public class CodeUtil {
 	 * @param imgPath
 	 * @return
 	 */
-	public static byte[] barcode(String contents) {
-		try {
-			BitMatrix bitMatrix = new MultiFormatWriter().encode(contents,
-					BarcodeFormat.CODE_128, 200, 50);
-			ByteArrayOutputStream byteOutputStream = new ByteArrayOutputStream();
-			MatrixToImageWriter.writeToStream(bitMatrix, "png",
-					byteOutputStream);
-			return byteOutputStream.toByteArray();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
+//	public static byte[] barcode(String contents) {
+//		try {
+//			BitMatrix bitMatrix = new MultiFormatWriter().encode(contents,
+//					BarcodeFormat.CODE_128, 200, 50);
+//			ByteArrayOutputStream byteOutputStream = new ByteArrayOutputStream();
+//			MatrixToImageWriter.writeToStream(bitMatrix, "png",
+//					byteOutputStream);
+//			return byteOutputStream.toByteArray();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return null;
+//	}
 
 	/**
 	 * 生成二维码
@@ -77,20 +77,20 @@ public class CodeUtil {
 	 * @param contents
 	 * @return
 	 */
-	public static byte[] qrcode(String contents) {
-		try {
-			Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
-			hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
-			BitMatrix bitMatrix = new MultiFormatWriter().encode(contents,
-					BarcodeFormat.QR_CODE, 200, 200, hints);
-			ByteArrayOutputStream byteOutputStream = new ByteArrayOutputStream();
-			MatrixToImageWriter.writeToStream(bitMatrix, "png",
-					byteOutputStream);
-			return byteOutputStream.toByteArray();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+//	public static byte[] qrcode(String contents) {
+//		try {
+//			Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
+//			hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+//			BitMatrix bitMatrix = new MultiFormatWriter().encode(contents,
+//					BarcodeFormat.QR_CODE, 200, 200, hints);
+//			ByteArrayOutputStream byteOutputStream = new ByteArrayOutputStream();
+//			MatrixToImageWriter.writeToStream(bitMatrix, "png",
+//					byteOutputStream);
+//			return byteOutputStream.toByteArray();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
 
 }

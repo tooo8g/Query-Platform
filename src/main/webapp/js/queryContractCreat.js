@@ -64,7 +64,7 @@ function qcti_od_sp_preservation(){
     var orderOrCont="" //保存列表里面的东西
     $(".qcti_orderDetails_tbody tr").each(function(){
             $(this).find("input").each(function(i){
-                if(i>3){
+                if(i>0){
                     return false
                 }else{
                     inputValue=$(this).val()
@@ -490,14 +490,23 @@ function product_name_search_show(str){
 function product_allPrice(str){
     var num=""  //数量
     var price="" //价格
+    var priceAll=""  //想乘得到的值
     var allprice=""  //总价
     if($(str).parent().parent().find("input").length==10){
-        num=Number($(str).parent().parent().find("input").eq(5).val())
-        price=Number($(str).parent().parent().find("input").eq(6).val())
+        num=$(str).parent().parent().find("input").eq(5).val()
+        price=$(str).parent().parent().find("input").eq(6).val()
     }else if($(str).parent().parent().find("input").length==7){
-        num=Number($(str).parent().parent().find("input").eq(2).val())
-        price=Number($(str).parent().parent().find("input").eq(3).val())
+        num=$(str).parent().parent().find("input").eq(2).val()
+        price=$(str).parent().parent().find("input").eq(3).val()
     }
-    allprice=num*price
+    priceAll=num*price
+    if(!isNaN(priceAll)){
+        if((priceAll+'').indexOf(".")!=-1){
+            allprice=priceAll.toFixed(2)
+        }else{
+            allprice=priceAll
+        }
+    }
+
     $(str).val(allprice)
 }
