@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="nav">
-                <ul class="codeUl displayBlock">
+                <ul class="codeUl displayNo">
                     <li><a href="${ctx}/code/queryCodeSearch" target="_self" class="product_identify colorClick">产品标识代码查询</a></li>
                     <li><a href="${ctx}/contract/queryContractSearch" target="_self" class="contract colorNoClick">合同/订单查询</a></li>
                     <li><a href="${ctx}/serial/querySerialNumSearch" target="_self" class="serialNumber colorNoClick">序列号查询</a></li>

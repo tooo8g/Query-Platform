@@ -34,12 +34,18 @@ function qcti_supplyPlan_add(){
     "<td><input type='text'></td>" +
     "<td><input type='text'></td>" +
     "<td><input type='text'></td>" +
-    "<td>"+"<input  name='createCode_date' class='createCode_date' type='text' onFocus='var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})' value=''/>"+"</td>" +
+    "<td><input name='createCode_date' class='createCode_date' type='text' onFocus='checkDate()'  value=''/></td>" +
     "<td><input type='text'></td>" +
     "<td><input type='text'></td>" +
     "<td><input type='text'></td>" +
     "<td><a class='qcti_supplyPlan_delete' onclick='qcti_supplyPlan_delete(this)'>删除</a></td>" +
     "</tr>")
+}
+
+//选择时间
+function checkDate(){
+    var endDate=$dp.$('endDate2')
+    WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})
 }
 /*删除供货计划里面的列表*/
 function qcti_supplyPlan_delete(str){
@@ -51,8 +57,6 @@ function qcti_supplyPlan_delete(str){
     }
 
 }
-
-
 
 /*保存
 * 点击保存以后，table里面的input值收集起来*/
@@ -77,7 +81,7 @@ function qcti_od_sp_preservation(){
                 }
             })
              if(flag){
-                 trInputVal={"material_code":""+$(this).find("input").eq(0).val()+"","material_name":""+$(this).find("td").eq(1).text()+"","specification":""+$(this).find("td").eq(2).text()+"","measurement":""+$(this).find("td").eq(3).text()+"","product_code":""+$(this).find("input").eq(4).val()+"","num":""+$(this).find("input").eq(5).val()+"","price":""+$(this).find("input").eq(6).val()+"","total_price":""+$(this).find("input").eq(7).val()+"","company":""+$(this).find("input").eq(8).val()+"","company_field":""+$(this).find("input").eq(9).val()+""}
+                 trInputVal={"material_code":""+$(this).find("input").eq(0).val()+"","material_name":""+$(this).find("input").eq(1).val()+"","specification":""+$(this).find("input").eq(2).val()+"","measurement":""+$(this).find("input").eq(3).val()+"","product_code":""+$(this).find("input").eq(4).val()+"","num":""+$(this).find("input").eq(5).val()+"","price":""+$(this).find("input").eq(6).val()+"","total_price":""+$(this).find("input").eq(7).val()+"","company":""+$(this).find("input").eq(8).val()+"","company_field":""+$(this).find("input").eq(9).val()+""}
                  tableVal.push(trInputVal)
              }else{
                  return false

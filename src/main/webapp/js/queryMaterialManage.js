@@ -2,11 +2,12 @@
  * Created by zb on 2016/4/21.
  */
 $(function(){
+    $(".loading_Img").css("display", "block")
     /*改变头部的css*/
     $(".codeUl").removeClass("displayBlock").addClass("displayNo")
     $(".guanliUl").removeClass("displayNo").addClass("displayBlock")
 
-    /*给nav a 绑定一个click事件*/
+    /*改变nav a的样式*/
     $(".nav a").removeClass("colorClick").addClass("colorNoClick")
     $(".materialManage").removeClass("colorNoClick").addClass("colorClick")
     /*打开页面就调用查询方法*/
