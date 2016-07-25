@@ -147,7 +147,7 @@
             </div>
           </div>
           <ul class="daohang">
-            <li class="select" id="mn_N521a"><a href="http://www.crecgec.com/" hidefocus="true" title="首页">首页<span>首页</span></a></li>
+            <li id="mn_N521a"><a href="http://www.crecgec.com/" hidefocus="true" title="首页">首页<span>首页</span></a></li>
             <li class="select"><a>企业资质</a></li>
             <li id="mn_F80" onmouseover="showMenu({'ctrlid':this.id,'ctrlclass':'hover','duration':2})"><a href="http://zhaobiao.crecgec.com/forum.php?mod=forumdisplay&amp;fid=80&amp;filter=sortid&amp;sortid=12" hidefocus="true">招标询价</a></li>
             <li id="mn_F54"><a href="http://shebei.crecgec.com/forum-54-1.html" hidefocus="true">机械设备租赁</a></li>
