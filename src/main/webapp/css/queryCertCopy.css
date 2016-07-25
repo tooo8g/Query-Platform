@@ -13,86 +13,89 @@ strong{
 }
 li{list-style: none;}
 a{text-decoration: none;}
+a:hover{text-decoration: none !important;}
 img{border: none;margin: 0px;padding: 0px;}
-body{
-    overflow:scroll;
-    overflow-x:hidden;
-}
+
 /*authenSearch*/
 .as{
-    width: 1200px;
+    width: 1160px;
     height: auto;
     overflow: hidden;
-    margin: 0 auto 80px;
+    margin: 20px auto 80px;
 }
 .as_title{
     width: 1200px;
     height: 12px;
     line-height: 12px;
-    padding-top: 10px;
 }
-.as_title p{
+.nvhm{
+    width: 16px;
+    height: 12px;
+    background: url(../images/as_search.png) no-repeat 0 -10px;
+    line-height: 200px;
+    overflow: hidden;
+}
+.as_title a{
     float: left;
-    color: #bbbbbb;
+    color: #333333;
+    cursor: pointer;
 }
-
+.as_title em{
+    width: 20px;
+    height: 12px;
+    float: left;
+    background: url(../images/as_search.png) no-repeat -16px -8px;
+    line-height: 200px;
+    overflow: hidden;
+}
 .as_left{
-    width: 228px;
-    border: 1px solid #dddddd;
+    width: 240px;
     float: left;
     position:relative;
     margin-top: 20px;
 }
-/*.as_left p{*/
-/*text-align: center;*/
-/*line-height: 50px;*/
-/*border-bottom: 1px solid #dddddd;*/
-/*color: black;*/
-/*font-size: 14px;*/
-/*}*/
+.as_content{
+    width: 238px;
+    float: left;
+    border: 1px solid #dcdcdc;
+    position:relative;
+}
 .mulluShowSh{
     width: 200px;
     height: 602px;
     overflow: hidden;
 }
 .left_title_p{
-    text-align: center;
-    height: 60px;
-    border-bottom: 1px solid #dddddd;
-    color: #222222;
-    background-color: #f0f0f0;
+    width: 218px;
+    line-height: 40px;
+    color: white;
+    padding-left: 20px;
+    background-color: #1661b9;
 }
-.title_p{
-    width: 78px;
-    font-size: 18px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #222222;
-    float: left;
-    margin: 15px 75px;
+.left_title_p a{
+    color: white;
 }
 
+
 .asLeft_ul{
-    width: 228px;
-    background-color: #fafafa;
+    width: 238px;
     float: left;
 }
 .as_left ul{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 238px;
     float: left;
 }
 .as_left ul li{
-    margin-top: 20px;
-    line-height: 16px;
-    padding-left: 30px;
+    width: 198px;
+    line-height: 58px;
+    padding-left: 20px;
     cursor: pointer;
-    font-size: 16px;
-}
-.as_left ul li:hover{
-    color: red;
+    /*font-size: 16px;*/
+    /*border-top: 1px solid #dcdcdc;*/
 }
 .as_left ul li:first-child{
     margin-top: 0px;
+    border-top: none;
 }
 
 .item{
@@ -106,8 +109,31 @@ body{
     text-overflow: ellipsis;
     position: relative;
 }
+.item:hover{
+    background-color: #f7f7f7;
+}
+.item a,.item span{
+    display: block;
+    color: #444444;
+    height: 59px;
+}
+.item a:hover{
+    text-decoration: none;
+}
+.item p{
+    display: block;
+    width: 13px;
+    height: 13px;
+    background: url(../images/as_left.png) 0 0 no-repeat;
+    position: absolute;
+    right: 50px;
+    top: 23px;
+}
+.xwl{
+    font-weight: 700;
+}
 .itemShow{
-    width: 942px;
+    width: 899px !important;
     height: 602px;
     border: 1px solid #dddddd;
     position: absolute;
@@ -119,9 +145,11 @@ body{
 #itemShow{
     padding-left: 0px;
     cursor: auto;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 #itemShow_title{
-    width: 953px;
+    width: 900px;
     height: 30px;
     border-bottom:none;
 }
@@ -193,17 +221,30 @@ body{
     color:#000000;
 }
 
+/*广告位*/
+.guanggao{
+    width: 240px;
+    float: left;
+}
+.guanggao li{
+  margin-top: 15px;
+}
+.guanggao li,.guanggao li img{
+    width: 240px;
+    height: auto;
+    float: left;
+}
+
+
 .as_right{
-    width: 953px;
+    width: 900px;
     height:auto;
-    min-height:569px;
-    margin-left: 15px;
+    margin-left: 20px;
     float: left;
     margin-top: 20px;
 }
 .a_search{
     width: 270px;
-    padding:0px 5px 0px 0px;
     text-align: right;
     float: right;
 }
@@ -234,7 +275,7 @@ body{
     padding-right: 5px;
     font-size: 14px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 2px;
 }
 
 .a_title{
@@ -257,52 +298,56 @@ body{
     float: left;
 }
 .asTable{
-    width: 953px;
+    width: 900px;
     min-height: 407px;
     float: left;
     margin-top: 20px;
 }
 .as_tbody{
-    width: 943px;
+    width: 890px;
     font-size: 12px;
-    text-align: center;}
+    text-align: center;
+}
 .as_tbody a{
-    color: #77afea;
-    cursor: pointer
+    color: #1661b9;
+    cursor: pointer;
+    font-size: 14px;
 }
 .as_tbody tr,.as_tbody td{
-    border: 1px solid #dddddd;
-    border-top: none;
-    color: black}
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-top: 1px dotted #dddddd;
+    color: #444444;
+}
 .as_tbody td{
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
-    padding: 10px 5px;
+    padding: 12px 5px;
+    font-size: 14px;
 }
 .as_table{
-    width: 943px;
+    width: 900px;
     table-layout:fixed;
     border-collapse: collapse;
-    margin-left: 5px;
+    border-bottom: 1px solid #dddddd;
 }
 .as_thead{
-    width: 943px;
-    font-size: 14px;
+    width: 900px;
     text-align: center;
-    background-color: #eeeeee;
+    background-color: #fafafa;
 }
 .as_thead tr,.as_thead td{
     border: 1px solid #dddddd;
-    color: black;
-    height:35px;
+    color: #444444;
+    height:44px;
+    font-size: 14px;
 }
 
 .listperAuth_button{
-    height: 20px;
+    height: 28px;
     float: right;
-    line-height: 20px;
-    margin-right: 5px;
+    line-height: 28px;
     margin-top: 20px;
     text-align: right;
     font-size: 14px;
@@ -318,7 +363,7 @@ body{
 /*productInformation*/
 .productInformation{
     width:100%;
-    background-color: rgba(200, 200, 200, 0.8);
+    background-color: rgba(0, 0, 0, 0.4);
     position: absolute;
     left: 0;
     top: 0;
@@ -335,7 +380,6 @@ body{
     height: auto;
     float: left;
     background-color: #ffffff;
-    /*margin-bottom:185px;*/
     margin-top:130px;
 }
 .product_infor_title{
@@ -378,7 +422,6 @@ body{
 .product_infor_show1 div{
     display:block;
     width: 1010px;
-    height:20px;
     line-height: 20px;
     float: left;
     text-align: left;
@@ -480,3 +523,7 @@ body{
 .colorClickLi{color:#f44848}
 .colorNoClickLi{color:#222222}
 .colorNoClick{color:#777777}
+
+.tbodyTrClickBackColor{
+    background-color: #eaf3f8;
+}

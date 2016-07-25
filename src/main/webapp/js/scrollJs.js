@@ -2,20 +2,20 @@
  * Created by zb on 2016/2/22.
  */
     function mousewheel_fn(all_outer, text_div, scroll_alldiv, scroll_kuai){
-    oWheel_count=$("."+all_outer).eq(0).get(0),
-            oText=$("."+text_div).eq(0).get(0),
-            //oDiv1=$("."+scroll_alldiv).eq(0).get(0),
+    oWheel_count=jQuery("."+all_outer).eq(0).get(0),
+            oText=jQuery("."+text_div).eq(0).get(0),
+            //oDiv1=jQuery("."+scroll_alldiv).eq(0).get(0),
             oDiv1=document.getElementById(scroll_alldiv),
             oDiv=document.getElementById(scroll_kuai);
         var gun=oText;;
         oDiv.style.height=(oText.offsetHeight/oText.scrollHeight)*oDiv1.offsetHeight+"px";
         if(oDiv.style.height>="602px"){
-            if($("."+all_outer).id=="showItem0"){
-                $("."+scroll_alldiv).css({"backgroundColor":"#fafafa"})
-                $("#"+scroll_kuai).css({"backgroundColor":"#fafafa"})
+            if(jQuery("."+all_outer).id=="showItem0"){
+                jQuery("."+scroll_alldiv).css({"backgroundColor":"#fafafa"})
+                jQuery("#"+scroll_kuai).css({"backgroundColor":"#fafafa"})
             }else{
-                $("."+scroll_alldiv).css({"backgroundColor":"#ffffff"})
-                $("#"+scroll_kuai).css({"backgroundColor":"#ffffff"})
+                jQuery("."+scroll_alldiv).css({"backgroundColor":"#ffffff"})
+                jQuery("#"+scroll_kuai).css({"backgroundColor":"#ffffff"})
             }
         }
         oWheel_count.onmousewheel=fn;
