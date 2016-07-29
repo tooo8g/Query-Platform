@@ -205,25 +205,12 @@
   <div class="as_left">
     <div class="as_content">
       <div class="left_title_p">
-        <a href="javascript:;">首页</a>
         资质信息查询
       </div>
       <div class="asLeft_ul">
         <ul>
           <li class="xwl item colorClick" onclick="searchCatalogList('铁路总公司认证采信目录')">
             铁路总公司认证采信目录
-            <p></p>
-          </li>
-          <li class="item colorNoClickLi" >
-            国家铁路局认证目录
-            <p></p>
-          </li>
-          <li class="item colorNoClickLi" title="动车组维修用新品零部件目录">
-            动车组维修用新品零件目录
-            <p></p>
-          </li>
-          <li class="item colorNoClickLi">
-            铁路零部件技术审核
             <p></p>
           </li>
           <li class="itemShow displayNo" id="itemShow">
