@@ -6,6 +6,7 @@
     <title>查询</title>
     <link rel="stylesheet" type="text/css" href="${ctx}/css/wordQueryDemo.css">
     <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="${ctx}/js/wordQueryDemo.js"></script>
 </head>
 <body>
 <div class="selectBody">
