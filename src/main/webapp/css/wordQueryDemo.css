@@ -71,10 +71,6 @@ img{border: none;margin: 0px;padding: 0px;}
     margin-left: 200px;
     margin-bottom: 20px;
 }
-.selecShow li{
-    width: 460px;
-    margin-left: 20px;
-    overflow: hidden;
-    height: 25px;
-    line-height: 25px;
+.selectContent a{
+   color: red
 }
