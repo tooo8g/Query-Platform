@@ -14,12 +14,14 @@
     <a type="button" name="search_a" class="search_a_btn" href="javascript:;" onclick="searchA()">搜索</a>
   </div>
   <div class="selectContent">
-    <div class="synonym"></div>
+    <div class="synonym">
+
+    </div>
     <div class="selecShow">
 
     </div>
   </div>
 </div>
-    <script type="text/javascript" src="${ctx}/js/wordQueryDemo.js"></script>
+<script type="text/javascript" src="${ctx}/js/wordQueryDemo.js"></script>
 </body>
 </html>
