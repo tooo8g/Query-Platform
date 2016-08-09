@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="selectBody">
+  <p>细目名称查询（共存储90003条数据）</p>
   <div class="selectSerch">
     <input type="text" name="search_input" value="" class="seaInput">
     <a type="button" name="search_a" class="search_a_btn" href="javascript:;" onclick="searchA()">搜索</a>

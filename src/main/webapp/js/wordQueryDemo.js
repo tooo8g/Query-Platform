@@ -4,6 +4,18 @@
 /**
  * Created by zb on 2016/8/9.
  */
+
+$(function(){
+        //按回车，触发searchA事件
+        document.onkeydown = function(e){
+            var ev = document.all ? window.event : e;
+            if(ev.keyCode==13) {
+                searchA()
+            }
+        }
+    }
+)
+
 //点击搜索框
 function searchA(){
     var search_input_value=$(".seaInput").val()

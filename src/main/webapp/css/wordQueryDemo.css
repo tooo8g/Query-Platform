@@ -20,11 +20,17 @@ img{border: none;margin: 0px;padding: 0px;}
     height: auto;
     margin: 0px auto;
 }
+.selectBody p{
+    width: 500px;
+    margin-left: 200px;
+    font-size: 20px;
+    margin-top: 30px;
+}
 .selectSerch{
     width: 500px;
-    height: 30px;
+    height: 36px;
     margin-left: 200px;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 .seaInput{
     border: 1px solid #dddddd;
@@ -53,7 +59,7 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 
 .selectContent{
-    width: 500px;
+    width: 900px;
     height: auto;
     margin-top: 5px;
 }
@@ -66,22 +72,15 @@ img{border: none;margin: 0px;padding: 0px;}
     font-size: 14px;
 }
 .selecShow{
-    width: 480px;
+    width: 490px;
     height: auto;
     border-top: 1px solid #dddddd;
     margin-left: 200px;
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 16px;
     padding-left: 10px;
     overflow: hidden;
 }
 .selectContent a{
     color: red
-}
-
-.displayBlcok{
-    display: block;
-}
-.displayNone{
-    display: none;
 }
