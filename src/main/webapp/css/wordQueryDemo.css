@@ -67,6 +67,7 @@ img{border: none;margin: 0px;padding: 0px;}
     color: red;
     border-bottom-style: dashed;
     cursor: pointer;
+    font-size:16px;
 }
 
 .synonym,.synonymNew{
@@ -90,7 +91,4 @@ img{border: none;margin: 0px;padding: 0px;}
 .selecShow a{
 	font-size:16px;
 	color: red;
-}
-.selectContent a{
-    color: red
 }
