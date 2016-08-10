@@ -15,16 +15,22 @@ $(function(){
         }
 
         //给seaNewInput绑定值改变事件，事件触发时，获取当前值和1秒以后的值，如果相等，就触发searchNewA（）事件
+        var inputValue="" //input里面的值
         var oldValue="", //事件触发时的值
             newValue=""; //1秒以后的值
         $('.seaNewInput').on('input propertychange', function() {
-            oldValue=$(".seaNewInput").val()
+        	inputValue=$(".seaNewInput").val()
+        	if(inputValue){
+        	 oldValue=$(".seaNewInput").val()
             setTimeout(function(){
                 newValue=$(".seaNewInput").val()
                 if(oldValue==newValue){
                     searchNewA()
                 }
-            },1000)
+            },500)	
+        	}else{
+        		$(".selecNewShow").html("")
+        	}
         });
     }
 )
@@ -86,7 +92,7 @@ function synonymA(){
 //新body
 //点击搜索框
 function searchNewA(){
-    var search_input_value=$(".seaInput").val()
+    var search_input_value=$(".seaNewInput").val()
     $.ajax({
         url:ctx+'/query_word',
         data:{word:search_input_value},

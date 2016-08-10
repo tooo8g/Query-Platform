@@ -8,6 +8,7 @@
     <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
 </head>
 <body>
+<div class="select_content">
 <div class="selectBody">
   <p>细目名称查询（共存储90003条数据）</p>
   <div class="selectSerch">
@@ -24,10 +25,9 @@
   </div>
 </div>
 <div class="selectNewBody">
-    <p>细目名称查询（共存储90003条数据）</p>
+    <p>细目名称提示（共存储90003条数据）</p>
     <div class="selectNewSerch">
         <input type="text" name="search_input" value="" class="seaNewInput">
-        <a type="button" name="search_a" class="search_an_btn" href="javascript:;" onclick="searchNewA()">搜索</a>
     </div>
     <div class="selectNewContent">
         <div class="synonymNew">
@@ -38,6 +38,8 @@
         </div>
     </div>
 </div>
+</div>
+
 <script type="text/javascript" src="${ctx}/js/wordQueryDemo.js"></script>
 </body>
 </html>
