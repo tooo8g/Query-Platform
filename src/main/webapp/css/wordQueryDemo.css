@@ -81,6 +81,9 @@ img{border: none;margin: 0px;padding: 0px;}
     padding-left: 10px;
     overflow: hidden;
 }
+.selecShow a{
+	font-size:16px;
+}
 .selectContent a{
     color: red
 }

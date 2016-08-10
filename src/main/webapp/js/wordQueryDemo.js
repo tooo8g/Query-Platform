@@ -36,7 +36,6 @@ function searchA(){
 function selecShowA(){
     $(".selecShow a").on("click",function(){
         var aValue=$(this).text()
-        alert(aValue)
         $(this).attr("href","javascript:;")
         $.ajax({
             url:ctx+'/near_word',
@@ -44,7 +43,9 @@ function selecShowA(){
             type:"post",
             success:function(data){
                 $(".synonym").html("")
-                $(".synonym").html("是不是搜索："+data)
+                if(data){
+                     $(".synonym").html("是不是搜索："+data)	
+                }
                 synonymA()
             }
         })
