@@ -23,6 +23,21 @@
     </div>
   </div>
 </div>
+<div class="selectNewBody">
+    <p>细目名称查询（共存储90003条数据）</p>
+    <div class="selectNewSerch">
+        <input type="text" name="search_input" value="" class="seaNewInput">
+        <a type="button" name="search_a" class="search_an_btn" href="javascript:;" onclick="searchNewA()">搜索</a>
+    </div>
+    <div class="selectNewContent">
+        <div class="synonymNew">
+
+        </div>
+        <div class="selecNewShow">
+
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="${ctx}/js/wordQueryDemo.js"></script>
 </body>
 </html>

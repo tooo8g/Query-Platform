@@ -15,24 +15,24 @@ li{list-style: none;}
 a{text-decoration: none;}
 img{border: none;margin: 0px;padding: 0px;}
 
-.selectBody{
+.selectBody,.selectNewBody{
     width: 900px;
     height: auto;
     margin: 0px auto;
 }
-.selectBody p{
+.selectBody p,.selectNewBody p{
     width: 500px;
     margin-left: 200px;
     font-size: 20px;
     margin-top: 30px;
 }
-.selectSerch{
+.selectSerch,.selectNewSerch{
     width: 500px;
     height: 36px;
     margin-left: 200px;
     margin-top: 20px;
 }
-.seaInput{
+.seaInput,.seaNewInput{
     border: 1px solid #dddddd;
     color: #222222;
     width: 441px;
@@ -42,7 +42,7 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
     font-size: 16px;
 }
-.search_a_btn{
+.search_a_btn,.search_an_btn{
     width: auto;
     float: left;
     display: block;
@@ -58,12 +58,18 @@ img{border: none;margin: 0px;padding: 0px;}
     border-radius: 2px;
 }
 
-.selectContent{
+.selectContent,.selectNewContent{
     width: 900px;
     height: auto;
     margin-top: 5px;
 }
-.synonym{
+.selectContent a,.selectNewContent a{
+    color: red;
+    border-bottom-style: dashed;
+    cursor: pointer;
+}
+
+.synonym,.synonymNew{
     width: auto;
     height: 30px;
     line-height: 30px;
@@ -71,7 +77,7 @@ img{border: none;margin: 0px;padding: 0px;}
     margin-bottom: 5px;
     font-size: 14px;
 }
-.selecShow{
+.selecShow,.selecNewShow{
     width: 490px;
     height: auto;
     border-top: 1px solid #dddddd;
@@ -80,7 +86,4 @@ img{border: none;margin: 0px;padding: 0px;}
     font-size: 16px;
     padding-left: 10px;
     overflow: hidden;
-}
-.selectContent a{
-    color: red
 }
