@@ -110,7 +110,6 @@ function searchNewA(){
 function selecShowNewA(){
     $(".selecNewShow a").on("click",function(){
         var aValue=$(this).text()
-        alert(aValue)
         $(this).attr("href","javascript:;")
         $.ajax({
             url:ctx+'/near_word',
