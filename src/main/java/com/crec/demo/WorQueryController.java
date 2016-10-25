@@ -73,10 +73,13 @@ public class WorQueryController {
 		List<String> result = WordSearch.searchCol(word);
 		detail.put("result", result);
 
+		System.out.println(word);
 		Set<String> ms = means.get(word);
 		if (ms == null) {
 			detail.put("means", new ArrayList<String>());
 		} else {
+			for(String mm:ms)
+				System.out.println(mm);
 			detail.put("means", ms);
 		}
 
@@ -90,6 +93,7 @@ public class WorQueryController {
 	public void putMeans(@RequestParam(required = true) String word,
 			@RequestParam(required = true) String m,
 			HttpServletResponse response) throws IOException {
+		System.out.println(word+"|"+m);
 		Set<String> mean = means.get(word);
 		if (mean == null) {
 			mean = new HashSet<String>();
@@ -126,7 +130,7 @@ public class WorQueryController {
 	}
 
 	public static void main(String[] args) {
-		String word = "聚氯乙烯绝缘无护套电线电缆";
+		String word = "线缆,kv,35";
 		Document detail = new Document();
 		String[] split = WordSplit.analysis(word, "");
 		List<String> splits = new ArrayList<String>();

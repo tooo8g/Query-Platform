@@ -10,48 +10,65 @@ $(function(){
     //        var liList="<li>我是11</li><li>我是12</li><li>我是13</li><li>我是14</li><li>我是15</li><li>我是16</li><li>我是17</li><li>我是18</li><li>我是19</li><li>我是20</li>"
     //    $("div ul").append(liList)
     //})
+    
+    catalogAdd()
+    
+    
+    
+    $("#import").click(function(){//点击导入按钮，使files触发点击事件，然后完成读取文件的操作。
+//    	if（alert("将名称放入一列并保存为txt")）{
+//    		$("#files").click();
+//    	}
+    	if(confirm("将名称放入一列并保存为txt")){
+    		$("#files").click();
+    	}
+    });
 
 
+    document.onkeydown = function(e){ 
+        var ev = document.all ? window.event : e;
+        if(ev.keyCode==13) {
+        	searchAdd()
+         }
+    } 
 
-    //给catalog下的Li绑定事件
-    $(".catalog ul li").on('click',function(){
-        $(".catalog ul li").removeClass("clickLi")
-        $(".searchInput").val("")
-        $(".searchInput").val($(this).text().trim())
-        $(this).addClass("clickLi")
-    })
 
 })
 //移动
-function moveOption(obj1, obj2,flag) {
-    var selectOption=""
-
-    for(var i = obj1.options.length - 1 ; i >= 0 ; i--) {
-        if(obj1.options[i].selected) {
-            if(selectOption){
-                selectOption+=","+obj1.options[i].text
-            }else{
-                selectOption+=obj1.options[i].text
-            }
-
-            var opt = new Option(obj1.options[i].text,obj1.options[i].value);
-            opt.selected = true;
-            obj2.options.add(opt);
-            obj1.remove(i);
-        }
-    }
+function moveLi(obj1, obj2,flag) {
+   if(flag){
+	   $(".selectRight ul li").removeClass("liClick")
+	   $(".selectRight ul").append($(".liClick"))
+	   $(".selectLeft .liClick").remove()
+   }else{
+	   $(".selectLeft ul li").removeClass("liClick")
+	   $(".selectLeft ul").append($(".liClick"))
+	   $(".selectRight .liClick").remove()
+   }
+   
+   
     //获取selectRight里面的数据，然后传给后台
+   var selectLi=""
+   if(flag){
+	   selectLi+=$(".selectRight .liClick").html()   
+    }else{
+       selectLi+=$(".selectLeft .liClick").html()   
+    }
     //请求路径,flag为true,增加，false，减少
+    var wordValue=$(".wordHidden").val()
     var url=""
     if(flag){
-        url=""
+        url=ctx+'/put_means'
     }else{
-        url=""
+        url=ctx+'/remove_means'
     }
-    $.post({
+    $.ajax({
         url:url,
         type:"post",
-        data:{means:selectOption}
+        data:{word:wordValue,m:selectLi},
+        success:function(){
+        	
+        }
     })
 }
 
@@ -59,8 +76,7 @@ function moveOption(obj1, obj2,flag) {
 
 
 //查询，点击查询，右边出现
-function searchCatalog(){
-    var inputValue //搜索框里面的值
+function searchCatalog(str){  
     var msg=""  //用来保存data里面的值
     var words=""
     var near=""
@@ -70,13 +86,16 @@ function searchCatalog(){
     var sr_nm_list=""
     var selectLeft_list=""
     var selectRight_list=""
-    inputValue=$(".searchInput").val()
+    var liValue //点击的值
+    	liValue=str
     $.ajax({
-        url:'../json/bzlx.json',
+        url:ctx+'/query_word_detail',
         type:'post',
-        data:{word:inputValue},
+        data:{word:liValue},
         dataType:"json",
         success:function(data){
+        	//给wordHidden赋值
+        	$(".wordHidden").val(liValue)
             msg=data.msg
             words=msg.words
             for(var i=0;i<words.length;i++){
@@ -89,31 +108,39 @@ function searchCatalog(){
             for(var i=0;i<near.length;i++){
                 sr_nm_list+="<span>"+near[i]+"</span>"
             }
-            $(".sr_nm").html("")
-            $(".sr_nm").html(sr_nm_list)
+            $(".sr_nm_content").html("")
+            $(".sr_nm_content").html(sr_nm_list)
 
             result=msg.result
+            selectLeft_list+="<ul>"
             for(var i=0;i<result.length;i++){
-                selectLeft_list+="<option>"+result[i]+"</option>"
+                selectLeft_list+="<li>"+result[i]+"</li>"
             }
-            $(".selectLeft").html("")
-            $(".selectLeft").html(selectLeft_list)
+            selectLeft_list+="</ul>"
+            $(".selectLeftContent").html("")
+            document.getElementById('left').scrollTop = 0;
+            $(".selectLeftContent").html(selectLeft_list)
 
             means=msg.means
+            selectRight_list+="<ul>"
             for(var i=0;i<means.length;i++){
-                selectRight_list+="<option>"+means[i]+"</option>"
+                selectRight_list+="<li>"+means[i]+"</li>"
             }
-            $(".selectRight").html("")
-            $(".selectRight").html(selectRight_list)
+            selectRight_list+="</ul>"
+            $(".selectRightContent").html("")
+              document.getElementById('right').scrollTop = 0;
+            $(".selectRightContent").html(selectRight_list)
 
             nmClick()
-
+            
+            selectLeftClick()
+            selectRightClick()
         }
     })
 }
-//点击sr_nm里面的值，改变样式，触发事件
+//点击sr_nm_content里面的值，改变样式，触发事件
 function nmClick(){
-    $(".sr_nm span").on("click",function(){
+    $(".sr_nm_content span").on("click",function(){
         if($(this).hasClass("spanClick")){
             $(this).removeClass("spanClick")
         }else{
@@ -126,31 +153,101 @@ function nmClick(){
 //点击的相似字
 function nearClick(){
     //点击的相似字
-    var near=""
-    $(".sr_nm span").each(function(){
+    var word=""
+    $(".sr_nm_content span").each(function(){
         if($(this).hasClass("spanClick")){
-            if(near){
-                near+=","+$(this).text()
-            }else{
-                near+=$(this).text()
-            }
+            	word+=$(this).text()
         }
     })
 
     var selectLeft=""
     var results=""
-    $.ajax({
-        url:'../json/bzlx.json',
-        type:'post',
-        data:{near:near},
-        dataType:'json',
-        success:function(data){
-            results=data.msg.result
-            for(var i=0;i<results.length;i++){
-                selectLeft+="<option>"+results[i]+"</option>"
+    var msg=""
+    	
+    if(word){
+        $.ajax({
+            url:ctx+'/queryWord',
+            type:'post',
+            data:{word:word,m:""},
+            dataType:"json",
+            success:function(data){
+                msg=data.msg
+                results=msg.result
+                for(var i=0;i<results.length;i++){
+                    selectLeft+="<li>"+results[i]+"</li>"
+                }
+                $(".selectLeftContent").html("")
+                document.getElementById('left').scrollTop = 0;
+                $(".selectLeftContent").html(selectLeft)
+                
+                selectLeftClick()
+                selectRightClick()
             }
-            $(".selectLeft").html("")
-            $(".selectLeft").html(selectLeft)
-        }
+        })	
+    }else{
+    	var str=$(".wordHidden").val()
+    	searchCatalog(str)
+    }
+}
+
+//给selectLeft li 添加click方法
+function selectLeftClick(){
+	$(".selectLeft li").on("click",function(){
+		$(".selectLeft li").removeClass("liClick")
+		$(this).addClass("liClick")
+	})
+}
+
+//给selectRight li 添加click方法
+function selectRightClick(){
+	$(".selectRight li").on("click",function(){
+		$(".selectRight li").removeClass("liClick")
+		$(this).addClass("liClick")
+	})
+}
+
+
+//添加
+function searchAdd(){
+	var inputValue=$(".searchInput").val()
+	if(inputValue){
+		$(".catalogList ul").append("<li>"+inputValue+"</li>")	
+		catalogAdd()
+		$(".searchInput").val("")
+	}
+}
+
+
+    //给catalog下的Li绑定事件
+function catalogAdd(){
+    $(".catalog ul li").on('click',function(){
+        $(".catalog ul li").removeClass("clickLi")
+        $(".searchInput").val("")
+        $(this).addClass("clickLi")
+        
+        var str=$(this).text()
+    	searchCatalog(str)
     })
+    
+}
+
+
+function imports(){
+    var selectedFile = document.getElementById("files").files[0];//获取读取的File对象
+    var name = selectedFile.name;//读取选中文件的文件名
+    var size = selectedFile.size;//读取选中文件的大小
+    var reader = new FileReader();//这里是核心！！！读取操作就是由它完成的。
+    reader.readAsText(selectedFile);//读取文件的内容
+
+    var liList=""
+    var list=[]
+    reader.onload = function(){
+        list=this.result.split("\n")
+        for(var i=0;i<list.length;i++){
+        	liList+="<li>"+list[i].trim()+"</li>"
+        }
+        $(".catalogList ul").append(liList)
+        
+        catalogAdd()
+    };
 }
