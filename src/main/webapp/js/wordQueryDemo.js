@@ -44,6 +44,7 @@ function searchA(){
         type:"post",
         dataType:"html",
         success:function(data){
+        	$(".synonym").html("")
             $(".selecShow").html("")
             $(".selecShow").html(data)
             selecShowA()
@@ -99,8 +100,11 @@ function searchNewA(){
         type:"post",
         dataType:"html",
         success:function(data){
+        	$(".synonymNew").html("")
             $(".selecNewShow").html("")
-            $(".selecNewShow").html(data)
+            if(data){
+              $(".selecNewShow").html(data)
+            }
             selecShowNewA()
         }
     })
@@ -117,7 +121,11 @@ function selecShowNewA(){
             type:"post",
             success:function(data){
                 $(".synonymNew").html("")
-                $(".synonymNew").html("是不是搜索："+data)
+                if(data){
+                    $(".synonymNew").html("是不是搜索："+data)
+                }else{
+                	$(".synonymNew").html("")
+                }
                 synonymNewA()
             }
         })
