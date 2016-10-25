@@ -40,7 +40,7 @@ function deletePassword(){
 }
 /*表单提交*/
 function loginSubmit(){
-    if ($("#saveUsername").attr("checked")) {
+    if ($("#saveUsername").prop("checked")) {
         var str_username = $(".username_input_value").val();
         var str_password = $(".password_input_value").val();
         $.cookie("rmbUser", "true", { expires: 7 }); //存储一个带7天期限的cookie
@@ -79,5 +79,19 @@ function updateTop(){
         $("#saveUsername").attr("checked", true);
         $(".username_input_value").val($.cookie("username"));
         $(".password_input_value").val($.cookie("password"));
+    }
+}
+
+/*给下次自动登录绑定一个方法
+ * 点击的时候，对P进行判断，如果有sulpClick,就移除，添加sulpNoClick,把input的checked改为false
+ * 如果有sulpNoClick,就移除，添加sulpClick,把input的checked改为true
+ * */
+function saveUsernameClick(){
+    if($("#saveUsernameLabel p").hasClass("sulpClick")){
+        $("#saveUsernameLabel p").removeClass("sulpClick").addClass("sulpNoClick")
+        $("#saveUsername").prop("checked",false)
+    }else{
+        $("#saveUsernameLabel p").removeClass("sulpNoClick").addClass("sulpClick")
+        $("#saveUsername").prop("checked",true)
     }
 }

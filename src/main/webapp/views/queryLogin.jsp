@@ -47,13 +47,11 @@
               </div>
             </div>
             <div class="inplist">
-              <label for="saveUsername" id="saveUsernameLabel">
-                <input id="saveUsername" class="saveUsername" type="checkbox" checked>下次自动登录
-              </label>
-              <!--<label for="saveUsername" id="saveUsernameLabel">-->
-              <!--<span class="saveUser"></span>-->
-              <!--<input id="saveUsername" class="saveUsername" type="checkbox" checked>下次自动登录-->
-              <!--</label>-->
+              <div id="saveUsernameLabel" onclick="saveUsernameClick()">
+                <p class="sulpClick"></p>
+                <input id="saveUsername" class="saveUsername" type="checkbox" checked>
+                下次自动登录
+              </div>
             </div>
           </div>
           <div class="login_submit">

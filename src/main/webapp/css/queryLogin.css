@@ -120,30 +120,24 @@ img{border: none;margin: 0px;padding: 0px;}
     float: left;
     margin-top: 10px;
 }
-/*.saveUser{*/
-/*float: left;*/
-/*width: 12px;*/
-/*height: 12px;*/
-/*/!*background-image: url("../images/login_06.png");*!/*/
-/*cursor: pointer;*/
-/*margin-right: 5px;*/
-/*display: block;*/
-/*}*/
+
 .saveUsername{
     float: left;
     margin-right: 5px;
 }
-/*.saveUsername{*/
-/*opacity:0;*/
-/*float: left;*/
-/*width: 0px;*/
-/*height: 0px;*/
-/*}*/
+
 #saveUsernameLabel{
     float: left;
     height: 12px;
     line-height: 12px;
     color: #222222;
+    cursor: pointer;
+}
+#saveUsernameLabel p{
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    float: left;
 }
 .login_submit{
     width: 310px;
@@ -196,4 +190,11 @@ img{border: none;margin: 0px;padding: 0px;}
 }
 .displayNo{
     display: none;
+}
+
+.sulpClick{
+    background: url("../images/click_2.png") no-repeat;
+}
+.sulpNoClick{
+    background: url("../images/click_1.png") no-repeat;
 }
