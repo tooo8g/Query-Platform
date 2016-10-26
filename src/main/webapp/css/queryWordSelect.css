@@ -103,6 +103,8 @@ body{
     float:left;
 }
 .sr_nm p{
+    height: 17px;
+    line-height: 17px;
 	margin-left: -20px;
     margin-top: -10px;
     margin-bottom: 5px;
@@ -183,11 +185,12 @@ body{
 }
 
 .sr_con_input{
+    width: 40px;
     margin-left: 35px;
     margin-top: 110px;
 }
 .sr_con_input a{
-    width: auto;
+    width: 20px;
     height: 25px;
     line-height: 25px;
     display: block;

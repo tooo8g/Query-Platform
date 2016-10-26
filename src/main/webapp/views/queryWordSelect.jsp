@@ -49,7 +49,7 @@
         </div>
       </div>
       <div class="sr_con_input">
-        <a type="button" onclick="moveLi(document.getElementById('left'),document.getElementById('right'),true)">>></a><br><br>
+        <a type="button" onclick="moveLi(document.getElementById('left'),document.getElementById('right'),true)">>></a>
         <a type="button" onclick="moveLi(document.getElementById('right'), document.getElementById('left'),false)"><<</a>
       </div>
       <div class="secondSelect">
