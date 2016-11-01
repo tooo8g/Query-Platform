@@ -340,14 +340,14 @@ function  catEdit(str) {
         inputT.removeClass("displayBlock").addClass("displayNo")
         pT.removeClass("displayNo").addClass("displayBlock")
 
-        $.ajax({
-            url:"",
-            type:"post",
-            data:{},
-            success:function () {
-
-            }
-        })
+        //$.ajax({
+        //    url:"",
+        //    type:"post",
+        //    data:{},
+        //    success:function () {
+        //
+        //    }
+        //})
     })
 }
 
@@ -371,6 +371,8 @@ function  saveSes() {
         type:"post",
         data:{word:wordValue,m:selectLi},
         success:function(){
+            $(".selectRightContentAdd input").val()
+            $(".selectRightContentAdd").removeClass("displayBlock").addClass("displayNo")
             $('.selectRightContentAdd').html("")
             $(".selectRightContentShow").append("<li>+selectLi+</li>")
         }
@@ -380,13 +382,26 @@ function  saveSes() {
 //查询可能匹配的名称
 function leftSelect() {
     var inputValue=$(".left_select").val()
+    var result=""
+    var selectLeft_list=""
+    var msg=""
     $.ajax({
-        url:"",
+        url:ctx+'/query_word_detail',
         type:"post",
-        data:{},
+        data:{word:inputValue},
         dataType:"json",
         success:function (data) {
-
+            msg=data.msg
+            result=msg.result
+            selectLeft_list+="<ul>"
+            for(var i=0;i<result.length;i++){
+                selectLeft_list+="<li>"+result[i]+"</li>"
+            }
+            selectLeft_list+="</ul>"
+            $(".selectLeftContent_show").removeClass("displayNo").addClass("displayBlcok")
+            $(".selectLeftContent_show").html("")
+            document.getElementById('left').scrollTop = 0;
+            $(".selectLeftContent_show").html(selectLeft_list)
         }
     })
 }
