@@ -13,10 +13,19 @@ body{
     width: 352px;
     float: left;
 }
+.catalogTile{
+    width: 340px;
+    border: 1px solid #dddddd;
+    border-bottom: none;
+    color: #77afea;
+    font-size: 14px;
+    padding-left: 10px;
+}
 .catalogButton{
     width: 350px;
     height: 55px;
     border: 1px solid #dddddd;
+    border-top: none;
     border-bottom: none;
 }
 
@@ -66,6 +75,7 @@ body{
     list-style: none;
     line-height: 20px;
     color: #222222;
+    height: 20px;
 }
 .catalogList ul li:hover{
     background-color: #77afea;
@@ -89,7 +99,7 @@ body{
 }
 .sr_con{
     margin-bottom: 20px;
-        float: left;
+    float: left;
 }
 .sr_top,.sr_nm{
     border-bottom: 1px dashed #dddddd;
@@ -104,8 +114,8 @@ body{
 }
 .sr_nm p{
     height: 17px;
-    line-height: 17px;
-	margin-left: -20px;
+    line-height: 17px;;
+    margin-left: -20px;
     margin-top: -10px;
     margin-bottom: 5px;
     color: #77afea;
@@ -133,37 +143,37 @@ body{
     float: left;
 }
 .firstSelect{
-	width:300px;
+    width:300px;
     margin-left: 55px !important;
     margin-bottom: 20px;
 }
 .secondSelect{
-	width:300px;
+    width:300px;
     margin-left: 35px !important;
     margin-bottom: 20px;
 }
 .sr_con .selectLeft,.sr_con .selectRight{
     width: 300px;
-    height: 250px;
+    /*height: 250px;*/
     border: 1px solid #dddddd;
     overflow:auto
 }
 .divTitle{
-	margin-top:5px;
-	margin-bottom:5px;
-	margin-left:10px;
-	color:#77afea;
-	font-weight: bold;
+    margin-top:5px;
+    margin-bottom:5px;
+    margin-left:10px;
+    color:#77afea;
+    font-weight: bold;
 }
 .selectLeft ul,.selectRight ul{
-    width: 270px;
+    width: 300px;
     height: 250px;
     padding-left: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
 .sr_con .selectLeft li,.sr_con .selectRight li{
-	width:270px;
+    width:270px;
     font-family: 'Microsoft Yahei', 'Arial',Tahoma, 'Simsun';
     margin-left: 10px;
     margin-top: 2px;
@@ -172,14 +182,14 @@ body{
     float:left;
 }
 .sr_con .selectLeft li:hover,.sr_con .selectRight li:hover{
-	background-color:#bbbbbb
+    background-color:#bbbbbb
 }
 .sr_con .selectLeft li p,.sr_con .selectRight li p{
-	float:left;
-	margin-top: 0px;
-	margin-bottom:0px;
-	color:red;
-	border-bottom-width: 1px;
+    float:left;
+    margin-top: 0px;
+    margin-bottom:0px;
+    color:red;
+    border-bottom-width: 1px;
     border-bottom-style: dashed;
     border-bottom-color: black;
 }
@@ -205,8 +215,85 @@ body{
     margin-top:10px;
 }
 .liClick{
-	background-color:#bbbbbb
+    background-color:#bbbbbb
 }
 .spanClick{
     color: #77afea;
+}
+.displayNo{
+    display: none;
+}
+.displayBlock{
+    display: block;
+}
+
+.catalogList ul li p{
+    width: 300px;
+    margin: 0px !important;
+    float: left;
+}
+.catalogList ul li input{
+    width: 296px;
+    height: 14px;
+    margin-left: -2px;
+    float: left;
+}
+.catalogList ul li span{
+    width: 38px;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    color: #ff8201;
+}
+.sesButton{
+    width: auto;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 180px;
+    display: block;
+    float: left;
+    cursor: pointer;
+    background-color: #77afea;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.saveses,.left_select_button{
+    width: auto;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: block;
+    float: left;
+    cursor: pointer;
+    background-color: #77afea;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.selectRightContent input,.left_select{
+    width:226px;
+    height: 20px;
+    margin-left:10px;
+    margin-top: 10px;
+    float: left;
+}
+.selectLeftContent_select{
+    height: 40px;
+}
+.selectLeftContent,.selectRightContent{
+    height: auto;
+    min-height: 250px;
+}
+.selectLeftContent_show{
+    width: 300px;
+    height: 210px;
+    overflow: auto;
 }

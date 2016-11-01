@@ -1,37 +1,31 @@
 $(function(){
-    var nScrollHight = 0; //滚动距离总长(注意不是滚动条的长度)
-    var nScrollTop = 0;   //滚动到的当前位置
-    var nDivHight = $(".catalogList").height();
-
-    //$(".catalogList").scroll(function(){
-    //    nScrollHight = $(this)[0].scrollHeight;
-    //    nScrollTop = $(this)[0].scrollTop;
-    //    if(nScrollTop + nDivHight >= nScrollHight)
-    //        var liList="<li>我是11</li><li>我是12</li><li>我是13</li><li>我是14</li><li>我是15</li><li>我是16</li><li>我是17</li><li>我是18</li><li>我是19</li><li>我是20</li>"
-    //    $("div ul").append(liList)
-    //})
-    
     catalogAdd()
-    
-    
-    
+    //导入事件
     $("#import").click(function(){//点击导入按钮，使files触发点击事件，然后完成读取文件的操作。
-//    	if（alert("将名称放入一列并保存为txt")）{
-//    		$("#files").click();
-//    	}
     	if(confirm("将名称放入一列并保存为txt")){
     		$("#files").click();
     	}
     });
-
-
+    //回车事件
     document.onkeydown = function(e){ 
         var ev = document.all ? window.event : e;
         if(ev.keyCode==13) {
         	searchAdd()
          }
-    } 
+    }
+    //鼠标左键事件
+    document.onmousedown=function (e) {
+        if(e.which==1){
+            var mdTagName=$(e.target).parent().prop("tagName")
+            if(mdTagName=="UL"||mdTagName=="LI"){
 
+            }else{
+                cateFoucs()
+            }
+        }
+    }
+    cateMouseenter()
+    cateMouseleave()
 
 })
 //移动
@@ -76,7 +70,8 @@ function moveLi(obj1, obj2,flag) {
 
 
 //查询，点击查询，右边出现
-function searchCatalog(str){  
+function searchCatalog(str){
+    cateFoucs()
     var msg=""  //用来保存data里面的值
     var words=""
     var near=""
@@ -117,9 +112,10 @@ function searchCatalog(str){
                 selectLeft_list+="<li>"+result[i]+"</li>"
             }
             selectLeft_list+="</ul>"
-            $(".selectLeftContent").html("")
+            $(".selectLeftContent_show").removeClass("displayNo").addClass("displayBlcok")
+            $(".selectLeftContent_show").html("")
             document.getElementById('left').scrollTop = 0;
-            $(".selectLeftContent").html(selectLeft_list)
+            $(".selectLeftContent_show").html(selectLeft_list)
 
             means=msg.means
             selectRight_list+="<ul>"
@@ -127,9 +123,10 @@ function searchCatalog(str){
                 selectRight_list+="<li>"+means[i]+"</li>"
             }
             selectRight_list+="</ul>"
-            $(".selectRightContent").html("")
+            $(".selectRightContentAdd").removeClass("displayBlock").addClass("displayNo")
+            $(".selectRightContentShow").html("")
               document.getElementById('right').scrollTop = 0;
-            $(".selectRightContent").html(selectRight_list)
+            $(".selectRightContentShow").html(selectRight_list)
 
             nmClick()
             
@@ -211,7 +208,7 @@ function selectRightClick(){
 function searchAdd(){
 	var inputValue=$(".searchInput").val()
 	if(inputValue){
-		$(".catalogList ul").append("<li>"+inputValue+"</li>")	
+        $(".catalogList ul").append("<li><p>"+inputValue+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>")
 		catalogAdd()
 		$(".searchInput").val("")
 	}
@@ -244,10 +241,152 @@ function imports(){
     reader.onload = function(){
         list=this.result.split("\n")
         for(var i=0;i<list.length;i++){
-        	liList+="<li>"+list[i].trim()+"</li>"
+            liList+="<li><p>"+list[i].trim()+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>"
         }
         $(".catalogList ul").append(liList)
         
         catalogAdd()
     };
+}
+
+//catalogList鼠标划入事件
+function cateMouseenter(){
+    $(".catalogList ul li").mouseenter(function () {
+        if($(".catalogList ul li input").hasClass("displayBlock")){
+            $(this).find("span").removeClass("displayNo").addClass("displayBlock")
+        }else{
+            $(".catalogList ul li span").removeClass("displayBlock").addClass("displayNo")
+            $(this).find("span").removeClass("displayNo").addClass("displayBlock")
+        }
+    })
+}
+//catalogList鼠标划出事件
+function cateMouseleave() {
+    $(".catalogList ul li").mouseleave(function () {
+        if($(".catalogList ul li input").hasClass("displayBlock")) {
+            $(".catalogList ul li span").removeClass("displayBlock").addClass("displayNo")
+            $(".catalogList ul li input[class='displayBlock']").parent().find("span").removeClass("displayNo").addClass("displayBlock")
+        }else{
+            $(".catalogList ul li span").removeClass("displayBlock").addClass("displayNo")
+
+            var inputValue=$(this).find("input").val()
+            var pT=$(this).find("p")
+            if(inputValue){
+                pT.text(inputValue)
+            }
+            $(this).find("p").removeClass("displayNo").addClass("displayBlock")
+            $(this).find("span").removeClass("displayBlock").addClass("displayNo")
+            $(this).find("input").removeClass("displayBlock").addClass("displayNo")
+
+            $.ajax({
+                url:"",
+                type:"post",
+                data:{},
+                success:function () {
+
+                }
+            })
+        }
+    })
+
+}
+
+//catalogList鼠标所在位置触发事件
+function cateFoucs(){
+    $(".catalogList ul li span").removeClass("displayBlock").addClass("displayNo")
+    var inputFocus=$(".catalogList ul li input[class='displayBlock']")
+    var inputValue=inputFocus.val()
+    var parentV=inputFocus.parent()
+    var pT=parentV.find("p")
+    if(inputValue){
+        pT.text(inputValue)
+    }
+    parentV.find("p").removeClass("displayNo").addClass("displayBlock")
+    parentV.find("span").removeClass("displayBlock").addClass("displayNo")
+    inputFocus.removeClass("displayBlock").addClass("displayNo")
+
+    cateMouseenter()
+
+    $.ajax({
+        url:"",
+        type:"post",
+        data:{},
+        success:function () {
+
+        }
+    })
+}
+//catalogList里的p值改变
+function  catEdit(str) {
+    $(".catalogList li").removeClass("clickLi")
+    $(str).parent().addClass("clickLi")
+    var pValue="" //当前p里面的值
+    var pT=$(str).parent().find("p")
+    pValue=pT.text().trim()
+    pT.removeClass("displayBlock").addClass("displayNo")
+    var inputValue="" //当前input里面的值
+    var inputT=$(str).parent().find("input")
+    inputT.removeClass("displayNo").addClass("displayBlock")
+    inputValue=pValue
+    inputT.val(inputValue)
+
+    inputT.on("blur",function () {
+        inputValue=$(this).val()
+        pValue=inputValue
+        if(inputValue){
+            pT.text(pValue)
+        }
+        $(this).parent().find("span").removeClass("displayBlock").addClass("displayNo")
+        inputT.removeClass("displayBlock").addClass("displayNo")
+        pT.removeClass("displayNo").addClass("displayBlock")
+
+        $.ajax({
+            url:"",
+            type:"post",
+            data:{},
+            success:function () {
+
+            }
+        })
+    })
+}
+
+//添加匹配到的名称
+function  sesAdd() {
+    $(".selectRightContentAdd").removeClass("displayNo").addClass("displayBlock")
+    $(".selectRightContentAdd").append("<input type='text' value=''><a href='javascript:;' type='button' class='saveses' onclick='saveSes()'>确认</a>")
+}
+
+//保存添加的方法
+function  saveSes() {
+    //获取selectRight里面的数据，然后传给后台
+    var selectLi=""
+    selectLi+="<p>"+$('.selectRightContentAdd input').val()+"<p>"
+    //请求路径,flag为true,增加，false，减少
+    var wordValue=$(".wordHidden").val()
+    var url=""
+    url=ctx+'/put_means'
+    $.ajax({
+        url:url,
+        type:"post",
+        data:{word:wordValue,m:selectLi},
+        success:function(){
+            $('.selectRightContentAdd').html("")
+            $(".selectRightContentShow").append("<li>+selectLi+</li>")
+        }
+    })
+}
+
+//查询可能匹配的名称
+function leftSelect() {
+    var inputValue=$(".left_select").val()
+    $.ajax({
+        url:"",
+        type:"post",
+        data:{},
+        dataType:"json",
+        success:function (data) {
+
+        }
+    })
 }

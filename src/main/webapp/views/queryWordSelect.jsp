@@ -13,23 +13,23 @@
 <body>
 <div class="container">
   <div class="catalog">
+    <div class="catalogTile">新物质编码导入</div>
     <div class="catalogButton">
       <input type="text" class="searchInput" value="">
       <a href="javaScripy:;" type="button" class="searchButton" onclick="searchAdd()">添加</a>
-     <!-- <input type="file" class="searchBu">导入 --> 
        <input type="file" id="files" style="display:none" onchange="imports();"/>
        <a type="button" id="import" class="searchBu">导入</a>
     </div>
     <div class="catalogList">
       <ul>
-        <li>机车车辆用制动软管连接器</li>
-        <li>铁路信号产品绝缘电阻</li>
-        <li>机车车辆油压减振器</li>
-        <li> 铁路信号插入式交流二元继电器</li>
-        <li> 铁道客车及动车组防滑装置</li>
-        <li>扣件螺栓机动扳手</li>
-        <li>机车用铸铁闸瓦</li>
-        <li>铁道客车塞拉门</li>
+        <li><p>机车车辆用制动软管连接器</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
+        <li><p>铁路信号产品绝缘电阻</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
+        <li><p>机车车辆油压减振器</p><input type="text" class="displayNo" value=""><span   class="displayNo" onclick="catEdit(this)">编辑</span></li>
+        <li><p>铁路信号插入式交流二元继电器</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
+        <li><p>铁道客车及动车组防滑装置</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
+        <li><p>扣件螺栓机动扳手</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
+        <li><p>机车用铸铁闸瓦</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
+        <li><p>铁道客车塞拉门</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
       </ul>
     </div>
   </div>
@@ -43,9 +43,15 @@
     </div>
     <div class="sr_con">
       <div class="firstSelect">
-        <div class="divTitle">备选名称</div>
+        <div class="divTitle">请选择可能匹配的名称</div>
         <div  class="selectLeft" id="left">
-          <div class="selectLeftContent"></div>
+          <div class="selectLeftContent">
+            <div class="selectLeftContent_select displayNo">
+              <input class="left_select" type="text" value="" onclick="">
+              <a href="javaScripy:;" type="button" class="left_select_button" onclick="leftSelect()">查询</a>
+            </div>
+            <div class="selectLeftContent_show"></div>
+          </div>
         </div>
       </div>
       <div class="sr_con_input">
@@ -53,13 +59,15 @@
         <a type="button" onclick="moveLi(document.getElementById('right'), document.getElementById('left'),false)"><<</a>
       </div>
       <div class="secondSelect">
-        <div class="divTitle">已对应名称</div>
+        <div class="divTitle">匹配到的名称</div>
+        <a href="javaScripy:;" type="button" class="sesButton" onclick="sesAdd()">添加</a>
         <div  class="selectRight" id="right">
-        <div class="selectRightContent">
-        </div>
+          <div class="selectRightContent">
+            <div class="selectRightContentAdd"></div>
+            <div class="selectRightContentShow"></div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
