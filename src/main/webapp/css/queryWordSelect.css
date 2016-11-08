@@ -8,6 +8,8 @@ body{
     width: 1200px;
     margin: 0 auto;
     margin-top: 50px;
+    overflow: hidden;
+    position: relative;
 }
 .catalog{
     width: 352px;
@@ -154,7 +156,6 @@ body{
 }
 .sr_con .selectLeft,.sr_con .selectRight{
     width: 300px;
-    /*height: 250px;*/
     border: 1px solid #dddddd;
     overflow:auto
 }
@@ -166,11 +167,12 @@ body{
     font-weight: bold;
 }
 .selectLeft ul,.selectRight ul{
-    width: 300px;
-    height: 250px;
+    width: 280px;
+    height: auto;
     padding-left: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
+    overflow: hidden;
 }
 .sr_con .selectLeft li,.sr_con .selectRight li{
     width:270px;
@@ -184,8 +186,7 @@ body{
 .sr_con .selectLeft li:hover,.sr_con .selectRight li:hover{
     background-color:#bbbbbb
 }
-.sr_con .selectLeft li p,.sr_con .selectRight li p{
-    float:left;
+.sr_con .selectLeft li span,.sr_con .selectRight li span{
     margin-top: 0px;
     margin-bottom:0px;
     color:red;
@@ -285,15 +286,69 @@ body{
     margin-top: 10px;
     float: left;
 }
-.selectLeftContent_select{
+.selectLeftContent_select,.selectRightContentAdd{
     height: 40px;
+    width: 300px;
+    padding-bottom: 2px;
+    border-bottom: 1px dashed #bbbbbb;
 }
 .selectLeftContent,.selectRightContent{
     height: auto;
     min-height: 250px;
 }
-.selectLeftContent_show{
+.selectLeftContent_show,.selectRightContentShow{
     width: 300px;
     height: 210px;
     overflow: auto;
+}
+/*提示框*/
+.popup{
+    width: 300px;
+    height: 160px;
+    position: absolute;
+    margin: 0px auto;
+    top: 100px;
+    left: 450px;
+    border: 1px solid #77afea;
+    background-color: white;
+}
+.popup span,.popup a{
+    display: block;
+}
+.popup_title{
+    width: 280px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 16px;
+    padding-left: 20px;
+    background-color: #eeeeee;
+}
+.popup_con{
+    width: 300px;
+    text-align: center;
+    font-size: 14px;
+    margin:20px 0 20px 0;
+}
+.popup_sure,.popup_cancel{
+    width: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    float: left;
+    text-decoration: none;
+}
+.popup_sure{
+    background-color: #77afea;
+    color: white;
+    margin-left: 100px;
+}
+.popup_cancel{
+    background-color: #f0f0f0;
+    color: #777777;
+    border: 1px solid #bbbbbb;
+    margin-left: 20px;
 }

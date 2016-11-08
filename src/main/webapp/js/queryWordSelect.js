@@ -1,19 +1,22 @@
 $(function(){
+    //JS加载后，给catalog下的Li绑定事件
     catalogAdd()
     //导入事件
     $("#import").click(function(){//点击导入按钮，使files触发点击事件，然后完成读取文件的操作。
-    	if(confirm("将名称放入一列并保存为txt")){
-    		$("#files").click();
-    	}
+    	//if(confirm("将名称放入一列并保存为txt")){
+    	//	$("#files").click();
+    	//}
+       $(".popup").removeClass("displayNo").addClass("displayBlock")
     });
     //回车事件
-    document.onkeydown = function(e){ 
+    document.onkeydown = function(e){
         var ev = document.all ? window.event : e;
         if(ev.keyCode==13) {
-        	searchAdd()
-         }
+            searchAdd()
+            cateFoucs()
+        }
     }
-    //鼠标左键事件
+    //鼠标左键事件,鼠标点击页面，如果点击的父类不是ul或者Li.就触发cateFoucs事件
     document.onmousedown=function (e) {
         if(e.which==1){
             var mdTagName=$(e.target).parent().prop("tagName")
@@ -26,21 +29,18 @@ $(function(){
     }
     cateMouseenter()
     cateMouseleave()
-
 })
 //移动
 function moveLi(obj1, obj2,flag) {
-   if(flag){
-	   $(".selectRight ul li").removeClass("liClick")
-	   $(".selectRight ul").append($(".liClick"))
-	   $(".selectLeft .liClick").remove()
-   }else{
-	   $(".selectLeft ul li").removeClass("liClick")
-	   $(".selectLeft ul").append($(".liClick"))
-	   $(".selectRight .liClick").remove()
-   }
-   
-   
+    if(flag){
+        $(".selectRight ul li").removeClass("liClick")
+        $(".selectRight ul").prepend($(".liClick"))
+        $(".selectLeft .liClick").remove()
+    }else{
+        $(".selectLeft ul li").removeClass("liClick")
+        $(".selectLeft ul").prepend($(".liClick"))
+        $(".selectRight .liClick").remove()
+    }
     //获取selectRight里面的数据，然后传给后台
    var selectLi=""
    if(flag){
@@ -66,10 +66,11 @@ function moveLi(obj1, obj2,flag) {
     })
 }
 
-
-
-
-//查询，点击查询，右边出现
+//查询，点击查询，
+/*
+* params:str 点击的value
+* return data
+* */
 function searchCatalog(str){
     cateFoucs()
     var msg=""  //用来保存data里面的值
@@ -112,7 +113,7 @@ function searchCatalog(str){
                 selectLeft_list+="<li>"+result[i]+"</li>"
             }
             selectLeft_list+="</ul>"
-            $(".selectLeftContent_show").removeClass("displayNo").addClass("displayBlcok")
+            $(".selectLeftContent_select").removeClass("displayNo").addClass("displayBlock")
             $(".selectLeftContent_show").html("")
             document.getElementById('left').scrollTop = 0;
             $(".selectLeftContent_show").html(selectLeft_list)
@@ -123,7 +124,6 @@ function searchCatalog(str){
                 selectRight_list+="<li>"+means[i]+"</li>"
             }
             selectRight_list+="</ul>"
-            $(".selectRightContentAdd").removeClass("displayBlock").addClass("displayNo")
             $(".selectRightContentShow").html("")
               document.getElementById('right').scrollTop = 0;
             $(".selectRightContentShow").html(selectRight_list)
@@ -135,7 +135,7 @@ function searchCatalog(str){
         }
     })
 }
-//点击sr_nm_content里面的值，改变样式，触发事件
+//相似字，点击sr_nm_content里面的值，改变样式，触发事件
 function nmClick(){
     $(".sr_nm_content span").on("click",function(){
         if($(this).hasClass("spanClick")){
@@ -148,6 +148,7 @@ function nmClick(){
 }
 
 //点击的相似字
+//params word 点击的value，组合成string
 function nearClick(){
     //点击的相似字
     var word=""
@@ -173,9 +174,9 @@ function nearClick(){
                 for(var i=0;i<results.length;i++){
                     selectLeft+="<li>"+results[i]+"</li>"
                 }
-                $(".selectLeftContent").html("")
+                $(".selectLeftContent_show").html("")
                 document.getElementById('left').scrollTop = 0;
-                $(".selectLeftContent").html(selectLeft)
+                $(".selectLeftContent_show").html(selectLeft)
                 
                 selectLeftClick()
                 selectRightClick()
@@ -203,32 +204,32 @@ function selectRightClick(){
 	})
 }
 
-
 //添加
+//
 function searchAdd(){
 	var inputValue=$(".searchInput").val()
 	if(inputValue){
-        $(".catalogList ul").append("<li><p>"+inputValue+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>")
+        $(".catalogList ul").prepend("<li><p>"+inputValue+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>")
 		catalogAdd()
 		$(".searchInput").val("")
+        //添加以后，调用鼠标划入和划出事件
+        cateMouseenter()
+        cateMouseleave()
 	}
 }
 
-
     //给catalog下的Li绑定事件
 function catalogAdd(){
-    $(".catalog ul li").on('click',function(){
+    $(".catalog ul p").on('click',function(){
         $(".catalog ul li").removeClass("clickLi")
         $(".searchInput").val("")
-        $(this).addClass("clickLi")
-        
+        $(this).parent().addClass("clickLi")
+       //获取点击的value，调用查询方法
         var str=$(this).text()
-    	searchCatalog(str)
+        searchCatalog(str)
     })
-    
 }
-
-
+//导入按钮，用html5的FileReader方法
 function imports(){
     var selectedFile = document.getElementById("files").files[0];//获取读取的File对象
     var name = selectedFile.name;//读取选中文件的文件名
@@ -243,10 +244,44 @@ function imports(){
         for(var i=0;i<list.length;i++){
             liList+="<li><p>"+list[i].trim()+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>"
         }
-        $(".catalogList ul").append(liList)
+        $(".catalogList ul").prepend(liList)
         
         catalogAdd()
+        //添加以后，调用鼠标划入和划出事件
+        cateMouseenter()
+        cateMouseleave()
     };
+}
+
+//编辑按钮，catalogList里的p值改变
+function  catEdit(str) {
+    //点击编辑按钮后，先把P显示，input隐藏，span隐藏
+    $(".catalogList li").removeClass("clickLi")
+    $(".catalogList li p").removeClass("displayNo").addClass("displayBlock")
+    $(".catalogList li input").removeClass("displayBlock").addClass("displayNo")
+    $(".catalogList li span").removeClass("displayBlock").addClass("displayNo")
+
+    $(str).parent().addClass("clickLi")
+    var pValue="" //当前p里面的值
+    var pT=$(str).parent().find("p")
+    pValue=pT.text().trim()
+    pT.removeClass("displayBlock").addClass("displayNo")
+    var inputValue="" //当前input里面的值
+    var inputT=$(str).parent().find("input")
+    inputT.removeClass("displayNo").addClass("displayBlock")
+    inputValue=pValue
+    inputT.val(inputValue)
+    //input失去焦点
+    inputT.on("blur",function () {
+        inputValue=$(this).val()
+        pValue=inputValue
+        if(inputValue){
+            pT.text(pValue)
+        }
+        $(this).parent().find("span").removeClass("displayBlock").addClass("displayNo")
+        inputT.removeClass("displayBlock").addClass("displayNo")
+        pT.removeClass("displayNo").addClass("displayBlock")
+    })
 }
 
 //catalogList鼠标划入事件
@@ -260,6 +295,7 @@ function cateMouseenter(){
         }
     })
 }
+
 //catalogList鼠标划出事件
 function cateMouseleave() {
     $(".catalogList ul li").mouseleave(function () {
@@ -277,21 +313,13 @@ function cateMouseleave() {
             $(this).find("p").removeClass("displayNo").addClass("displayBlock")
             $(this).find("span").removeClass("displayBlock").addClass("displayNo")
             $(this).find("input").removeClass("displayBlock").addClass("displayNo")
-
-            $.ajax({
-                url:"",
-                type:"post",
-                data:{},
-                success:function () {
-
-                }
-            })
         }
     })
 
 }
 
-//catalogList鼠标所在位置触发事件
+//catalogList鼠标所在位置触发事件,点击的时候，如果Input是显示状态，就把input隐藏并把input的值赋值给相应的P，
+//然后触发cateMouseenter（）鼠标划入事件
 function cateFoucs(){
     $(".catalogList ul li span").removeClass("displayBlock").addClass("displayNo")
     var inputFocus=$(".catalogList ul li input[class='displayBlock']")
@@ -306,77 +334,43 @@ function cateFoucs(){
     inputFocus.removeClass("displayBlock").addClass("displayNo")
 
     cateMouseenter()
-
-    $.ajax({
-        url:"",
-        type:"post",
-        data:{},
-        success:function () {
-
-        }
-    })
-}
-//catalogList里的p值改变
-function  catEdit(str) {
-    $(".catalogList li").removeClass("clickLi")
-    $(str).parent().addClass("clickLi")
-    var pValue="" //当前p里面的值
-    var pT=$(str).parent().find("p")
-    pValue=pT.text().trim()
-    pT.removeClass("displayBlock").addClass("displayNo")
-    var inputValue="" //当前input里面的值
-    var inputT=$(str).parent().find("input")
-    inputT.removeClass("displayNo").addClass("displayBlock")
-    inputValue=pValue
-    inputT.val(inputValue)
-
-    inputT.on("blur",function () {
-        inputValue=$(this).val()
-        pValue=inputValue
-        if(inputValue){
-            pT.text(pValue)
-        }
-        $(this).parent().find("span").removeClass("displayBlock").addClass("displayNo")
-        inputT.removeClass("displayBlock").addClass("displayNo")
-        pT.removeClass("displayNo").addClass("displayBlock")
-
-        //$.ajax({
-        //    url:"",
-        //    type:"post",
-        //    data:{},
-        //    success:function () {
-        //
-        //    }
-        //})
-    })
 }
 
 //添加匹配到的名称
 function  sesAdd() {
-    $(".selectRightContentAdd").removeClass("displayNo").addClass("displayBlock")
-    $(".selectRightContentAdd").append("<input type='text' value=''><a href='javascript:;' type='button' class='saveses' onclick='saveSes()'>确认</a>")
+    if($(".selectRightContentAdd").find("input").length==0) {
+        $(".selectRightContentAdd").append("<input type='text' value=''><a href='javascript:;' type='button' class='saveses' onclick='saveSes()'>确认</a>")
+    }
 }
 
 //保存添加的方法
+//判断添加框里面是否有值，有就保存，没有就隐藏添加框
 function  saveSes() {
+    //获取wordHidden value，确定属于哪个编码
+    var wordValue = $(".wordHidden").val()
     //获取selectRight里面的数据，然后传给后台
-    var selectLi=""
-    selectLi+="<p>"+$('.selectRightContentAdd input').val()+"<p>"
-    //请求路径,flag为true,增加，false，减少
-    var wordValue=$(".wordHidden").val()
-    var url=""
-    url=ctx+'/put_means'
-    $.ajax({
-        url:url,
-        type:"post",
-        data:{word:wordValue,m:selectLi},
-        success:function(){
-            $(".selectRightContentAdd input").val()
-            $(".selectRightContentAdd").removeClass("displayBlock").addClass("displayNo")
-            $('.selectRightContentAdd').html("")
-            $(".selectRightContentShow").append("<li>+selectLi+</li>")
-        }
-    })
+    var inputValue = $('.selectRightContentAdd input').val()
+    var selectLi =""
+    if(inputValue){
+        selectLi ="<span>"+inputValue+"</span><br>"
+        var url=""
+        url=ctx+'/put_means'
+        $.ajax({
+            url:url,
+            type:"post",
+            data:{word:wordValue,m:selectLi},
+            success:function(){
+                $(".selectRightContentAdd input").val()
+                $('.selectRightContentAdd').html("")
+                $(".selectRightContentShow ul").prepend("<li>"+selectLi+"</li>")
+                selectRightClick()
+            }
+        })
+    }else{
+        $(".selectRightContentAdd input").val()
+        $('.selectRightContentAdd').html("")
+        selectRightClick()
+    }
 }
 
 //查询可能匹配的名称
@@ -398,10 +392,22 @@ function leftSelect() {
                 selectLeft_list+="<li>"+result[i]+"</li>"
             }
             selectLeft_list+="</ul>"
-            $(".selectLeftContent_show").removeClass("displayNo").addClass("displayBlcok")
+            $(".selectLeftContent_show").removeClass("displayNo").addClass("displayBlock")
             $(".selectLeftContent_show").html("")
             document.getElementById('left').scrollTop = 0;
             $(".selectLeftContent_show").html(selectLeft_list)
+
+            selectLeftClick()
         }
     })
+}
+
+//提示框 确定按钮
+function popupSure(){
+    $(".popup").removeClass("displayBlock").addClass("displayNo")
+    $("#files").click();
+}
+//提示框 取消按钮
+function popupCancel(){
+    $(".popup").removeClass("displayBlock").addClass("displayNo")
 }

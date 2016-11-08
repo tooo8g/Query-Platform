@@ -7,8 +7,6 @@
     <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
     <script type="text/javascript" src="${ctx}/js/queryWordSelect.js"></script>
     <link rel="stylesheet" type="text/css" href="${ctx}/css/queryWordSelect.css">
-    <link rel="stylesheet" type="text/css" href="${ctx}/css/head_code.css">
-    <link rel="stylesheet" type="text/css" href="${ctx}/css/foot.css">
 </head>
 <body>
 <div class="container">
@@ -32,6 +30,12 @@
         <li><p>铁道客车塞拉门</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
       </ul>
     </div>
+  </div>
+  <div class="popup displayNo">
+    <span class="popup_title">提示</span>
+    <span class="popup_con">将名称放入一列并保存为txt</span>
+    <a href="javascript:;" type="button" class="popup_sure" onclick="popupSure()">确定</a>
+    <a href="javascript:;" type="button" class="popup_cancel" onclick="popupCancel()">取消</a>
   </div>
   <div class="searchResult">
   <input type="hidden" class="wordHidden" value="">
