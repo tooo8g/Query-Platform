@@ -11,12 +11,12 @@
 <body>
 <div class="container">
   <div class="catalog">
-    <div class="catalogTile">新物质编码导入</div>
+    <div class="catalogTile">新物资编码导入</div>
     <div class="catalogButton">
       <input type="text" class="searchInput" value="">
-      <a href="javaScripy:;" type="button" class="searchButton" onclick="searchAdd()">添加</a>
+      <a href="javascript:;" type="button" class="searchButton" onclick="searchAdd()">添加</a>
        <input type="file" id="files" style="display:none" onchange="imports();"/>
-       <a type="button" id="import" class="searchBu">导入</a>
+       <a href="javascript:;" type="button" id="import" class="searchBu">导入</a>
     </div>
     <div class="catalogList">
       <ul>
@@ -52,7 +52,7 @@
           <div class="selectLeftContent">
             <div class="selectLeftContent_select displayNo">
               <input class="left_select" type="text" value="" onclick="">
-              <a href="javaScripy:;" type="button" class="left_select_button" onclick="leftSelect()">查询</a>
+              <a href="javascript:;" type="button" class="left_select_button" onclick="leftSelect()">查询</a>
             </div>
             <div class="selectLeftContent_show"></div>
           </div>
@@ -64,7 +64,7 @@
       </div>
       <div class="secondSelect">
         <div class="divTitle">匹配到的名称</div>
-        <a href="javaScripy:;" type="button" class="sesButton" onclick="sesAdd()">添加</a>
+        <a href="javascript:;" type="button" class="sesButton" onclick="sesAdd()">添加</a>
         <div  class="selectRight" id="right">
           <div class="selectRightContent">
             <div class="selectRightContentAdd"></div>
