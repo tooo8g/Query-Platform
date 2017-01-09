@@ -18,13 +18,12 @@ function importMa(){
 
     var list=[] //txt文件里面的列表
     var liList=[] //保存txt文件
-    var dataJson="" //把参数拼装成json样子，为string格式
+    var dataJson=[] //把参数拼装成json样子，为string格式
     reader.onload = function(){
         list=this.result.split("\n")
         for(var i=0;i<list.length;i++){
-            liList.push(list[i].trim())
+            dataJson.push({"importer":'admin',"value":""+list[i].trim()+""})
         }
-        dataJson={"importer":'admin',"value":""+liList+""}
         var dj="" //转换成json
         dj=JSON.stringify(dataJson)
         $.ajax({
