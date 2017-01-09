@@ -24,8 +24,8 @@ function importMa(){
         for(var i=0;i<list.length;i++){
             dataJson.push({"importer":'admin',"value":""+list[i].trim()+""})
         }
-        var dj="" //转换成json
-        dj=JSON.stringify(dataJson)
+
+        var dj=JSON.stringify(dataJson) //转换成json
         $.ajax({
             url:ctx+'/add_standard_name',
             type:"post",
