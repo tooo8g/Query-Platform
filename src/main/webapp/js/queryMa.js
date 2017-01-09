@@ -81,10 +81,10 @@ function maSearch() {
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     var importer=$(".importPerson").val() //导入人
-    var value=$(".nomaName").val() //名称
+    var value=$(".maName").val() //名称
     var imp_time_start=$(".createCode_date_start").val() //开始日期
     var imp_time_end=$(".createCode_date_end").val() //结束日期
-    var batch_id=$(".nomaBatch").val() //批次
+    var batch_id=$(".maBatch").val() //批次
     var source=$(".source option:selected").val() //数据来源
     var count="" //总数
     var standard="" //保存data信息
