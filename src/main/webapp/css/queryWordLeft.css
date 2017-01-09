@@ -1,0 +1,15 @@
+.nm-l{
+    width: 170px;
+    float: left;
+    border: 1px solid #eeeeee;
+}
+.nm-l a{
+    width: 155px;
+    height: 46px;
+    line-height: 46px;
+    display: block;
+    float: left;
+    font-size: 16px;
+    border-bottom: 1px solid #eeeeee;
+    padding-left: 15px;
+}
