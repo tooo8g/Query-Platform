@@ -96,34 +96,39 @@ function maSearch() {
         type:"post",
         data:{importer:importer,value:value,imp_time_start:imp_time_start,imp_time_end:imp_time_end,batch_id:batch_id,source:source,start:startValue,limit:limitValue},
         dataType:"json",
-        success:function (data) {
-            count=data.count
-            standard=data.standard
-            for(var i=0;i<standard.length;i++){
-                bzNum=Number(startValue)+i+1
-                tbodyList+="<tr>"
-                tbodyList+="<td><a class='noclickId' href='javascript:;' onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
-                tbodyList+="<td>"+standard[i].batch_id+"</td>"
-                tbodyList+="<td>"+standard[i].importer+"</td>"
-                tbodyList+="<td>"+timeStamp2String(standard[i].imp_time.$date)+"</td>"
-                tbodyList+="<td>"+standard[i].value+"</td>"
-                //"source"数据来源:0人工导入1数据服务平台
-                tbodyList+="<td>"+(standard[i].source==0?'人工导入':'数据服务平台')+"</td>"
-                tbodyList+="<td><a href='javascript:;' class='showMean' value='"+standard[i].value+"' onclick='showMean(this)'>"+standard[i].mean+"</a></td>"
-            }
-            $(".man_body").html("")
-            $(".man_body").append(tbodyList)
+        success:function (datas) {
+            count=datas.count
+            standard=datas.data
+            if(standard.length>0){
+                for(var i=0;i<standard.length;i++){
+                    bzNum=Number(startValue)+i+1
+                    tbodyList+="<tr>"
+                    tbodyList+="<td><a class='noclickId' href='javascript:;' onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
+                    tbodyList+="<td>"+standard[i].batch_id+"</td>"
+                    tbodyList+="<td>"+standard[i].importer+"</td>"
+                    tbodyList+="<td>"+timeStamp2String(standard[i].imp_time.$date)+"</td>"
+                    tbodyList+="<td>"+standard[i].value+"</td>"
+                    //"source"数据来源:0人工导入1数据服务平台
+                    tbodyList+="<td>"+(standard[i].source==0?'人工导入':'数据服务平台')+"</td>"
+                    tbodyList+="<td><a href='javascript:;' class='showMean' value='"+standard[i].value+"' onclick='showMean(this)'>"+standard[i].mean+"</a></td>"
+                }
+                $(".man_body").html("")
+                $(".man_body").append(tbodyList)
 
-            $('.list_button').pagination({
-                pageCount:count,
-                jump:true,
-                coping:true,
-                count:2,
-                homePage:'首页',
-                endPage:'末页',
-                prevContent:'上页',
-                nextContent:'下页'
-            });
+                $('.list_button').pagination({
+                    pageCount:count,
+                    jump:true,
+                    coping:true,
+                    count:2,
+                    homePage:'首页',
+                    endPage:'末页',
+                    prevContent:'上页',
+                    nextContent:'下页'
+                });
+            }else{
+                $(".man_body").html("")
+                $(".man_body").html("没有相应数据")
+            }
         }
     })
 }
