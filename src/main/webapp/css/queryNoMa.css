@@ -43,7 +43,7 @@ a{
     width: 1008px;
     margin-left: 20px;
 }
-.searchBu,.deleteAll{
+.searchBu,.deleteAll,.assoic{
     width: auto;
     height: 25px;
     line-height: 25px;
@@ -55,13 +55,13 @@ a{
     border-radius: 4px;
     text-decoration: none;
 }
-.searchBu{
+.searchBu,.assoic{
     background-color: #77afea;
 }
 .deleteAll{
     background-color: #3cd44a;
 }
-.maSearch{
+.omaSearch{
     width: auto;
     height: 25px;
     line-height: 25px;
@@ -155,7 +155,6 @@ a{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    float: none !important;
 }
 .r_search  select{
     /*width: 100px;*/
@@ -223,7 +222,6 @@ tbody td span {
 .showMean{
     margin-left: 28px !important;
 }
-
 /*分页*/
 .list_button{
     position: relative;
@@ -287,3 +285,4 @@ tbody td span {
 .clickId,.batchId{
     background: url("../images/click_2.png") no-repeat;
 }
+

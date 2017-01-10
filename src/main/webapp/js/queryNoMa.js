@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/1/5.
+ * Created by zb on 2017/1/5.
  */
 $(function () {
     $("#import").click(function(){//点击导入按钮，使files触发点击事件，然后完成读取文件的操作。
@@ -8,8 +8,8 @@ $(function () {
 })
 
 
-//导入按钮，用html5的FileReader方法 导入标准名称
-function importMa(){
+//导入按钮，用html5的FileReader方法
+function importNoMa(){
     var selectedFile = document.getElementById("files").files[0];//获取读取的File对象
     var name = selectedFile.name;//读取选中文件的文件名
     var size = selectedFile.size;//读取选中文件的大小
@@ -18,7 +18,7 @@ function importMa(){
 
     var list=[] //txt文件里面的列表
     var liList=[] //保存txt文件
-    var dataJson=[] //把参数拼装成json样子
+    var dataJson=[] //把参数拼装成json样子，
     reader.onload = function(){
         list=this.result.split("\n")
         for(var i=0;i<list.length;i++){
@@ -27,7 +27,7 @@ function importMa(){
 
         var dj=JSON.stringify(dataJson) //转换成json
         $.ajax({
-            url:ctx+'/add_standard_name',
+            url:ctx+'/add_nonstandard_name',
             type:"post",
             data:dj,
             contentType:"application/json",
@@ -37,6 +37,7 @@ function importMa(){
         })
     };
 }
+
 //提示框 确定按钮
 function popupSure(){
     $(".popup").removeClass("displayBlock").addClass("displayNo")
@@ -66,76 +67,71 @@ function deleteAll() {
         }
     }
     $.ajax({
-        url:ctx+"/remove_standard_name",
+        url:ctx+"/remove_nonstandard_name",
         data:{id:idLIst,batch_id:batchIdList},
         dataType:'json',
         success:function () {
-            maSearch()
+            nomaSearch()
         }
     })
 }
 
-//通过条件搜索标准名称
-function maSearch() {
+//通过条件搜索非标准名称
+function nomaSearch() {
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
     var importer=$(".importPerson").val() //导入人
-    var value=$(".maName").val() //名称
+    var value=$(".nomaName").val() //名称
     var imp_time_start=$(".createCode_date_start").val() //开始日期
-    var imp_time_end=$(".createCode_date_end").val() //结束日期
-    var batch_id=0  //批次
-    batch_id=Number($(".maBatch").val())
-    var source=0 //数据来源
-    source=Number($(".source option:selected").val())
+    var imp_time_end=$(".createCode_date_end").val() //结束时间日期
+    var batch_id=$(".nomaBatch").val() //批次
+    var source=$(".source option:selected").val() //数据来源
     var count="" //总数
-    var standard="" //保存data信息
+    var nonstandard="" //保存data信息
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:ctx+'/query_standard_name',
-        type:"post",
+        url:ctx+'/query_nonstandard_name',
         data:{importer:importer,value:value,imp_time_start:imp_time_start,imp_time_end:imp_time_end,batch_id:batch_id,source:source,start:startValue,limit:limitValue},
         dataType:"json",
         success:function (datas) {
-            count=datas.count
-            standard=datas.data
-            if(standard.length>0){
-                for(var i=0;i<standard.length;i++){
-                    bzNum=Number(startValue)+i+1
-                    tbodyList+="<tr>"
-                    tbodyList+="<td><a class='noclickId' href='javascript:;' onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
-                    tbodyList+="<td><a class='noBatchId' href='javascript:;' bid="+standard[i].batch_id+" onclick='clickBatchId(this)'><span>"+standard[i].batch_id+"</span></td>"
-                    tbodyList+="<td>"+standard[i].importer+"</td>"
-                    tbodyList+="<td>"+timeStamp2String(standard[i].imp_time.$date)+"</td>"
-                    tbodyList+="<td>"+standard[i].value+"</td>"
+            count = datas.count
+            nonstandard = datas.data
+            if (nonstandard.length > 0) {
+                for (var i = 0; i < nonstandard.length; i++) {
+                    bzNum = Number(startValue) + i + 1
+                    tbodyList += "<tr>"
+                    tbodyList += "<td><a class='noclickId' href='javascript:;' nid=" + nonstandard[i].id + " onclick='clickCodes(this)'><span>" + bzNum + "</span></td>"
+                    tbodyList += "<td><a class='noBatchId' href='javascript:;' bid=" + nonstandard[i].batch_id + " onclick='clicknoBatchId(this)'><span>" + nonstandard[i].batch_id + "</span></td>"
+                    tbodyList += "<td>" + nonstandard[i].importer + "</td>"
+                    tbodyList += "<td>" + timeStamp2String(nonstandard[i].imp_time.$date) + "</td>"
+                    tbodyList += "<td>" + nonstandard[i].value + "</td>"
                     //"source"数据来源:0人工导入1数据服务平台
-                    tbodyList+="<td>"+(standard[i].source==0?'人工导入':'数据服务平台')+"</td>"
-                    tbodyList+="<td><a href='javascript:;' class='showMean' value='"+standard[i].value+"' onclick='showMean(this)'>"+standard[i].mean+"</a></td>"
+                    tbodyList += "<td>" + (nonstandard[i].source == 0 ? '人工导入' : '数据服务平台') + "</td>"
+                    tbodyList += "<td><a href='javascript:;' class='showMean' value='" + nonstandard[i].value + "' onclick='showMean(this)'>" + nonstandard[i].mean + "</a></td>"
                 }
-                $(".man_body").html("")
-                $(".man_body").append(tbodyList)
+                $(".noman_body").html("")
+                $(".noman_body").append(tbodyList)
 
                 $('.list_button').pagination({
-                    pageCount:count,
-                    current:1,
-                    jump:true,
-                    coping:true,
-                    count:2,
-                    homePage:'首页',
-                    endPage:'末页',
-                    prevContent:'上页',
-                    nextContent:'下页',
+                    pageCount: count,
+                    current: 1,
+                    jump: true,
+                    coping: true,
+                    count: 2,
+                    homePage: '首页',
+                    endPage: '末页',
+                    prevContent: '上页',
+                    nextContent: '下页',
                     callback: pageCallback //pageCallback() 为翻页调用次函数。
                 });
-            }else{
-                $(".man_body").html("")
-                $(".man_body").append("<p>没有相应数据</p>")
+            } else {
+                $(".noman_body").html("")
+                $(".noman_body").append("<p>没有相应数据</p>")
             }
         }
     })
 }
-
-
 //分页回调函数
 function pageCallback(api) {
     var limitValue=10 //一次取出多少条数据
@@ -146,17 +142,17 @@ function pageCallback(api) {
     var startValue=(pageNo-1)*limitValue //初始值
 
     var importer=$(".importPerson").val() //导入人
-    var value=$(".maName").val() //名称
+    var value=$(".nomaName").val() //名称
     var imp_time_start=$(".createCode_date_start").val() //开始日期
-    var imp_time_end=$(".createCode_date_end").val() //结束日期
-    var batch_id=$(".maBatch").val() //批次
+    var imp_time_end=$(".createCode_date_end").val() //结束时间日期
+    var batch_id=$(".nomaBatch").val() //批次
     var source=$(".source option:selected").val() //数据来源
     var count="" //总数
     var standard="" //保存data信息
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:'../json/demo_ma.json',
+        url:ctx+'../query_nonstandard_name',
         type:"post",
         data:{importer:importer,value:value,imp_time_start:imp_time_start,imp_time_end:imp_time_end,batch_id:batch_id,source:source,start:startValue,limit:limitValue},
         dataType:"json",
@@ -200,19 +196,16 @@ function pageCallback(api) {
         }
     })
 }
-
-
 /*点击序号，如果背景是白的，就变成蓝色，如果是蓝色，就变成白色*/
 function clickCodes(str){
     if($(str).hasClass("noclickId")){
-        $(".noman_body a").removeClass("clickId").addClass("noclickId")
         $(str).removeClass("noclickId").addClass("clickId")
     }else{
         $(str).removeClass("clickId").addClass("noclickId")
     }
 }
 /*点击批次序号，如果背景是白的，就变成蓝色，如果是蓝色，就变成白色*/
-function clickBatchId(str) {
+function clicknoBatchId(str) {
     if($(str).hasClass("noBatchId")){
         $(str).removeClass("noBatchId").addClass("batchId")
     }else{
@@ -221,8 +214,13 @@ function clickBatchId(str) {
 }
 //显示关联信息
 function showMean(str) {
-    var ma=encodeURI($(str).attr('value'))
-    window.open("../views/queryWordSelect1.html?ma="+ma)
+    var noMan=encodeURI($(str).attr('value'))
+    window.open("../views/queryWordSelect1.html?noMan="+noMan)
+}
+
+//智能关联
+function assOic() {
+    alert("功能正在开发")
 }
 
 //时间格式化
