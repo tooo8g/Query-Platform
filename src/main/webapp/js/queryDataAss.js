@@ -1,7 +1,11 @@
 /**
  * Created by Administrator on 2017/1/5.
+
  */
 
+$(function(){
+	$(".a_nm").removeClass("aNoClick").addClass("aClick")
+})
 //通过条件搜索数据关联列表
 function daSearch() {
     var startValue=0 //初始值

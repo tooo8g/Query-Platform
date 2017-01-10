@@ -5,6 +5,8 @@ $(function () {
     $("#import").click(function(){//点击导入按钮，使files触发点击事件，然后完成读取文件的操作。
         $(".popup").removeClass("displayNo").addClass("displayBlock")
     })
+    
+     $(".a_n").removeClass("aNoClick").addClass("aClick")
 })
 
 
@@ -24,7 +26,7 @@ function importNoMa(){
         for(var i=0;i<list.length;i++){
             dataJson.push({"importer":'admin',"value":""+list[i].trim()+""})
         }
-
+        console.log(dataJson)
         var dj=JSON.stringify(dataJson) //转换成json
         $.ajax({
             url:ctx+'/add_nonstandard_name',
@@ -33,6 +35,7 @@ function importNoMa(){
             contentType:"application/json",
             success:function () {
                 alert('导入成功')
+                nomaSearch()
             }
         })
     };
@@ -51,28 +54,40 @@ function popupCancel(){
 //删除
 function deleteAll() {
     var clickList=[], //点击的列表组合
-        idLIst=[], //id组合
+        idLIst="", //id组合
         batchList=[], //批次组合
-        batchIdList=[] //批次ID租个
+        batchIdList="" //批次ID租个
     clickList=$(".clickId")
     if(clickList.length>0){
         for(var i=0;i<clickList.length;i++){
-            idLIst.push(Number(clickList.eq(i).attr('nid')))
+        	if(idLIst){
+        		idLIst+=","+clickList.eq(i).attr('nid')
+        	}else{
+        		idLIst+=clickList.eq(i).attr('nid')
+        	}
+        	
         }
     }
     batchList=$(".batchId")
     if(batchList.length>0){
         for(var i=0;i<batchList.length;i++){
-            batchIdList.push(Number(batchList.eq(i).attr('bid')))
+        	if(batchIdList){
+        		 batchIdList+=","+batchList.eq(i).attr('bid')
+        	}else{
+        		 batchIdList+=batchList.eq(i).attr('bid')
+        	}
+           
         }
     }
     $.ajax({
         url:ctx+"/remove_nonstandard_name",
         type:"post",
         data:{id:idLIst,batch_id:batchIdList},
-        dataType:'json',
-        success:function () {
-            nomaSearch()
+        success:function (data) {     
+        	if(data=="sucess"){
+        		nomaSearch()
+        	}
+           
         }
     })
 }
@@ -87,7 +102,12 @@ function nomaSearch() {
     var imp_time_start=$(".createCode_date_start").val() //开始日期
     var imp_time_end=$(".createCode_date_end").val() //结束时间日期
     var batch_id=0  //批次
-    batch_id=$(".nomaBatch").val()
+    if($(".nomaBatch").val()){
+    	batch_id=$(".nomaBatch").val() 
+    }else{
+    	batch_id=0
+    }
+   
     var source=0 //数据来源
     source=$(".source option:selected").val() //数据来源
     var count="" //总数
@@ -136,6 +156,7 @@ function nomaSearch() {
             } else {
                 $(".noman_body").html("")
                 $(".noman_body").append("<p>没有相应数据</p>")
+                 $(".list_button").html("")
             }
         }
     })
@@ -154,9 +175,9 @@ function pageCallback(api) {
     var imp_time_start=$(".createCode_date_start").val() //开始日期
     var imp_time_end=$(".createCode_date_end").val() //结束时间日期
     var batch_id=0  //批次
-    batch_id=$(".nomaBatch").val()
+   	batch_id=Number($(".nomaBatch").val()) 
     var source=0 //数据来源
-    source=$(".source option:selected").val() //数据来源
+    source=Number($(".source option:selected").val()) //数据来源
     var count="" //总数
     var standard="" //保存data信息
     var tbodyList=""

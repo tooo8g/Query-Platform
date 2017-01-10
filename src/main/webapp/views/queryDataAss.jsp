@@ -7,11 +7,7 @@
 </head>
 <body>
 <div class="container">
-  <div class="da-l">
-    <a href="javascript:;" class="a_n aNoClick"  onclick="jumpPage('n')">非物资管理界面</a>
-    <a href="javascript:;" class="a_m aNoClick" onclick="jumpPage('m')">物资管理界面</a>
-    <a href="javascript:;" class="a_nm aClick" onclick="jumpPage('nm')">数据关联界面</a>
-  </div>
+  <jsp:include page="queryWordLeft.jsp"/>
   <div class="da-r">
     <div class="da_search">
       <span>标准名称</span>

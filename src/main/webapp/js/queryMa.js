@@ -5,6 +5,8 @@ $(function () {
     $("#import").click(function(){//点击导入按钮，使files触发点击事件，然后完成读取文件的操作。
         $(".popup").removeClass("displayNo").addClass("displayBlock")
     })
+    
+    $(".a_m").removeClass("aNoClick").addClass("aClick")
 })
 
 
@@ -33,6 +35,7 @@ function importMa(){
             contentType:"application/json",
             success:function () {
                 alert('导入成功')
+                maSearch()
             }
         })
     };
@@ -50,28 +53,39 @@ function popupCancel(){
 //删除
 function deleteAll() {
     var clickList=[], //点击的列表组合
-        idLIst=[], //id组合
+        idLIst="", //id组合
         batchList=[], //批次组合
-        batchIdList=[] //批次ID租个
+        batchIdList="" //批次ID租个
     clickList=$(".clickId")
     if(clickList.length>0){
         for(var i=0;i<clickList.length;i++){
-            idLIst.push(Number(clickList.eq(i).attr('nid')))
+        	if(idLIst){
+        		idLIst+=","+clickList.eq(i).attr('nid')
+        	}else{
+        		idLIst+=clickList.eq(i).attr('nid')
+        	}
         }
     }
     batchList=$(".batchId")
     if(batchList.length>0){
         for(var i=0;i<batchList.length;i++){
-            batchIdList.push(Number(batchList.eq(i).attr('bid')))
+        	if(batchIdList){
+       		 batchIdList+=","+batchList.eq(i).attr('bid')
+       	}else{
+       		 batchIdList+=batchList.eq(i).attr('bid')
+       	}
+          
         }
     }
     $.ajax({
         url:ctx+"/remove_standard_name",
         type:"post",
         data:{id:idLIst,batch_id:batchIdList},
-        dataType:'json',
-        success:function () {
-            maSearch()
+        success:function (data) {     
+        	if(data=="sucess"){
+        		 maSearch()
+        	}
+           
         }
     })
 }
@@ -136,6 +150,7 @@ function maSearch() {
             }else{
                 $(".man_body").html("")
                 $(".man_body").append("<p>没有相应数据</p>")
+                $(".list_button").html("")
             }
         }
     })
@@ -167,7 +182,7 @@ function pageCallback(api) {
         data:{importer:importer,value:value,imp_time_start:imp_time_start,imp_time_end:imp_time_end,batch_id:batch_id,source:source,start:startValue,limit:limitValue},
         dataType:"json",
         success:function (datas) {
-            count=datas.count
+            count=datas.count       
             standard=datas.data
             if(standard.length>0){
                 for(var i=0;i<standard.length;i++){
@@ -206,6 +221,7 @@ function pageCallback(api) {
             }else{
                 $(".man_body").html("")
                 $(".man_body").append("<p>没有相应数据</p>")
+                $('.list_button').html("")
             }
         }
     })
