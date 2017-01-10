@@ -43,7 +43,7 @@ a{
     width: 1008px;
     margin-left: 20px;
 }
-.searchBu,.deleteAll.assoic{
+.searchBu,.deleteAll,.assoic{
     width: auto;
     height: 25px;
     line-height: 25px;
@@ -55,7 +55,7 @@ a{
     border-radius: 4px;
     text-decoration: none;
 }
-.searchBu.assoic{
+.searchBu,.assoic{
     background-color: #77afea;
 }
 .deleteAll{

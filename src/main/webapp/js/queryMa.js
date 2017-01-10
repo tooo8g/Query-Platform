@@ -67,6 +67,7 @@ function deleteAll() {
     }
     $.ajax({
         url:ctx+"/remove_standard_name",
+        type:"post",
         data:{id:idLIst,batch_id:batchIdList},
         dataType:'json',
         success:function () {
@@ -79,6 +80,7 @@ function deleteAll() {
 function maSearch() {
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
+
     var importer=$(".importPerson").val() //导入人
     var value=$(".maName").val() //名称
     var imp_time_start=$(".createCode_date_start").val() //开始日期
@@ -103,7 +105,7 @@ function maSearch() {
                 for(var i=0;i<standard.length;i++){
                     bzNum=Number(startValue)+i+1
                     tbodyList+="<tr>"
-                    tbodyList+="<td><a class='noclickId' href='javascript:;' onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
+                    tbodyList+="<td><a class='noclickId' href='javascript:;' nid="+standard[i].id+" onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
                     tbodyList+="<td><a class='noBatchId' href='javascript:;' bid="+standard[i].batch_id+" onclick='clickBatchId(this)'><span>"+standard[i].batch_id+"</span></td>"
                     tbodyList+="<td>"+standard[i].importer+"</td>"
                     tbodyList+="<td>"+timeStamp2String(standard[i].imp_time.$date)+"</td>"
@@ -171,7 +173,7 @@ function pageCallback(api) {
                 for(var i=0;i<standard.length;i++){
                     bzNum=Number(startValue)+i+1
                     tbodyList+="<tr>"
-                    tbodyList+="<td><a class='noclickId' href='javascript:;' onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
+                    tbodyList+="<td><a class='noclickId' href='javascript:;' nid="+standard[i].id+" onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
                     tbodyList+="<td><a class='noBatchId' href='javascript:;' bid="+standard[i].batch_id+" onclick='clickBatchId(this)'><span>"+standard[i].batch_id+"</span></td>"
                     tbodyList+="<td>"+standard[i].importer+"</td>"
                     tbodyList+="<td>"+timeStamp2String(standard[i].imp_time.$date)+"</td>"

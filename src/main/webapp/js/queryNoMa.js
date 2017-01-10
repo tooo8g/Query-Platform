@@ -68,6 +68,7 @@ function deleteAll() {
     }
     $.ajax({
         url:ctx+"/remove_nonstandard_name",
+        type:"post",
         data:{id:idLIst,batch_id:batchIdList},
         dataType:'json',
         success:function () {
@@ -80,6 +81,7 @@ function deleteAll() {
 function nomaSearch() {
     var startValue=0 //初始值
     var limitValue=10 //一次取出多少条数据
+
     var importer=$(".importPerson").val() //导入人
     var value=$(".nomaName").val() //名称
     var imp_time_start=$(".createCode_date_start").val() //开始日期
@@ -168,17 +170,17 @@ function pageCallback(api) {
             count=datas.count
             standard=datas.data
             if(standard.length>0){
-                for(var i=0;i<standard.length;i++){
-                    bzNum=Number(startValue)+i+1
-                    tbodyList+="<tr>"
-                    tbodyList+="<td><a class='noclickId' href='javascript:;' onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
-                    tbodyList+="<td><a class='noBatchId' href='javascript:;' bid="+standard[i].batch_id+" onclick='clickBatchId(this)'><span>"+standard[i].batch_id+"</span></td>"
-                    tbodyList+="<td>"+standard[i].importer+"</td>"
-                    tbodyList+="<td>"+timeStamp2String(standard[i].imp_time.$date)+"</td>"
-                    tbodyList+="<td>"+standard[i].value+"</td>"
+                for (var i = 0; i < nonstandard.length; i++) {
+                    bzNum = Number(startValue) + i + 1
+                    tbodyList += "<tr>"
+                    tbodyList += "<td><a class='noclickId' href='javascript:;' nid=" + nonstandard[i].id + " onclick='clickCodes(this)'><span>" + bzNum + "</span></td>"
+                    tbodyList += "<td><a class='noBatchId' href='javascript:;' bid=" + nonstandard[i].batch_id + " onclick='clicknoBatchId(this)'><span>" + nonstandard[i].batch_id + "</span></td>"
+                    tbodyList += "<td>" + nonstandard[i].importer + "</td>"
+                    tbodyList += "<td>" + timeStamp2String(nonstandard[i].imp_time.$date) + "</td>"
+                    tbodyList += "<td>" + nonstandard[i].value + "</td>"
                     //"source"数据来源:0人工导入1数据服务平台
-                    tbodyList+="<td>"+(standard[i].source==0?'人工导入':'数据服务平台')+"</td>"
-                    tbodyList+="<td><a href='javascript:;' class='showMean' value='"+standard[i].value+"' onclick='showMean(this)'>"+standard[i].mean+"</a></td>"
+                    tbodyList += "<td>" + (nonstandard[i].source == 0 ? '人工导入' : '数据服务平台') + "</td>"
+                    tbodyList += "<td><a href='javascript:;' class='showMean' value='" + nonstandard[i].value + "' onclick='showMean(this)'>" + nonstandard[i].mean + "</a></td>"
                 }
                 $(".man_body").html("")
                 $(".man_body").append(tbodyList)
