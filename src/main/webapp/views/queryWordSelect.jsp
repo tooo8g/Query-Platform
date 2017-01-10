@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="resource.jsp"/>
-<script type="text/javascript" src="${ctx}/js/queryWordSelect.js"></script>
 <link rel="stylesheet" type="text/css" href="${ctx}/css/queryWordSelect.css">
 <div class="con hide" id="con">
   <div class="con-no-ma">
@@ -67,4 +67,6 @@
   </div>
 </div>
 
+<script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="${ctx}/js/queryWordSelect.js"></script>
 

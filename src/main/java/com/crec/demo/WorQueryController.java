@@ -100,14 +100,14 @@ public class WorQueryController {
 		}
 
 		System.out.println(word);
-		Set<String> ms = means.get(word);
-		if (ms == null) {
-			detail.put("means", new ArrayList<String>());
-		} else {
-			for (String mm : ms)
-				System.out.println(mm);
-			detail.put("means", ms);
-		}
+//		Set<String> ms = means.get(word);
+//		if (ms == null) {
+//			detail.put("means", new ArrayList<String>());
+//		} else {
+//			for (String mm : ms)
+//				System.out.println(mm);
+//			detail.put("means", ms);
+//		}
 
 		Document total = new Document();
 		total.append("msg", detail);
@@ -164,9 +164,9 @@ public class WorQueryController {
 		// if (mean != null)
 		// mean.remove(m);
 		MongoDirver md = new MongoDirver();
-		md.deleteMean(word, m);
+		int stats = md.deleteMean(word, m);
 		md.close();
-		response.getWriter().print(md.deleteMean(m, word));
+		response.getWriter().print(stats);
 	}
 
 	@RequestMapping("/find")

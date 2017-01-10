@@ -7,6 +7,7 @@ $(function () {
     })
     
      $(".a_n").removeClass("aNoClick").addClass("aClick")
+     $(".con").removeClass("show").addClass("hide")
 })
 
 
@@ -249,7 +250,7 @@ function clicknoBatchId(str) {
 }
 //显示关联信息
 function showMean(str) {
-    var noMan=encodeURI($(str).attr('value'))
+    var noMan=$(str).attr('value')
     nor_show()
     standard_name_by_non(noMan)
 }

@@ -444,7 +444,7 @@ function standard_name_by_non(str){
         type:"post",
         data:{nonstandard_v:nonstandard_v},
         dataType:'json',
-        success:function(data){
+        success:function(datas){
             nor_show()
             $(".catalogList ul").prepend("<li><p>"+nonstandard_v+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>")
             catalogAdd()
@@ -454,7 +454,7 @@ function standard_name_by_non(str){
 
             searchCatalog(nonstandard_v)
 
-            var nonstandardList=data.nonstandard_v
+            var nonstandardList=datas.data
             selectRight_list+="<ul>"
             for(var i=0;i<nonstandardList.length;i++){
                 selectRight_list+="<li>"+nonstandardList[i]+"</li>"
@@ -480,12 +480,12 @@ function nonstandard_name_by_std(str){
         type:"post",
         data:{standard_v:standard_v},
         dataType:'json',
-        success:function(data){
+        success:function(datas){
             $(".selectRightContent").html("")
             $(".selectRightContent").html("<ul><li>"+standard_v+"</li></ul>")
 
             selectRightClick()
-            nonstandardList=data.nonstandard_v
+            nonstandardList=datas.data
             for(var i=0;i<nonstandardList.length;i++){
                 nonstandard+="<li><p>"+nonstandardList[i].trim()+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>"
             }
