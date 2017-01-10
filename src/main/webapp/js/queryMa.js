@@ -56,13 +56,13 @@ function deleteAll() {
     clickList=$(".clickId")
     if(clickList.length>0){
         for(var i=0;i<clickList.length;i++){
-            idLIst.push(clickList.eq(i).attr('nid'))
+            idLIst.push(Number(clickList.eq(i).attr('nid')))
         }
     }
     batchList=$(".batchId")
     if(batchList.length>0){
         for(var i=0;i<batchList.length;i++){
-            batchIdList.push(batchList.eq(i).attr('bid'))
+            batchIdList.push(Number(batchList.eq(i).attr('bid')))
         }
     }
     $.ajax({
@@ -115,8 +115,12 @@ function maSearch() {
                 $(".man_body").html("")
                 $(".man_body").append(tbodyList)
 
+                var pageCount=0 //总页数
+                pageCount=count/limitValue
                 $('.list_button').pagination({
-                    pageCount:count,
+                    totalData:count,
+                    pageCount:pageCount,
+                    showData:limitValue,
                     current:1,
                     jump:true,
                     coping:true,
@@ -156,7 +160,7 @@ function pageCallback(api) {
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:'../json/demo_ma.json',
+        url:ctx+'/query_standard_name',
         type:"post",
         data:{importer:importer,value:value,imp_time_start:imp_time_start,imp_time_end:imp_time_end,batch_id:batch_id,source:source,start:startValue,limit:limitValue},
         dataType:"json",
@@ -179,8 +183,12 @@ function pageCallback(api) {
                 $(".man_body").html("")
                 $(".man_body").append(tbodyList)
 
+                var pageCount=0 //总页数
+                pageCount=count/limitValue
                 $('.list_button').pagination({
-                    pageCount:count,
+                    totalData:count,
+                    pageCount:pageCount,
+                    showData:limitValue,
                     current:pageNo,
                     jump:true,
                     coping:true,

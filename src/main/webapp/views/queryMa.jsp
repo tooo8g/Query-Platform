@@ -18,6 +18,7 @@
       <a href="javascript:;" type="button" class="popup_cancel" onclick="popupCancel()">取消</a>
     </div>
     <a href="javascript:;" type="button" class="deleteAll" onclick="deleteAll()">删除</a>
+    <a href="javascript:;" type="button" class="assoic" onclick="assOic()">智能关联</a>
     <div class="r_search">
       <span>导入人</span>
       <input type="text" class="importPerson" value="">
