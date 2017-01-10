@@ -74,8 +74,12 @@ function moveLi(obj1, obj2,flag) {
             url:url,
             type:"post",
             data:{word:wordValue,m:selectLi},
-            success:function(){
-
+            success:function(data){
+               if(data==0){
+                   alert("该项无法删除")
+               }else if(data==1){
+                   alert("删除成功")
+               }
             }
         })
     }
