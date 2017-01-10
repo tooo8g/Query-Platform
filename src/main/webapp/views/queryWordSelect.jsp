@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="resource.jsp"/>
 <script type="text/javascript" src="${ctx}/js/queryWordSelect.js"></script>
 <link rel="stylesheet" type="text/css" href="${ctx}/css/queryWordSelect.css">
@@ -17,14 +18,6 @@
       </div>
       <div class="catalogList">
         <ul>
-          <li><p>机车车辆用制动软管连接器</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
-          <li><p>铁路信号产品绝缘电阻</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
-          <li><p>机车车辆油压减振器</p><input type="text" class="displayNo" value=""><span   class="displayNo" onclick="catEdit(this)">编辑</span></li>
-          <li><p>铁路信号插入式交流二元继电器</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
-          <li><p>铁道客车及动车组防滑装置</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
-          <li><p>扣件螺栓机动扳手</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
-          <li><p>机车用铸铁闸瓦</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
-          <li><p>铁道客车塞拉门</p><input type="text" class="displayNo" value=""><span  class="displayNo" onclick="catEdit(this)">编辑</span></li>
         </ul>
       </div>
     </div>
