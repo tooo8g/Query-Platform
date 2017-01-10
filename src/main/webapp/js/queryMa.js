@@ -248,7 +248,8 @@ function clickBatchId(str) {
 //显示关联信息
 function showMean(str) {
     var ma=encodeURI($(str).attr('value'))
-    window.open("../views/queryWordSelect1.html?ma="+ma)
+    nor_show()
+    nonstandard_name_by_std(ma)
 }
 
 //时间格式化

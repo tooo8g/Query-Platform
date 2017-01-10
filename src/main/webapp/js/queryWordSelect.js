@@ -2,10 +2,7 @@ $(function(){
     //JS加载后，给catalog下的Li绑定事件
     catalogAdd()
     //导入事件
-    $("#import").click(function(){//点击导入按钮，使files触发点击事件，然后完成读取文件的操作。
-    	//if(confirm("将名称放入一列并保存为txt")){
-    	//	$("#files").click();
-    	//}
+    $("#imports").click(function(){//点击导入按钮，使files触发点击事件，然后完成读取文件的操作。
        $(".popup").removeClass("displayNo").addClass("displayBlock")
     });
     //回车事件
@@ -29,6 +26,15 @@ $(function(){
     }
     cateMouseenter()
     cateMouseleave()
+
+    /*给页面绑定一个click事件，点击sendList之外的地方，调用nor_close方法*/
+    $(".con").on("click",function(event){
+        event.stopPropagation();
+        var evt = event.srcElement ? event.srcElement : event.target;
+        if(evt.id=='con'){
+            nor_close()
+        }
+    });
 })
 //移动
 function moveLi(obj1, obj2,flag) {
@@ -50,20 +56,29 @@ function moveLi(obj1, obj2,flag) {
     }
     //请求路径,flag为true,增加，false，减少
     var wordValue=$(".wordHidden").val()
+    var operator="admin" //关联的人
     var url=""
     if(flag){
         url=ctx+'/put_means'
+        $.ajax({
+            url:url,
+            type:"post",
+            data:{word:wordValue,m:selectLi,operator:operator},
+            success:function(){
+
+            }
+        })
     }else{
         url=ctx+'/remove_means'
+        $.ajax({
+            url:url,
+            type:"post",
+            data:{word:wordValue,m:selectLi},
+            success:function(){
+
+            }
+        })
     }
-    $.ajax({
-        url:url,
-        type:"post",
-        data:{word:wordValue,m:selectLi},
-        success:function(){
-        	
-        }
-    })
 }
 
 //查询，点击查询，
@@ -77,11 +92,9 @@ function searchCatalog(str){
     var words=""
     var near=""
     var result=""
-    var means=""
     var sr_top_list=""
     var sr_nm_list=""
     var selectLeft_list=""
-    var selectRight_list=""
     var liValue //点击的值
     	liValue=str
     $.ajax({
@@ -117,16 +130,6 @@ function searchCatalog(str){
             $(".selectLeftContent_show").html("")
             document.getElementById('left').scrollTop = 0;
             $(".selectLeftContent_show").html(selectLeft_list)
-
-            means=msg.means
-            selectRight_list+="<ul>"
-            for(var i=0;i<means.length;i++){
-                selectRight_list+="<li>"+means[i]+"</li>"
-            }
-            selectRight_list+="</ul>"
-            $(".selectRightContentShow").html("")
-              document.getElementById('right').scrollTop = 0;
-            $(".selectRightContentShow").html(selectRight_list)
 
             nmClick()
             
@@ -179,7 +182,7 @@ function nearClick(){
                 $(".selectLeftContent_show").html(selectLeft)
                 
                 selectLeftClick()
-                selectRightClick()
+
             }
         })	
     }else{
@@ -231,7 +234,7 @@ function catalogAdd(){
 }
 //导入按钮，用html5的FileReader方法
 function imports(){
-    var selectedFile = document.getElementById("files").files[0];//获取读取的File对象
+    var selectedFile = document.getElementById("filese").files[0];//获取读取的File对象
     var name = selectedFile.name;//读取选中文件的文件名
     var size = selectedFile.size;//读取选中文件的大小
     var reader = new FileReader();//这里是核心！！！读取操作就是由它完成的。
@@ -410,4 +413,89 @@ function popupSure(){
 //提示框 取消按钮
 function popupCancel(){
     $(".popup").removeClass("displayBlock").addClass("displayNo")
+}
+
+//关闭页面
+function nor_close() {
+    $(".con").removeClass("show").addClass("hide")
+
+    $(".catalogList ul").html("")
+    $('.sr_top').html("")
+    $(".sr_nm_content").html("")
+    $(".selectLeftContent_show").html("")
+    $(".selectRightContentShow").html("")
+}
+
+/*打开新增页面*/
+function nor_show(){
+    $(".con").removeClass("hide").addClass("show")
+    var docuHeight = $(document).height()  //页面可视区域
+    $(".con").height(docuHeight)
+
+}
+
+//从非标准页码进入
+function standard_name_by_non(str){
+
+    var nonstandard_v=str  //非标准名称
+    var selectRight_list=""
+    $.ajax({
+        url:ctx+"/query_standard_name_by_non",
+        type:"post",
+        data:{nonstandard_v:nonstandard_v},
+        dataType:'json',
+        success:function(data){
+            nor_show()
+            $(".catalogList ul").prepend("<li><p>"+nonstandard_v+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>")
+            catalogAdd()
+            //添加以后，调用鼠标划入和划出事件
+            cateMouseenter()
+            cateMouseleave()
+
+            searchCatalog(nonstandard_v)
+
+            var nonstandardList=data.nonstandard_v
+            selectRight_list+="<ul>"
+            for(var i=0;i<nonstandardList.length;i++){
+                selectRight_list+="<li>"+nonstandardList[i]+"</li>"
+            }
+            selectRight_list+="</ul>"
+            $(".selectRightContentShow").html("")
+            document.getElementById('right').scrollTop = 0;
+            $(".selectRightContentShow").html(selectRight_list)
+
+
+            selectRightClick()
+        }
+    })
+}
+
+//从标准页码请求过来
+function nonstandard_name_by_std(str){
+    var standard_v=str  //标准名称
+    var nonstandard="" //非标准名称
+    var nonstandardList=""
+    $.ajax({
+        url:ctx+"/query_nonstandard_name_by_std",
+        type:"post",
+        data:{standard_v:standard_v},
+        dataType:'json',
+        success:function(data){
+            $(".selectRightContent").html("")
+            $(".selectRightContent").html("<ul><li>"+standard_v+"</li></ul>")
+
+            selectRightClick()
+            nonstandardList=data.nonstandard_v
+            for(var i=0;i<nonstandardList.length;i++){
+                nonstandard+="<li><p>"+nonstandardList[i].trim()+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>"
+            }
+            $(".catalogList ul").prepend(nonstandard)
+
+            catalogAdd()
+            //添加以后，调用鼠标划入和划出事件
+            cateMouseenter()
+            cateMouseleave()
+
+        }
+    })
 }

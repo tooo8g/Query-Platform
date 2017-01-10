@@ -250,7 +250,8 @@ function clicknoBatchId(str) {
 //显示关联信息
 function showMean(str) {
     var noMan=encodeURI($(str).attr('value'))
-    window.open("../views/queryWordSelect1.html?noMan="+noMan)
+    nor_show()
+    standard_name_by_non(noMan)
 }
 
 //智能关联
