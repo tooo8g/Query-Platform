@@ -97,7 +97,7 @@ ul,ol,p{
     text-align: center;
     margin-top: 20px;
 }
-/*鎻愮ず妗*/
+/*閹绘劗銇氬*/
 .popup{
     width: 300px;
     height: 160px;
@@ -240,7 +240,6 @@ tbody td span {
     margin-left: 28px !important;
 }
 
-/*鍒嗛〉*/
 .list_button{
     position: relative;
     text-align: center;
@@ -339,7 +338,7 @@ tbody td span {
     display: block;
     float: right;
     margin-right: 10px;
-    margin-top: 2px;
+    margin-top: 8px;
     cursor: pointer;
 }
 .smCon{
@@ -348,10 +347,16 @@ tbody td span {
 	overflow:hidden
 }
 .smCon ul li{
-	    list-style: none;
-    padding-left: 20px;
+    width: 280px;
+    list-style: none;
+    padding-left: 10px;
     height: 20px;
     line-height: 20px;
+    font-size: 14px;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .hide{
     display: none;

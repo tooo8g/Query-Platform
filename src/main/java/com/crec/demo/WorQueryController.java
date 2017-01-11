@@ -351,11 +351,12 @@ public class WorQueryController {
 	}
 
 	@RequestMapping("/check_mean")
-	public void updateMean(@RequestParam List<Mean> mean,
+	@ResponseBody
+	public String updateMean(@RequestBody List<Mean> mean,
 			HttpServletResponse response) throws IOException {
 		MongoDirver md = new MongoDirver();
 		md.updateMean(mean);
-		response.getWriter().print("sucess");
+		return "sucess";
 	}
 
 	public static void main(String[] args) {

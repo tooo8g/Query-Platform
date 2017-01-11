@@ -36,7 +36,7 @@ function daSearch() {
             	 for(var i=0;i<means.length;i++){
                      bzNum=Number(startValue)+i+1
                      tbodyList+="<tr>"
-                     tbodyList+="<td><a class='noclickId' href='javascript:;' nid="+means[i].id+" nck="+means[i].check+" onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
+                     tbodyList+="<td><a class='noclickId' href='javascript:;' nid="+means[i]._id.$oid+" nck="+means[i].check+" onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
                      tbodyList+="<td>"+means[i].standard_v+"</td>"
                      tbodyList+="<td>"+means[i].nonstandard_v+"</td>"
                      tbodyList+="<td>"+(means[i].type=='0'?'手动':'自动')+"</td>"
@@ -87,13 +87,16 @@ function pageCallback(api) {
       pageNo=api.getCurrent()
   }
   var startValue=(pageNo-1)*limitValue //初始值
-
-  var importer=$(".importPerson").val() //导入人
-  var value=$(".maName").val() //名称
-  var imp_time_start=$(".createCode_date_start").val() //开始日期
-  var imp_time_end=$(".createCode_date_end").val() //结束日期
-  var batch_id=$(".maBatch").val() //批次
-  var source=$(".source option:selected").val() //数据来源
+  
+  var standard_v=$(".standard_v").val() //标准名称
+  var nonstandard_v=$(".nonstandard_v").val() //非标准名称
+  var mean_time_start=$(".createCode_date_start").val()
+  var mean_time_end=$(".createCode_date_end").val()
+  var type=0
+  type=$(".assoic option:selected").val() //关联方式:0手动1自动
+  var check=0  
+  check=$(".check option:selected").val() //准确性:0未判别1准确2不准确
+  var operator=$(".operator").val() //关联人
   var count="" //总数
   var standard="" //保存data信息
   var tbodyList=""
@@ -110,7 +113,7 @@ function pageCallback(api) {
           	 for(var i=0;i<means.length;i++){
                    bzNum=Number(startValue)+i+1
                    tbodyList+="<tr>"
-                   tbodyList+="<td><a class='noclickId' href='javascript:;' nid="+means[i].id+" nck="+means[i].check+" onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
+                   tbodyList+="<td><a class='noclickId' href='javascript:;' nid="+means[i]._id.$oid+" nck="+means[i].check+" onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
                    tbodyList+="<td>"+means[i].standard_v+"</td>"
                    tbodyList+="<td>"+means[i].nonstandard_v+"</td>"
                    tbodyList+="<td>"+(means[i].type=='0'?'手动':'自动')+"</td>"
@@ -178,21 +181,26 @@ function timeStamp2String(time){
 
 //审核
 function daEx(){
-    deShow()
+	var cliList=$(".clickId")
+	if(cliList.length>0){
+	    deShow()
+	}
 }
 
 //判断是否合格
-function idDaEx(){
+function idDaEx(str){
+	var check=str
     var means=[] //参数
     var cliList=$(".clickId")
     for(var i=0;i<cliList.length;i++){
-        means.push({"_id":cliList.eq(i).attr('nid'),"check":cliList.eq(i).attr('nck')})
+        means.push({"_id":cliList.eq(i).attr('nid'),"check":check})
     }
     var mean=JSON.stringify(means)
     $.ajax({
         url:ctx+"/check_mean",
         type:'post',
-        data:{mean:mean},
+        data:mean,
+        contentType:"application/json",
         success:function(){
             deHide()
             daSearch()
@@ -202,12 +210,12 @@ function idDaEx(){
 
 //合格
 function deSure(){
-    idDaEx()
+    idDaEx(1)
 }
 
 //不合格
 function deCancel(){
-    deHide()
+	idDaEx(2)
 }
 
 //审核框显示

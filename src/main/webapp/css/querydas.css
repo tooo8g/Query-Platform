@@ -172,12 +172,13 @@ tbody td span {
     display: block;
 }
 .de_title{
-    width: 180px;
+    width: 190px;
     height: 35px;
     line-height: 35px;
     font-size: 16px;
-    padding-left: 20px;
-    background-color: #eeeeee;
+    padding-left: 10px;
+    background-color: #77afea;
+    color: white;
 }
 
 .de_sure,.de_cancel{
@@ -262,6 +263,11 @@ tbody td span {
     width: 1007px;
     text-align: center;
     margin-top: 20px;
+}
+.de_delete{
+	position: absolute;
+    right: 5px;
+    top: 8px;
 }
 .noclickId{
     background: url("../images/click_1.png") no-repeat;

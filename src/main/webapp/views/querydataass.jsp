@@ -34,10 +34,12 @@
       <a href="javascript:;" type="button" class="daEx" onclick="daEx()">审核</a>
     </div>
     <div class="de displayNo">
-      <span class="de_title">提示</span>
-      <span class="de_con">将名称放入一列并保存为txt</span>
-      <a href="javascript:;" type="button" class="de_sure" onclick="deSure()">合格</a>
-      <a href="javascript:;" type="button" class="de_cancel" onclick="deCancel()">不合格</a>
+      <span class="de_title">审核</span>
+      <a href="javascript:;" type="button" class="de_delete" onclick="deHide()">
+         <img src="${ctx}/images/colse.png">
+      </a>
+      <a href="javascript:;" type="button" class="de_sure" onclick="deSure()">准确</a>
+      <a href="javascript:;" type="button" class="de_cancel" onclick="deCancel()">不准确</a>
     </div>
     <table>
       <thead>

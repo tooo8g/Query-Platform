@@ -115,7 +115,7 @@ function nomaSearch() {
     var imp_time_start=$(".createCode_date_start").val() //开始日期
     var imp_time_end=$(".createCode_date_end").val() //结束时间日期
     var batch_id=0  //批次
-    batch_id=Number($(".maBatch").val())
+    batch_id=Number($(".nomaBatch").val())
    
     var source=0 //数据来源
     source=Number($(".source option:selected").val()) //数据来源
@@ -188,17 +188,17 @@ function pageCallback(api) {
     var source=0 //数据来源
     source=Number($(".source option:selected").val()) //数据来源
     var count="" //总数
-    var standard="" //保存data信息
+    var nonstandard="" //保存data信息
     var tbodyList=""
     var bzNum
     $.ajax({
-        url:ctx+'../query_nonstandard_name',
+    	url:ctx+'/query_nonstandard_name',
         data:{importer:importer,value:value,imp_time_start:imp_time_start,imp_time_end:imp_time_end,batch_id:batch_id,source:source,start:startValue,limit:limitValue},
         dataType:"json",
         success:function (datas) {
             count=datas.count
-            standard=datas.data
-            if(standard.length>0){
+            nonstandard=datas.data
+            if(nonstandard.length>0){
                 for (var i = 0; i < nonstandard.length; i++) {
                     bzNum = Number(startValue) + i + 1
                     tbodyList += "<tr>"
@@ -211,8 +211,8 @@ function pageCallback(api) {
                     tbodyList += "<td>" + (nonstandard[i].source == 0 ? '人工导入' : '数据服务平台') + "</td>"
                     tbodyList += "<td><a href='javascript:;' class='showMean' value='" + nonstandard[i].value + "' onclick='showMean(this)'>" + nonstandard[i].mean + "</a></td>"
                 }
-                $(".man_body").html("")
-                $(".man_body").append(tbodyList)
+                $(".noman_body").html("")
+                $(".noman_body").append(tbodyList)
 
                 var pageCount=0 //总页数
                 pageCount=count/limitValue
@@ -233,8 +233,8 @@ function pageCallback(api) {
 
 
             }else{
-                $(".man_body").html("")
-                $(".man_body").append("<p>没有相应数据</p>")
+                $(".noman_body").html("")
+                $(".noman_body").append("<p>没有相应数据</p>")
             }
         }
     })
