@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.platform.bean.Data;
 import com.platform.index.MeanSearch;
 import com.platform.index.WordSearch;
+import com.platform.io.bean.Mean;
 import com.platform.io.bean.NonstandardValue;
 import com.platform.io.bean.StandardValue;
 import com.platform.mongo.s2.MongoDirver;
@@ -100,14 +101,14 @@ public class WorQueryController {
 		}
 
 		System.out.println(word);
-//		Set<String> ms = means.get(word);
-//		if (ms == null) {
-//			detail.put("means", new ArrayList<String>());
-//		} else {
-//			for (String mm : ms)
-//				System.out.println(mm);
-//			detail.put("means", ms);
-//		}
+		// Set<String> ms = means.get(word);
+		// if (ms == null) {
+		// detail.put("means", new ArrayList<String>());
+		// } else {
+		// for (String mm : ms)
+		// System.out.println(mm);
+		// detail.put("means", ms);
+		// }
 
 		Document total = new Document();
 		total.append("msg", detail);
@@ -347,6 +348,14 @@ public class WorQueryController {
 				md.queryMeanByStandard(standard_v));
 		md.close();
 		response.getWriter().print(result.toJson());
+	}
+
+	@RequestMapping("/check_mean")
+	public void updateMean(@RequestParam List<Mean> mean,
+			HttpServletResponse response) throws IOException {
+		MongoDirver md = new MongoDirver();
+		md.updateMean(mean);
+		response.getWriter().print("sucess");
 	}
 
 	public static void main(String[] args) {
