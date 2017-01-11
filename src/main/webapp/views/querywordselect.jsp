@@ -64,7 +64,7 @@
 </div>
 <jsp:include page="queryws.jsp"/>
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="${ctx}/js/querywordselect.js"></script>
+<script type="text/javascript" src="${ctx}/js/querywords.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
 <script src="${ctx}/js/jquery.pagination.js"></script>
 </body>
