@@ -184,8 +184,11 @@ function pageCallback(api) {
     var value=$(".maName").val() //名称
     var imp_time_start=$(".createCode_date_start").val() //开始日期
     var imp_time_end=$(".createCode_date_end").val() //结束日期
-    var batch_id=$(".maBatch").val() //批次
-    var source=$(".source option:selected").val() //数据来源
+    var batch_id=0  //批次
+    batch_id=Number($(".maBatch").val())
+
+    var source=0 //数据来源
+    source=Number($(".source option:selected").val())
     var count="" //总数
     var standard="" //保存data信息
     var tbodyList=""
