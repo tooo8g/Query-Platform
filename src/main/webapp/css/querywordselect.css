@@ -1,11 +1,23 @@
-body{
-    margin: 0;
-    padding: 0;
+*{
+    padding:0px;
+    margin:0px;
+    list-style: none;
     font-size: 12px;
-    font-family: 'Microsoft Yahei', 'Arial',Tahoma, 'Simsun';
+    font-family:'Microsoft Yahei','Arial',Tahoma,'Simsun';
 }
-a{
-    text-decoration: none !important;
+
+em{
+    font-style: normal;
+}
+strong{
+    font-weight: normal;
+}
+li{list-style: none;}
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+img{border: none;margin: 0px;padding: 0px;}
+ul,ol,p{
+    margin: 0px;
 }
 
 .container{
@@ -81,8 +93,8 @@ a{
     display: block;
 }
 
-/*提示�*/
-.popup{
+/*提示�*/
+.popup,.imSh{
     width: 300px;
     height: 160px;
     position: absolute;
@@ -92,10 +104,10 @@ a{
     border: 1px solid #77afea;
     background-color: white;
 }
-.popup span,.popup a{
+.popup span,.popup a,.imSh span,.imSh a{
     display: block;
 }
-.popup_title{
+.popup_title,.imSh_title{
     width: 280px;
     height: 35px;
     line-height: 35px;
@@ -103,13 +115,13 @@ a{
     padding-left: 20px;
     background-color: #eeeeee;
 }
-.popup_con{
+.popup_con,.imSh_con{
     width: 300px;
     text-align: center;
     font-size: 14px;
-    margin:20px 0 20px 0;
+    margin:25px 0 25px 0;
 }
-.popup_sure,.popup_cancel{
+.popup_sure,.popup_cancel,.imSh_sure{
     width: auto;
     padding-left: 5px;
     padding-right: 5px;
@@ -131,6 +143,11 @@ a{
     color: #777777;
     border: 1px solid #bbbbbb;
     margin-left: 20px;
+}
+.imSh_sure{
+    background-color: #77afea;
+    color: white;
+    margin-left: 130px;
 }
 .r_search{
     width: 1008px;

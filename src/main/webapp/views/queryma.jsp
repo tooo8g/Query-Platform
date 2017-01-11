@@ -3,7 +3,7 @@
 <head>
   <jsp:include page="resource.jsp"/>
   <title>标准名称管理</title>
-  <link rel="stylesheet" type="text/css" href="${ctx}/css/queryMa.css">
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/queryma.css">
 </head>
 <body>
 <div class="container">

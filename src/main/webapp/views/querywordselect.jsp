@@ -3,7 +3,7 @@
 <head>
     <jsp:include page="resource.jsp"/>
     <title>非标准名称管理</title>
-    <link rel="stylesheet" type="text/css" href="${ctx}/css/queryNoMa.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/querywordselect.css">
 </head>
 <body>
 <div class="container">
@@ -16,6 +16,11 @@
       <span class="popup_con">将名称放入一列并保存为txt</span>
       <a href="javascript:;" type="button" class="popup_sure" onclick="popupSure()">确定</a>
       <a href="javascript:;" type="button" class="popup_cancel" onclick="popupCancel()">取消</a>
+    </div>
+    <div class="imSh displayNo">
+      <span class="imSh_title">提示</span>
+      <span class="imSh_con"></span>
+      <a href="javascript:;" type="button" class="imSh_sure" onclick="imShSure()">确定</a>
     </div>
     <a href="javascript:;" type="button" class="deleteAll" onclick="deleteAll()">删除</a>
     <a href="javascript:;" type="button" class="assoic" onclick="assOic()">智能关联</a>
@@ -59,7 +64,7 @@
 </div>
 <jsp:include page="queryws.jsp"/>
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="${ctx}/js/queryNoMa.js"></script>
+<script type="text/javascript" src="${ctx}/js/querywordselect.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
 <script src="${ctx}/js/jquery.pagination.js"></script>
 </body>

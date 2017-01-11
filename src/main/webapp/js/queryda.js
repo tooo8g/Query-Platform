@@ -36,7 +36,7 @@ function daSearch() {
             	 for(var i=0;i<means.length;i++){
                      bzNum=Number(startValue)+i+1
                      tbodyList+="<tr>"
-                     tbodyList+="<td><a class='noclickId' href='javascript:;' onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
+                     tbodyList+="<td><a class='noclickId' href='javascript:;' nid="+means[i].id+" nck="+means[i].check+" onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
                      tbodyList+="<td>"+means[i].standard_v+"</td>"
                      tbodyList+="<td>"+means[i].nonstandard_v+"</td>"
                      tbodyList+="<td>"+(means[i].type=='0'?'手动':'自动')+"</td>"
@@ -110,7 +110,7 @@ function pageCallback(api) {
           	 for(var i=0;i<means.length;i++){
                    bzNum=Number(startValue)+i+1
                    tbodyList+="<tr>"
-                   tbodyList+="<td><a class='noclickId' href='javascript:;' onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
+                   tbodyList+="<td><a class='noclickId' href='javascript:;' nid="+means[i].id+" nck="+means[i].check+" onclick='clickCodes(this)'><span>"+bzNum+"</span></td>"
                    tbodyList+="<td>"+means[i].standard_v+"</td>"
                    tbodyList+="<td>"+means[i].nonstandard_v+"</td>"
                    tbodyList+="<td>"+(means[i].type=='0'?'手动':'自动')+"</td>"
@@ -174,4 +174,48 @@ function timeStamp2String(time){
     var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
     var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
     return year + "-" + month + "-" + date;
+}
+
+//审核
+function daEx(){
+    deShow()
+}
+
+//判断是否合格
+function idDaEx(){
+    var means=[] //参数
+    var cliList=$(".clickId")
+    for(var i=0;i<cliList.length;i++){
+        means.push({"_id":cliList.eq(i).attr('nid'),"check":cliList.eq(i).attr('nck')})
+    }
+    var mean=JSON.stringify(means)
+    $.ajax({
+        url:ctx+"/check_mean",
+        type:'post',
+        data:{mean:mean},
+        success:function(){
+            deHide()
+            daSearch()
+        }
+    })
+}
+
+//合格
+function deSure(){
+    idDaEx()
+}
+
+//不合格
+function deCancel(){
+    deHide()
+}
+
+//审核框显示
+function deShow(){
+    $(".de").removeClass("displayNo").addClass("displayBlock")
+}
+
+//审核框隐藏
+function deHide(){
+    $(".de").removeClass("displayBlock").addClass("displayNo")
 }

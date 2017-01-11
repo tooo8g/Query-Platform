@@ -30,14 +30,20 @@ function importNoMa(){
             dataJson.push({"importer":'admin',"value":""+list[i].trim()+""})
         }
         var dj=JSON.stringify(dataJson) //转换成json
+        var str="" //传入的参数
         $.ajax({
             url:ctx+'/add_nonstandard_name',
             type:"post",
             data:dj,
             contentType:"application/json",
             success:function () {
-                alert('导入成功')
+                str="导入成功"
+                imShSure(str)
                 nomaSearch()
+            },
+            error:function(){
+                str="导入失败"
+                imShSure(str)
             }
         })
     };
@@ -52,7 +58,12 @@ function popupSure(){
 function popupCancel(){
     $(".popup").removeClass("displayBlock").addClass("displayNo")
 }
-
+//导入后提示框
+function imShSure(str) {
+    $(".imSh_con").html("")
+    $(".imSh_con").html(str)
+    $(".imSh").removeClass("displayBlock").addClass("displayNo")
+}
 //删除
 function deleteAll() {
     var clickList=[], //点击的列表组合
@@ -104,14 +115,10 @@ function nomaSearch() {
     var imp_time_start=$(".createCode_date_start").val() //开始日期
     var imp_time_end=$(".createCode_date_end").val() //结束时间日期
     var batch_id=0  //批次
-    if($(".nomaBatch").val()){
-    	batch_id=$(".nomaBatch").val() 
-    }else{
-    	batch_id=0
-    }
+    batch_id=Number($(".maBatch").val())
    
     var source=0 //数据来源
-    source=$(".source option:selected").val() //数据来源
+    source=Number($(".source option:selected").val()) //数据来源
     var count="" //总数
     var nonstandard="" //保存data信息
     var tbodyList=""
@@ -186,7 +193,6 @@ function pageCallback(api) {
     var bzNum
     $.ajax({
         url:ctx+'../query_nonstandard_name',
-        type:"post",
         data:{importer:importer,value:value,imp_time_start:imp_time_start,imp_time_end:imp_time_end,batch_id:batch_id,source:source,start:startValue,limit:limitValue},
         dataType:"json",
         success:function (datas) {

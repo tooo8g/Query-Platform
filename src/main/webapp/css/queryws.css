@@ -111,7 +111,7 @@ ul,ol,p{
 }
 .catalogList{
     width: 250px;
-    height: 409px;
+    height: 367px;
     border: 1px solid #dddddd;
     overflow: auto;
 }
@@ -141,7 +141,6 @@ ul,ol,p{
     float: left;
     border: 1px solid #dddddd;
     margin-left: 20px;
-    margin-top: -2px;
 }
 .sr_top,.sr_nm,.sr_con{
     margin-top: 10px;

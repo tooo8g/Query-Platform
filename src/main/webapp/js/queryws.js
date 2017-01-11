@@ -10,7 +10,7 @@ $(function(){
         var ev = document.all ? window.event : e;
         if(ev.keyCode==13) {
             searchAdd()
-            cateFoucs()
+            //cateFoucs()
         }
     }
     //鼠标左键事件,鼠标点击页面，如果点击的父类不是ul或者Li.就触发cateFoucs事件
@@ -20,7 +20,7 @@ $(function(){
             if(mdTagName=="UL"||mdTagName=="LI"){
 
             }else{
-                cateFoucs()
+                //cateFoucs()
             }
         }
     }
@@ -86,7 +86,7 @@ function moveLi(obj1, obj2,flag) {
 * return data
 * */
 function searchCatalog(str){
-    cateFoucs()
+    //cateFoucs()
     var msg=""  //用来保存data里面的值
     var words=""
     var near=""
@@ -420,6 +420,15 @@ function popupCancel(){
     $(".popup").removeClass("displayBlock").addClass("displayNo")
 }
 
+
+/*打开新增页面*/
+function nor_show(){
+    $(".con").removeClass("hide").addClass("show")
+    var docuHeight = $(document).height()  //页面可视区域
+    $(".con").height(docuHeight)
+
+}
+
 //关闭页面
 function nor_close() {
     $(".con").removeClass("show").addClass("hide")
@@ -429,14 +438,8 @@ function nor_close() {
     $(".sr_nm_content").html("")
     $(".selectLeftContent_show").html("")
     $(".selectRightContentShow").html("")
-}
 
-/*打开新增页面*/
-function nor_show(){
-    $(".con").removeClass("hide").addClass("show")
-    var docuHeight = $(document).height()  //页面可视区域
-    $(".con").height(docuHeight)
-
+    nomaSearch()
 }
 
 //从非标准页码进入
