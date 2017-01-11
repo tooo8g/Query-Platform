@@ -3,7 +3,7 @@
 <head>
    <jsp:include page="resource.jsp"/>
    <title>数据清洗</title>
-   <link rel="stylesheet" href="${ctx}/css/queryDataAss.css">
+   <link rel="stylesheet" href="${ctx}/css/querydataass.css">
 </head>
 <body>
 <div class="container">
@@ -31,6 +31,13 @@
       <span class="oper">关联人</span>
       <input type="text" class="operator" value="">
       <a href="javascript:;" type="button" class="daSearch" onclick="daSearch()">搜索</a>
+      <a href="javascript:;" type="button" class="daEx" onclick="daEx()">审核</a>
+    </div>
+    <div class="de displayNo">
+      <span class="de_title">提示</span>
+      <span class="de_con">将名称放入一列并保存为txt</span>
+      <a href="javascript:;" type="button" class="de_sure" onclick="deSure()">合格</a>
+      <a href="javascript:;" type="button" class="de_cancel" onclick="deCancel()">不合格</a>
     </div>
     <table>
       <thead>
@@ -54,7 +61,7 @@
   </div>
 </div>
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="${ctx}/js/queryDataAss.js"></script>
+<script type="text/javascript" src="${ctx}/js/querydataass.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
 <script src="${ctx}/js/jquery.pagination.js"></script>
 </body>
