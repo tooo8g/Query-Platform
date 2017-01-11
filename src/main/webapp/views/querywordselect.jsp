@@ -3,7 +3,7 @@
 <head>
     <jsp:include page="resource.jsp"/>
     <title>非标准名称管理</title>
-    <link rel="stylesheet" type="text/css" href="${ctx}/css/queryNoMa.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/querynoma.css">
 </head>
 <body>
 <div class="container">
@@ -59,7 +59,7 @@
 </div>
 <jsp:include page="queryws.jsp"/>
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="${ctx}/js/queryNoMa.js"></script>
+<script type="text/javascript" src="${ctx}/js/querynoma.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
 <script src="${ctx}/js/jquery.pagination.js"></script>
 </body>
