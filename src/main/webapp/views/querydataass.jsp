@@ -3,7 +3,7 @@
 <head>
    <jsp:include page="resource.jsp"/>
    <title>数据清洗</title>
-   <link rel="stylesheet" href="${ctx}/css/querydataass.css">
+   <link rel="stylesheet" href="${ctx}/css/querydas.css">
 </head>
 <body>
 <div class="container">

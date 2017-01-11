@@ -3,7 +3,7 @@
 <head>
     <jsp:include page="resource.jsp"/>
     <title>非标准名称管理</title>
-    <link rel="stylesheet" type="text/css" href="${ctx}/css/querywordselect.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/querywose.css">
 </head>
 <body>
 <div class="container">
