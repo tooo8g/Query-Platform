@@ -57,7 +57,19 @@
     </div>
   </div>
 </div>
-<jsp:include page="queryWordSelect.jsp"/>
+<div class="showMa hide" id="showMa">
+   <div class="sm">
+     <div class="smTitle">
+       <p>关联的非标准名称</p>
+       <a href="javascript:;" onclick="sm_close()"><img src="${ctx}/images/colse.png"></a>
+     </div>
+     <div class="smCon">
+      <ul>
+        
+     </ul> 
+     </div>
+   </div>
+</div>
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/queryMa.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>

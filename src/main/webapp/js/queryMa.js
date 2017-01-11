@@ -8,7 +8,19 @@ $(function () {
     
     $(".a_m").removeClass("aNoClick").addClass("aClick")
          $(".con").removeClass("show").addClass("hide")
+         
+     maSearch()     
 })
+
+
+ /*给页面绑定一个click事件，点击sendList之外的地方，调用nor_close方法*/
+    $(".showMa").on("click",function(event){
+        event.stopPropagation();
+        var evt = event.srcElement ? event.srcElement : event.target;
+        if(evt.id=='showMa'){
+        	sm_close()
+        }
+    });
 
 
 //导入按钮，用html5的FileReader方法 导入标准名称
@@ -40,6 +52,7 @@ function importMa(){
             }
         })
     };
+    
 }
 //提示框 确定按钮
 function popupSure(){
@@ -249,9 +262,34 @@ function clickBatchId(str) {
 //显示关联信息
 function showMean(str) {
     var ma=$(str).attr('value')
-    nor_show()
+    sm_show()
     nonstandard_name_by_std(ma)
 }
+
+//从标准页码请求过来
+function nonstandard_name_by_std(str){
+    var standard_v=str  //标准名称
+    var nonstandard="" //非标准名称
+    var nonstandardList=""
+    $.ajax({
+        url:ctx+"/query_nonstandard_name_by_std",
+        type:"post",
+        data:{standard_v:standard_v},
+        dataType:'json',
+        success:function(datas){
+            nonstandardList=datas.data
+            for(var i=0;i<nonstandardList.length;i++){
+                nonstandard+="<li>"+nonstandardList[i].trim()+"</li>"
+            }
+            $(".smCon ul").html("")
+            $(".smCon ul").append(nonstandard)
+
+             
+
+        }
+    })
+}
+
 
 //时间格式化
 function timeStamp2String(time){
@@ -261,4 +299,18 @@ function timeStamp2String(time){
     var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
     var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
     return year + "-" + month + "-" + date;
+}
+
+//关闭页面
+function sm_close(){
+	$(".showMa").removeClass("show").addClass("hide")
+	$(".smCon ul").html("")
+}
+
+/*打开新增页面*/
+function sm_show(){
+    $(".showMa").removeClass("hide").addClass("show")
+    var docuHeight = $(document).height()  //页面可视区域
+    $(".showMa").height(docuHeight)
+
 }

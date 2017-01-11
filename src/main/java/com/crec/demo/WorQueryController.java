@@ -137,7 +137,7 @@ public class WorQueryController {
 		// mean.add(m);
 		// }
 		MongoDirver md = new MongoDirver();
-		md.addMean(m, word, operator, 0);
+		md.addMean(m.replaceAll("<br>", ""), word, operator, 0);
 
 		response.getWriter().print(1);
 	}
@@ -164,7 +164,7 @@ public class WorQueryController {
 		// if (mean != null)
 		// mean.remove(m);
 		MongoDirver md = new MongoDirver();
-		int stats = md.deleteMean(word, m);
+		int stats = md.deleteMean(m, word);
 		md.close();
 		response.getWriter().print(stats);
 	}

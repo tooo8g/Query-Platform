@@ -34,6 +34,7 @@ ul,ol,p{
     margin-top: 100px;
     overflow: hidden;
     background-color: white;
+    position:relative
 }
 .nor_title{
     width: 998px;

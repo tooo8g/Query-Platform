@@ -24,8 +24,7 @@ $(function(){
             }
         }
     }
-    cateMouseenter()
-    cateMouseleave()
+
 
     /*给页面绑定一个click事件，点击sendList之外的地方，调用nor_close方法*/
     $(".con").on("click",function(event){
@@ -38,38 +37,30 @@ $(function(){
 })
 //移动
 function moveLi(obj1, obj2,flag) {
-    if(flag){
-        $(".selectRight ul li").removeClass("liClick")
-        $(".selectRight ul").prepend($(".liClick"))
-        $(".selectLeft .liClick").remove()
-    }else{
-        $(".selectLeft ul li").removeClass("liClick")
-        $(".selectLeft ul").prepend($(".liClick"))
-        $(".selectRight .liClick").remove()
-    }
     //获取selectRight里面的数据，然后传给后台
    var selectLi=""
+	   //请求路径,flag为true,增加，false，减少
+	    var wordValue=$(".wordHidden").val()
+	    var operator="admin" //关联的人
+	    var url=""
    if(flag){
-	   selectLi+=$(".selectRight .liClick").html()   
-    }else{
-       selectLi+=$(".selectLeft .liClick").html()   
-    }
-    //请求路径,flag为true,增加，false，减少
-    var wordValue=$(".wordHidden").val()
-    var operator="admin" //关联的人
-    var url=""
-    if(flag){
-        url=ctx+'/put_means'
+	   if($(".selectLeft ul li").hasClass("liClick")){
+		   selectLi=$(".selectLeft .liClick").html()   
+		    url=ctx+'/put_means'
         $.ajax({
             url:url,
             type:"post",
             data:{word:wordValue,m:selectLi,operator:operator},
             success:function(){
-
+            	 $(".selectRight ul li").removeClass("liClick")
+                 $(".selectRight ul").prepend($(".liClick"))
             }
         })
+	   }
     }else{
-        url=ctx+'/remove_means'
+    	if($(".selectRight ul li").hasClass("liClick")){
+    		 selectLi=$(".selectRight .liClick").html()  
+    		  url=ctx+'/remove_means'
         $.ajax({
             url:url,
             type:"post",
@@ -78,10 +69,14 @@ function moveLi(obj1, obj2,flag) {
                if(data==0){
                    alert("该项无法删除")
                }else if(data==1){
-                   alert("删除成功")
+            	   $(".selectLeft ul li").removeClass("liClick")
+                   $(".selectLeft ul").prepend($(".liClick"))
+            	   $(".selectRight .liClick").remove()
+                   alert("删除成功")                 
                }
             }
         })
+    	}
     }
 }
 
@@ -216,12 +211,21 @@ function selectRightClick(){
 function searchAdd(){
 	var inputValue=$(".searchInput").val()
 	if(inputValue){
-        $(".catalogList ul").prepend("<li><p>"+inputValue+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>")
-		catalogAdd()
-		$(".searchInput").val("")
-        //添加以后，调用鼠标划入和划出事件
-        cateMouseenter()
-        cateMouseleave()
+        $(".catalogList ul").prepend("<li><p>"+inputValue+"</p>")
+		 var dataJson=[] //把参数拼装成json样子，
+        dataJson.push({"importer":'admin',"value":""+inputValue+""})
+         var dj=JSON.stringify(dataJson) //转换成json
+         $.ajax({
+            url:ctx+'/add_nonstandard_name',
+            type:"post",
+            data:dj,
+            contentType:"application/json",
+            success:function () {
+            	 catalogAdd()
+         		$(".searchInput").val("")
+             
+            }
+        })
 	}
 }
 
@@ -249,14 +253,12 @@ function imports(){
     reader.onload = function(){
         list=this.result.split("\n")
         for(var i=0;i<list.length;i++){
-            liList+="<li><p>"+list[i].trim()+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>"
+            liList+="<li><p>"+list[i].trim()+"</p></li>"
         }
         $(".catalogList ul").prepend(liList)
         
         catalogAdd()
-        //添加以后，调用鼠标划入和划出事件
-        cateMouseenter()
-        cateMouseleave()
+  
     };
 }
 
@@ -290,7 +292,6 @@ function  catEdit(str) {
         pT.removeClass("displayNo").addClass("displayBlock")
     })
 }
-
 //catalogList鼠标划入事件
 function cateMouseenter(){
     $(".catalogList ul li").mouseenter(function () {
@@ -452,11 +453,8 @@ function standard_name_by_non(str){
             nor_show()
             $(".catalogList ul").prepend("<li><p>"+nonstandard_v+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>")
             catalogAdd()
-            //添加以后，调用鼠标划入和划出事件
-            cateMouseenter()
-            cateMouseleave()
+       
 
-            searchCatalog(nonstandard_v)
 
             var nonstandardList=datas.data
             selectRight_list+="<ul>"
@@ -474,32 +472,4 @@ function standard_name_by_non(str){
     })
 }
 
-//从标准页码请求过来
-function nonstandard_name_by_std(str){
-    var standard_v=str  //标准名称
-    var nonstandard="" //非标准名称
-    var nonstandardList=""
-    $.ajax({
-        url:ctx+"/query_nonstandard_name_by_std",
-        type:"post",
-        data:{standard_v:standard_v},
-        dataType:'json',
-        success:function(datas){
-            $(".selectRightContent").html("")
-            $(".selectRightContent").html("<ul><li>"+standard_v+"</li></ul>")
 
-            selectRightClick()
-            nonstandardList=datas.data
-            for(var i=0;i<nonstandardList.length;i++){
-                nonstandard+="<li><p>"+nonstandardList[i].trim()+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>"
-            }
-            $(".catalogList ul").prepend(nonstandard)
-
-            catalogAdd()
-            //添加以后，调用鼠标划入和划出事件
-            cateMouseenter()
-            cateMouseleave()
-
-        }
-    })
-}

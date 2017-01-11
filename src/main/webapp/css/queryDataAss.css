@@ -43,7 +43,7 @@ a{
     margin-left: 20px;
 }
 .da_search{
-    width: 1008px;
+    width: 870px;
     float: left;
     margin-top: 10px;
 }
@@ -62,9 +62,15 @@ a{
     padding-left: 2px;
     outline: none;
     color: #222222;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
-.da_search input[type=radio]{
-    line-height: 25px;
+.da_search select {
+    height: 29px;
+    line-height: 29px;
+    font-size: 14px;
+    color: #222;
 }
 .daSearch{
     width: auto;
@@ -79,13 +85,17 @@ a{
     text-decoration: none;
     background-color: #77afea;
 }
-
+.oper{
+  margin-left:13px;	
+  display:inline-block;
+  margin-top:10px
+}
 /*table*/
 table{
     width: 1008px;
     table-layout: fixed;
     border-collapse: collapse;
-    margin-top: 50px;
+    margin-top: 90px;
 }
 thead{
     width: 1008px;

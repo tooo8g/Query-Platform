@@ -8,6 +8,8 @@ $(function () {
     
      $(".a_n").removeClass("aNoClick").addClass("aClick")
      $(".con").removeClass("show").addClass("hide")
+     
+     nomaSearch()
 })
 
 
@@ -27,7 +29,6 @@ function importNoMa(){
         for(var i=0;i<list.length;i++){
             dataJson.push({"importer":'admin',"value":""+list[i].trim()+""})
         }
-        console.log(dataJson)
         var dj=JSON.stringify(dataJson) //转换成json
         $.ajax({
             url:ctx+'/add_nonstandard_name',
@@ -251,6 +252,7 @@ function clicknoBatchId(str) {
 //显示关联信息
 function showMean(str) {
     var noMan=$(str).attr('value')
+    $(".wordHidden").val(noMan)
     nor_show()
     standard_name_by_non(noMan)
 }

@@ -57,7 +57,7 @@
     </div>
   </div>
 </div>
-<jsp:include page="queryWordSelect.jsp"/>
+<jsp:include page="queryws.jsp"/>
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/queryNoMa.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>

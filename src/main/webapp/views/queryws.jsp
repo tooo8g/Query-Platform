@@ -13,8 +13,8 @@
       <div class="catalogButton">
         <input type="text" class="searchInput" value="">
         <a href="javascript:;" type="button" class="searchButton" onclick="searchAdd()">添加</a>
-        <input type="file" id="filese" style="display:none" onchange="imports();"/>
-        <a href="javascript:;" type="button" id="imports" class="searchBus">导入</a>
+        <!--<input type="file" id="filese" style="display:none" onchange="imports();"/>-->
+        <!--<a href="javascript:;" type="button" id="imports" class="searchBus">导入</a>-->
       </div>
       <div class="catalogList">
         <ul>
@@ -54,10 +54,10 @@
         </div>
         <div class="secondSelect">
           <div class="divTitle">匹配到的名称</div>
-          <a href="javascript:;" type="button" class="sesButton" onclick="sesAdd()">添加</a>
+          <!--<a href="javascript:;" type="button" class="sesButton" onclick="sesAdd()">添加</a>-->
           <div  class="selectRight" id="right">
             <div class="selectRightContent">
-              <div class="selectRightContentAdd"></div>
+              <!--<div class="selectRightContentAdd"></div>-->
               <div class="selectRightContentShow"></div>
             </div>
           </div>
