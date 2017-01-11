@@ -111,7 +111,7 @@ ul,ol,p{
 }
 .catalogList{
     width: 250px;
-    height: 409px;
+    height: 367px;
     border: 1px solid #dddddd;
     overflow: auto;
 }
