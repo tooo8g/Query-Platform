@@ -61,7 +61,7 @@
   </div>
 </div>
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="${ctx}/js/querydataass.js"></script>
+<script type="text/javascript" src="${ctx}/js/queryda.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
 <script src="${ctx}/js/jquery.pagination.js"></script>
 </body>
