@@ -6,6 +6,6 @@ function jumpPage(str) {
     }else if(str=='m'){   
         window.location.href=ctx+"/views/queryma.jsp"
     }else if(str=='nm'){
-        window.location.href=ctx+"/views/querydataass.jsp"
+        window.location.href=ctx+"/views/queryda.jsp"
     }
 }
