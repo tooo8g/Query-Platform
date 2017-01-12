@@ -126,6 +126,7 @@ function nomaSearch() {
     $.ajax({
         url:ctx+'/query_nonstandard_name',
         data:{importer:importer,value:value,imp_time_start:imp_time_start,imp_time_end:imp_time_end,batch_id:batch_id,source:source,start:startValue,limit:limitValue},
+        type:"post",
         dataType:"json",
         success:function (datas) {
             count = datas.count
@@ -194,6 +195,7 @@ function pageCallback(api) {
     $.ajax({
     	url:ctx+'/query_nonstandard_name',
         data:{importer:importer,value:value,imp_time_start:imp_time_start,imp_time_end:imp_time_end,batch_id:batch_id,source:source,start:startValue,limit:limitValue},
+        type:"post",
         dataType:"json",
         success:function (datas) {
             count=datas.count
