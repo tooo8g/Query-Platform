@@ -5,6 +5,7 @@
     <title>非标准名称管理</title>
     <link rel="stylesheet" type="text/css" href="${ctx}/css/querywordselect.css">
   <link rel="stylesheet" type="text/css" href="${ctx}/css/jquery.editable-select.min.css">
+  <link rel="stylesheet" type="text/css" href="${ctx}/js/layui/css/layui.css">
 </head>
 <body>
 <div class="container">
@@ -75,5 +76,6 @@
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery.pagination.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery.editable-select.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/layui/layui.js"></script>
 </body>
 </html>

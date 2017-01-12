@@ -2,12 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="resource.jsp"/>
 <link rel="stylesheet" type="text/css" href="${ctx}/css/queryws.css">
-<div class="con hide" id="con">
-  <div class="con-no-ma">
-    <div class="nor_title">
-      <p>数据关联</p>
-      <a href="javascript:;" onclick="nor_close()"><img src="${ctx}/images/colse.png"></a>
-    </div>
+  <div class="con-no-ma" id="con-no-ma">
     <div class="catalog">
       <div class="catalogTile">非标准名称、别名</div>
       <div class="catalogButton">
@@ -63,7 +58,6 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
 
