@@ -211,7 +211,7 @@ function selectRightClick(){
 function searchAdd(){
 	var inputValue=$(".searchInput").val()
 	if(inputValue){
-        $(".catalogList ul").prepend("<li><p>"+inputValue+"</p>")
+        $(".catalogList ul").prepend("<li title='"+inputValue+"'>"+inputValue+"</li>")
 		 var dataJson=[] //把参数拼装成json样子，
         dataJson.push({"importer":'admin',"value":""+inputValue+""})
          var dj=JSON.stringify(dataJson) //转换成json
@@ -454,7 +454,7 @@ function standard_name_by_non(str){
         dataType:'json',
         success:function(datas){
             nor_show()
-            $(".catalogList ul").prepend("<li><p>"+nonstandard_v+"</p><input type='text' class='displayNo' value=''><span  class='displayNo' onclick='catEdit(this)'>编辑</span></li>")
+            $(".catalogList ul").prepend("<li title='"+nonstandard_v+"'>"+nonstandard_v+"</li>")
             catalogAdd()
        
 

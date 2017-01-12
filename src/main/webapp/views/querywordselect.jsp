@@ -4,6 +4,7 @@
     <jsp:include page="resource.jsp"/>
     <title>非标准名称管理</title>
     <link rel="stylesheet" type="text/css" href="${ctx}/css/querywordselect.css">
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/jquery.editable-select.min.css">
 </head>
 <body>
 <div class="container">
@@ -24,6 +25,7 @@
     </div>
     <a href="javascript:;" type="button" class="deleteAll" onclick="deleteAll()">删除</a>
     <a href="javascript:;" type="button" class="assoic" onclick="assOic()">智能关联</a>
+    <a href="javascript:;" type="button" class="omaSearch" onclick="nomaSearch()">搜索</a>
     <div class="r_search">
       <span>导入人</span>
       <input type="text" class="importPerson" value="">
@@ -34,12 +36,17 @@
       <input  name="nomaName_date" class="createCode_date_end" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/>
       <span>批次</span>
       <input type="text" class="nomaBatch" value="">
+      <span>关联数</span>
+      <select class="noMean" id="noMean">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
       <span>数据来源</span>
       <select class="source">
         <option value="0">人工导入</option>
         <option value="1">数据服务平台</option>
       </select>
-      <a href="javascript:;" type="button" class="omaSearch" onclick="nomaSearch()">搜索</a>
     </div>
     <table>
       <thead>
@@ -66,6 +73,7 @@
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/querywordselect.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
-<script src="${ctx}/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery.editable-select.min.js"></script>
 </body>
 </html>
