@@ -202,10 +202,12 @@ function daEx(){
                     layer.msg('选择成功',{time:1500});
                     $(".da_body tr").removeClass("trClick")
                     $(".da_body tr a").removeClass("clickId").addClass("noclickId")
+                    idDaEx(1)
                 }, function() {
                     layer.msg('选择成功',{time:1500});
                     $(".da_body tr").removeClass("trClick")
                     $(".da_body tr a").removeClass("clickId").addClass("noclickId")
+                    idDaEx(2)
                 })
             }
         };
