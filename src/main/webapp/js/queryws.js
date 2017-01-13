@@ -25,15 +25,6 @@ $(function(){
         }
     }
 
-
-    /*给页面绑定一个click事件，点击sendList之外的地方，调用nor_close方法*/
-    $(".con").on("click",function(event){
-        event.stopPropagation();
-        var evt = event.srcElement ? event.srcElement : event.target;
-        if(evt.id=='con'){
-            nor_close()
-        }
-    });
 })
 //移动
 function moveLi(obj1, obj2,flag) {

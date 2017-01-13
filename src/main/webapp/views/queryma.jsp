@@ -19,6 +19,7 @@
     </div>
     <a href="javascript:;" type="button" class="deleteAll" onclick="deleteAll()">删除</a>
     <a href="javascript:;" type="button" class="assoic" onclick="assOic()">智能关联</a>
+    <a href="javascript:;" type="button" class="maSearch" onclick="maSearch()">搜索</a>
     <div class="r_search">
       <span>导入人</span>
       <input type="text" class="importPerson" value="">
@@ -29,12 +30,17 @@
       <input  name="maName_date" class="createCode_date_end" type="text" onFocus="var endDate=$dp.$('endDate2');WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value=""/>
       <span>批次</span>
       <input type="text" class="maBatch" value="">
+      <span>关联数</span>
+      <select class="maMean" id="maMean">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
       <span>数据来源</span>
       <select class="source">
         <option value="0">人工导入</option>
         <option value="1">数据服务平台</option>
       </select>
-      <a href="javascript:;" type="button" class="maSearch" onclick="maSearch()">搜索</a>
     </div>
     <table>
       <thead>
@@ -57,18 +63,12 @@
     </div>
   </div>
 </div>
-<div class="showMa hide" id="showMa">
-   <div class="sm">
-     <div class="smTitle">
-       <p>关联的非标准名称</p>
-       <a href="javascript:;" onclick="sm_close()"><img src="${ctx}/images/colse.png"></a>
-     </div>
-     <div class="smCon">
-      <ul>
-        
-     </ul> 
-     </div>
-   </div>
+<div class="sm hide" id="sm">
+  <div class="smCon" >
+    <ul>
+
+    </ul>
+  </div>
 </div>
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/queryMa.js"></script>

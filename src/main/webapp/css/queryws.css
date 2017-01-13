@@ -388,13 +388,6 @@ ul,ol,p{
     border: 1px solid green;
 }
 
-.layui-layer-title{
-    height: 32px !important;
-    line-height: 32px !important;
-}
-.layui-layer-setwin{
-    top:10px !important;
-}
 .trClick{
     background-color: #dddddd;
 }

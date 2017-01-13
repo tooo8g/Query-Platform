@@ -141,8 +141,8 @@ function nomaSearch() {
                 for (var i = 0; i < nonstandard.length; i++) {
                     bzNum = Number(startValue) + i + 1
                     tbodyList += "<tr>"
-                    tbodyList += "<td><p class='noclickId' nid=" + nonstandard[i].id + " onclick='clickCodes(this)'><span>" + bzNum + "</span></p></td>"
-                    tbodyList += "<td><p class='noBatchId' href='javascript:;' bid=" + nonstandard[i].batch_id + " onclick='clicknoBatchId(this)'><span>" + nonstandard[i].batch_id + "</span></p></td>"
+                    tbodyList += "<td class='noMaNum' onclick='clickCodes(this)'><p class='noclickId' nid=" + nonstandard[i].id + " ><span>" + bzNum + "</span></p></td>"
+                    tbodyList += "<td class='noMaBat' onclick='clicknoBatchId(this)'><p class='noBatchId' bid=" + nonstandard[i].batch_id + " ><span>" + nonstandard[i].batch_id + "</span></p></td>"
                     tbodyList += "<td>" + nonstandard[i].importer + "</td>"
                     tbodyList += "<td>" + timeStamp2String(nonstandard[i].imp_time.$date) + "</td>"
                     tbodyList += "<td><a title='"+nonstandard[i].value+"'>" + nonstandard[i].value + "</a></td>"
@@ -215,8 +215,8 @@ function pageCallback(api) {
                 for (var i = 0; i < nonstandard.length; i++) {
                     bzNum = Number(startValue) + i + 1
                     tbodyList += "<tr>"
-                    tbodyList += "<td><p class='noclickId' nid=" + nonstandard[i].id + " onclick='clickCodes(this)'><span>" + bzNum + "</span></p></td>"
-                    tbodyList += "<td><p class='noBatchId' href='javascript:;' bid=" + nonstandard[i].batch_id + " onclick='clicknoBatchId(this)'><span>" + nonstandard[i].batch_id + "</span></p></td>"
+                    tbodyList += "<td class='noMaNum' onclick='clickCodes(this)'><p class='noclickId' nid=" + nonstandard[i].id + " ><span>" + bzNum + "</span></p></td>"
+                    tbodyList += "<td class='noMaBat' onclick='clicknoBatchId(this)'><p class='noBatchId' bid=" + nonstandard[i].batch_id + " ><span>" + nonstandard[i].batch_id + "</span></p></td>"
                     tbodyList += "<td>" + nonstandard[i].importer + "</td>"
                     tbodyList += "<td>" + timeStamp2String(nonstandard[i].imp_time.$date) + "</td>"
                     tbodyList += "<td><a title='"+nonstandard[i].value+"'>" + nonstandard[i].value + "</a></td>"
@@ -257,18 +257,18 @@ function pageCallback(api) {
 }
 /*点击序号，如果背景是白的，就变成蓝色，如果是蓝色，就变成白色*/
 function clickCodes(str){
-    if($(str).hasClass("noclickId")){
-        $(str).removeClass("noclickId").addClass("clickId")
+    if($(str).find('p').hasClass("noclickId")){
+        $(str).find('p').removeClass("noclickId").addClass("clickId")
     }else{
-        $(str).removeClass("clickId").addClass("noclickId")
+        $(str).find('p').removeClass("clickId").addClass("noclickId")
     }
 }
 /*点击批次序号，如果背景是白的，就变成蓝色，如果是蓝色，就变成白色*/
 function clicknoBatchId(str) {
-    if($(str).hasClass("noBatchId")){
-        $(str).removeClass("noBatchId").addClass("batchId")
+    if($(str).find('p').hasClass("noBatchId")){
+        $(str).find('p').removeClass("noBatchId").addClass("batchId")
     }else{
-        $(str).removeClass("batchId").addClass("noBatchId")
+        $(str).find('p').removeClass("batchId").addClass("noBatchId")
     }
 }
 //显示关联信息
