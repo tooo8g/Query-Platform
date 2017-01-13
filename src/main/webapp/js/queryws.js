@@ -222,13 +222,16 @@ function searchAdd(){
 
     //给catalog下的Li绑定事件
 function catalogAdd(){
-    $(".catalog ul p").on('click',function(){
+    $(".catalog ul li").on('click',function(){
         $(".catalog ul li").removeClass("clickLi")
         $(".searchInput").val("")
-        $(this).parent().addClass("clickLi")
+        $(this).addClass("clickLi")
        //获取点击的value，调用查询方法
         var str=$(this).text()
         searchCatalog(str)
+
+
+        alert("ttt")
     })
 }
 //导入按钮，用html5的FileReader方法

@@ -4,6 +4,8 @@
   <jsp:include page="resource.jsp"/>
   <title>标准名称管理</title>
   <link rel="stylesheet" type="text/css" href="${ctx}/css/querymas.css">
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/jquery.editable-select.min.css">
+  <link rel="stylesheet" href="${ctx}/js/layui/css/layui.css">
 </head>
 <body>
 <div class="container">
@@ -51,7 +53,8 @@
         <td>时间</td>
         <td width="250">名称</td>
         <td>数据来源</td>
-        <td width="75">关联状态</td>
+        <td width="75">关联数</td>
+        <td width="75">操作</td>
       </tr>
       </thead>
       <tbody class="man_body">
@@ -73,6 +76,8 @@
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/queryMa.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
-<script src="${ctx}/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery.editable-select.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/layui/layui.js"></script>
 </body>
 </html>

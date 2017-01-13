@@ -171,7 +171,7 @@ function maSearch() {
                 });
             }else{
                 $(".man_body").html("")
-                $(".man_body").append("<p>没有相应数据</p>")
+                $(".man_body").append("<p class='bodyP'>没有相应数据</p>")
                 $(".list_button").html("")
             }
         }
@@ -247,7 +247,7 @@ function pageCallback(api) {
 
             }else{
                 $(".man_body").html("")
-                $(".man_body").append("<p>没有相应数据</p>")
+                $(".man_body").append("<p class='bodyP'>没有相应数据</p>")
                 $('.list_button').html("")
             }
         }

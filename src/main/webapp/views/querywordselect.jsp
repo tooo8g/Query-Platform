@@ -58,7 +58,8 @@
         <td>时间</td>
         <td width="250">名称</td>
         <td>数据来源</td>
-        <td width="75">关联状态</td>
+        <td width="75">关联数</td>
+        <td width="75">操作</td>
       </tr>
       </thead>
       <tbody class="noman_body">

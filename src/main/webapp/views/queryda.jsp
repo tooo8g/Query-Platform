@@ -4,7 +4,7 @@
    <jsp:include page="resource.jsp"/>
    <title>数据清洗</title>
    <link rel="stylesheet" href="${ctx}/css/querydas.css">
-  <link rel="stylesheet" href="../js/layui/css/layui.css">
+  <link rel="stylesheet" href="${ctx}/js/layui/css/layui.css">
 </head>
 <body>
 <div class="container">
@@ -58,7 +58,7 @@
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/queryda.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
-<script src="${ctx}/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery.pagination.js"></script>
 <script type="text/javascript" src="${ctx}/js/layui/layui.js"></script>
 </body>
 </html>
