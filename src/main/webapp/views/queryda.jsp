@@ -4,6 +4,7 @@
    <jsp:include page="resource.jsp"/>
    <title>数据清洗</title>
    <link rel="stylesheet" href="${ctx}/css/querydas.css">
+  <link rel="stylesheet" href="../js/layui/css/layui.css">
 </head>
 <body>
 <div class="container">
@@ -33,14 +34,6 @@
       <a href="javascript:;" type="button" class="daSearch" onclick="daSearch()">搜索</a>
       <a href="javascript:;" type="button" class="daEx" onclick="daEx()">审核</a>
     </div>
-    <div class="de displayNo">
-      <span class="de_title">审核</span>
-      <a href="javascript:;" type="button" class="de_delete" onclick="deHide()">
-         <img src="${ctx}/images/colse.png">
-      </a>
-      <a href="javascript:;" type="button" class="de_sure" onclick="deSure()">准确</a>
-      <a href="javascript:;" type="button" class="de_cancel" onclick="deCancel()">不准确</a>
-    </div>
     <table>
       <thead>
       <tr>
@@ -66,5 +59,6 @@
 <script type="text/javascript" src="${ctx}/js/queryda.js"></script>
 <script type="text/javascript" src="${ctx}/js/WdatePicker.js"></script>
 <script src="${ctx}/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="${ctx}/js/layui/layui.js"></script>
 </body>
 </html>
