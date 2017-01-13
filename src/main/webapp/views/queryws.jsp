@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="resource.jsp"/>
 <link rel="stylesheet" type="text/css" href="${ctx}/css/queryws.css">
-  <div class="con-no-ma" id="con-no-ma">
+  <div class="con-no-ma displayNo" id="con-no-ma">
     <div class="catalog">
       <div class="catalogTile">非标准名称、别名</div>
       <div class="catalogButton">
