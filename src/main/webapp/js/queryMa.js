@@ -148,6 +148,7 @@ function maSearch() {
                     tbodyList+="<td title='"+standard[i].value+"'>"+standard[i].value+"</td>"
                     //"source"数据来源:0人工导入1数据服务平台
                     tbodyList+="<td>"+(standard[i].source==0?'人工导入':'数据服务平台')+"</td>"
+                    tbodyList+="<td>"+(standard[i].mean==0 ? '未关联' : standard[i].mean)+"</td>"
                     tbodyList+="<td><a href='javascript:;' data-method='offset' data-type='auto' class='showMean' value='"+standard[i].value+"'>显示</a></td>"
                 }
                 $(".man_body").html("")
@@ -222,6 +223,7 @@ function pageCallback(api) {
                     tbodyList+="<td title='"+standard[i].value+"'>"+standard[i].value+"</td>"
                     //"source"数据来源:0人工导入1数据服务平台
                     tbodyList+="<td>"+(standard[i].source==0?'人工导入':'数据服务平台')+"</td>"
+                    tbodyList+="<td>"+(standard[i].mean==0 ? '未关联' : standard[i].mean)+"</td>"
                     tbodyList+="<td><a href='javascript:;' data-method='offset' data-type='auto' class='showMean' value='"+standard[i].value+"'>显示</a></td>"
                 }
                 $(".man_body").html("")

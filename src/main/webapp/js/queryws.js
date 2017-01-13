@@ -229,9 +229,6 @@ function catalogAdd(){
        //获取点击的value，调用查询方法
         var str=$(this).text()
         searchCatalog(str)
-
-
-        alert("ttt")
     })
 }
 //导入按钮，用html5的FileReader方法

@@ -32,7 +32,7 @@
       <span class="oper">关联人</span>
       <input type="text" class="operator" value="">
       <a href="javascript:;" type="button" class="daSearch" onclick="daSearch()">搜索</a>
-      <a href="javascript:;" type="button" class="daEx" onclick="daEx()">审核</a>
+      <a href="javascript:;"  type="button" data-method='offset' data-type='auto' class="daEx" onclick="daEx()">审核</a>
     </div>
     <table>
       <thead>
