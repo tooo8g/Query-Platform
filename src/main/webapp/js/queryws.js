@@ -28,6 +28,7 @@ $(function(){
 })
 //移动
 function moveLi(obj1, obj2,flag) {
+    $(".tip").removeClass("show").addClass("hide")
     //获取selectRight里面的数据，然后传给后台
    var selectLi=""
 	   //请求路径,flag为true,增加，false，减少
@@ -58,7 +59,7 @@ function moveLi(obj1, obj2,flag) {
             data:{word:wordValue,m:selectLi},
             success:function(data){
                if(data==0){
-                   alert("该项无法删除")
+                   $(".tip").removeClass("hide").addClass("show")
                }else if(data==1){
             	   $(".selectLeft ul li").removeClass("liClick")
                    $(".selectLeft ul").prepend($(".liClick"))

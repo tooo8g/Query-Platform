@@ -52,7 +52,9 @@
           <!--<a href="javascript:;" type="button" class="sesButton" onclick="sesAdd()">添加</a>-->
           <div  class="selectRight" id="right">
             <div class="selectRightContent">
-              <!--<div class="selectRightContentAdd"></div>-->
+              <div class="selectRightContentAdd">
+                <p class="tip hide">该项无法删除</p>
+              </div>
               <div class="selectRightContentShow"></div>
             </div>
           </div>

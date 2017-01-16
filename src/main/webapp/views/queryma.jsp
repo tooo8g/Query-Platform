@@ -34,6 +34,7 @@
       <input type="text" class="maBatch" value="">
       <span>关联数</span>
       <select class="maMean" id="maMean">
+        <option value="-1"></option>
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
