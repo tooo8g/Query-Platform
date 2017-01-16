@@ -39,8 +39,8 @@ function daSearch() {
                      bzNum=Number(startValue)+i+1
                      tbodyList+="<tr>"
                      tbodyList+="<td class='daNum' onclick='clickCodes(this)'><a class='noclickId' href='javascript:;' nid="+means[i]._id.$oid+" nck="+means[i].check+"><span>"+bzNum+"</span></td>"
-                     tbodyList+="<td>"+means[i].standard_v+"</td>"
-                     tbodyList+="<td>"+means[i].nonstandard_v+"</td>"
+                     tbodyList+="<td title='"+means[i].standard_v+"'>"+means[i].standard_v+"</td>"
+                     tbodyList+="<td title='"+means[i].nonstandard_v+"'>"+means[i].nonstandard_v+"</td>"
                      tbodyList+="<td>"+(means[i].type=='0'?'手动':'自动')+"</td>"
                      if(means[i].check==0){
                          tbodyList+="<td>"+'未判别'+"</td>"
@@ -116,8 +116,8 @@ function pageCallback(api) {
                    bzNum=Number(startValue)+i+1
                    tbodyList+="<tr>"
                    tbodyList+="<td class='daNum' onclick='clickCodes(this)'><a class='noclickId' href='javascript:;' nid="+means[i]._id.$oid+" nck="+means[i].check+"><span>"+bzNum+"</span></td>"
-                   tbodyList+="<td>"+means[i].standard_v+"</td>"
-                   tbodyList+="<td>"+means[i].nonstandard_v+"</td>"
+                   tbodyList+="<td title='"+means[i].standard_v+"'>"+means[i].standard_v+"</td>"
+                   tbodyList+="<td title='"+means[i].nonstandard_v+"'>"+means[i].nonstandard_v+"</td>"
                    tbodyList+="<td>"+(means[i].type=='0'?'手动':'自动')+"</td>"
                    if(means[i].check==0){
                        tbodyList+="<td>"+'未判别'+"</td>"

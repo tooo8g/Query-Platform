@@ -63,7 +63,6 @@ function moveLi(obj1, obj2,flag) {
             	   $(".selectLeft ul li").removeClass("liClick")
                    $(".selectLeft ul").prepend($(".liClick"))
             	   $(".selectRight .liClick").remove()
-                   alert("删除成功")                 
                }
             }
         })

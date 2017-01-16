@@ -13,7 +13,8 @@ $(function () {
 
     //使用下拉框插件
     $('#noMean').editableSelect({
-        effects: 'slide'
+        effects: 'slide',
+        filter:false
     });
 })
 
@@ -124,7 +125,12 @@ function nomaSearch() {
     var source=0 //数据来源
     source=Number($(".source option:selected").val()) //数据来源
     var mean=0 //关联数
-    mean=Number($(".noMean").val())
+    var noMeanVal=$(".noMean").val()
+    if(noMeanVal){
+        mean=Number(noMeanVal)
+    }else{
+        mean=Number(-1)
+    }
     var count="" //总数
     var nonstandard="" //保存data信息
     var tbodyList=""
@@ -149,7 +155,7 @@ function nomaSearch() {
                     //"source"数据来源:0人工导入1数据服务平台
                     tbodyList += "<td>" + (nonstandard[i].source == 0 ? '人工导入' : '数据服务平台') + "</td>"
                     tbodyList += "<td>"+(nonstandard[i].mean==0 ? '未关联' : nonstandard[i].mean)+"</td>"
-                    tbodyList += "<td><a href='javascript:;' data-method='offset' data-type='auto' class='showMean' value='" + nonstandard[i].value + "'>显示</a></td>"
+                    tbodyList += "<td><a href='javascript:;' data-method='offset' data-type='auto' class='showMean' value='" + nonstandard[i].value + "'>数据关联</a></td>"
                 }
                 $(".noman_body").html("")
                 $(".noman_body").append(tbodyList)
@@ -223,7 +229,7 @@ function pageCallback(api) {
                     //"source"数据来源:0人工导入1数据服务平台
                     tbodyList += "<td>" + (nonstandard[i].source == 0 ? '人工导入' : '数据服务平台') + "</td>"
                     tbodyList += "<td>"+(nonstandard[i].mean==0 ? '未关联' : nonstandard[i].mean)+"</td>"
-                    tbodyList += "<td><a href='javascript:;' data-method='offset' data-type='auto' class='showMean' value='" + nonstandard[i].value + "'>显示</a></td>"
+                    tbodyList += "<td><a href='javascript:;' data-method='offset' data-type='auto' class='showMean' value='" + nonstandard[i].value + "'>数据关联</a></td>"
                 }
                 $(".noman_body").html("")
                 $(".noman_body").append(tbodyList)
@@ -295,10 +301,12 @@ function showMean() {
                     yes: function(){
                         layer.closeAll();
                         othis.parent().parent().removeClass("trClick")
+                        nomaSearch()
                     },
                     cancel: function(){
                         layer.closeAll();
                         othis.parent().parent().removeClass("trClick")
+                        nomaSearch()
                     }
                 });
             }
