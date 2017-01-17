@@ -28,7 +28,6 @@ $(function(){
 })
 //移动
 function moveLi(obj1, obj2,flag) {
-    $(".tip").removeClass("show").addClass("hide")
     //获取selectRight里面的数据，然后传给后台
    var selectLi=""
 	   //请求路径,flag为true,增加，false，减少
@@ -192,6 +191,7 @@ function selectLeftClick(){
 //给selectRight li 添加click方法
 function selectRightClick(){
 	$(".selectRight li").on("click",function(){
+	    $(".tip").removeClass("show").addClass("hide")
 		$(".selectRight li").removeClass("liClick")
 		$(this).addClass("liClick")
 	})

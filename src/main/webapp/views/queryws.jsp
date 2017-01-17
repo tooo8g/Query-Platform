@@ -53,7 +53,7 @@
           <div  class="selectRight" id="right">
             <div class="selectRightContent">
               <div class="selectRightContentAdd">
-                <p class="tip hide">该项无法删除</p>
+                <p class="tip hide">*该项无法删除</p>
               </div>
               <div class="selectRightContentShow"></div>
             </div>

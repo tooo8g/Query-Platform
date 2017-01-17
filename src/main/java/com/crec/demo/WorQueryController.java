@@ -214,13 +214,14 @@ public class WorQueryController {
 	@RequestMapping("/query_standard_name")
 	public void queryStandardName(@RequestParam String value,
 			@RequestParam String importer, @RequestParam int batch_id,
-			@RequestParam int source, @RequestParam String imp_time_start,
+			@RequestParam int source, @RequestParam int mean,
+			@RequestParam String imp_time_start,
 			@RequestParam String imp_time_end, @RequestParam int start,
 			@RequestParam int limit, HttpServletResponse response)
 			throws IOException {
 		MongoDirver md = new MongoDirver();
 		String result = md.queryStandardName(value, importer, batch_id, source,
-				imp_time_start, imp_time_end, start, limit);
+				mean, imp_time_start, imp_time_end, start, limit);
 		md.close();
 		response.getWriter().print(result);
 	}
@@ -265,13 +266,15 @@ public class WorQueryController {
 	@RequestMapping("/query_nonstandard_name")
 	public void queryNonStandardName(@RequestParam String value,
 			@RequestParam String importer, @RequestParam int batch_id,
-			@RequestParam int source, @RequestParam String imp_time_start,
+			@RequestParam int source, @RequestParam int mean,
+			@RequestParam String imp_time_start,
 			@RequestParam String imp_time_end, @RequestParam int start,
 			@RequestParam int limit, HttpServletResponse response)
 			throws IOException {
 		MongoDirver md = new MongoDirver();
+		System.out.println(value);
 		String result = md.queryNonstandardName(value, importer, batch_id,
-				source, imp_time_start, imp_time_end, start, limit);
+				source, mean, imp_time_start, imp_time_end, start, limit);
 		md.close();
 		response.getWriter().print(result);
 	}
