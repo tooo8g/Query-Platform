@@ -16,7 +16,7 @@
     <a href="javascript:;" type="button" id="import" class="searchBu">导入</a>
     <div class="popup displayNo">
       <span class="popup_title">提示</span>
-      <span class="popup_con">将名称放入一列并保存为txt</span>
+      <span class="popup_con">请选择excel表</span>
       <a href="javascript:;" type="button" class="popup_sure" onclick="popupSure()">确定</a>
       <a href="javascript:;" type="button" class="popup_cancel" onclick="popupCancel()">取消</a>
     </div>
