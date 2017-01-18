@@ -514,3 +514,13 @@ function addExcel(data) {
         })
     }
 }
+
+//头部的click方法
+function cnClck(str) {
+    $(str).siblings().removeClass("clickHead")
+    if($(str).hasClass("clickHead")){
+        $(str).removeClass("clickHead")
+    }else{
+        $(str).addClass("clickHead")
+    }
+}

@@ -342,6 +342,16 @@ function timeStamp2String(time){
     return year + "-" + month + "-" + date;
 }
 
+//头部的click方法
+function cnClck(str) {
+    $(str).siblings().removeClass("clickHead")
+    if($(str).hasClass("clickHead")){
+        $(str).removeClass("clickHead")
+    }else{
+        $(str).addClass("clickHead")
+    }
+}
+
 //导入按钮的change事件
 function fileChange() {
 
