@@ -40,7 +40,7 @@
       <input type="text" class="nomaBatch" value="">
       <span>关联数</span>
       <select class="noMean" id="noMean">
-        <option value="-1"></option>
+        <option value="-1">所有</option>
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>

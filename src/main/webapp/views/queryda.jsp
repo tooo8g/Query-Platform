@@ -25,6 +25,7 @@
       </select>
       <span>准确性</span>
       <select class="check">
+        <option value="-2">所有</option>
         <option value="0">未判别</option>
         <option value="1">准确</option>
         <option value="2">不准确</option>
