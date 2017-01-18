@@ -357,3 +357,14 @@ tbody td span {
     font-size: 18px;
     text-align: center;
 }
+
+.clickHead{
+    background-color: #77afea;
+    color: white;
+}
+#excelTable{
+    margin-top: -20px !important;
+}
+#excelTable tr td{
+    cursor: pointer;
+}

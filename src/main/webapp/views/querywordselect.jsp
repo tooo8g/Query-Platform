@@ -11,7 +11,8 @@
 <div class="container">
   <jsp:include page="queryWordLeft.jsp"/>
   <div class="nm-r">
-    <input type="file" id="files" style="display:none" onchange="importNoMa();"/>
+    <input type="file" id="files" style="display:none"/>
+    <a href='javascript:;' data-method='offset' data-type='auto' class='showExcel displayNo'></a>
     <a href="javascript:;" type="button" id="import" class="searchBu">导入</a>
     <div class="popup displayNo">
       <span class="popup_title">提示</span>
@@ -72,6 +73,14 @@
     </div>
   </div>
 </div>
+<div class="excelTable displayNo" id="excelTable">
+  <table>
+    <thead>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
 <jsp:include page="queryws.jsp"/>
 <script type="text/javascript" src="${ctx}/js/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="${ctx}/js/querywordselect.js"></script>
@@ -79,5 +88,11 @@
 <script type="text/javascript" src="${ctx}/js/jquery.pagination.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery.editable-select.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/layui/layui.js"></script>
+<script type="text/javascript" src="${ctx}/js/modernizr-2.8.3.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/infragistics.core.js"></script>
+<script type="text/javascript" src="http://cdn-na.infragistics.com/igniteui/2016.2/latest/js/infragistics.lob.js"></script>
+<script type="text/javascript" src="http://cdn-na.infragistics.com/igniteui/2016.2/latest/js/modules/infragistics.documents.core.js"></script>
+<script type="text/javascript" src="http://cdn-na.infragistics.com/igniteui/2016.2/latest/js/modules/infragistics.excel.js"></script>
 </body>
 </html>
