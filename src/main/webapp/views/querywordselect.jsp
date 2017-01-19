@@ -65,11 +65,9 @@
       </tr>
       </thead>
       <tbody class="noman_body">
-
       </tbody>
     </table>
     <div class="list_button">
-
     </div>
   </div>
 </div>

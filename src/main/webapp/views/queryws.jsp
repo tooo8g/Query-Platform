@@ -16,12 +16,6 @@
         </ul>
       </div>
     </div>
-    <%--<div class="popup displayNo">--%>
-      <%--<span class="popup_title">提示</span>--%>
-      <%--<span class="popup_con">将名称放入一列并保存为txt</span>--%>
-      <%--<a href="javascript:;" type="button" class="popup_sure" onclick="popupSure()">确定</a>--%>
-      <%--<a href="javascript:;" type="button" class="popup_cancel" onclick="popupCancel()">取消</a>--%>
-    <%--</div>--%>
     <div class="searchResult">
       <input type="hidden" class="wordHidden" value="">
       <div class="sr_top">

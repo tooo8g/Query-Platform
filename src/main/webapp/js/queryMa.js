@@ -21,7 +21,6 @@ $(function () {
     $("#files").on("change", fileChange)
 })
 
-
  /*给页面绑定一个click事件，点击sendList之外的地方，调用nor_close方法*/
     $(".showMa").on("click",function(event){
         event.stopPropagation();
