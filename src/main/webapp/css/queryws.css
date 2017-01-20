@@ -325,8 +325,8 @@ ul,ol,p{
     height: 210px;
     overflow: auto;
 }
-/*鎻愮ず妗*/
-.popup{
+
+.popup,.imSh{
     width: 300px;
     height: 160px;
     position: absolute;
@@ -336,10 +336,10 @@ ul,ol,p{
     border: 1px solid #77afea;
     background-color: white;
 }
-.popup span,.popup a{
+.popup span,.popup a,.imSh span,.imSh a{
     display: block;
 }
-.popup_title{
+.popup_title,.imSh_title{
     width: 280px;
     height: 35px;
     line-height: 35px;
@@ -347,13 +347,13 @@ ul,ol,p{
     padding-left: 20px;
     background-color: #eeeeee;
 }
-.popup_con{
+.popup_con,.imSh_con{
     width: 300px;
     text-align: center;
     font-size: 14px;
-    margin:20px 0 20px 0;
+    margin:25px 0 25px 0;
 }
-.popup_sure,.popup_cancel{
+.popup_excel,.popup_text,.imSh_sure{
     width: auto;
     padding-left: 5px;
     padding-right: 5px;
@@ -365,16 +365,20 @@ ul,ol,p{
     float: left;
     text-decoration: none;
 }
-.popup_sure{
+.popup_excel{
     background-color: #77afea;
     color: white;
-    margin-left: 100px;
+    margin-left: 83px;
 }
-.popup_cancel{
-    background-color: #f0f0f0;
-    color: #777777;
-    border: 1px solid #bbbbbb;
+.popup_text{
+    background-color: #3cd44a;
+    color: white;
     margin-left: 20px;
+}
+.popup_close{
+    position: absolute;
+    top: 8px;
+    right: 10px;
 }
 .hide{
     display: none;

@@ -19,6 +19,9 @@ $(function () {
 
     //给导入按钮绑定change事件
     $("#files").on("change", fileChange)
+
+    //给导入按钮绑定change事件
+    $("#filestext").on("change", importNoMa)
 })
 
 
@@ -59,10 +62,15 @@ function importNoMa(){
 }
 
 
-//提示框 确定按钮
-function popupSure(){
+// 提示框 excel
+function popupExcel(){
     $(".popup").removeClass("displayBlock").addClass("displayNo")
     $("#files").click();
+}
+//提示框 text
+function popupText() {
+    $(".popup").removeClass("displayBlock").addClass("displayNo")
+    $("#filestext").click();
 }
 //提示框 取消按钮
 function popupCancel(){

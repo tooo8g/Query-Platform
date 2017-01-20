@@ -19,6 +19,9 @@ $(function () {
 
     //给导入按钮绑定change事件
     $("#files").on("change", fileChange)
+
+    //给导入按钮绑定change事件
+    $("#filestext").on("change", importMa)
 })
 
  /*给页面绑定一个click事件，点击sendList之外的地方，调用nor_close方法*/
@@ -30,16 +33,63 @@ $(function () {
         }
     });
 
-//提示框 确定按钮
-function popupSure(){
+//导入按钮，用html5的FileReader方法 导入标准名称
+function importMa(){
+    var selectedFile = document.getElementById("files").files[0];//获取读取的File对象
+    var name = selectedFile.name;//读取选中文件的文件名
+    var size = selectedFile.size;//读取选中文件的大小
+    var reader = new FileReader();//这里是核心！！！读取操作就是由它完成的。
+    reader.readAsText(selectedFile);//读取文件的内容
+
+    var list=[] //txt文件里面的列表
+    var liList=[] //保存txt文件
+    var dataJson=[] //把参数拼装成json样子
+    reader.onload = function(){
+        list=this.result.split("\n")
+        for(var i=0;i<list.length;i++){
+            dataJson.push({"importer":'admin',"value":""+list[i].trim()+""})
+        }
+
+        var dj=JSON.stringify(dataJson) //转换成json
+        var str="" //传入的参数
+        $.ajax({
+            url:ctx+'/add_standard_name',
+            type:"post",
+            data:dj,
+            contentType:"application/json",
+            success:function () {
+                str="导入成功"
+                imShSure(str)
+                maSearch()
+            },
+            error:function(){
+                str="导入失败"
+                imShSure(str)
+            }
+        })
+    };
+
+}
+// 提示框 excel
+function popupExcel(){
     $(".popup").removeClass("displayBlock").addClass("displayNo")
     $("#files").click();
+}
+//提示框 text
+function popupText() {
+    $(".popup").removeClass("displayBlock").addClass("displayNo")
+    $("#filestext").click();
 }
 //提示框 取消按钮
 function popupCancel(){
     $(".popup").removeClass("displayBlock").addClass("displayNo")
 }
-
+//导入后提示框
+function imShSure(str) {
+    $(".imSh_con").html("")
+    $(".imSh_con").html(str)
+    $(".imSh").removeClass("displayBlock").addClass("displayNo")
+}
 //删除
 function deleteAll() {
     var clickList=[], //点击的列表组合
